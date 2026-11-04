@@ -1,0 +1,82 @@
+{
+  "page": "d2cfounders",
+  "note": "Posted 2 a day in this order by .github/workflows/post-queue-d2c.yml. Add new reels at the end. Set paused to true to stop posting. pinnedComment is not posted automatically.",
+  "paused": false,
+  "igUserId": "17841453502276183",
+  "expectUsername": "d2cfounders",
+  "shareToFeed": true,
+  "perDay": 2,
+  "schedule": "Normal posts 12:57 PM + 6:57 PM IST, trial copies 3:57 PM + 9:57 PM IST (see .github/workflows/post-queue-d2c.yml)",
+  "trialCopy": {
+    "enabled": true,
+    "graduation": "SS_PERFORMANCE",
+    "note": "Each reel is also posted as a trial reel (non-followers first) 3 hours after its normal post."
+  },
+  "items": [
+    {
+      "id": "01-news01-andromeda",
+      "title": "NEWS #01 · Meta Andromeda 2.0",
+      "video": "01-news01-andromeda.mp4",
+      "caption": "NEWS #01 · Meta ka Andromeda 2.0: aapka ad kise dikhega? 📢\nMeta ne ad chunne wala system badal diya. 3 badlaav:\n1️⃣ Speed: ek server pe har second 100 crore+ ads check, pichhle version se 100x\n2️⃣ Har eligible ad ko score, har insaan ke liye sabse fit ad\n3️⃣ Meta ke hisaab se 2025 se Facebook conversions +2.4%. Koi nayi setting nahi, apne aap.\nMatlab: ek hi ad ke 10 version nahi, alag-alag angle chahiye.\n✅ Har creative mein alag baat: problem, review, use, comparison\n✅ Har hafte 2-3 naye angle\n✅ Targeting itni tight nahi ki system ke haath bandh jaayein\n👇 Comment karo ANDROMEDA, 10 creative angles free DM mein.\n💬 D2C founders ki free WhatsApp community: DM karo \"JOIN\"\nSource: Meta Engineering blog, 28 Oct 2026\n\n#D2CIndia #D2CFounders #MetaAds #FacebookAds #EcommerceIndia",
+      "audioName": "D2C Founders · NEWS #01 · Meta Andromeda 2.0",
+      "thumbOffsetMs": 5000,
+      "look": "infographic",
+      "type": "news",
+      "hook": "news-explainer",
+      "keyword": "ANDROMEDA",
+      "pinnedComment": "Aap har hafte kitne naye ad creatives banate ho? 👇"
+    },
+    {
+      "id": "02-case01-ads-band-sales-zero",
+      "title": "CASE #01 · Ads band, sales zero?",
+      "video": "02-case01-ads-band-sales-zero.mp4",
+      "caption": "CASE #01 · Ads band, sales zero? 📉\nMaan lo 2 brands, dono ke 300 order/mahina (example numbers):\nBrand A: 270 ads se, 30 bina ads → ads band = sirf 30 order\nBrand B: 180 ads se, 120 bina ads → ads band = 120 order\nJiske order bina ads ke bhi aate hain, wahi brand hai.\n✅ Purane customers ko WhatsApp pe doosri baar bulao\n✅ Har hafte organic content, bina ads\n✅ Har parcel mein card: brand ka naam + wapas aane ki wajah\nAaj apna number nikalo: bina ads ke kitne % order?\n👇 Comment karo BRAND, 10 tareeke free DM mein.\n💬 D2C founders ki free WhatsApp community: DM karo \"JOIN\"\n\n#D2CIndia #D2CFounders #BrandBuilding #EcommerceIndia #Shopify",
+      "audioName": "D2C Founders · CASE #01 · Ads band, sales zero?",
+      "thumbOffsetMs": 3000,
+      "look": "infographic",
+      "type": "case",
+      "hook": "₹-pain question",
+      "keyword": "BRAND",
+      "pinnedComment": "Aapke kitne % orders bina ads ke aate hain? 👇 Sach likho."
+    },
+    {
+      "id": "03-case02-budget-double",
+      "title": "CASE #02 · Ad budget double se pehle",
+      "video": "03-case02-budget-double.mp4",
+      "caption": "CASE #02 · Ad budget double karne se pehle 🛑\n₹10,000 ke ads → 1,000 log aaye (example numbers)\n100 mein 1 khareeda → 10 order → har order ₹1,000 ka\n100 mein 2 khareedein → 20 order → har order ₹500 ka\n20 order ke liye ₹20,000 mat lagao, product page sudhaaro.\n✅ Bina scroll kiye: photo, price, rating, Add to Cart\n✅ Product use karte hue video\n✅ Price ke paas photo wale reviews\n👇 Comment karo AUDIT, free product page check DM mein.\n💬 D2C founders ki free WhatsApp community: DM karo \"JOIN\"\n\n#D2CIndia #D2CFounders #ConversionRate #EcommerceIndia #Shopify",
+      "audioName": "D2C Founders · CASE #02 · Ad budget double se pehle",
+      "thumbOffsetMs": 3000,
+      "look": "doctor-host",
+      "type": "case",
+      "hook": "stop (RUKO) + number",
+      "keyword": "AUDIT",
+      "pinnedComment": "Aapka website conversion rate kitna hai? 👇 Pata nahi to 'pata nahi' likho, batayenge kaise dekhein."
+    },
+    {
+      "id": "04-case03-bada-bill",
+      "title": "CASE #03 · Naya customer nahi, bada bill",
+      "video": "04-case03-bada-bill.mp4",
+      "caption": "CASE #03 · Naya customer nahi, bada bill 🧾\nSame customer, same ad kharcha:\n₹600 order → haath mein ₹50\n₹900 combo → haath mein ₹200\n100 orders pe: ₹5,000 vs ₹20,000. 4× profit! (example numbers)\n✅ Combo: 2 lo, ₹100 bachao\n✅ Free shipping limit average order se thoda upar\n✅ Cart mein \"isse saath lo\"\n👇 Comment karo COMBO, combo ideas + calculator free DM mein.\n💬 D2C founders ki free WhatsApp community: DM karo \"JOIN\"\n\n#D2CIndia #D2CFounders #AOV #EcommerceIndia #Shopify",
+      "audioName": "D2C Founders · CASE #03 · Naya customer nahi, bada bill",
+      "thumbOffsetMs": 4000,
+      "look": "cartoon",
+      "type": "case",
+      "hook": "contradiction (4× profit)",
+      "keyword": "COMBO",
+      "pinnedComment": "Aapka average order kitne ka hai? 👇"
+    },
+    {
+      "id": "05-case04-pehla-order-loss",
+      "title": "CASE #04 · Pehle order pe loss, phir bhi profit?",
+      "video": "05-case04-pehla-order-loss.mp4",
+      "caption": "CASE #04 · Pehle order pe loss, phir bhi profit? 📦\nNaya customer: ad kharcha ₹400, order se bachat ₹250 → pehla order −₹150\nWapas aaya (WhatsApp se, bina ad):\nOrder 2 → +₹250 · Order 3 → +₹250\nTotal: +₹350 (example numbers)\nWapas nahi aaya? Sirf loss.\nRule: pehle order ka loss tabhi sahi, jab customer wapas aaye.\n✅ Delivery ke baad WhatsApp pe thank you\n✅ Parcel mein agle order ka coupon\n✅ Product khatam hone se pehle reminder\n👇 Comment karo REPEAT, 5 ready WhatsApp messages free DM mein.\n💬 D2C founders ki free WhatsApp community: DM karo \"JOIN\"\n\n#D2CIndia #D2CFounders #RepeatCustomers #EcommerceIndia #Shopify",
+      "audioName": "D2C Founders · CASE #04 · Pehle order pe loss, phir bhi profit?",
+      "thumbOffsetMs": 4800,
+      "look": "cartoon",
+      "type": "case",
+      "hook": "₹ loss + curiosity (hook title)",
+      "keyword": "REPEAT",
+      "pinnedComment": "Aapke kitne customers doosri baar order karte hain? 👇"
+    }
+  ]
+}

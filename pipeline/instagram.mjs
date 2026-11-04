@@ -16,7 +16,8 @@ const hostFor = (token) =>
   process.env.IG_GRAPH_BASE_URL || (token.startsWith("EAA") ? "https://graph.facebook.com" : "https://graph.instagram.com");
 let BASE = `https://graph.instagram.com${VERSION}`;
 const isFacebookHost = () => BASE.includes("graph.facebook.com") || process.env.IG_TOKEN_KIND === "facebook";
-const TOKEN_FILE = path.join(ROOT, "state", "ig-token.enc.json");
+// One renewed-token file per Instagram account (set IG_TOKEN_STATE_FILE for any page other than Astro).
+const TOKEN_FILE = path.join(ROOT, "state", process.env.IG_TOKEN_STATE_FILE || "ig-token.enc.json");
 const REFRESH_EVERY_DAYS = 7;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const sha = (s) => crypto.createHash("sha256").update(s).digest();

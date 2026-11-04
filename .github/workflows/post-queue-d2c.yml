@@ -1,0 +1,101 @@
+name: Post queued reels · D2C Founders
+
+# Posts 2 ready-made reels a day from queue/d2cfounders (perDay in the manifest) to @d2cfounders,
+# each followed 3 hours later by a trial copy (shown to non-followers first).
+# 10 minutes after the Astro slots, so the two pages never post at the same moment.
+# Cron is in UTC; GitHub can start runs a few minutes late.
+#   07:27 UTC = 12:57 PM IST  normal post
+#   10:27 UTC =  3:57 PM IST  trial copy
+#   13:27 UTC =  6:57 PM IST  normal post
+#   16:27 UTC =  9:57 PM IST  trial copy
+#   17:57 UTC = 11:27 PM IST  engagement stats
+on:
+  schedule:
+    - cron: "27 7 * * *"
+    - cron: "27 10 * * *"
+    - cron: "27 13 * * *"
+    - cron: "27 16 * * *"
+    - cron: "57 17 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "test = upload and let Instagram process the next reel, publish nothing · post-now = post right away · stats = save engagement numbers"
+        type: choice
+        options: [test, post-now, stats]
+        default: test
+      kind:
+        description: "normal = next reel to followers · trial = trial copy of the latest normally posted reel"
+        type: choice
+        options: [normal, trial]
+        default: normal
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-post-d2cfounders
+  cancel-in-progress: false
+
+env:
+  PAGE: d2cfounders
+  IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN_D2C }}
+  TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
+  IG_TOKEN_STATE_FILE: d2cfounders-ig-token.enc.json
+
+jobs:
+  post:
+    if: github.event.schedule != '57 17 * * *' && inputs.mode != 'stats'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install cloudflared (temporary video link)
+        run: |
+          sudo curl -fsSL -o /usr/local/bin/cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+          sudo chmod +x /usr/local/bin/cloudflared
+          cloudflared --version
+
+      - name: Post the next reel
+        run: >
+          node pipeline/post-queue.mjs --page $PAGE
+          --kind ${{ github.event_name == 'schedule' && (contains(fromJSON('["27 10 * * *","27 16 * * *"]'), github.event.schedule) && 'trial' || 'normal') || inputs.kind }}
+          ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'test' && '--dry-run' || '' }}
+          ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'post-now' && '--force' || '' }}
+
+      - name: Save what was posted
+        if: always()
+        run: |
+          git config user.name "reel-autopilot"
+          git config user.email "reel-autopilot@users.noreply.github.com"
+          git add state/
+          git diff --cached --quiet && exit 0
+          git commit -m "Posting log (D2C Founders): $(date -u +%F)"
+          for i in 1 2 3 4 5; do git pull --rebase && git push && exit 0; sleep $((i * 5)); done
+          exit 1
+
+  stats:
+    if: github.event.schedule == '57 17 * * *' || inputs.mode == 'stats'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Collect stats
+        run: node pipeline/stats.mjs --page $PAGE
+      - name: Save
+        if: always()
+        run: |
+          git config user.name "reel-autopilot"
+          git config user.email "reel-autopilot@users.noreply.github.com"
+          git add state/
+          git diff --cached --quiet && exit 0
+          git commit -m "Engagement stats (D2C Founders): $(date -u +%F)"
+          for i in 1 2 3 4 5; do git pull --rebase && git push && exit 0; sleep $((i * 5)); done
+          exit 1
