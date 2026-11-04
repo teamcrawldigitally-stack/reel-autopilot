@@ -116,34 +116,82 @@ export const publishingQuota = (token, userId) =>
 export const recentMedia = (token, userId) =>
   call("GET", `${BASE}/${userId}/media?fields=id,caption,timestamp,permalink&limit=10`, token).then((r) => r.data ?? []);
 
-// Creates the Reel container from a public URL, waits for Instagram to fetch + process it, publishes.
-// trialGraduation: "SS_PERFORMANCE" (auto-share to followers if it does well) or "MANUAL" makes it a trial reel.
-export const publishReelFromUrl = async ({ token, userId, videoUrl, caption, shareToFeed = true, thumbOffsetMs, audioName, trialGraduation }) => {
-  log(`instagram: creating the ${trialGraduation ? "trial " : ""}reel container`);
-  const form = { media_type: "REELS", video_url: videoUrl, caption };
+// Direct (resumable) upload is available with Facebook-host tokens (Unified login / Facebook Login
+// for Business): the file goes straight to Instagram, no public link needed.
+export const canUploadDirectly = () => isFacebookHost();
+
+const containerForm = ({ caption, shareToFeed = true, thumbOffsetMs, audioName, trialGraduation }) => {
+  const form = { media_type: "REELS", caption };
   if (trialGraduation) form.trial_params = JSON.stringify({ graduation_strategy: trialGraduation });
   else form.share_to_feed = String(shareToFeed);
   if (thumbOffsetMs != null) form.thumb_offset = String(thumbOffsetMs);
   if (audioName) form.audio_name = audioName;
-  const container = await call("POST", `${BASE}/${userId}/media`, token, form);
+  return form;
+};
 
-  log("instagram: waiting while Instagram downloads and processes the video");
+// Sends the file bytes to Instagram's upload server for a resumable container.
+const uploadBytes = async (uri, token, videoPath) => {
+  const size = fs.statSync(videoPath).size;
+  log(`instagram: uploading ${(size / 1e6).toFixed(1)} MB directly`);
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const res = await fetch(uri, {
+        method: "POST",
+        headers: { Authorization: `OAuth ${token}`, offset: "0", file_size: String(size), "Content-Type": "application/octet-stream" },
+        body: fs.readFileSync(videoPath),
+        signal: AbortSignal.timeout(10 * 60 * 1000),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (res.ok && json.success !== false && !json.error) return;
+      const msg = `upload -> ${res.status}: ${JSON.stringify(json.debug_info ?? json.error ?? json).slice(0, 300)}`;
+      if (res.status < 500 || attempt === 3) throw new Error(msg);
+      log(`  temporary upload error, retrying: ${msg}`);
+    } catch (e) {
+      if (attempt === 3 || /-> [1-4]\d\d:/.test(e.message)) throw e;
+      log(`  upload interrupted, retrying: ${e.message.slice(0, 160)}`);
+    }
+    await sleep(5000 * attempt);
+  }
+};
+
+// Waits until Instagram has processed the container's video.
+const waitUntilReady = async (token, containerId) => {
+  log("instagram: waiting while Instagram processes the video");
   const deadline = Date.now() + 20 * 60 * 1000;
   let status;
   while (Date.now() < deadline) {
     await sleep(15000);
-    status = await call("GET", `${BASE}/${container.id}?fields=status_code,status`, token);
+    status = await call("GET", `${BASE}/${containerId}?fields=status_code,status`, token);
     log(`  status: ${status.status_code}`);
-    if (status.status_code === "FINISHED") break;
+    if (status.status_code === "FINISHED") return;
     if (status.status_code === "ERROR" || status.status_code === "EXPIRED")
       throw new Error(`Instagram could not process the video: ${status.status ?? status.status_code}`);
   }
-  if (status?.status_code !== "FINISHED") throw new Error("Timed out waiting for Instagram to process the video");
+  throw new Error("Timed out waiting for Instagram to process the video");
+};
 
+// Makes a processed Reel container, either from a local file (videoPath, direct upload) or from a
+// public link (videoUrl). Returns the container ID; nothing is published yet.
+// trialGraduation: "SS_PERFORMANCE" (auto-share to followers if it does well) or "MANUAL" makes it a trial reel.
+export const prepareReel = async ({ token, userId, videoPath, videoUrl, ...opts }) => {
+  const form = containerForm(opts);
+  log(`instagram: creating the ${opts.trialGraduation ? "trial " : ""}reel container (${videoUrl ? "from a link" : "direct upload"})`);
+  let container;
+  if (videoUrl) container = await call("POST", `${BASE}/${userId}/media`, token, { ...form, video_url: videoUrl });
+  else {
+    container = await call("POST", `${BASE}/${userId}/media`, token, { ...form, upload_type: "resumable" });
+    const version = /\/v[\d.]+$/.exec(BASE)?.[0] ?? "";
+    await uploadBytes(container.uri ?? `https://rupload.facebook.com/ig-api-upload${version}/${container.id}`, token, videoPath);
+  }
+  await waitUntilReady(token, container.id);
+  return container.id;
+};
+
+export const publishContainer = async ({ token, userId, containerId }) => {
   log("instagram: publishing");
-  const published = await call("POST", `${BASE}/${userId}/media_publish`, token, { creation_id: container.id });
+  const published = await call("POST", `${BASE}/${userId}/media_publish`, token, { creation_id: containerId });
   const media = await call("GET", `${BASE}/${published.id}?fields=permalink,timestamp`, token).catch(() => ({}));
-  return { mediaId: published.id, permalink: media.permalink ?? null, containerId: container.id };
+  return { mediaId: published.id, permalink: media.permalink ?? null, containerId };
 };
 
 export const tokenFileExists = () => fs.existsSync(TOKEN_FILE);

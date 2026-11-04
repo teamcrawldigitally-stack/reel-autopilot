@@ -1,6 +1,8 @@
-// Gives one local video a temporary public HTTPS link so Instagram can fetch it, then takes it down.
-// 1st choice: a Cloudflare quick tunnel (free, no account) to a tiny local server that serves only
-// this file under a random path. Fallback: Litterbox (free temporary file host, link expires in 1 h).
+// Backup route only: gives one local video a temporary public HTTPS link so Instagram can fetch it,
+// then takes it down. Used when a direct (resumable) upload isn't possible. A tiny local server serves
+// only this file under a random path, exposed through a Cloudflare quick tunnel (free, no account),
+// tried twice. Reachability is also checked through 1.1.1.1, because a brand-new tunnel name is often
+// cached as "not found" by the machine's own DNS for a while.
 import { spawn } from "node:child_process";
 import crypto from "node:crypto";
 import fs from "node:fs";
@@ -44,76 +46,92 @@ export const serveOne = (filePath, port) => {
   return new Promise((resolve) => server.listen(port, "127.0.0.1", () => resolve({ server, route, hits: () => hits })));
 };
 
-const startTunnel = (port) =>
+// Starts a tunnel command and waits for the public URL it prints.
+const startTunnel = ({ name, cmd, args, pattern, timeoutMs = 60000 }) =>
   new Promise((resolve, reject) => {
-    const p = spawn(process.env.CLOUDFLARED || "cloudflared", ["tunnel", "--no-autoupdate", "--url", `http://127.0.0.1:${port}`], { stdio: ["ignore", "pipe", "pipe"] });
+    let p;
+    try {
+      p = spawn(cmd, args, { stdio: ["ignore", "pipe", "pipe"] });
+    } catch (e) {
+      return reject(e);
+    }
     let buf = "";
-    const timer = setTimeout(() => {
-      p.kill();
-      reject(new Error("cloudflared did not give a URL within 60 s"));
-    }, 60000);
+    let done = false;
+    const finish = (fn, v) => {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      fn(v);
+    };
+    const timer = setTimeout(() => (p.kill(), finish(reject, new Error(`${name} gave no URL within ${timeoutMs / 1000} s`))), timeoutMs);
     const onData = (d) => {
       buf += d;
-      const m = /https:\/\/[a-z0-9-]+\.trycloudflare\.com/.exec(buf);
-      if (m) {
-        clearTimeout(timer);
-        resolve({ url: m[0], stop: () => p.kill() });
-      }
+      const m = pattern.exec(buf);
+      if (m) finish(resolve, { url: m[0], stop: () => p.kill() });
     };
     p.stdout.on("data", onData);
     p.stderr.on("data", onData);
-    p.on("error", (e) => {
-      clearTimeout(timer);
-      reject(e);
-    });
-    p.on("exit", (code) => {
-      clearTimeout(timer);
-      reject(new Error(`cloudflared exited (${code}): ${buf.slice(-400)}`));
-    });
+    p.on("error", (e) => finish(reject, e));
+    p.on("exit", (code) => finish(reject, new Error(`${name} exited (${code}): ${buf.slice(-300).replace(/\s+/g, " ")}`)));
   });
 
-// Checks from the outside that the link really serves the video (first bytes must be an MP4 header).
-export const reachable = async (url, tries = 30) => {
-  for (let i = 0; i < tries; i++) {
-    try {
-      const r = await fetch(url, { headers: { Range: "bytes=0-31" } });
-      const b = Buffer.from(await r.arrayBuffer());
-      if ((r.status === 206 || r.status === 200) && b.subarray(4, 8).toString() === "ftyp") return true;
-    } catch {}
-    await sleep(2000);
-  }
-  return false;
+const tunnels = (port) =>
+  ["Cloudflare tunnel", "Cloudflare tunnel (2nd try)"].map((name) => ({
+    name,
+    cmd: process.env.CLOUDFLARED || "cloudflared",
+    args: ["tunnel", "--no-autoupdate", "--url", `http://127.0.0.1:${port}`],
+    pattern: /https:\/\/[a-z0-9-]+\.trycloudflare\.com/,
+  }));
+
+// One check: do the first bytes look like an MP4? Tries the normal resolver, then 1.1.1.1 via curl.
+const looksLikeMp4 = async (url) => {
+  try {
+    const r = await fetch(url, { headers: { Range: "bytes=0-31" }, signal: AbortSignal.timeout(10000) });
+    const b = Buffer.from(await r.arrayBuffer());
+    if ((r.status === 206 || r.status === 200) && b.subarray(4, 8).toString() === "ftyp") return true;
+  } catch {}
+  if (process.env.HOST_CHECK_NO_DOH) return false;
+  return new Promise((resolve) => {
+    let b = Buffer.alloc(0);
+    const p = spawn("curl", ["-sS", "-m", "10", "--doh-url", "https://1.1.1.1/dns-query", "-r", "0-31", "-o", "-", url], { stdio: ["ignore", "pipe", "ignore"] });
+    p.stdout.on("data", (d) => (b = Buffer.concat([b, d])));
+    p.on("close", () => resolve(b.subarray(4, 8).toString() === "ftyp"));
+    p.on("error", () => resolve(false));
+  });
 };
 
-const uploadLitterbox = async (filePath) => {
-  const form = new FormData();
-  form.append("reqtype", "fileupload");
-  form.append("time", "1h");
-  form.append("fileToUpload", await fs.openAsBlob(filePath, { type: "video/mp4" }), path.basename(filePath));
-  const r = await fetch("https://litterbox.catbox.moe/resources/internals/api.php", { method: "POST", body: form });
-  const text = (await r.text()).trim();
-  if (!r.ok || !/^https:\/\//.test(text)) throw new Error(`litterbox upload failed: ${r.status} ${text.slice(0, 200)}`);
-  return text;
+// Checks from the outside that the link really serves the video.
+export const reachable = async (url, seconds = 90) => {
+  const deadline = Date.now() + seconds * 1000;
+  await sleep(3000);
+  while (Date.now() < deadline) {
+    if (await looksLikeMp4(url)) return true;
+    await sleep(3000);
+  }
+  return false;
 };
 
 // Returns { url, how, close() }.
 export const hostVideo = async (filePath, { port = 8787 } = {}) => {
   const { server, route, hits } = await serveOne(filePath, port);
-  try {
-    const tunnel = await startTunnel(port);
-    const url = tunnel.url + route;
-    log(`video link: Cloudflare tunnel (${tunnel.url.replace("https://", "")})`);
-    if (await reachable(url)) {
-      return { url, how: "tunnel", hits, close: () => (tunnel.stop(), server.closeAllConnections(), server.close()) };
+  const tried = [];
+  for (const t of tunnels(port)) {
+    try {
+      const tunnel = await startTunnel(t);
+      const url = tunnel.url + route;
+      log(`video link: ${t.name} (${tunnel.url.replace("https://", "")})`);
+      if (await reachable(url)) {
+        return { url, how: t.name, hits, close: () => (tunnel.stop(), server.closeAllConnections(), server.close()) };
+      }
+      log(`  ${t.name} link not reachable from outside, trying the next option`);
+      tried.push(`${t.name}: not reachable`);
+      tunnel.stop();
+    } catch (e) {
+      log(`  ${t.name} failed (${e.message.slice(0, 160)}), trying the next option`);
+      tried.push(`${t.name}: ${e.message.slice(0, 80)}`);
     }
-    log("tunnel link not reachable from outside, trying the fallback");
-    tunnel.stop();
-  } catch (e) {
-    log(`tunnel failed (${e.message.slice(0, 200)}), trying the fallback`);
   }
+  server.closeAllConnections();
   server.close();
-  const url = await uploadLitterbox(filePath);
-  if (!(await reachable(url, 10))) throw new Error("fallback link is not reachable either");
-  log("video link: Litterbox temporary file (expires in 1 h)");
-  return { url, how: "litterbox", hits: () => null, close: () => {} };
+  throw new Error(`Could not make a temporary video link (${tried.join("; ")})`);
 };

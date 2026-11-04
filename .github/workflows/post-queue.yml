@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "test = check token, account and video link, post nothing · post-now = post right away"
+        description: "test = upload and let Instagram process the next reel, publish nothing · post-now = post right away"
         type: choice
         options: [test, post-now]
         default: test

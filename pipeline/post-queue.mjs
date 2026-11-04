@@ -3,12 +3,12 @@
 //   --kind     normal (default): the next reel not posted yet, shared to followers
 //              trial: a trial copy (shown to non-followers first) of the next reel that already went out
 //              normally; needs "trialCopy": {"enabled": true, "graduation": "SS_PERFORMANCE"|"MANUAL"}
-//   --dry-run  checks the token, the account, the queue and the video link, but posts nothing
+//   --dry-run  checks the token and account, uploads the video and lets Instagram process it, but publishes nothing
 //   --force    posts even if today's limit for this kind is reached
 import fs from "node:fs";
 import path from "node:path";
 import { hostVideo } from "./host-video.mjs";
-import { account, loadToken, publishingQuota, publishReelFromUrl, recentMedia, refreshTokenIfDue } from "./instagram.mjs";
+import { account, canUploadDirectly, loadToken, prepareReel, publishContainer, publishingQuota, recentMedia, refreshTokenIfDue } from "./instagram.mjs";
 import { localDate, log, readJson, ROOT, writeJson } from "./lib.mjs";
 
 const args = process.argv.slice(2);
@@ -73,38 +73,50 @@ const main = async () => {
     return summary([`The ${label}"${next.title}" is already on @${me.username} (${dup.permalink}). Recorded it, nothing posted.`]);
   }
 
-  const host = await hostVideo(video);
+  const opts = {
+    token: t.token,
+    userId: me.user_id,
+    caption: next.caption,
+    shareToFeed: manifest.shareToFeed ?? true,
+    thumbOffsetMs: next.thumbOffsetMs,
+    audioName: kind === "trial" ? undefined : next.audioName,
+    trialGraduation: kind === "trial" ? trial.graduation || "SS_PERFORMANCE" : undefined,
+  };
+  // 1st choice: upload the file straight to Instagram. Backup: a temporary public link Instagram fetches.
+  let host;
   try {
+    let containerId, how;
+    try {
+      if (!canUploadDirectly()) throw new Error("this token type can't upload files directly");
+      containerId = await prepareReel({ ...opts, videoPath: video });
+      how = "direct upload";
+    } catch (e) {
+      log(`direct upload didn't work (${e.message.slice(0, 200)}), using a temporary video link instead`);
+      host = await hostVideo(video);
+      containerId = await prepareReel({ ...opts, videoUrl: host.url });
+      how = `temporary link, ${host.how}`;
+    }
     if (dryRun) {
       return summary([
         `### Test OK, nothing posted`,
         `- Account: @${me.username} (${me.account_type})`,
         `- Next ${kind} post: **${label}${next.title}** (${(fs.statSync(video).size / 1e6).toFixed(1)} MB)`,
-        `- Temporary video link works (${host.how})`,
+        `- Instagram received and processed the video (${how}); it was not published`,
         `- ${posted.filter((p) => kindOf(p) === "normal").length} of ${manifest.items.length} reels posted so far (${posted.filter((p) => kindOf(p) === "trial").length} trial copies)`,
       ]);
     }
-    const result = await publishReelFromUrl({
-      token: t.token,
-      userId: me.user_id,
-      videoUrl: host.url,
-      caption: next.caption,
-      shareToFeed: manifest.shareToFeed ?? true,
-      thumbOffsetMs: next.thumbOffsetMs,
-      audioName: kind === "trial" ? undefined : next.audioName,
-      trialGraduation: kind === "trial" ? trial.graduation || "SS_PERFORMANCE" : undefined,
-    });
-    posted.push({ id: next.id, kind, date: today, mediaId: result.mediaId, permalink: result.permalink, postedAt: new Date().toISOString() });
+    const result = await publishContainer({ token: t.token, userId: me.user_id, containerId });
+    posted.push({ id: next.id, kind, date: today, mediaId: result.mediaId, permalink: result.permalink, postedAt: new Date().toISOString(), via: how });
     writeJson(statePath, posted);
     const n = nextItem();
     summary([
       `### Posted: ${label}${next.title}${kind === "trial" ? ` (trial reel, graduates: ${trial.graduation || "SS_PERFORMANCE"})` : ""}`,
       `- ${result.permalink ?? result.mediaId}`,
-      `- @${me.username} · ${posted.filter((p) => kindOf(p) === "normal").length} of ${manifest.items.length} reels posted, ${posted.filter((p) => kindOf(p) === "trial").length} trial copies`,
+      `- @${me.username} · ${posted.filter((p) => kindOf(p) === "normal").length} of ${manifest.items.length} reels posted, ${posted.filter((p) => kindOf(p) === "trial").length} trial copies · via ${how}`,
       n ? `- Next ${kind}: ${n.title}` : kind === "trial" ? `- Next trial copy follows the next normal post` : `- The queue is now empty`,
     ]);
   } finally {
-    host.close();
+    host?.close();
   }
 };
 

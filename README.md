@@ -130,4 +130,4 @@ node pipeline/publish.mjs runs/<id>/reel.mp4 "caption"  # post a reel you render
 - **Test without posting:** Actions → Post queued reels → Run workflow → mode `test`.
 - **Post the next one right now:** same, mode `post-now` (kind `normal` or `trial`).
 - **Secrets:** `IG_ACCESS_TOKEN` (from the Meta App Dashboard → Instagram API → Generate token; the Unified-login system-user token never expires). Optional `TOKEN_KEY` (any long random sentence), only needed for 60-day Instagram Login tokens, which the job renews and stores encrypted in `state/`.
-- Instagram fetches the video from a temporary Cloudflare quick-tunnel link that closes when the job ends (fallback: a 1-hour Litterbox link).
+- The video is uploaded straight to Instagram (resumable upload). Backup if that is refused: a temporary Cloudflare quick-tunnel link that Instagram fetches, closed when the job ends.
