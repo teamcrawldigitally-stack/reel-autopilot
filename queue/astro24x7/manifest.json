@@ -2,7 +2,8 @@
   "page": "astro24x7",
   "note": "Posted one per day in this order by .github/workflows/post-queue.yml. Add new reels at the end. Set paused to true to stop posting.",
   "paused": false,
-  "expectUsername": null,
+  "igUserId": "17841471833395374",
+  "expectUsername": "astro_24x7",
   "shareToFeed": true,
   "items": [
     {

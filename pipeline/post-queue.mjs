@@ -33,7 +33,7 @@ const main = async () => {
 
   // Token + account check.
   let t = loadToken();
-  const me = await account(t.token);
+  const me = await account(t.token, manifest.igUserId);
   log(`account: @${me.username} (${me.account_type}, ${me.media_count} posts)`);
   if (manifest.expectUsername && me.username.toLowerCase() !== manifest.expectUsername.toLowerCase())
     throw new Error(`The token belongs to @${me.username}, but this queue is for @${manifest.expectUsername}. Nothing posted.`);

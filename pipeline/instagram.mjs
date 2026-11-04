@@ -1,16 +1,21 @@
-// Instagram API with Instagram Login (host graph.instagram.com): token handling and Reel publishing
-// from a public video URL. Free; needs a token with instagram_business_basic +
-// instagram_business_content_publish, generated once in the Meta App Dashboard.
+// Instagram Reel publishing from a public video URL, with the token made in the Meta App Dashboard.
+// Works with both token kinds the dashboard hands out:
+//   - "EAA..." system-user token (Instagram API with Unified login, never expires) -> graph.facebook.com,
+//     needs the Instagram account ID (igUserId in the queue manifest)
+//   - "IGAA..." Instagram Login token (expires after 60 days) -> graph.instagram.com, renewed automatically
+//     when TOKEN_KEY is set (the renewed token is saved encrypted in state/)
 //
-// Env: IG_ACCESS_TOKEN (the token from the dashboard), TOKEN_KEY (any long random sentence; used to
-// encrypt the renewed token that gets saved in state/, because Instagram tokens expire after 60 days).
+// Env: IG_ACCESS_TOKEN, optional TOKEN_KEY, optional IG_GRAPH_VERSION (default: the app's own version).
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { log, readJson, ROOT, writeJson } from "./lib.mjs";
 
-const VERSION = process.env.IG_GRAPH_VERSION || "v26.0";
-const BASE = `${process.env.IG_GRAPH_BASE_URL || "https://graph.instagram.com"}/${VERSION}`;
+const VERSION = process.env.IG_GRAPH_VERSION ? `/${process.env.IG_GRAPH_VERSION}` : "";
+const hostFor = (token) =>
+  process.env.IG_GRAPH_BASE_URL || (token.startsWith("EAA") ? "https://graph.facebook.com" : "https://graph.instagram.com");
+let BASE = `https://graph.instagram.com${VERSION}`;
+const isFacebookHost = () => BASE.includes("graph.facebook.com") || process.env.IG_TOKEN_KIND === "facebook";
 const TOKEN_FILE = path.join(ROOT, "state", "ig-token.enc.json");
 const REFRESH_EVERY_DAYS = 7;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -36,6 +41,7 @@ export const loadToken = () => {
   if (!secret) throw new Error("IG_ACCESS_TOKEN is not set (add it as a GitHub repository secret)");
   const saved = readJson(TOKEN_FILE, null);
   const secretId = sha(secret).toString("hex").slice(0, 16);
+  BASE = `${hostFor(secret)}${VERSION}`;
   if (saved && key && saved.secretId === secretId) {
     try {
       return { token: decrypt(saved.box, key), refreshedAt: saved.refreshedAt, secretId };
@@ -46,8 +52,10 @@ export const loadToken = () => {
   return { token: secret, refreshedAt: null, secretId };
 };
 
-// Renews the 60-day token every few days. Needs the token to be at least 24 h old; failures are only logged.
+// Renews a 60-day Instagram Login token every few days (needs it to be at least 24 h old; failures
+// are only logged). System-user tokens never expire, so there is nothing to renew.
 export const refreshTokenIfDue = async (t) => {
+  if (isFacebookHost()) return t;
   const key = process.env.TOKEN_KEY;
   if (!key) {
     log("TOKEN_KEY not set: token will not be renewed automatically (it expires 60 days after it was made)");
@@ -57,6 +65,7 @@ export const refreshTokenIfDue = async (t) => {
   if (ageDays < REFRESH_EVERY_DAYS) return t;
   try {
     const r = await call("GET", `${BASE.replace(/\/v[\d.]+$/, "")}/refresh_access_token?grant_type=ig_refresh_token`, t.token);
+    if (!r.access_token) throw new Error("no token in the reply");
     const refreshedAt = new Date().toISOString();
     writeJson(TOKEN_FILE, { secretId: t.secretId, refreshedAt, expiresInDays: Math.round((r.expires_in ?? 0) / 86400), box: encrypt(r.access_token, key) });
     log(`token renewed, valid for ${Math.round((r.expires_in ?? 0) / 86400)} more days`);
@@ -95,7 +104,13 @@ const call = async (method, url, token, form) => {
   }
 };
 
-export const account = (token) => call("GET", `${BASE}/me?fields=user_id,username,account_type,media_count`, token);
+// The Instagram account the token posts to. Facebook-host tokens need the account ID (igUserId).
+export const account = async (token, igUserId) => {
+  if (!isFacebookHost()) return call("GET", `${BASE}/me?fields=user_id,username,account_type,media_count`, token);
+  if (!igUserId) throw new Error("This token needs the Instagram account ID: set igUserId in the queue manifest");
+  const a = await call("GET", `${BASE}/${igUserId}?fields=id,username,media_count`, token);
+  return { user_id: a.id, username: a.username, account_type: "professional", media_count: a.media_count };
+};
 export const publishingQuota = (token, userId) =>
   call("GET", `${BASE}/${userId}/content_publishing_limit?fields=quota_usage,config`, token).then((r) => r.data?.[0] ?? null);
 export const recentMedia = (token, userId) =>
