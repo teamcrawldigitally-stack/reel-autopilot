@@ -38,7 +38,9 @@ export type ToonScene = {
   // generic "tip" scene
   counter?: string;
   counterOf?: string;
-  emblem?: "budhRetro" | "budhMargi" | "paper" | "phone" | "chat" | "clock" | "sun";
+  emblem?: "budhRetro" | "budhMargi" | "paper" | "phone" | "chat" | "clock" | "sun" | "koota" | "stat";
+  highlight?: number[];
+  struck?: boolean;
   emblemWord?: string;
   chips?: { text: string; word: string; icon?: IconName }[];
   bubble?: string;
@@ -526,7 +528,7 @@ export const ToonCta: React.FC<TP> = (p) => {
 
 // ---------- generic icons ----------
 
-export type IconName = "speech" | "bulb" | "coin" | "paper" | "phone" | "chat" | "clock" | "bill" | "shield" | "pause";
+export type IconName = "speech" | "bulb" | "coin" | "paper" | "phone" | "chat" | "clock" | "bill" | "shield" | "pause" | "tick" | "cross" | "heart";
 
 const PaperIcon = () => (
   <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true">
@@ -574,6 +576,12 @@ const PauseIcon = () => (
   </svg>
 );
 
+const HeartIcon = () => (
+  <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true">
+    <path d="M 24 42 C 10 32 4 24 6 16 C 8 9 17 7 24 15 C 31 7 40 9 42 16 C 44 24 38 32 24 42 Z" fill="#E03131" stroke={C.ink} strokeWidth="4" strokeLinejoin="round" />
+  </svg>
+);
+
 export const Icon: React.FC<{ name: IconName }> = ({ name }) => {
   switch (name) {
     case "speech": return <SpeechIcon />;
@@ -585,6 +593,9 @@ export const Icon: React.FC<{ name: IconName }> = ({ name }) => {
     case "bill": return <BillIcon />;
     case "shield": return <ShieldIcon />;
     case "pause": return <PauseIcon />;
+    case "tick": return <Tick size={56} />;
+    case "cross": return <Cross size={56} />;
+    case "heart": return <HeartIcon />;
     default: return <BulbIcon />;
   }
 };
@@ -625,8 +636,45 @@ const BudhPath: React.FC<{ p: number; retro: boolean; size: number }> = ({ p, re
   );
 };
 
-const HeroCard: React.FC<{ kind: NonNullable<ToonScene["emblem"]>; p: number }> = ({ kind, p }) => {
+// Ashtakoot guna milan: 8 parts worth 1..8 points, total 36. `highlight` lists part indexes to light up.
+const KOOTA = ["वर्ण", "वश्य", "तारा", "योनि", "मैत्री", "गण", "भकूट", "नाड़ी"];
+const KootaBars: React.FC<{ p: number; highlight: number[] }> = ({ p, highlight }) => {
   const frame = useCurrentFrame();
+  const W = 600;
+  const bw = 56;
+  const gap = (W - 56 - bw * 8) / 7;
+  return (
+    <div style={{ position: "relative", width: W, height: 470, borderRadius: 40, background: C.white, ...sticker(C.ink, 10), boxSizing: "border-box" }}>
+      {KOOTA.map((k, i) => {
+        const on = interpolate(p, [i / 10, i / 10 + 0.3], [0, 1], clamp);
+        const hot = highlight.includes(i);
+        const bob = hot ? Math.sin(frame / 7) * 4 : 0;
+        const h = (i + 1) * 36 * on;
+        return (
+          <div key={i} style={{ position: "absolute", left: 28 + i * (bw + gap), bottom: 70, width: bw, height: h, borderRadius: "12px 12px 0 0", background: hot ? C.orange : highlight.length ? "#E9DCCB" : C.orangeSoft, border: `4px solid ${C.ink}`, boxSizing: "border-box", transform: `translateY(${bob}px)` }}>
+            <div style={{ position: "absolute", top: -48, left: -10, width: bw + 20, textAlign: "center", fontFamily: astro.fonts.display, fontSize: 38, color: hot ? C.orangeDeep : C.ink, opacity: on }}>{i + 1}</div>
+          </div>
+        );
+      })}
+      {KOOTA.map((k, i) => (
+        <div key={i} style={{ position: "absolute", left: 28 + i * (bw + gap) - 14, bottom: 22, width: bw + 28, textAlign: "center", fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 23, color: highlight.includes(i) ? C.orangeDeep : C.inkSoft }}>{k}</div>
+      ))}
+      <div style={{ position: "absolute", left: 24, top: 18, fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 30, color: C.inkSoft }}>8 हिस्से = 36 गुण</div>
+    </div>
+  );
+};
+
+const StatCard: React.FC<{ text: string; struck?: boolean; p: number }> = ({ text, struck, p }) => (
+  <div style={{ position: "relative", padding: "20px 54px 34px", borderRadius: 44, background: C.white, ...sticker(C.ink, 12), fontFamily: astro.fonts.display, fontSize: [...text].length > 4 ? 120 : 190, whiteSpace: "nowrap", lineHeight: 1, color: C.orange, WebkitTextStroke: `5px ${C.ink}`, paintOrder: "stroke fill" }}>
+    {text}
+    {struck ? <div style={{ position: "absolute", left: 24, right: 24, top: "52%", height: 16, borderRadius: 8, background: "#E03131", border: `3px solid ${C.ink}`, transform: `rotate(-12deg) scaleX(${p})`, transformOrigin: "left" }} /> : null}
+  </div>
+);
+
+const HeroCard: React.FC<{ kind: NonNullable<ToonScene["emblem"]>; p: number; scene?: ToonScene; strikeP?: number }> = ({ kind, p, scene, strikeP = 0 }) => {
+  const frame = useCurrentFrame();
+  if (kind === "koota") return <KootaBars p={p} highlight={scene?.highlight ?? []} />;
+  if (kind === "stat") return <StatCard text={scene?.stat ?? ""} struck={scene?.struck} p={strikeP} />;
   if (kind === "budhRetro" || kind === "budhMargi") return <BudhPath p={p} retro={kind === "budhRetro"} size={600} />;
   if (kind === "sun") return <SunDisc size={360} glow={0.4} />;
   const icon: IconName = kind === "paper" ? "paper" : kind === "phone" ? "phone" : kind === "chat" ? "chat" : "clock";
@@ -650,6 +698,7 @@ export const TipScene: React.FC<TP> = (p) => {
   const chipAt = chips.map((c, i) => useAt(p, c.word, 60 + i * 20)); // eslint-disable-line react-hooks/rules-of-hooks
   const bubbleAt = useAt(p, sc.bubbleWord, 110);
   const poseAt = useAt(p, sc.poseWord, 9999);
+  const strikeAt = useAt(p, sc.statWord, 9999);
   const pose = usePose([
     [0, "explain"],
     [Math.max(4, emAt - 6), "point"],
@@ -671,21 +720,21 @@ export const TipScene: React.FC<TP> = (p) => {
       <Center y={headY}>
         <Headline text={`${sc.headline ?? ""}${sc.accent ? " " + sc.accent : ""}`} highlight={sc.accent} size={sc.counter ? 104 : 118} delay={0} maxWidth={940} />
       </Center>
-      <Abs x={sc.emblem?.startsWith("budh") ? 430 : 620} y={sc.emblem?.startsWith("budh") ? 600 : sc.bubble ? 760 : 700}>
-        <Pop at={emAt - 4} from={0.3} rotate={sc.emblem?.startsWith("budh") ? 0 : 4}>
-          {sc.emblem ? <HeroCard kind={sc.emblem} p={draw} /> : null}
+      <Abs x={sc.emblem?.startsWith("budh") ? 430 : sc.emblem === "koota" ? 440 : sc.emblem === "stat" ? 520 : 620} y={sc.emblem?.startsWith("budh") ? 600 : sc.emblem === "koota" ? (sc.counter ? 600 : 560) : sc.bubble ? 760 : 700}>
+        <Pop at={emAt - 4} from={0.3} rotate={sc.emblem?.startsWith("budh") || sc.emblem === "koota" ? 0 : 4}>
+          {sc.emblem ? <HeroCard kind={sc.emblem} p={draw} scene={sc} strikeP={interpolate(frame, [strikeAt, strikeAt + 8], [0, 1], clamp)} /> : null}
         </Pop>
         {sc.emblem ? <Burst at={emAt} x={200} y={180} radius={230} count={8} /> : null}
       </Abs>
       {chips.map((ch, i) => (
-        <Abs key={i} x={520} y={1080 + i * 130}>
+        <div key={i} style={{ position: "absolute", right: 46, top: 1080 + i * 130, display: "flex", justifyContent: "flex-end" }}>
           <Pop at={chipAt[i]} from={0.3} rotate={i % 2 ? 2 : -2}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 16, padding: "10px 30px 14px", borderRadius: 999, background: i === chips.length - 1 ? C.orange : C.white, color: i === chips.length - 1 ? C.white : C.ink, ...sticker(C.ink, 6), fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 50 }}>
               {ch.icon ? <Icon name={ch.icon} /> : null}
               {ch.text}
             </div>
           </Pop>
-        </Abs>
+        </div>
       ))}
       {sc.bubble ? (
         <Abs x={60} y={610}>

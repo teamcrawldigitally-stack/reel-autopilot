@@ -2,7 +2,7 @@
 import React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { findWordFrame, W } from "../astro/parts";
-import { Crescent, DottedLine, Dumbbell, Key, Kundli, Saturn, Sun } from "./ink";
+import { Crescent, DottedLine, Dumbbell, Key, Kundli, Mars, Saturn, Sun } from "./ink";
 import { paper, rgba } from "./theme";
 
 const C = paper.colors;
@@ -37,7 +37,9 @@ export type PaperScene = {
   // generic fields (point scene, reusable hook/reveal/cta)
   counter?: string;
   counterOf?: string;
-  emblem?: "kundli" | "sun" | "saturn" | "moon" | "aspect" | "rise";
+  emblem?: "kundli" | "sun" | "saturn" | "moon" | "mars" | "aspect" | "rise" | "stat";
+  aspectLabel?: string;
+  bothHot?: boolean;
   emblemWord?: string;
   houses?: { house: number; word: string }[];
   chips?: { text: string; word: string }[];
@@ -509,7 +511,7 @@ const Emblem: React.FC<{ scene: PaperScene; words: W[]; frame: number; top: numb
           <polygon points="750,190 790,210 750,230" fill={C.accent} opacity={p >= 1 ? 1 : 0} />
         </svg>
         {[
-          { x: 230, label: scene.aspectFrom ?? "स्वामी", hot: false },
+          { x: 230, label: scene.aspectFrom ?? "स्वामी", hot: !!scene.bothHot },
           { x: 850, label: scene.aspectTo ?? "नीच ग्रह", hot: true },
         ].map((n, i) => (
           <div key={i} style={{ position: "absolute", left: n.x - 120, top: 90, width: 240, textAlign: "center", ...up(frame, 4 + i * 8, 30, 12) }}>
@@ -518,7 +520,7 @@ const Emblem: React.FC<{ scene: PaperScene; words: W[]; frame: number; top: numb
           </div>
         ))}
         <div style={{ position: "absolute", left: 0, width: 1080, top: 150, textAlign: "center", ...up(frame, at + 6, 20, 12) }}>
-          <Small color={C.accent} size={26}>दृष्टि</Small>
+          <Small color={C.accent} size={26}>{scene.aspectLabel ?? "दृष्टि"}</Small>
         </div>
       </div>
     );
@@ -539,12 +541,26 @@ const Emblem: React.FC<{ scene: PaperScene; words: W[]; frame: number; top: numb
       </div>
     );
   }
+  if (kind === "stat") {
+    const p = prog(frame, at, 18);
+    return (
+      <>
+        <Disc cx={540} cy={top + 200} r={180} p={p} lineY={top + 330} line={prog(frame, at + 4, 18)} />
+        <Abs x={0} y={top + 70} center style={{ opacity: p, transform: `scale(${0.8 + 0.2 * p})` }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: 12 }}>
+            <span style={{ fontFamily: F.display, fontSize: 230, lineHeight: 1, color: C.white, WebkitTextStroke: `6px ${C.ink}`, paintOrder: "stroke fill", textShadow: `10px 10px 0 ${C.ink}` }}>{scene.stat}</span>
+            {scene.statSuffix ? <span style={{ fontFamily: F.head, fontWeight: 800, fontSize: 64, color: C.ink }}>{scene.statSuffix}</span> : null}
+          </div>
+        </Abs>
+      </>
+    );
+  }
   const r = kind === "sun" ? 150 : 170;
   return (
     <>
       <Disc cx={540} cy={top + 200} r={r} p={prog(frame, at, 20)} lineY={top + 200 + r * 0.6} line={prog(frame, at + 4, 18)} />
       <Abs x={0} y={top + (kind === "saturn" ? 60 : 50) + float} center>
-        {kind === "sun" ? <Sun id="pt-sun" size={300} draw={draw} /> : kind === "moon" ? <Crescent id="pt-moon" size={300} /> : <Saturn id="pt-sat" width={600} draw={draw} />}
+        {kind === "sun" ? <Sun id="pt-sun" size={300} draw={draw} /> : kind === "moon" ? <Crescent id="pt-moon" size={300} /> : kind === "mars" ? <Mars id="pt-mars" size={300} draw={draw} /> : <Saturn id="pt-sat" width={600} draw={draw} />}
       </Abs>
     </>
   );

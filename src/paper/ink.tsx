@@ -284,3 +284,35 @@ export const Kundli: React.FC<{ id: string; size: number; draw?: number; lit?: R
     </svg>
   );
 };
+
+// ---------- Mars ----------
+
+export const Mars: React.FC<{ id: string; size: number; draw?: number }> = ({ id, size, draw = 1 }) => {
+  const d = { strokeDasharray: 1, strokeDashoffset: 1 - draw };
+  const hatchOn = interpolate(draw, [0.4, 1], [0, 1], clamp);
+  const craters: [number, number, number][] = [
+    [-30, -18, 16],
+    [26, 22, 11],
+    [-8, 40, 8],
+    [38, -30, 7],
+    [-46, 22, 6],
+  ];
+  return (
+    <svg width={size} height={size} viewBox="-120 -120 240 240" aria-hidden="true" style={{ overflow: "visible" }}>
+      <defs>
+        <Hatch id={`${id}-h`} angle={35} gap={6} w={2} />
+        <ShadeMask id={`${id}-m`} shape={<circle r={92} />} inner={0.3} />
+        <Rough id={`${id}-r`} />
+      </defs>
+      <g filter={`url(#${id}-r)`}>
+        <circle r={92} fill={C.accentSoft} opacity={0.75 * hatchOn} />
+        <circle r={92} fill={`url(#${id}-h)`} mask={`url(#${id}-m)`} opacity={hatchOn} />
+        <path d="M -40 -83 Q 0 -98 40 -83 Q 0 -72 -40 -83 Z" fill={C.paper} stroke={C.ink} strokeWidth="3" opacity={hatchOn} />
+        {craters.map(([x, y, r], i) => (
+          <circle key={i} cx={x} cy={y} r={r} fill={C.paper} stroke={C.ink} strokeWidth="3" opacity={hatchOn} />
+        ))}
+        <circle r={92} fill="none" stroke={C.ink} strokeWidth="6" pathLength={1} style={d} />
+      </g>
+    </svg>
+  );
+};
