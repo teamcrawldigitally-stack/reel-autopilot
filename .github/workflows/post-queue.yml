@@ -1,11 +1,15 @@
 name: Post queued reels
 
-# Posts the next ready-made reel from queue/astro24x7 once a day, then its trial copy (shown to
-# non-followers first) the same evening. Cron is in UTC; GitHub can start scheduled runs a few minutes late.
-#   13:17 UTC = 6:47 PM IST  normal post
-#   16:17 UTC = 9:47 PM IST  trial copy of the reel that went out normally
+# Posts 2 ready-made reels a day from queue/astro24x7 (perDay in the manifest), each followed 3 hours
+# later by a trial copy (shown to non-followers first). Cron is in UTC; GitHub can start runs a few minutes late.
+#   07:17 UTC = 12:47 PM IST  normal post
+#   10:17 UTC =  3:47 PM IST  trial copy
+#   13:17 UTC =  6:47 PM IST  normal post
+#   16:17 UTC =  9:47 PM IST  trial copy
 on:
   schedule:
+    - cron: "17 7 * * *"
+    - cron: "17 10 * * *"
     - cron: "17 13 * * *"
     - cron: "17 16 * * *"
   workflow_dispatch:
@@ -51,7 +55,7 @@ jobs:
           TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
         run: >
           node pipeline/post-queue.mjs --page astro24x7
-          --kind ${{ github.event_name == 'schedule' && (github.event.schedule == '17 16 * * *' && 'trial' || 'normal') || inputs.kind }}
+          --kind ${{ github.event_name == 'schedule' && (contains(fromJSON('["17 10 * * *","17 16 * * *"]'), github.event.schedule) && 'trial' || 'normal') || inputs.kind }}
           ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'test' && '--dry-run' || '' }}
           ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'post-now' && '--force' || '' }}
 

@@ -1,10 +1,10 @@
-// Posts the next ready-made reel from queue/<page>/manifest.json to Instagram, at most one per day per kind.
+// Posts the next ready-made reel from queue/<page>/manifest.json to Instagram, at most `perDay` per day per kind.
 //   node pipeline/post-queue.mjs --page astro24x7 [--kind normal|trial] [--dry-run] [--force]
 //   --kind     normal (default): the next reel not posted yet, shared to followers
 //              trial: a trial copy (shown to non-followers first) of the next reel that already went out
 //              normally; needs "trialCopy": {"enabled": true, "graduation": "SS_PERFORMANCE"|"MANUAL"}
 //   --dry-run  checks the token, the account, the queue and the video link, but posts nothing
-//   --force    posts even if one of this kind already went out today
+//   --force    posts even if today's limit for this kind is reached
 import fs from "node:fs";
 import path from "node:path";
 import { hostVideo } from "./host-video.mjs";
@@ -39,8 +39,10 @@ const main = async () => {
   if (manifest.paused && !dryRun) return summary([`Paused: queue/${page}/manifest.json has "paused": true. Nothing posted.`]);
   const trial = manifest.trialCopy ?? {};
   if (kind === "trial" && !trial.enabled) return summary([`Trial copies are off (queue/${page}/manifest.json → trialCopy.enabled). Nothing to do.`]);
-  if (!force && !dryRun && posted.some((p) => p.date === today && kindOf(p) === kind))
-    return summary([`Already posted a ${kind} reel today (${today}). Nothing to do.`]);
+  const perDay = Math.max(1, Number(manifest.perDay) || 1);
+  const todayCount = posted.filter((p) => p.date === today && kindOf(p) === kind).length;
+  if (!force && !dryRun && todayCount >= perDay)
+    return summary([`Already posted ${todayCount} ${kind} reel${todayCount > 1 ? "s" : ""} today (${today}, limit ${perDay}). Nothing to do.`]);
   const next = nextItem();
   if (!next && !dryRun)
     return summary([kind === "trial" ? `No reel is waiting for a trial copy (each one gets its trial copy after its normal post).` : `The queue for ${page} is empty. Add reels to queue/${page}/manifest.json.`]);

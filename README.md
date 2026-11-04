@@ -122,7 +122,7 @@ node pipeline/publish.mjs runs/<id>/reel.mp4 "caption"  # post a reel you render
 
 ## Posting queue (live now)
 
-`.github/workflows/post-queue.yml` posts the next ready-made reel from `queue/astro24x7/` every day at 6:47 PM IST, and at 9:47 PM IST a **trial copy** of it (shown to non-followers first, shared to followers automatically if it performs well; `trialCopy` in the manifest, `"enabled": false` turns it off).
+`.github/workflows/post-queue.yml` posts 2 ready-made reels a day from `queue/astro24x7/` (12:47 PM and 6:47 PM IST, `perDay` in the manifest), each followed 3 hours later (3:47 PM, 9:47 PM) by a **trial copy** (shown to non-followers first, shared to followers automatically if it performs well; `trialCopy` in the manifest, `"enabled": false` turns it off).
 
 - **Order and captions:** `queue/astro24x7/manifest.json`. Add new reels at the end.
 - **What went out:** `state/astro24x7-posted.json` (updated by the job).
