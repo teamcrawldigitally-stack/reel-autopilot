@@ -122,12 +122,12 @@ node pipeline/publish.mjs runs/<id>/reel.mp4 "caption"  # post a reel you render
 
 ## Posting queue (live now)
 
-`.github/workflows/post-queue.yml` posts the next ready-made reel from `queue/astro24x7/` every day at 6:47 PM IST.
+`.github/workflows/post-queue.yml` posts the next ready-made reel from `queue/astro24x7/` every day at 6:47 PM IST, and at 9:47 PM IST a **trial copy** of it (shown to non-followers first, shared to followers automatically if it performs well; `trialCopy` in the manifest, `"enabled": false` turns it off).
 
 - **Order and captions:** `queue/astro24x7/manifest.json`. Add new reels at the end.
 - **What went out:** `state/astro24x7-posted.json` (updated by the job).
 - **Pause:** set `"paused": true` in the manifest, or disable the workflow under Actions.
 - **Test without posting:** Actions → Post queued reels → Run workflow → mode `test`.
-- **Post the next one right now:** same, mode `post-now`.
+- **Post the next one right now:** same, mode `post-now` (kind `normal` or `trial`).
 - **Secrets:** `IG_ACCESS_TOKEN` (from the Meta App Dashboard → Instagram API → Generate token; the Unified-login system-user token never expires). Optional `TOKEN_KEY` (any long random sentence), only needed for 60-day Instagram Login tokens, which the job renews and stores encrypted in `state/`.
 - Instagram fetches the video from a temporary Cloudflare quick-tunnel link that closes when the job ends (fallback: a 1-hour Litterbox link).

@@ -5,6 +5,11 @@
   "igUserId": "17841471833395374",
   "expectUsername": "astro_24x7",
   "shareToFeed": true,
+  "trialCopy": {
+    "enabled": true,
+    "graduation": "SS_PERFORMANCE",
+    "note": "Each reel is also posted as a trial reel (non-followers first) at 9:47 PM IST on the day of its normal post."
+  },
   "items": [
     {
       "id": "01-12-crore-log",

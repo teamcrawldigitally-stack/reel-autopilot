@@ -117,9 +117,12 @@ export const recentMedia = (token, userId) =>
   call("GET", `${BASE}/${userId}/media?fields=id,caption,timestamp,permalink&limit=10`, token).then((r) => r.data ?? []);
 
 // Creates the Reel container from a public URL, waits for Instagram to fetch + process it, publishes.
-export const publishReelFromUrl = async ({ token, userId, videoUrl, caption, shareToFeed = true, thumbOffsetMs, audioName }) => {
-  log("instagram: creating the reel container");
-  const form = { media_type: "REELS", video_url: videoUrl, caption, share_to_feed: String(shareToFeed) };
+// trialGraduation: "SS_PERFORMANCE" (auto-share to followers if it does well) or "MANUAL" makes it a trial reel.
+export const publishReelFromUrl = async ({ token, userId, videoUrl, caption, shareToFeed = true, thumbOffsetMs, audioName, trialGraduation }) => {
+  log(`instagram: creating the ${trialGraduation ? "trial " : ""}reel container`);
+  const form = { media_type: "REELS", video_url: videoUrl, caption };
+  if (trialGraduation) form.trial_params = JSON.stringify({ graduation_strategy: trialGraduation });
+  else form.share_to_feed = String(shareToFeed);
   if (thumbOffsetMs != null) form.thumb_offset = String(thumbOffsetMs);
   if (audioName) form.audio_name = audioName;
   const container = await call("POST", `${BASE}/${userId}/media`, token, form);
