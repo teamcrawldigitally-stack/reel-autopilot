@@ -195,3 +195,28 @@ export const publishContainer = async ({ token, userId, containerId }) => {
 };
 
 export const tokenFileExists = () => fs.existsSync(TOKEN_FILE);
+
+// ---- engagement (for pipeline/stats.mjs) ------------------------------------------------------
+// Basic counts come with the publishing permission; views/reach/saves/shares need Meta's
+// insights permission, so each metric is asked for on its own and a refusal is just recorded.
+const INSIGHT_METRICS = ["views", "reach", "saved", "shares", "total_interactions", "ig_reels_avg_watch_time", "follows", "profile_visits"];
+export const mediaStats = async (token, mediaId) => {
+  const base = await call("GET", `${BASE}/${mediaId}?fields=like_count,comments_count,timestamp,permalink`, token);
+  const insights = {};
+  const refused = [];
+  for (const m of INSIGHT_METRICS) {
+    try {
+      const r = await call("GET", `${BASE}/${mediaId}/insights?metric=${m}`, token);
+      const d = r.data?.[0];
+      insights[m] = d?.values?.[0]?.value ?? d?.total_value?.value ?? null;
+    } catch (e) {
+      refused.push(`${m}: ${e.message.replace(/^.*-> \d+: /, "").slice(0, 80)}`);
+    }
+  }
+  return { likes: base.like_count ?? null, comments: base.comments_count ?? null, timestamp: base.timestamp, permalink: base.permalink, insights, refused };
+};
+export const accountCounts = async (token, igUserId) => {
+  const id = isFacebookHost() ? igUserId : "me";
+  const a = await call("GET", `${BASE}/${id}?fields=followers_count,media_count,username`, token);
+  return { followers: a.followers_count ?? null, media: a.media_count ?? null, username: a.username };
+};
