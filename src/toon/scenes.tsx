@@ -9,7 +9,7 @@ const C = astro.colors;
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 export type ToonScene = {
-  visual: "talk" | "pointUp" | "budh" | "elongation" | "ego" | "listen" | "cta";
+  visual: "talk" | "pointUp" | "budh" | "elongation" | "ego" | "listen" | "tip" | "cta";
   voiceover: string;
   headline?: string;
   accent?: string;
@@ -18,7 +18,7 @@ export type ToonScene = {
   reasonWord?: string;
   name?: string;
   nameWord?: string;
-  items?: { text: string; word: string }[];
+  items?: { text: string; word: string; icon?: IconName }[];
   stat?: string;
   statWord?: string;
   withWord?: string;
@@ -35,6 +35,17 @@ export type ToonScene = {
   teaserWord?: string;
   teaser?: string;
   button?: string;
+  // generic "tip" scene
+  counter?: string;
+  counterOf?: string;
+  emblem?: "budhRetro" | "budhMargi" | "paper" | "phone" | "chat" | "clock" | "sun";
+  emblemWord?: string;
+  chips?: { text: string; word: string; icon?: IconName }[];
+  bubble?: string;
+  bubbleWord?: string;
+  pose?: Pose;
+  poseWord?: string;
+  typed?: string;
   startMs: number;
   endMs: number;
 };
@@ -271,7 +282,8 @@ export const BudhScene: React.FC<TP> = (p) => {
   const items = p.scene.items ?? [];
   const at = items.map((it, i) => useAt(p, it.word, 50 + i * 20)); // eslint-disable-line react-hooks/rules-of-hooks
   const reveal = interpolate(frame, [nameAt - 2, nameAt + 10], [1, 0], clamp);
-  const icons = [<SpeechIcon key="s" />, <BulbIcon key="b" />, <CoinIcon key="c" />];
+  const defaults: IconName[] = ["speech", "bulb", "coin"];
+  const icons = items.map((it, i) => <Icon key={i} name={it.icon ?? defaults[i] ?? "bulb"} />);
   const pose = usePose([
     [0, "point"],
     [at[0] - 4, "explain"],
@@ -470,8 +482,9 @@ export const ToonCta: React.FC<TP> = (p) => {
   const teaserAt = useAt(p, p.scene.teaserWord, 100);
   const followAt = useAt(p, "फॉलो", 180);
   const f = spring({ frame: frame - followAt, fps, config: astro.spring.bouncy });
-  const typed = Math.max(0, Math.min(3, Math.floor((frame - kwAt) / 3)));
-  const kw = ["", "ब", "बु", "बुध"][typed];
+  const target = [...(p.scene.typed ?? "बुध")];
+  const typedN = Math.max(0, Math.min(target.length, Math.floor((frame - kwAt) / 3)));
+  const kw = target.slice(0, typedN).join("");
   const pose = usePose([
     [0, "wave"],
     [30, "explain"],
@@ -480,7 +493,7 @@ export const ToonCta: React.FC<TP> = (p) => {
   return (
     <>
       <Center y={290}>
-        <Headline text={p.scene.headline ?? ""} highlight="एक घर में?" size={116} delay={0} maxWidth={900} />
+        <Headline text={p.scene.headline ?? ""} highlight={p.scene.accent ?? "एक घर में?"} size={116} delay={0} maxWidth={900} />
       </Center>
       <Abs x={110} y={590}>
         <Pop at={kwAt - 8} from={0.5}>
@@ -506,6 +519,183 @@ export const ToonCta: React.FC<TP> = (p) => {
       </Abs>
       <Abs x={640} y={960}>
         <Character width={400} {...pose} mouth={m} brows={0.5} lookX={-0.5} flip />
+      </Abs>
+    </>
+  );
+};
+
+// ---------- generic icons ----------
+
+export type IconName = "speech" | "bulb" | "coin" | "paper" | "phone" | "chat" | "clock" | "bill" | "shield" | "pause";
+
+const PaperIcon = () => (
+  <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true">
+    <path d="M 10 4 H 30 L 38 12 V 44 H 10 Z" fill="#fff" stroke={C.ink} strokeWidth="4" strokeLinejoin="round" />
+    <path d="M 16 18 H 32 M 16 25 H 32 M 16 32 H 26" stroke={C.ink} strokeWidth="3.5" strokeLinecap="round" />
+    <path d="M 30 4 V 12 H 38" fill="none" stroke={C.ink} strokeWidth="4" strokeLinejoin="round" />
+  </svg>
+);
+const PhoneIcon = () => (
+  <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true">
+    <rect x="13" y="4" width="22" height="40" rx="5" fill={C.orangeSoft} stroke={C.ink} strokeWidth="4" />
+    <rect x="17" y="10" width="14" height="24" rx="2" fill="#fff" stroke={C.ink} strokeWidth="2.5" />
+    <circle cx="24" cy="39" r="2.5" fill={C.ink} />
+  </svg>
+);
+const ChatIcon = () => (
+  <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true">
+    <path d="M 5 8 H 43 V 32 H 20 L 10 41 V 32 H 5 Z" fill="#E03131" stroke={C.ink} strokeWidth="4" strokeLinejoin="round" />
+    <text x="24" y="27" textAnchor="middle" fontFamily="Mukta" fontWeight={800} fontSize="17" fill="#fff">!#@</text>
+  </svg>
+);
+const ClockIcon = () => (
+  <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true">
+    <circle cx="24" cy="25" r="18" fill="#fff" stroke={C.ink} strokeWidth="4" />
+    <path d="M 24 14 V 25 L 31 30" fill="none" stroke={C.ink} strokeWidth="4" strokeLinecap="round" />
+  </svg>
+);
+const BillIcon = () => (
+  <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true">
+    <path d="M 11 4 H 37 V 44 L 32 40 L 27 44 L 22 40 L 17 44 L 11 40 Z" fill="#fff" stroke={C.ink} strokeWidth="4" strokeLinejoin="round" />
+    <text x="24" y="28" textAnchor="middle" fontFamily="Mukta" fontWeight={800} fontSize="18" fill={C.ink}>₹</text>
+  </svg>
+);
+const ShieldIcon = () => (
+  <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true">
+    <path d="M 24 4 L 40 10 V 22 C 40 33 33 40 24 44 C 15 40 8 33 8 22 V 10 Z" fill="#2F9E44" stroke={C.ink} strokeWidth="4" strokeLinejoin="round" />
+    <path d="M 16 24 L 22 30 L 33 18" fill="none" stroke="#fff" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+const PauseIcon = () => (
+  <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true">
+    <circle cx="24" cy="24" r="20" fill={C.orange} stroke={C.ink} strokeWidth="4" />
+    <rect x="16" y="14" width="6" height="20" rx="2" fill="#fff" />
+    <rect x="26" y="14" width="6" height="20" rx="2" fill="#fff" />
+  </svg>
+);
+
+export const Icon: React.FC<{ name: IconName }> = ({ name }) => {
+  switch (name) {
+    case "speech": return <SpeechIcon />;
+    case "coin": return <CoinIcon />;
+    case "paper": return <PaperIcon />;
+    case "phone": return <PhoneIcon />;
+    case "chat": return <ChatIcon />;
+    case "clock": return <ClockIcon />;
+    case "bill": return <BillIcon />;
+    case "shield": return <ShieldIcon />;
+    case "pause": return <PauseIcon />;
+    default: return <BulbIcon />;
+  }
+};
+
+// Big hero illustration for a tip, scaled from the 48-unit icons, or Budh moving along the sky:
+// backwards (vakri, red arrow) or forwards (margi, green arrow).
+const BudhPath: React.FC<{ p: number; retro: boolean; size: number }> = ({ p, retro, size }) => {
+  const frame = useCurrentFrame();
+  const col = retro ? "#E03131" : "#2F9E44";
+  const R = 190;
+  // planet angle on the sky arc: 180deg = left, 0deg = right. Vakri drifts right -> left, margi left -> right.
+  const cyc = ((frame % 150) / 150);
+  const t = retro ? 1 - cyc : cyc;
+  const ang = Math.PI * (1 - (0.12 + t * 0.76));
+  const px = Math.cos(ang) * R;
+  const py = -Math.sin(ang) * R;
+  const ticks = Array.from({ length: 13 }).map((_, i) => Math.PI * (i / 12));
+  return (
+    <svg width={size} height={size * 0.72} viewBox="-250 -250 500 360" aria-hidden="true" style={{ overflow: "visible" }}>
+      <path d={`M ${-R} 0 A ${R} ${R} 0 0 1 ${R} 0`} fill="none" stroke={C.ink} strokeWidth="6" strokeDasharray="3 14" strokeLinecap="round" />
+      {ticks.map((a, i) => (
+        <line key={i} x1={Math.cos(a) * (R - 14)} y1={-Math.sin(a) * (R - 14)} x2={Math.cos(a) * (R + 14)} y2={-Math.sin(a) * (R + 14)} stroke={C.ink} strokeWidth="4" strokeLinecap="round" opacity={0.5} />
+      ))}
+      {/* direction arrow inside the arc */}
+      <g opacity={p}>
+        <path d={retro ? "M 110 -40 A 120 120 0 0 0 -110 -40" : "M -110 -40 A 120 120 0 0 1 110 -40"} fill="none" stroke={col} strokeWidth="16" strokeLinecap="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - p} />
+        <polygon points={retro ? "-138,-36 -96,-70 -90,-18" : "138,-36 96,-70 90,-18"} fill={col} stroke={C.ink} strokeWidth="4" strokeLinejoin="round" opacity={p > 0.9 ? 1 : 0} />
+      </g>
+      <g transform={`translate(${px - 62} ${py - 62}) scale(0.56)`}>
+        <Budh size={220} />
+      </g>
+      <line x1={-230} y1={0} x2={230} y2={0} stroke={C.ink} strokeWidth="7" strokeLinecap="round" />
+      <g transform="translate(0 62)">
+        <rect x={-130} y={-36} width={260} height={72} rx={36} fill={col} stroke={C.ink} strokeWidth="5" />
+        <text y="16" textAnchor="middle" fontFamily="Mukta" fontWeight={800} fontSize="46" fill="#fff">{retro ? "← वक्री" : "मार्गी →"}</text>
+      </g>
+    </svg>
+  );
+};
+
+const HeroCard: React.FC<{ kind: NonNullable<ToonScene["emblem"]>; p: number }> = ({ kind, p }) => {
+  const frame = useCurrentFrame();
+  if (kind === "budhRetro" || kind === "budhMargi") return <BudhPath p={p} retro={kind === "budhRetro"} size={600} />;
+  if (kind === "sun") return <SunDisc size={360} glow={0.4} />;
+  const icon: IconName = kind === "paper" ? "paper" : kind === "phone" ? "phone" : kind === "chat" ? "chat" : "clock";
+  const wob = Math.sin(frame / 9) * 3;
+  return (
+    <div style={{ width: 360, height: 360, borderRadius: 60, background: C.white, ...sticker(C.ink, 12), display: "flex", alignItems: "center", justifyContent: "center", transform: `rotate(${wob}deg)` }}>
+      <div style={{ transform: "scale(5)" }}>
+        <Icon name={icon} />
+      </div>
+    </div>
+  );
+};
+
+export const TipScene: React.FC<TP> = (p) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const m = useMouth(p);
+  const sc = p.scene;
+  const emAt = useAt(p, sc.emblemWord, 6);
+  const chips = sc.chips ?? [];
+  const chipAt = chips.map((c, i) => useAt(p, c.word, 60 + i * 20)); // eslint-disable-line react-hooks/rules-of-hooks
+  const bubbleAt = useAt(p, sc.bubbleWord, 110);
+  const poseAt = useAt(p, sc.poseWord, 9999);
+  const pose = usePose([
+    [0, "explain"],
+    [Math.max(4, emAt - 6), "point"],
+    [Math.min(poseAt, (chipAt[0] ?? 9999) - 4), sc.pose ?? "explain"],
+  ]);
+  const draw = interpolate(frame, [emAt, emAt + 40], [0, 1], { ...clamp, easing: astro.ease.inOut });
+  const c = spring({ frame: frame + 4, fps, config: astro.spring.bouncy });
+  const headY = sc.counter ? 420 : 300;
+  return (
+    <>
+      {sc.counter ? (
+        <Abs x={70} y={270}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, transform: `scale(${0.5 + 0.5 * Math.min(1, c)}) rotate(-6deg)`, opacity: Math.min(1, c * 2) }}>
+            <div style={{ width: 128, height: 128, borderRadius: 64, background: C.orange, ...sticker(C.ink, 7), display: "flex", alignItems: "center", justifyContent: "center", fontFamily: astro.fonts.display, fontSize: 92, lineHeight: 1, color: C.white, paddingTop: 10, boxSizing: "border-box" }}>{sc.counter}</div>
+            <span style={{ fontFamily: astro.fonts.display, fontSize: 56, color: C.inkSoft }}>/ {sc.counterOf ?? "3"}</span>
+          </div>
+        </Abs>
+      ) : null}
+      <Center y={headY}>
+        <Headline text={`${sc.headline ?? ""}${sc.accent ? " " + sc.accent : ""}`} highlight={sc.accent} size={sc.counter ? 104 : 118} delay={0} maxWidth={940} />
+      </Center>
+      <Abs x={sc.emblem?.startsWith("budh") ? 430 : 620} y={sc.emblem?.startsWith("budh") ? 600 : sc.bubble ? 760 : 700}>
+        <Pop at={emAt - 4} from={0.3} rotate={sc.emblem?.startsWith("budh") ? 0 : 4}>
+          {sc.emblem ? <HeroCard kind={sc.emblem} p={draw} /> : null}
+        </Pop>
+        {sc.emblem ? <Burst at={emAt} x={200} y={180} radius={230} count={8} /> : null}
+      </Abs>
+      {chips.map((ch, i) => (
+        <Abs key={i} x={520} y={1080 + i * 130}>
+          <Pop at={chipAt[i]} from={0.3} rotate={i % 2 ? 2 : -2}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 16, padding: "10px 30px 14px", borderRadius: 999, background: i === chips.length - 1 ? C.orange : C.white, color: i === chips.length - 1 ? C.white : C.ink, ...sticker(C.ink, 6), fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 50 }}>
+              {ch.icon ? <Icon name={ch.icon} /> : null}
+              {ch.text}
+            </div>
+          </Pop>
+        </Abs>
+      ))}
+      {sc.bubble ? (
+        <Abs x={60} y={610}>
+          <Pop at={bubbleAt} from={0.4} rotate={-3}>
+            <Bubble dark style={{ fontSize: 52 }}>{sc.bubble}</Bubble>
+          </Pop>
+        </Abs>
+      ) : null}
+      <Abs x={0} y={860}>
+        <Character width={440} {...pose} mouth={m} brows={0.4} lookX={0.5} />
       </Abs>
     </>
   );

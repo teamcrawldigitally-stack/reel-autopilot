@@ -7,7 +7,7 @@ import { AbsoluteFill, interpolate, Sequence, staticFile, useCurrentFrame, useVi
 import "../astro/fonts";
 import { findWordFrame, W } from "../astro/parts";
 import { Barcode } from "./ink";
-import { CycleScene, DhaiyaScene, HookScene, LoopScene, OrbitScene, PaperCta, PaperScene, RevealScene, TrainerScene } from "./scenes";
+import { CycleScene, DhaiyaScene, HookScene, LoopScene, OrbitScene, PaperCta, PaperScene, PointScene, RevealScene, TrainerScene } from "./scenes";
 import { paper, rgba } from "./theme";
 
 const C = paper.colors;
@@ -111,6 +111,8 @@ const SceneSwitch: React.FC<{ scene: PaperScene; words: W[] }> = ({ scene, words
       return <RevealScene {...p} />;
     case "dhaiya":
       return <DhaiyaScene {...p} />;
+    case "point":
+      return <PointScene {...p} />;
     default:
       return <PaperCta {...p} />;
   }

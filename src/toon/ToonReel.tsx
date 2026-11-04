@@ -8,7 +8,7 @@ import { AstroCaptions } from "../astro/AstroCaptions";
 import { BrandBar, CutFlash, Sfx } from "../astro/AstroReel";
 import { AstroBg, AstroFinish, findWordFrame, W } from "../astro/parts";
 import { astro } from "../astro/theme";
-import { BudhScene, ElongationScene, EgoScene, ListenScene, PointUpScene, TalkScene, ToonCta, ToonScene, TP } from "./scenes";
+import { BudhScene, ElongationScene, EgoScene, ListenScene, PointUpScene, TalkScene, TipScene, ToonCta, ToonScene, TP } from "./scenes";
 
 const C = astro.colors;
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -39,6 +39,8 @@ const SceneSwitch: React.FC<TP> = (p) => {
       return <EgoScene {...p} />;
     case "listen":
       return <ListenScene {...p} />;
+    case "tip":
+      return <TipScene {...p} />;
     default:
       return <ToonCta {...p} />;
   }
@@ -68,10 +70,10 @@ export const ToonReel: React.FC<ToonReelProps> = (props) => {
   const pops: number[] = [];
   const hits: number[] = [];
   props.scenes.forEach((s, i) => {
-    [cue(s, s.planetWord), cue(s, s.reasonWord), ...(s.items ?? []).map((x) => cue(s, x.word)), cue(s, s.withWord), cue(s, s.nextWord), cue(s, s.meWord), cue(s, s.baatWord), cue(s, s.astWord), cue(s, s.noWord), cue(s, s.keyword), cue(s, s.teaserWord)]
+    [cue(s, s.planetWord), cue(s, s.reasonWord), ...(s.items ?? []).map((x) => cue(s, x.word)), cue(s, s.withWord), cue(s, s.nextWord), cue(s, s.meWord), cue(s, s.baatWord), cue(s, s.astWord), cue(s, s.noWord), cue(s, s.keyword), cue(s, s.teaserWord), ...(s.chips ?? []).map((x) => cue(s, x.word)), cue(s, s.bubbleWord)]
       .filter((f) => f >= 0)
       .forEach((f) => pops.push(starts[i] + f));
-    [cue(s, s.misWord), cue(s, s.nameWord), cue(s, s.statWord), cue(s, s.heavyWord)].filter((f) => f >= 0).forEach((f) => hits.push(starts[i] + f));
+    [cue(s, s.misWord), cue(s, s.nameWord), cue(s, s.statWord), cue(s, s.heavyWord), cue(s, s.emblemWord)].filter((f) => f >= 0).forEach((f) => hits.push(starts[i] + f));
   });
   return (
     <AbsoluteFill style={{ backgroundColor: C.bg }}>

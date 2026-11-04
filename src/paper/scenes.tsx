@@ -2,7 +2,7 @@
 import React from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { findWordFrame, W } from "../astro/parts";
-import { Crescent, DottedLine, Dumbbell, Key, Saturn, Sun } from "./ink";
+import { Crescent, DottedLine, Dumbbell, Key, Kundli, Saturn, Sun } from "./ink";
 import { paper, rgba } from "./theme";
 
 const C = paper.colors;
@@ -10,7 +10,7 @@ const F = paper.fonts;
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 export type PaperScene = {
-  visual: "hook" | "loop" | "cycle" | "orbit" | "trainer" | "reveal" | "dhaiya" | "cta";
+  visual: "hook" | "loop" | "cycle" | "orbit" | "trainer" | "reveal" | "dhaiya" | "point" | "cta";
   voiceover: string;
   kicker?: string;
   headline?: string;
@@ -34,6 +34,22 @@ export type PaperScene = {
   teaserWord?: string;
   teaser?: string;
   button?: string;
+  // generic fields (point scene, reusable hook/reveal/cta)
+  counter?: string;
+  counterOf?: string;
+  emblem?: "kundli" | "sun" | "saturn" | "moon" | "aspect" | "rise";
+  emblemWord?: string;
+  houses?: { house: number; word: string }[];
+  chips?: { text: string; word: string }[];
+  note?: string;
+  noteWord?: string;
+  aspectFrom?: string;
+  aspectTo?: string;
+  tileSub?: string;
+  noBars?: boolean;
+  typeLabel?: string;
+  typeWords?: string[];
+  strip?: { name: string; word?: string; num?: string }[];
   startMs: number;
   endMs: number;
 };
@@ -131,7 +147,7 @@ export const HookScene: React.FC<P> = ({ scene, words }) => {
         const s = up(frame, at, 40, 12);
         return (
           <Abs key={i} x={170 + i * 260} y={815} w={220} style={s}>
-            <Tile w={220} h={180} top={`No. 0${i + 1}`} name="?" sub="राशि" />
+            <Tile w={220} h={180} top={`No. 0${i + 1}`} name="?" sub={scene.tileSub ?? "राशि"} />
           </Abs>
         );
       })}
@@ -349,8 +365,19 @@ export const RevealScene: React.FC<P> = ({ scene, words }) => {
   const frame = useCurrentFrame();
   const rows = scene.rows ?? [];
   const rowAt = rows.map((r, i) => useAt(scene, words, r.word, 30 + i * 70)); // eslint-disable-line react-hooks/rules-of-hooks
+  const strip = scene.strip ?? [];
+  const stripAt = strip.map((t) => useAt(scene, words, t.word, 99999)); // eslint-disable-line react-hooks/rules-of-hooks
   return (
     <Stage>
+      {strip.length ? (
+        <div style={{ position: "absolute", left: 0, width: 1080, top: 150 + rows.length * 270 + 30, display: "flex", justifyContent: "center", gap: 16 }}>
+          {strip.map((t, i) => (
+            <div key={i} style={up(frame, 6 + i * 4, 40, 12)}>
+              <Tile w={140} h={160} top={t.num ?? `0${i + 1}`} name={t.name} hot={frame >= stripAt[i]} sub={frame >= stripAt[i] ? "नीच" : undefined} />
+            </div>
+          ))}
+        </div>
+      ) : null}
       <Abs x={0} y={0} center style={up(frame, 0)}>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <div style={{ width: 22, height: 22, background: C.accent }} />
@@ -371,7 +398,7 @@ export const RevealScene: React.FC<P> = ({ scene, words }) => {
             </div>
             <div style={{ position: "absolute", right: 0, top: 78, fontFamily: F.head, fontWeight: 800, fontSize: 44, color: C.accent, textAlign: "right" }}>{r.phase}</div>
             {/* which third of the 7½ years */}
-            <div style={{ position: "absolute", left: 120, top: 172, width: 780, display: "flex", gap: 10 }}>
+            <div style={{ position: "absolute", left: 120, top: 172, width: 780, display: scene.noBars ? "none" : "flex", gap: 10 }}>
               {[0, 1, 2].map((k) => (
                 <div key={k} style={{ flex: 1, height: 22, border: `3px solid ${C.ink}`, background: k === i ? C.accent : "transparent", transform: k === i ? `scaleX(${bar})` : undefined, transformOrigin: "left" }} />
               ))}
@@ -417,7 +444,8 @@ export const PaperCta: React.FC<P> = ({ scene, words }) => {
   const frame = useCurrentFrame();
   const teaserAt = useAt(scene, words, scene.teaserWord, 90);
   const followAt = useAt(scene, words, "फॉलो", 190);
-  const name = RASHI[Math.floor(Math.max(0, frame - 10) / 14) % 12];
+  const list = scene.typeWords?.length ? scene.typeWords : RASHI;
+  const name = list[Math.floor(Math.max(0, frame - 10) / 14) % list.length];
   const cursor = Math.floor(frame / 8) % 2 === 0;
   return (
     <Stage>
@@ -429,7 +457,7 @@ export const PaperCta: React.FC<P> = ({ scene, words }) => {
       </Abs>
       <div style={{ position: "absolute", left: 140, top: 260, width: 800, ...up(frame, 10, 30) }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: 20, padding: "0 0 14px", borderBottom: `6px solid ${C.ink}` }}>
-          <span style={{ fontFamily: F.head, fontWeight: 700, fontSize: 52, color: C.inkSoft }}>मेरी राशि:</span>
+          <span style={{ fontFamily: F.head, fontWeight: 700, fontSize: 52, color: C.inkSoft }}>{scene.typeLabel ?? "मेरी राशि:"}</span>
           <span style={{ fontFamily: F.head, fontWeight: 800, fontSize: 70, color: C.accent }}>{name}</span>
           <span style={{ width: 6, height: 62, background: C.ink, opacity: cursor ? 1 : 0, alignSelf: "center" }} />
         </div>
@@ -446,6 +474,130 @@ export const PaperCta: React.FC<P> = ({ scene, words }) => {
           {scene.button}
         </div>
       </Abs>
+    </Stage>
+  );
+};
+
+// ---------- generic numbered point (any "3 things" script) ----------
+// Optional counter disc (1 / 3), headline + accent, an ink emblem that draws on its cue word,
+// optional kundli houses lighting up on their words, chips appearing on their words, and a note line.
+
+const Emblem: React.FC<{ scene: PaperScene; words: W[]; frame: number; top: number }> = ({ scene, words, frame, top }) => {
+  const at = useAt(scene, words, scene.emblemWord, 8);
+  const houses = scene.houses ?? [];
+  const houseAt = houses.map((h, i) => useAt(scene, words, h.word, 40 + i * 16)); // eslint-disable-line react-hooks/rules-of-hooks
+  const draw = interpolate(frame, [at - 6, at + 24], [0, 1], { ...clamp, easing: paper.ease.inOut });
+  const float = Math.sin(frame / 22) * 5;
+  const kind = scene.emblem ?? "saturn";
+  if (kind === "kundli") {
+    const lit = Object.fromEntries(houses.map((h, i) => [h.house, prog(frame, houseAt[i], 10)]));
+    return (
+      <Abs x={0} y={top} center>
+        <div style={{ boxShadow: `14px 14px 0 ${rgba(C.ink, 0.9)}` }}>
+          <Kundli id="pt-k" size={360} draw={draw} lit={lit} />
+        </div>
+      </Abs>
+    );
+  }
+  if (kind === "aspect") {
+    const p = prog(frame, at, 22);
+    const a = prog(frame, 4, 14);
+    return (
+      <div style={{ position: "absolute", left: 0, top, width: 1080, height: 420 }}>
+        <svg width={1080} height={420} style={{ position: "absolute", inset: 0 }} aria-hidden="true">
+          <DottedLine x1={330} y1={210} x2={750} y2={210} p={p} />
+          <polygon points="750,190 790,210 750,230" fill={C.accent} opacity={p >= 1 ? 1 : 0} />
+        </svg>
+        {[
+          { x: 230, label: scene.aspectFrom ?? "स्वामी", hot: false },
+          { x: 850, label: scene.aspectTo ?? "नीच ग्रह", hot: true },
+        ].map((n, i) => (
+          <div key={i} style={{ position: "absolute", left: n.x - 120, top: 90, width: 240, textAlign: "center", ...up(frame, 4 + i * 8, 30, 12) }}>
+            <div style={{ width: 200, height: 200, margin: "0 auto", borderRadius: 100, border: `6px solid ${C.ink}`, background: n.hot ? C.accent : C.paper, boxShadow: `8px 8px 0 ${C.ink}`, opacity: i === 0 ? a : 1 }} />
+            <div style={{ marginTop: 18, fontFamily: F.head, fontWeight: 800, fontSize: 44, color: C.ink }}>{n.label}</div>
+          </div>
+        ))}
+        <div style={{ position: "absolute", left: 0, width: 1080, top: 150, textAlign: "center", ...up(frame, at + 6, 20, 12) }}>
+          <Small color={C.accent} size={26}>दृष्टि</Small>
+        </div>
+      </div>
+    );
+  }
+  if (kind === "rise") {
+    const p = prog(frame, at, 30);
+    const steps = 5;
+    return (
+      <div style={{ position: "absolute", left: 0, top, width: 1080, height: 440 }}>
+        {Array.from({ length: steps }).map((_, i) => {
+          const on = prog(frame, at + i * 5, 12);
+          const h = 70 + i * 62;
+          return <div key={i} style={{ position: "absolute", left: 170 + i * 150, bottom: 0, width: 120, height: h * on, opacity: on > 0.02 ? 1 : 0, background: i === steps - 1 ? C.accent : C.ink, border: `4px solid ${C.ink}`, boxSizing: "border-box" }} />;
+        })}
+        <div style={{ position: "absolute", left: 170 + (steps - 1) * 150 - 30, top: -40 - p * 30 + float, opacity: p }}>
+          <Sun id="pt-rise" size={180} draw={p} />
+        </div>
+      </div>
+    );
+  }
+  const r = kind === "sun" ? 150 : 170;
+  return (
+    <>
+      <Disc cx={540} cy={top + 200} r={r} p={prog(frame, at, 20)} lineY={top + 200 + r * 0.6} line={prog(frame, at + 4, 18)} />
+      <Abs x={0} y={top + (kind === "saturn" ? 60 : 50) + float} center>
+        {kind === "sun" ? <Sun id="pt-sun" size={300} draw={draw} /> : kind === "moon" ? <Crescent id="pt-moon" size={300} /> : <Saturn id="pt-sat" width={600} draw={draw} />}
+      </Abs>
+    </>
+  );
+};
+
+export const PointScene: React.FC<P> = ({ scene, words }) => {
+  const frame = useCurrentFrame();
+  const chips = scene.chips ?? [];
+  const chipAt = chips.map((c, i) => useAt(scene, words, c.word, 60 + i * 18)); // eslint-disable-line react-hooks/rules-of-hooks
+  const noteAt = useAt(scene, words, scene.noteWord, 90);
+  const has = !!scene.counter;
+  const c = prog(frame + 6, 0, 16);
+  const headTop = has ? 210 : scene.kicker ? 60 : 20;
+  const emblemTop = (scene.accent ? headTop + 300 : headTop + 150) + (chips.length && scene.emblem !== "kundli" ? 0 : 20);
+  return (
+    <Stage>
+      {has ? (
+        <Abs x={0} y={0} center>
+          <div style={{ display: "flex", alignItems: "center", gap: 22, ...up(frame + 6, 0, 24) }}>
+            <div style={{ width: 170, height: 170, borderRadius: 85, background: C.accent, border: `6px solid ${C.ink}`, boxShadow: `8px 8px 0 ${C.ink}`, display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${0.7 + 0.3 * c})` }}>
+              <span style={{ fontFamily: F.display, fontSize: 120, lineHeight: 1, color: C.white, marginTop: 14 }}>{scene.counter}</span>
+            </div>
+            <span style={{ fontFamily: F.display, fontSize: 64, color: C.inkSoft }}>/ {scene.counterOf ?? "3"}</span>
+          </div>
+        </Abs>
+      ) : scene.kicker ? (
+        <Abs x={0} y={0} center style={up(frame + 12, 0)}>
+          <Small color={C.accent} size={30}>{scene.kicker}</Small>
+        </Abs>
+      ) : null}
+      <Abs x={0} y={headTop} center style={up(frame + 8, 0)}>
+        <Head text={scene.headline ?? ""} size={scene.accent ? 96 : 120} />
+      </Abs>
+      {scene.accent ? (
+        <Abs x={0} y={headTop + 118} center style={up(frame + 4, 0)}>
+          <Head text={scene.accent} size={136} color={C.accent} />
+        </Abs>
+      ) : null}
+      {scene.emblem ? <Emblem scene={scene} words={words} frame={frame} top={emblemTop} /> : null}
+      {chips.length ? (
+        <div style={{ position: "absolute", left: 60, right: 60, top: scene.emblem ? 860 : emblemTop + 40, display: "flex", justifyContent: "center", flexWrap: "wrap", gap: 22 }}>
+          {chips.map((ch, i) => (
+            <div key={i} style={{ padding: "6px 30px 12px", background: i === chips.length - 1 ? C.ink : C.paper, border: `4px solid ${C.ink}`, fontFamily: F.head, fontWeight: 800, fontSize: 52, color: i === chips.length - 1 ? C.white : C.ink, ...up(frame, chipAt[i], 30, 12) }}>
+              {ch.text}
+            </div>
+          ))}
+        </div>
+      ) : null}
+      {scene.note ? (
+        <Abs x={0} y={scene.emblem ? 915 : emblemTop + 200} center style={up(frame, noteAt, 24)}>
+          <Small size={28} color={C.inkSoft}>{scene.note}</Small>
+        </Abs>
+      ) : null}
     </Stage>
   );
 };

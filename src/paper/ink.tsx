@@ -233,3 +233,54 @@ export const DottedLine: React.FC<{ x1: number; y1: number; x2: number; y2: numb
     />
   );
 };
+
+// ---------- North-Indian kundli chart ----------
+// Square chart with both diagonals and the inner diamond. `lit` maps a house number (1-12) to 0..1,
+// filling that house in the accent colour. House 1 is the top-centre diamond, counted anticlockwise.
+const HOUSES: Record<number, string> = {
+  1: "0,-100 50,-50 0,0 -50,-50",
+  2: "-100,-100 0,-100 -50,-50",
+  3: "-100,-100 -50,-50 -100,0",
+  4: "-100,0 -50,-50 0,0 -50,50",
+  5: "-100,0 -50,50 -100,100",
+  6: "-100,100 -50,50 0,100",
+  7: "0,100 -50,50 0,0 50,50",
+  8: "0,100 50,50 100,100",
+  9: "100,100 50,50 100,0",
+  10: "100,0 50,50 0,0 50,-50",
+  11: "100,0 50,-50 100,-100",
+  12: "100,-100 50,-50 0,-100",
+};
+const CENTRE: Record<number, [number, number]> = {
+  1: [0, -50], 2: [-50, -84], 3: [-84, -50], 4: [-50, 0], 5: [-84, 50], 6: [-50, 84],
+  7: [0, 50], 8: [50, 84], 9: [84, 50], 10: [50, 0], 11: [84, -50], 12: [50, -84],
+};
+export const Kundli: React.FC<{ id: string; size: number; draw?: number; lit?: Record<number, number>; numbers?: boolean }> = ({ id, size, draw = 1, lit = {}, numbers = true }) => {
+  const d = { strokeDasharray: 1, strokeDashoffset: 1 - draw };
+  return (
+    <svg width={size} height={size} viewBox="-112 -112 224 224" aria-hidden="true" style={{ overflow: "visible" }}>
+      <defs>
+        <Hatch id={`${id}-h`} angle={45} gap={5} w={1.4} />
+        <Rough id={`${id}-r`} scale={1.6} />
+      </defs>
+      <g filter={`url(#${id}-r)`}>
+        <rect x={-100} y={-100} width={200} height={200} fill={C.paper} />
+        {Object.entries(lit).map(([h, p]) => (
+          <polygon key={h} points={HOUSES[Number(h)]} fill={C.accent} opacity={p} />
+        ))}
+        <polygon points={HOUSES[1]} fill={`url(#${id}-h)`} opacity={0.18 * draw} />
+        <rect x={-100} y={-100} width={200} height={200} fill="none" stroke={C.ink} strokeWidth="4.5" pathLength={1} style={d} />
+        <line x1={-100} y1={-100} x2={100} y2={100} stroke={C.ink} strokeWidth="3" pathLength={1} style={d} />
+        <line x1={100} y1={-100} x2={-100} y2={100} stroke={C.ink} strokeWidth="3" pathLength={1} style={d} />
+        <polygon points="0,-100 100,0 0,100 -100,0" fill="none" stroke={C.ink} strokeWidth="3" pathLength={1} style={d} />
+      </g>
+      {numbers
+        ? Object.entries(CENTRE).map(([h, [x, y]]) => (
+            <text key={h} x={x} y={y + 5} textAnchor="middle" fontFamily='"Mukta", sans-serif' fontWeight={800} fontSize={Number(h) % 3 === 1 ? 17 : 12} fill={(lit[Number(h)] ?? 0) > 0.5 ? C.white : C.inkSoft} opacity={draw}>
+              {h}
+            </text>
+          ))
+        : null}
+    </svg>
+  );
+};
