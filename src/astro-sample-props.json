@@ -1,0 +1,780 @@
+{
+  "audio": "astro/reel1-aditya/vo.wav",
+  "music": "music/dolce-nonna.mp3",
+  "musicVolume": 0.13,
+  "sfx": true,
+  "captions": true,
+  "scenes": [
+    {
+      "visual": "crowd",
+      "voiceover": "भारत में लगभग बारह करोड़ लोगों की राशि आपकी राशि जैसी है।",
+      "kicker": "आपकी राशि",
+      "headline": "एक ही राशिफल?",
+      "statValue": 12,
+      "statSuffix": "करोड़ लोग",
+      "youLabel": "आप",
+      "youWord": "आपकी",
+      "sameWord": "जैसी",
+      "startMs": 0,
+      "endMs": 4920
+    },
+    {
+      "visual": "question",
+      "voiceover": "तो क्या सबका दिन एक जैसा जाएगा? नहीं, और वजह जानकर आप राशिफल अलग तरह से पढ़ेंगे।",
+      "headline": "तो सबका दिन एक जैसा?",
+      "highlight": "एक जैसा?",
+      "stamp": "नहीं",
+      "stampWord": "नहीं,",
+      "body": "वजह जानिए",
+      "startMs": 5200,
+      "endMs": 12630
+    },
+    {
+      "visual": "moon",
+      "voiceover": "अख़बार और टीवी का राशिफल सिर्फ़ एक चीज़ देखता है: जन्म के समय चंद्रमा किस राशि में था।",
+      "kicker": "अख़बार का राशिफल",
+      "headline": "सिर्फ़ चंद्रमा देखता है",
+      "highlight": "चंद्रमा",
+      "body": "जन्म के समय चंद्रमा किस राशि में था",
+      "badge": {
+        "text": "सिर्फ़ 1 चीज़",
+        "word": "एक"
+      },
+      "linkWord": "चंद्रमा",
+      "startMs": 12910,
+      "endMs": 19280
+    },
+    {
+      "visual": "kundli",
+      "voiceover": "लेकिन असली कुंडली में बारह घर हैं, नौ ग्रह हैं, और सबसे ज़रूरी आपका लग्न, यानी जन्म के पल पूर्व में उगती राशि।",
+      "kicker": "असली कुंडली",
+      "pills": [
+        {
+          "text": "12 घर",
+          "word": "बारह"
+        },
+        {
+          "text": "9 ग्रह",
+          "word": "नौ"
+        },
+        {
+          "text": "1 लग्न",
+          "word": "लग्न,"
+        }
+      ],
+      "lagnaLabel": "लग्न",
+      "lagnaWord": "लग्न,",
+      "body": "जन्म के पल पूर्व में उगती राशि",
+      "startMs": 19560,
+      "endMs": 29360
+    },
+    {
+      "visual": "clock",
+      "voiceover": "चंद्र राशि करीब सवा दो दिन एक रहती है, पर लग्न लगभग हर दो घंटे में बदल जाता है।",
+      "statValue": 2,
+      "statSuffix": "घंटे",
+      "headline": "में बदल जाता है लग्न",
+      "compare": [
+        {
+          "label": "चंद्र राशि",
+          "value": "सवा 2 दिन",
+          "weight": 1
+        },
+        {
+          "label": "लग्न",
+          "value": "हर ~2 घंटे",
+          "weight": 0.04
+        }
+      ],
+      "revealWord": "लग्न",
+      "startMs": 29640,
+      "endMs": 37240
+    },
+    {
+      "visual": "twins",
+      "voiceover": "इसीलिए कुछ मिनट के फ़र्क़ से पैदा हुए जुड़वाँ बच्चों की कुंडली भी अलग हो सकती है।",
+      "kicker": "कुछ मिनट का फ़र्क़",
+      "headline": "जुड़वाँ, पर अलग कुंडली",
+      "highlight": "अलग",
+      "labels": [
+        "पहला",
+        "दूसरा"
+      ],
+      "shiftWord": "अलग",
+      "times": [
+        "सुबह 10:00",
+        "सुबह 10:04"
+      ],
+      "startMs": 37520,
+      "endMs": 43720
+    },
+    {
+      "visual": "cta",
+      "voiceover": "आपको अपना लग्न पता है? कमेंट में लिखिए। और कल बताऊँगा, अभी किन राशियों पर साढ़े साती चल रही है। फॉलो कर लीजिए।",
+      "headline": "आपका लग्न क्या है?",
+      "highlight": "लग्न",
+      "body": "कमेंट में लिखिए",
+      "teaserTag": "कल",
+      "teaser": "अभी किन राशियों पर साढ़े साती?",
+      "button": "फॉलो करें",
+      "commentPrefix": "मेरा लग्न:",
+      "commentWords": [
+        "मेष",
+        "सिंह",
+        "तुला",
+        "मकर",
+        "मीन"
+      ],
+      "startMs": 44000,
+      "endMs": 51360
+    }
+  ],
+  "words": [
+    {
+      "text": "भारत",
+      "startMs": 10,
+      "endMs": 440
+    },
+    {
+      "text": "में",
+      "startMs": 440,
+      "endMs": 760
+    },
+    {
+      "text": "लगभग",
+      "startMs": 760,
+      "endMs": 1220
+    },
+    {
+      "text": "बारह",
+      "startMs": 1220,
+      "endMs": 1640
+    },
+    {
+      "text": "करोड़",
+      "startMs": 1640,
+      "endMs": 2110
+    },
+    {
+      "text": "लोगों",
+      "startMs": 2110,
+      "endMs": 2540
+    },
+    {
+      "text": "की",
+      "startMs": 2540,
+      "endMs": 2770
+    },
+    {
+      "text": "राशि",
+      "startMs": 2770,
+      "endMs": 3180
+    },
+    {
+      "text": "आपकी",
+      "startMs": 3180,
+      "endMs": 3670
+    },
+    {
+      "text": "राशि",
+      "startMs": 3760,
+      "endMs": 4210
+    },
+    {
+      "text": "जैसी",
+      "startMs": 4210,
+      "endMs": 4610
+    },
+    {
+      "text": "है।",
+      "startMs": 4610,
+      "endMs": 4830
+    },
+    {
+      "text": "तो",
+      "startMs": 5240,
+      "endMs": 5450
+    },
+    {
+      "text": "क्या",
+      "startMs": 5450,
+      "endMs": 5740
+    },
+    {
+      "text": "सबका",
+      "startMs": 5830,
+      "endMs": 6040
+    },
+    {
+      "text": "दिन",
+      "startMs": 6040,
+      "endMs": 6250
+    },
+    {
+      "text": "एक",
+      "startMs": 6510,
+      "endMs": 6740
+    },
+    {
+      "text": "जैसा",
+      "startMs": 6740,
+      "endMs": 7080
+    },
+    {
+      "text": "जाएगा?",
+      "startMs": 7080,
+      "endMs": 7500
+    },
+    {
+      "text": "नहीं,",
+      "startMs": 7980,
+      "endMs": 8330
+    },
+    {
+      "text": "और",
+      "startMs": 8810,
+      "endMs": 9030
+    },
+    {
+      "text": "वजह",
+      "startMs": 9030,
+      "endMs": 9340
+    },
+    {
+      "text": "जानकर",
+      "startMs": 9340,
+      "endMs": 9790
+    },
+    {
+      "text": "आप",
+      "startMs": 10180,
+      "endMs": 10410
+    },
+    {
+      "text": "राशिफल",
+      "startMs": 10410,
+      "endMs": 10960
+    },
+    {
+      "text": "अलग",
+      "startMs": 10960,
+      "endMs": 11170
+    },
+    {
+      "text": "तरह",
+      "startMs": 11310,
+      "endMs": 11840
+    },
+    {
+      "text": "से",
+      "startMs": 11840,
+      "endMs": 12040
+    },
+    {
+      "text": "पढ़ेंगे।",
+      "startMs": 12040,
+      "endMs": 12540
+    },
+    {
+      "text": "अख़बार",
+      "startMs": 12950,
+      "endMs": 13430
+    },
+    {
+      "text": "और",
+      "startMs": 13430,
+      "endMs": 13660
+    },
+    {
+      "text": "टीवी",
+      "startMs": 13660,
+      "endMs": 14070
+    },
+    {
+      "text": "का",
+      "startMs": 14070,
+      "endMs": 14280
+    },
+    {
+      "text": "राशिफल",
+      "startMs": 14280,
+      "endMs": 14790
+    },
+    {
+      "text": "सिर्फ़",
+      "startMs": 14790,
+      "endMs": 15090
+    },
+    {
+      "text": "एक",
+      "startMs": 15250,
+      "endMs": 15460
+    },
+    {
+      "text": "चीज़",
+      "startMs": 15460,
+      "endMs": 15780
+    },
+    {
+      "text": "देखता",
+      "startMs": 15780,
+      "endMs": 16210
+    },
+    {
+      "text": "है:",
+      "startMs": 16210,
+      "endMs": 16390
+    },
+    {
+      "text": "जन्म",
+      "startMs": 16650,
+      "endMs": 16910
+    },
+    {
+      "text": "के",
+      "startMs": 16910,
+      "endMs": 17100
+    },
+    {
+      "text": "समय",
+      "startMs": 17100,
+      "endMs": 17400
+    },
+    {
+      "text": "चंद्रमा",
+      "startMs": 17400,
+      "endMs": 17830
+    },
+    {
+      "text": "किस",
+      "startMs": 17830,
+      "endMs": 18120
+    },
+    {
+      "text": "राशि",
+      "startMs": 18330,
+      "endMs": 18700
+    },
+    {
+      "text": "में",
+      "startMs": 18700,
+      "endMs": 18960
+    },
+    {
+      "text": "था।",
+      "startMs": 18960,
+      "endMs": 19190
+    },
+    {
+      "text": "लेकिन",
+      "startMs": 19580,
+      "endMs": 20000
+    },
+    {
+      "text": "असली",
+      "startMs": 20310,
+      "endMs": 20780
+    },
+    {
+      "text": "कुंडली",
+      "startMs": 20780,
+      "endMs": 21260
+    },
+    {
+      "text": "में",
+      "startMs": 21600,
+      "endMs": 21810
+    },
+    {
+      "text": "बारह",
+      "startMs": 21810,
+      "endMs": 22140
+    },
+    {
+      "text": "घर",
+      "startMs": 22140,
+      "endMs": 22340
+    },
+    {
+      "text": "हैं,",
+      "startMs": 22340,
+      "endMs": 22530
+    },
+    {
+      "text": "नौ",
+      "startMs": 22860,
+      "endMs": 23110
+    },
+    {
+      "text": "ग्रह",
+      "startMs": 23110,
+      "endMs": 23430
+    },
+    {
+      "text": "हैं,",
+      "startMs": 23430,
+      "endMs": 23700
+    },
+    {
+      "text": "और",
+      "startMs": 24070,
+      "endMs": 24320
+    },
+    {
+      "text": "सबसे",
+      "startMs": 24320,
+      "endMs": 24740
+    },
+    {
+      "text": "ज़रूरी",
+      "startMs": 24740,
+      "endMs": 25210
+    },
+    {
+      "text": "आपका",
+      "startMs": 25500,
+      "endMs": 26040
+    },
+    {
+      "text": "लग्न,",
+      "startMs": 26040,
+      "endMs": 26340
+    },
+    {
+      "text": "यानी",
+      "startMs": 26760,
+      "endMs": 27100
+    },
+    {
+      "text": "जन्म",
+      "startMs": 27100,
+      "endMs": 27350
+    },
+    {
+      "text": "के",
+      "startMs": 27350,
+      "endMs": 27580
+    },
+    {
+      "text": "पल",
+      "startMs": 27580,
+      "endMs": 27850
+    },
+    {
+      "text": "पूर्व",
+      "startMs": 27850,
+      "endMs": 28200
+    },
+    {
+      "text": "में",
+      "startMs": 28200,
+      "endMs": 28440
+    },
+    {
+      "text": "उगती",
+      "startMs": 28570,
+      "endMs": 28960
+    },
+    {
+      "text": "राशि।",
+      "startMs": 28960,
+      "endMs": 29270
+    },
+    {
+      "text": "चंद्र",
+      "startMs": 29680,
+      "endMs": 30010
+    },
+    {
+      "text": "राशि",
+      "startMs": 30010,
+      "endMs": 30370
+    },
+    {
+      "text": "करीब",
+      "startMs": 30370,
+      "endMs": 30810
+    },
+    {
+      "text": "सवा",
+      "startMs": 30810,
+      "endMs": 31130
+    },
+    {
+      "text": "दो",
+      "startMs": 31130,
+      "endMs": 31350
+    },
+    {
+      "text": "दिन",
+      "startMs": 31680,
+      "endMs": 32010
+    },
+    {
+      "text": "एक",
+      "startMs": 32010,
+      "endMs": 32220
+    },
+    {
+      "text": "रहती",
+      "startMs": 32310,
+      "endMs": 32940
+    },
+    {
+      "text": "है,",
+      "startMs": 32940,
+      "endMs": 33190
+    },
+    {
+      "text": "पर",
+      "startMs": 33540,
+      "endMs": 33830
+    },
+    {
+      "text": "लग्न",
+      "startMs": 33830,
+      "endMs": 34150
+    },
+    {
+      "text": "लगभग",
+      "startMs": 34150,
+      "endMs": 34640
+    },
+    {
+      "text": "हर",
+      "startMs": 34640,
+      "endMs": 34920
+    },
+    {
+      "text": "दो",
+      "startMs": 35330,
+      "endMs": 35550
+    },
+    {
+      "text": "घंटे",
+      "startMs": 35550,
+      "endMs": 35890
+    },
+    {
+      "text": "में",
+      "startMs": 35890,
+      "endMs": 36160
+    },
+    {
+      "text": "बदल",
+      "startMs": 36160,
+      "endMs": 36500
+    },
+    {
+      "text": "जाता",
+      "startMs": 36500,
+      "endMs": 36930
+    },
+    {
+      "text": "है।",
+      "startMs": 36930,
+      "endMs": 37150
+    },
+    {
+      "text": "इसीलिए",
+      "startMs": 37560,
+      "endMs": 38150
+    },
+    {
+      "text": "कुछ",
+      "startMs": 38150,
+      "endMs": 38310
+    },
+    {
+      "text": "मिनट",
+      "startMs": 38420,
+      "endMs": 38900
+    },
+    {
+      "text": "के",
+      "startMs": 38900,
+      "endMs": 39150
+    },
+    {
+      "text": "फ़र्क़",
+      "startMs": 39150,
+      "endMs": 39420
+    },
+    {
+      "text": "से",
+      "startMs": 39420,
+      "endMs": 39740
+    },
+    {
+      "text": "पैदा",
+      "startMs": 39810,
+      "endMs": 40080
+    },
+    {
+      "text": "हुए",
+      "startMs": 40080,
+      "endMs": 40350
+    },
+    {
+      "text": "जुड़वाँ",
+      "startMs": 40350,
+      "endMs": 40900
+    },
+    {
+      "text": "बच्चों",
+      "startMs": 40900,
+      "endMs": 41270
+    },
+    {
+      "text": "की",
+      "startMs": 41270,
+      "endMs": 41540
+    },
+    {
+      "text": "कुंडली",
+      "startMs": 41540,
+      "endMs": 42050
+    },
+    {
+      "text": "भी",
+      "startMs": 42050,
+      "endMs": 42260
+    },
+    {
+      "text": "अलग",
+      "startMs": 42260,
+      "endMs": 42580
+    },
+    {
+      "text": "हो",
+      "startMs": 42740,
+      "endMs": 42950
+    },
+    {
+      "text": "सकती",
+      "startMs": 42950,
+      "endMs": 43290
+    },
+    {
+      "text": "है।",
+      "startMs": 43380,
+      "endMs": 43630
+    },
+    {
+      "text": "आपको",
+      "startMs": 44040,
+      "endMs": 44410
+    },
+    {
+      "text": "अपना",
+      "startMs": 44410,
+      "endMs": 44740
+    },
+    {
+      "text": "लग्न",
+      "startMs": 44740,
+      "endMs": 44950
+    },
+    {
+      "text": "पता",
+      "startMs": 44950,
+      "endMs": 45170
+    },
+    {
+      "text": "है?",
+      "startMs": 45170,
+      "endMs": 45320
+    },
+    {
+      "text": "कमेंट",
+      "startMs": 45600,
+      "endMs": 45900
+    },
+    {
+      "text": "में",
+      "startMs": 45900,
+      "endMs": 46070
+    },
+    {
+      "text": "लिखिए।",
+      "startMs": 46070,
+      "endMs": 46350
+    },
+    {
+      "text": "और",
+      "startMs": 46620,
+      "endMs": 46840
+    },
+    {
+      "text": "कल",
+      "startMs": 46840,
+      "endMs": 47080
+    },
+    {
+      "text": "बताऊँगा,",
+      "startMs": 47080,
+      "endMs": 47580
+    },
+    {
+      "text": "अभी",
+      "startMs": 47840,
+      "endMs": 48080
+    },
+    {
+      "text": "किन",
+      "startMs": 48080,
+      "endMs": 48340
+    },
+    {
+      "text": "राशियों",
+      "startMs": 48340,
+      "endMs": 48750
+    },
+    {
+      "text": "पर",
+      "startMs": 48750,
+      "endMs": 48940
+    },
+    {
+      "text": "साढ़े",
+      "startMs": 48940,
+      "endMs": 49220
+    },
+    {
+      "text": "साती",
+      "startMs": 49220,
+      "endMs": 49510
+    },
+    {
+      "text": "चल",
+      "startMs": 49510,
+      "endMs": 49700
+    },
+    {
+      "text": "रही",
+      "startMs": 49700,
+      "endMs": 49930
+    },
+    {
+      "text": "है।",
+      "startMs": 49930,
+      "endMs": 50090
+    },
+    {
+      "text": "फॉलो",
+      "startMs": 50430,
+      "endMs": 50730
+    },
+    {
+      "text": "कर",
+      "startMs": 50730,
+      "endMs": 50930
+    },
+    {
+      "text": "लीजिए।",
+      "startMs": 50930,
+      "endMs": 51270
+    }
+  ],
+  "durationMs": 51360
+}

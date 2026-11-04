@@ -1,0 +1,55 @@
+name: Post queued reels
+
+# Posts the next ready-made reel from queue/astro24x7 once a day.
+# Cron is in UTC: 13:17 UTC = 6:47 PM IST. GitHub can start scheduled runs a few minutes late.
+on:
+  schedule:
+    - cron: "17 13 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "test = check token, account and video link, post nothing · post-now = post the next reel right away"
+        type: choice
+        options: [test, post-now]
+        default: test
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install cloudflared (temporary video link)
+        run: |
+          sudo curl -fsSL -o /usr/local/bin/cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+          sudo chmod +x /usr/local/bin/cloudflared
+          cloudflared --version
+
+      - name: Post the next reel
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
+        run: >
+          node pipeline/post-queue.mjs --page astro24x7
+          ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'test' && '--dry-run' || '' }}
+          ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'post-now' && '--force' || '' }}
+
+      - name: Save what was posted
+        if: always()
+        run: |
+          git config user.name "reel-autopilot"
+          git config user.email "reel-autopilot@users.noreply.github.com"
+          git add state/
+          git diff --cached --quiet || (git commit -m "Posting log: $(date -u +%F)" && git pull --rebase && git push)

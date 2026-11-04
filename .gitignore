@@ -1,0 +1,11 @@
+node_modules/
+runs/
+public/run/
+out/
+.env
+.DS_Store
+__pycache__/
+models/
+voice-samples/
+public/run/
+*.raw.mp4

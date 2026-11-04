@@ -1,0 +1,71 @@
+{
+  "topic": "How to win the first three seconds of a Reel",
+  "title": "Win the first 3 seconds",
+  "angle": "Every creator struggles with drop-off; a quick, usable checklist.",
+  "caption": "Your reel is decided before most people even hear the second sentence.\n\nOpen with the payoff.\nPut the words on screen.\nMove in the very first frame.\n\nWhich of these are you skipping right now?",
+  "hashtags": ["reelstips", "contentcreator", "instagramgrowth"],
+  "sources": [],
+  "factCheck": "Sample script for testing the template; contains advice, no statistics.",
+  "scenes": [
+    {
+      "type": "hook",
+      "voiceover": "Your reel lives or dies in the first three seconds. Here's how to win them.",
+      "kicker": "Creators, listen",
+      "headline": "Your reel dies in 3 seconds",
+      "highlight": "3 seconds",
+      "body": "",
+      "statValue": 0, "statPrefix": "", "statSuffix": "", "statLabel": "",
+      "items": []
+    },
+    {
+      "type": "point",
+      "voiceover": "One. Open with the payoff. Show the result first, and explain it later.",
+      "kicker": "",
+      "headline": "Open with the payoff",
+      "highlight": "payoff",
+      "body": "Result first. Explanation later.",
+      "statValue": 0, "statPrefix": "", "statSuffix": "", "statLabel": "",
+      "items": []
+    },
+    {
+      "type": "point",
+      "voiceover": "Two. Put the words on screen, because plenty of people watch on mute.",
+      "kicker": "",
+      "headline": "Put the words on screen",
+      "highlight": "words",
+      "body": "Plenty of people watch on mute.",
+      "statValue": 0, "statPrefix": "", "statSuffix": "", "statLabel": "",
+      "items": []
+    },
+    {
+      "type": "stat",
+      "voiceover": "Think of it as a three second window. Every frame has to earn the next one.",
+      "kicker": "Rule of thumb",
+      "headline": "A three second window",
+      "highlight": "",
+      "body": "",
+      "statValue": 3, "statPrefix": "", "statSuffix": "s", "statLabel": "to earn the next scroll",
+      "items": []
+    },
+    {
+      "type": "list",
+      "voiceover": "Before you post, check three things: a bold first line, movement in the first frame, and captions from the start.",
+      "kicker": "Before you post",
+      "headline": "The 3-second checklist",
+      "highlight": "checklist",
+      "body": "",
+      "statValue": 0, "statPrefix": "", "statSuffix": "", "statLabel": "",
+      "items": ["A bold first line", "Movement in frame one", "Captions from the start"]
+    },
+    {
+      "type": "cta",
+      "voiceover": "Follow for a new reel tip every single day.",
+      "kicker": "",
+      "headline": "Want a tip every day?",
+      "highlight": "every day",
+      "body": "Follow for more",
+      "statValue": 0, "statPrefix": "", "statSuffix": "", "statLabel": "",
+      "items": []
+    }
+  ]
+}

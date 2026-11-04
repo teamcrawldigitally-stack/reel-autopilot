@@ -1,0 +1,56 @@
+{
+  "page": "astro24x7",
+  "account": {
+    "name": "Astro 24x7",
+    "handle": "@astro24x7"
+  },
+  "timezone": "Asia/Kolkata",
+  "language": "hindi",
+  "composition": "AstroReel",
+  "voice": {
+    "provider": "kokoro",
+    "kokoroVoice": "hm_omega",
+    "kokoroLang": "hi",
+    "kokoroSpeed": 1.1,
+    "edgeVoice": "hi-IN-MadhurNeural",
+    "rate": "+5%",
+    "gapMs": 280,
+    "sarvamSpeaker": "shubh",
+    "sarvamModel": "bulbul:v3",
+    "sarvamLang": "hi-IN",
+    "sarvamPace": 1.0
+  },
+  "reel": {
+    "captions": true,
+    "sfx": true,
+    "music": "music/dolce-nonna.mp3",
+    "musicVolume": 0.24,
+    "musicLibrary": [
+      {
+        "file": "music/dolce-nonna.mp3",
+        "mood": "light, curious, explainer"
+      },
+      {
+        "file": "music/jailer-bodhi-theme-loop.mp3",
+        "mood": "intense, powerful, dark planets (Rahu, Shani, Mangal)"
+      },
+      {
+        "file": "music/paint-the-town-red-inst.mp3",
+        "mood": "moody, mysterious, trendy"
+      },
+      {
+        "file": "music/masakali.mp3",
+        "mood": "joyful, light (has vocals: keep very low under voice)"
+      }
+    ]
+  },
+  "posting": {
+    "enabled": false,
+    "aiLabel": true,
+    "fixedHashtags": [
+      "#Astro24x7",
+      "#ज्योतिष"
+    ],
+    "maxHashtags": 5
+  }
+}

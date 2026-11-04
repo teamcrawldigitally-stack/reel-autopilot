@@ -1,0 +1,6 @@
+edge-tts==7.3.1
+# Free offline Hindi/English voice (Kokoro). Model files: `npm run models`
+kokoro-onnx==0.6.1
+soundfile
+# Optional offline test voice (Linux): pip install espeakng-loader==0.2.4
+#   then: node pipeline/run-daily.mjs --dry-run --tts espeak

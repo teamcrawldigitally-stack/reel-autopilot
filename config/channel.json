@@ -1,0 +1,57 @@
+{
+  "account": {
+    "name": "Your Brand",
+    "handle": "@yourhandle"
+  },
+  "timezone": "Asia/Kolkata",
+  "niche": "Describe the niche in one or two lines, e.g. practical Instagram growth and content tips for Indian small businesses and creators",
+  "audience": "Who watches, e.g. Indian D2C founders, freelancers and creators aged 20-35 who want more reach and sales from Instagram",
+  "language": "english",
+  "tone": "confident, friendly, practical, zero fluff, a little witty",
+  "contentPillars": [
+    "Quick tactical tips people can use today",
+    "New platform features and updates explained",
+    "Myths busted with facts",
+    "Mini case studies and numbers"
+  ],
+  "avoidTopics": [
+    "politics",
+    "medical or financial advice",
+    "anything about competitors by name"
+  ],
+  "research": {
+    "model": "sonnet",
+    "maxSearches": 6,
+    "preferredSites": []
+  },
+  "reel": {
+    "targetSeconds": 35,
+    "minScenes": 5,
+    "maxScenes": 7,
+    "captions": true,
+    "sfx": true,
+    "music": null,
+    "musicVolume": 0.12
+  },
+  "colors": {
+    "bg": "#0B0B10",
+    "bgAlt": "#15151F",
+    "primary": "#FF5A36",
+    "accent": "#FFD23F",
+    "text": "#F5F4F0",
+    "textDim": "#A8A6B3"
+  },
+  "voice": {
+    "provider": "edge",
+    "edgeVoice": "en-IN-PrabhatNeural",
+    "rate": "+8%",
+    "pitch": "+0Hz",
+    "gapMs": 220
+  },
+  "posting": {
+    "enabled": true,
+    "aiLabel": true,
+    "fixedHashtags": [],
+    "maxHashtags": 5
+  }
+}

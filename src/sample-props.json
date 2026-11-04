@@ -1,0 +1,517 @@
+{
+  "brand": {
+    "name": "Your Brand",
+    "handle": "@yourhandle",
+    "colors": {
+      "bg": "#0B0B10",
+      "bgAlt": "#15151F",
+      "primary": "#FF5A36",
+      "accent": "#FFD23F",
+      "text": "#F5F4F0",
+      "textDim": "#A8A6B3"
+    }
+  },
+  "audio": "sample/vo.wav",
+  "music": null,
+  "musicVolume": 0.12,
+  "sfx": true,
+  "captions": true,
+  "scenes": [
+    {
+      "type": "hook",
+      "kicker": "Creators, listen",
+      "headline": "Your reel dies in 3 seconds",
+      "highlight": "3 seconds",
+      "body": "",
+      "statValue": 0,
+      "statPrefix": "",
+      "statSuffix": "",
+      "statLabel": "",
+      "items": [],
+      "startMs": 0,
+      "endMs": 4236
+    },
+    {
+      "type": "point",
+      "kicker": "",
+      "headline": "Open with the payoff",
+      "highlight": "payoff",
+      "body": "Result first. Explanation later.",
+      "statValue": 0,
+      "statPrefix": "",
+      "statSuffix": "",
+      "statLabel": "",
+      "items": [],
+      "startMs": 4456,
+      "endMs": 8968
+    },
+    {
+      "type": "point",
+      "kicker": "",
+      "headline": "Put the words on screen",
+      "highlight": "words",
+      "body": "Plenty of people watch on mute.",
+      "statValue": 0,
+      "statPrefix": "",
+      "statSuffix": "",
+      "statLabel": "",
+      "items": [],
+      "startMs": 9188,
+      "endMs": 13396
+    },
+    {
+      "type": "stat",
+      "kicker": "Rule of thumb",
+      "headline": "A three second window",
+      "highlight": "",
+      "body": "",
+      "statValue": 3,
+      "statPrefix": "",
+      "statSuffix": "s",
+      "statLabel": "to earn the next scroll",
+      "items": [],
+      "startMs": 13616,
+      "endMs": 17756
+    },
+    {
+      "type": "list",
+      "kicker": "Before you post",
+      "headline": "The 3-second checklist",
+      "highlight": "checklist",
+      "body": "",
+      "statValue": 0,
+      "statPrefix": "",
+      "statSuffix": "",
+      "statLabel": "",
+      "items": [
+        "A bold first line",
+        "Movement in frame one",
+        "Captions from the start"
+      ],
+      "startMs": 17976,
+      "endMs": 24858
+    },
+    {
+      "type": "cta",
+      "kicker": "",
+      "headline": "Want a tip every day?",
+      "highlight": "every day",
+      "body": "Follow for more",
+      "statValue": 0,
+      "statPrefix": "",
+      "statSuffix": "",
+      "statLabel": "",
+      "items": [],
+      "startMs": 25078,
+      "endMs": 27356
+    }
+  ],
+  "words": [
+    {
+      "text": "Your",
+      "startMs": 0,
+      "endMs": 161
+    },
+    {
+      "text": "reel",
+      "startMs": 161,
+      "endMs": 396
+    },
+    {
+      "text": "lives",
+      "startMs": 396,
+      "endMs": 898
+    },
+    {
+      "text": "or",
+      "startMs": 898,
+      "endMs": 1014
+    },
+    {
+      "text": "dies",
+      "startMs": 1014,
+      "endMs": 1278
+    },
+    {
+      "text": "in",
+      "startMs": 1278,
+      "endMs": 1482
+    },
+    {
+      "text": "the first",
+      "startMs": 1482,
+      "endMs": 1830
+    },
+    {
+      "text": "three",
+      "startMs": 1830,
+      "endMs": 2064
+    },
+    {
+      "text": "seconds.",
+      "startMs": 2064,
+      "endMs": 2960
+    },
+    {
+      "text": "Here's",
+      "startMs": 2960,
+      "endMs": 3295
+    },
+    {
+      "text": "how",
+      "startMs": 3295,
+      "endMs": 3482
+    },
+    {
+      "text": "to",
+      "startMs": 3482,
+      "endMs": 3616
+    },
+    {
+      "text": "win",
+      "startMs": 3616,
+      "endMs": 3954
+    },
+    {
+      "text": "them.",
+      "startMs": 3954,
+      "endMs": 4236
+    },
+    {
+      "text": "One.",
+      "startMs": 4456,
+      "endMs": 5127
+    },
+    {
+      "text": "Open",
+      "startMs": 5127,
+      "endMs": 5439
+    },
+    {
+      "text": "with",
+      "startMs": 5439,
+      "endMs": 5703
+    },
+    {
+      "text": "the payoff.",
+      "startMs": 5703,
+      "endMs": 6448
+    },
+    {
+      "text": "Show",
+      "startMs": 6448,
+      "endMs": 6709
+    },
+    {
+      "text": "the",
+      "startMs": 6709,
+      "endMs": 6822
+    },
+    {
+      "text": "result",
+      "startMs": 6822,
+      "endMs": 7236
+    },
+    {
+      "text": "first,",
+      "startMs": 7236,
+      "endMs": 7800
+    },
+    {
+      "text": "and",
+      "startMs": 7800,
+      "endMs": 7960
+    },
+    {
+      "text": "explain",
+      "startMs": 7960,
+      "endMs": 8389
+    },
+    {
+      "text": "it",
+      "startMs": 8389,
+      "endMs": 8577
+    },
+    {
+      "text": "later.",
+      "startMs": 8577,
+      "endMs": 8968
+    },
+    {
+      "text": "Two.",
+      "startMs": 9188,
+      "endMs": 9815
+    },
+    {
+      "text": "Put",
+      "startMs": 9815,
+      "endMs": 10044
+    },
+    {
+      "text": "the",
+      "startMs": 10044,
+      "endMs": 10161
+    },
+    {
+      "text": "words",
+      "startMs": 10161,
+      "endMs": 10512
+    },
+    {
+      "text": "on",
+      "startMs": 10512,
+      "endMs": 10693
+    },
+    {
+      "text": "screen,",
+      "startMs": 10693,
+      "endMs": 11313
+    },
+    {
+      "text": "because",
+      "startMs": 11313,
+      "endMs": 11695
+    },
+    {
+      "text": "plenty",
+      "startMs": 11695,
+      "endMs": 12096
+    },
+    {
+      "text": "of",
+      "startMs": 12096,
+      "endMs": 12243
+    },
+    {
+      "text": "people",
+      "startMs": 12243,
+      "endMs": 12583
+    },
+    {
+      "text": "watch",
+      "startMs": 12583,
+      "endMs": 12870
+    },
+    {
+      "text": "on",
+      "startMs": 12870,
+      "endMs": 13039
+    },
+    {
+      "text": "mute.",
+      "startMs": 13039,
+      "endMs": 13396
+    },
+    {
+      "text": "Think",
+      "startMs": 13616,
+      "endMs": 13968
+    },
+    {
+      "text": "of",
+      "startMs": 13968,
+      "endMs": 14076
+    },
+    {
+      "text": "it",
+      "startMs": 14076,
+      "endMs": 14177
+    },
+    {
+      "text": "as",
+      "startMs": 14177,
+      "endMs": 14299
+    },
+    {
+      "text": "a",
+      "startMs": 14299,
+      "endMs": 14359
+    },
+    {
+      "text": "three",
+      "startMs": 14359,
+      "endMs": 14592
+    },
+    {
+      "text": "second",
+      "startMs": 14592,
+      "endMs": 15043
+    },
+    {
+      "text": "window.",
+      "startMs": 15043,
+      "endMs": 15791
+    },
+    {
+      "text": "Every",
+      "startMs": 15791,
+      "endMs": 16102
+    },
+    {
+      "text": "frame",
+      "startMs": 16102,
+      "endMs": 16439
+    },
+    {
+      "text": "has",
+      "startMs": 16439,
+      "endMs": 16640
+    },
+    {
+      "text": "to",
+      "startMs": 16640,
+      "endMs": 16765
+    },
+    {
+      "text": "earn",
+      "startMs": 16765,
+      "endMs": 16977
+    },
+    {
+      "text": "the",
+      "startMs": 16977,
+      "endMs": 17095
+    },
+    {
+      "text": "next",
+      "startMs": 17095,
+      "endMs": 17521
+    },
+    {
+      "text": "one.",
+      "startMs": 17521,
+      "endMs": 17756
+    },
+    {
+      "text": "Before",
+      "startMs": 17976,
+      "endMs": 18285
+    },
+    {
+      "text": "you",
+      "startMs": 18285,
+      "endMs": 18396
+    },
+    {
+      "text": "post,",
+      "startMs": 18396,
+      "endMs": 18965
+    },
+    {
+      "text": "check",
+      "startMs": 18965,
+      "endMs": 19281
+    },
+    {
+      "text": "three",
+      "startMs": 19281,
+      "endMs": 19516
+    },
+    {
+      "text": "things:",
+      "startMs": 19516,
+      "endMs": 20267
+    },
+    {
+      "text": "a",
+      "startMs": 20267,
+      "endMs": 20328
+    },
+    {
+      "text": "bold",
+      "startMs": 20328,
+      "endMs": 20711
+    },
+    {
+      "text": "first",
+      "startMs": 20711,
+      "endMs": 21062
+    },
+    {
+      "text": "line,",
+      "startMs": 21062,
+      "endMs": 21595
+    },
+    {
+      "text": "movement",
+      "startMs": 21595,
+      "endMs": 22063
+    },
+    {
+      "text": "in",
+      "startMs": 22063,
+      "endMs": 22272
+    },
+    {
+      "text": "the first",
+      "startMs": 22272,
+      "endMs": 22623
+    },
+    {
+      "text": "frame,",
+      "startMs": 22623,
+      "endMs": 23235
+    },
+    {
+      "text": "and",
+      "startMs": 23235,
+      "endMs": 23421
+    },
+    {
+      "text": "captions",
+      "startMs": 23421,
+      "endMs": 24048
+    },
+    {
+      "text": "from",
+      "startMs": 24048,
+      "endMs": 24382
+    },
+    {
+      "text": "the start.",
+      "startMs": 24382,
+      "endMs": 24858
+    },
+    {
+      "text": "Follow",
+      "startMs": 25078,
+      "endMs": 25405
+    },
+    {
+      "text": "for",
+      "startMs": 25405,
+      "endMs": 25629
+    },
+    {
+      "text": "a new",
+      "startMs": 25629,
+      "endMs": 25802
+    },
+    {
+      "text": "reel",
+      "startMs": 25802,
+      "endMs": 26038
+    },
+    {
+      "text": "tip",
+      "startMs": 26038,
+      "endMs": 26299
+    },
+    {
+      "text": "every",
+      "startMs": 26299,
+      "endMs": 26607
+    },
+    {
+      "text": "single",
+      "startMs": 26607,
+      "endMs": 26995
+    },
+    {
+      "text": "day.",
+      "startMs": 26995,
+      "endMs": 27356
+    }
+  ],
+  "durationMs": 27356
+}
