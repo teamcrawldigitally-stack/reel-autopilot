@@ -85,13 +85,14 @@ const main = async () => {
   // 1st choice: upload the file straight to Instagram. Backup: a temporary public link Instagram fetches.
   let host;
   try {
-    let containerId, how;
+    let containerId, how, why;
     try {
       if (!canUploadDirectly()) throw new Error("this token type can't upload files directly");
       containerId = await prepareReel({ ...opts, videoPath: video });
       how = "direct upload";
     } catch (e) {
-      log(`direct upload didn't work (${e.message.slice(0, 200)}), using a temporary video link instead`);
+      why = e.message.slice(0, 300);
+      log(`direct upload didn't work (${why}), using a temporary video link instead`);
       host = await hostVideo(video);
       containerId = await prepareReel({ ...opts, videoUrl: host.url });
       how = `temporary link, ${host.how}`;
@@ -102,6 +103,7 @@ const main = async () => {
         `- Account: @${me.username} (${me.account_type})`,
         `- Next ${kind} post: **${label}${next.title}** (${(fs.statSync(video).size / 1e6).toFixed(1)} MB)`,
         `- Instagram received and processed the video (${how}); it was not published`,
+        ...(why ? [`- Direct upload was refused: ${why}`] : []),
         `- ${posted.filter((p) => kindOf(p) === "normal").length} of ${manifest.items.length} reels posted so far (${posted.filter((p) => kindOf(p) === "trial").length} trial copies)`,
       ]);
     }
@@ -114,6 +116,7 @@ const main = async () => {
       `- ${result.permalink ?? result.mediaId}`,
       `- @${me.username} · ${posted.filter((p) => kindOf(p) === "normal").length} of ${manifest.items.length} reels posted, ${posted.filter((p) => kindOf(p) === "trial").length} trial copies · via ${how}`,
       n ? `- Next ${kind}: ${n.title}` : kind === "trial" ? `- Next trial copy follows the next normal post` : `- The queue is now empty`,
+      ...(why ? [`- Direct upload was refused: ${why}`] : []),
     ]);
   } finally {
     host?.close();
