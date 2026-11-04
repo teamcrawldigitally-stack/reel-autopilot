@@ -1,0 +1,59 @@
+{
+  "id": "case04-repeat",
+  "tag": "CASE #04",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.05, "lang": "hi-IN", "script": "all Devanagari" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 1.0 },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        { "roman": "Har naye customer pe *₹150|ek_sau_pachaas ka *loss.", "voice": "हर नए कस्टमर पे एक सौ पचास का लॉस।" },
+        { "roman": "Phir bhi Rohit *profit mein hai.", "voice": "फिर भी रोहित प्रॉफ़िट में है।" },
+        { "roman": "*Kaise?", "voice": "कैसे?" }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        { "roman": "Ad pe *₹400|chaar_sau lage,", "voice": "ऐड पे चार सौ लगे," },
+        { "roman": "order se bache *₹250|do_sau_pachaas.", "voice": "ऑर्डर से बचे दो सौ पचास।" },
+        { "roman": "Pehla order, *₹150|ek_sau_pachaas minus.", "voice": "पहला ऑर्डर, एक सौ पचास माइनस।" }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        { "roman": "Par Priya ko product *pasand aaya.", "voice": "पर प्रिया को प्रोडक्ट पसंद आया।" },
+        { "roman": "Agle mahine *WhatsApp se wapas aayi, bina ad ke.", "voice": "अगले महीने व्हाट्सऐप से वापस आई, बिना ऐड के।" },
+        { "roman": "*₹250|do_sau_pachaas seedha profit.", "voice": "दो सौ पचास सीधा प्रॉफ़िट।" },
+        { "roman": "Teesre mahine phir. Total *₹350|teen_sau_pachaas profit!", "voice": "तीसरे महीने फिर। टोटल तीन सौ पचास प्रॉफ़िट!" }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        { "roman": "Agar *wapas nahi aati?", "voice": "अगर वापस नहीं आती?" },
+        { "roman": "Toh sirf *loss.", "voice": "तो सिर्फ़ लॉस।", "gapAfter": 0.25 },
+        { "roman": "Loss tabhi sahi, jab customer *wapas aaye.", "voice": "लॉस तभी सही, जब कस्टमर वापस आए।" }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        { "roman": "Wapas laane ke *teen tareeke.", "voice": "वापस लाने के तीन तरीक़े।" },
+        { "roman": "Delivery ke baad *WhatsApp pe thank you.", "voice": "डिलीवरी के बाद व्हाट्सऐप पे थैंक यू।" },
+        { "roman": "Parcel mein agle order ka *coupon.", "voice": "पार्सल में अगले ऑर्डर का कूपन।" },
+        { "roman": "Product khatam hone se pehle *reminder.", "voice": "प्रोडक्ट ख़त्म होने से पहले रिमाइंडर।" }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        { "roman": "Comment karo *REPEAT|repeat,", "voice": "कमेंट करो रिपीट," },
+        { "roman": "paanch *WhatsApp messages free *DM|dee_em mein.", "voice": "पाँच व्हाट्सऐप मैसेजेस फ़्री डी एम में।" },
+        { "roman": "Kal ka case: *5-star|five_star rating hai, phir bhi sale kam kyun?", "voice": "कल का केस: फ़ाइव स्टार रेटिंग है, फिर भी सेल कम क्यों?" },
+        { "roman": "*Follow karo.", "voice": "फ़ॉलो करो।" }
+      ]
+    }
+  ]
+}

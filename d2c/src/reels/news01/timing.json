@@ -1,0 +1,2030 @@
+{
+ "fps": 30,
+ "scenes": [
+  {
+   "id": "s1",
+   "start": 0,
+   "dur": 9.402,
+   "audio": "news01/vo/s1.wav",
+   "words": [
+    {
+     "d": "Facebook",
+     "sp": "facebook",
+     "hl": false,
+     "p": "",
+     "s": 0.12,
+     "e": 0.923
+    },
+    {
+     "d": "ya",
+     "sp": "ya",
+     "hl": false,
+     "p": "",
+     "s": 0.923,
+     "e": 1.247
+    },
+    {
+     "d": "Instagram",
+     "sp": "instagram",
+     "hl": false,
+     "p": "",
+     "s": 1.247,
+     "e": 2.05
+    },
+    {
+     "d": "pe",
+     "sp": "pe",
+     "hl": false,
+     "p": "",
+     "s": 2.05,
+     "e": 2.374
+    },
+    {
+     "d": "ads",
+     "sp": "ads",
+     "hl": true,
+     "p": "",
+     "s": 2.374,
+     "e": 2.697
+    },
+    {
+     "d": "chalate",
+     "sp": "chalate",
+     "hl": false,
+     "p": "",
+     "s": 2.697,
+     "e": 3.5
+    },
+    {
+     "d": "ho?",
+     "sp": "ho",
+     "hl": false,
+     "p": "?",
+     "s": 3.5,
+     "e": 3.824
+    },
+    {
+     "d": "Toh",
+     "sp": "toh",
+     "hl": false,
+     "p": "",
+     "s": 3.994,
+     "e": 4.175
+    },
+    {
+     "d": "ruko",
+     "sp": "ruko",
+     "hl": true,
+     "p": ".",
+     "s": 4.175,
+     "e": 4.49
+    },
+    {
+     "d": "Meta",
+     "sp": "meta",
+     "hl": false,
+     "p": "",
+     "s": 4.84,
+     "e": 5.176
+    },
+    {
+     "d": "ne",
+     "sp": "ne",
+     "hl": false,
+     "p": "",
+     "s": 5.176,
+     "e": 5.369
+    },
+    {
+     "d": "woh",
+     "sp": "woh",
+     "hl": false,
+     "p": "",
+     "s": 5.369,
+     "e": 5.562
+    },
+    {
+     "d": "system",
+     "sp": "system",
+     "hl": true,
+     "p": "",
+     "s": 5.562,
+     "e": 5.898
+    },
+    {
+     "d": "badal",
+     "sp": "badal",
+     "hl": false,
+     "p": "",
+     "s": 5.898,
+     "e": 6.234
+    },
+    {
+     "d": "diya",
+     "sp": "diya",
+     "hl": false,
+     "p": "",
+     "s": 6.234,
+     "e": 6.427
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ",",
+     "s": 6.427,
+     "e": 6.62
+    },
+    {
+     "d": "jo",
+     "sp": "jo",
+     "hl": false,
+     "p": "",
+     "s": 6.62,
+     "e": 6.813
+    },
+    {
+     "d": "tay",
+     "sp": "tay",
+     "hl": false,
+     "p": "",
+     "s": 6.813,
+     "e": 7.006
+    },
+    {
+     "d": "karta",
+     "sp": "karta",
+     "hl": false,
+     "p": "",
+     "s": 7.006,
+     "e": 7.342
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": "",
+     "s": 7.342,
+     "e": 7.535
+    },
+    {
+     "d": "ki",
+     "sp": "ki",
+     "hl": false,
+     "p": "",
+     "s": 7.535,
+     "e": 7.728
+    },
+    {
+     "d": "aapka",
+     "sp": "aapka",
+     "hl": false,
+     "p": "",
+     "s": 7.728,
+     "e": 8.064
+    },
+    {
+     "d": "ad",
+     "sp": "ad",
+     "hl": false,
+     "p": "",
+     "s": 8.064,
+     "e": 8.257
+    },
+    {
+     "d": "kise",
+     "sp": "kise",
+     "hl": true,
+     "p": "",
+     "s": 8.257,
+     "e": 8.593
+    },
+    {
+     "d": "dikhega",
+     "sp": "dikhega",
+     "hl": false,
+     "p": ".",
+     "s": 8.593,
+     "e": 9.072
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "start": 9.402,
+   "dur": 7.385,
+   "audio": "news01/vo/s2.wav",
+   "words": [
+    {
+     "d": "Log",
+     "sp": "log",
+     "hl": false,
+     "p": "",
+     "s": 0.12,
+     "e": 0.311
+    },
+    {
+     "d": "ise",
+     "sp": "ise",
+     "hl": false,
+     "p": "",
+     "s": 0.311,
+     "e": 0.643
+    },
+    {
+     "d": "Andromeda",
+     "sp": "andromeda",
+     "hl": true,
+     "p": "",
+     "s": 0.643,
+     "e": 1.257
+    },
+    {
+     "d": "2.0",
+     "sp": "two point o",
+     "hl": false,
+     "p": "",
+     "s": 1.257,
+     "e": 1.731
+    },
+    {
+     "d": "keh",
+     "sp": "keh",
+     "hl": false,
+     "p": "",
+     "s": 1.731,
+     "e": 1.922
+    },
+    {
+     "d": "rahe",
+     "sp": "rahe",
+     "hl": false,
+     "p": "",
+     "s": 1.922,
+     "e": 2.254
+    },
+    {
+     "d": "hain",
+     "sp": "hain",
+     "hl": false,
+     "p": ".",
+     "s": 2.254,
+     "e": 2.444
+    },
+    {
+     "d": "Teen",
+     "sp": "teen",
+     "hl": true,
+     "p": "",
+     "s": 2.654,
+     "e": 2.843
+    },
+    {
+     "d": "cheezein",
+     "sp": "cheezein",
+     "hl": false,
+     "p": "",
+     "s": 2.843,
+     "e": 3.17
+    },
+    {
+     "d": "badli",
+     "sp": "badli",
+     "hl": false,
+     "p": "",
+     "s": 3.17,
+     "e": 3.498
+    },
+    {
+     "d": "hain",
+     "sp": "hain",
+     "hl": false,
+     "p": ",",
+     "s": 3.498,
+     "e": 3.686
+    },
+    {
+     "d": "aur",
+     "sp": "aur",
+     "hl": false,
+     "p": "",
+     "s": 4.027,
+     "e": 4.248
+    },
+    {
+     "d": "teesri",
+     "sp": "teesri",
+     "hl": false,
+     "p": "",
+     "s": 4.248,
+     "e": 4.632
+    },
+    {
+     "d": "seedha",
+     "sp": "seedha",
+     "hl": false,
+     "p": "",
+     "s": 4.632,
+     "e": 5.017
+    },
+    {
+     "d": "aapke",
+     "sp": "aapke",
+     "hl": false,
+     "p": "",
+     "s": 5.017,
+     "e": 5.402
+    },
+    {
+     "d": "ad",
+     "sp": "ad",
+     "hl": false,
+     "p": "",
+     "s": 5.402,
+     "e": 5.622
+    },
+    {
+     "d": "ke",
+     "sp": "ke",
+     "hl": false,
+     "p": "",
+     "s": 5.622,
+     "e": 5.843
+    },
+    {
+     "d": "paise",
+     "sp": "paise",
+     "hl": true,
+     "p": "",
+     "s": 5.843,
+     "e": 6.228
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 6.228,
+     "e": 6.449
+    },
+    {
+     "d": "judi",
+     "sp": "judi",
+     "hl": false,
+     "p": "",
+     "s": 6.449,
+     "e": 6.834
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ".",
+     "s": 6.834,
+     "e": 7.055
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "start": 16.787,
+   "dur": 14.09,
+   "audio": "news01/vo/s3.wav",
+   "words": [
+    {
+     "d": "Pehli",
+     "sp": "pehli",
+     "hl": false,
+     "p": ":",
+     "s": 0.12,
+     "e": 0.529
+    },
+    {
+     "d": "speed",
+     "sp": "speed",
+     "hl": true,
+     "p": ".",
+     "s": 0.757,
+     "e": 1.23
+    },
+    {
+     "d": "Andromeda",
+     "sp": "andromeda",
+     "hl": false,
+     "p": "",
+     "s": 1.44,
+     "e": 2.056
+    },
+    {
+     "d": "woh",
+     "sp": "woh",
+     "hl": false,
+     "p": "",
+     "s": 2.056,
+     "e": 2.247
+    },
+    {
+     "d": "system",
+     "sp": "system",
+     "hl": false,
+     "p": "",
+     "s": 2.247,
+     "e": 2.579
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ",",
+     "s": 2.579,
+     "e": 2.77
+    },
+    {
+     "d": "jo",
+     "sp": "jo",
+     "hl": false,
+     "p": "",
+     "s": 3.001,
+     "e": 3.25
+    },
+    {
+     "d": "har",
+     "sp": "har",
+     "hl": false,
+     "p": "",
+     "s": 3.25,
+     "e": 3.499
+    },
+    {
+     "d": "insaan",
+     "sp": "insaan",
+     "hl": false,
+     "p": "",
+     "s": 3.499,
+     "e": 3.932
+    },
+    {
+     "d": "ke",
+     "sp": "ke",
+     "hl": false,
+     "p": "",
+     "s": 3.932,
+     "e": 4.18
+    },
+    {
+     "d": "liye",
+     "sp": "liye",
+     "hl": false,
+     "p": "",
+     "s": 4.18,
+     "e": 4.429
+    },
+    {
+     "d": "chunta",
+     "sp": "chunta",
+     "hl": true,
+     "p": "",
+     "s": 4.429,
+     "e": 4.862
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": "",
+     "s": 4.862,
+     "e": 5.111
+    },
+    {
+     "d": "ki",
+     "sp": "ki",
+     "hl": false,
+     "p": "",
+     "s": 5.111,
+     "e": 5.36
+    },
+    {
+     "d": "kaun",
+     "sp": "kaun",
+     "hl": false,
+     "p": "",
+     "s": 5.36,
+     "e": 5.608
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 5.608,
+     "e": 5.857
+    },
+    {
+     "d": "ads",
+     "sp": "ads",
+     "hl": false,
+     "p": "",
+     "s": 5.857,
+     "e": 6.106
+    },
+    {
+     "d": "aage",
+     "sp": "aage",
+     "hl": false,
+     "p": "",
+     "s": 6.106,
+     "e": 6.539
+    },
+    {
+     "d": "jaayenge",
+     "sp": "jaayenge",
+     "hl": false,
+     "p": ".",
+     "s": 6.539,
+     "e": 6.972
+    },
+    {
+     "d": "Naya",
+     "sp": "naya",
+     "hl": false,
+     "p": "",
+     "s": 7.182,
+     "e": 7.422
+    },
+    {
+     "d": "version",
+     "sp": "version",
+     "hl": false,
+     "p": "",
+     "s": 7.422,
+     "e": 7.839
+    },
+    {
+     "d": "ek",
+     "sp": "ek",
+     "hl": false,
+     "p": "",
+     "s": 7.839,
+     "e": 8.079
+    },
+    {
+     "d": "server",
+     "sp": "server",
+     "hl": false,
+     "p": "",
+     "s": 8.079,
+     "e": 8.497
+    },
+    {
+     "d": "pe",
+     "sp": "pe",
+     "hl": false,
+     "p": "",
+     "s": 8.497,
+     "e": 8.737
+    },
+    {
+     "d": "har",
+     "sp": "har",
+     "hl": false,
+     "p": "",
+     "s": 8.737,
+     "e": 8.977
+    },
+    {
+     "d": "second",
+     "sp": "second",
+     "hl": true,
+     "p": "",
+     "s": 8.977,
+     "e": 9.395
+    },
+    {
+     "d": "100 crore",
+     "sp": "sau crore",
+     "hl": true,
+     "p": "",
+     "s": 9.395,
+     "e": 9.99
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 9.99,
+     "e": 10.23
+    },
+    {
+     "d": "zyada",
+     "sp": "zyada",
+     "hl": false,
+     "p": "",
+     "s": 10.23,
+     "e": 10.648
+    },
+    {
+     "d": "ads",
+     "sp": "ads",
+     "hl": false,
+     "p": "",
+     "s": 10.648,
+     "e": 10.888
+    },
+    {
+     "d": "check",
+     "sp": "check",
+     "hl": false,
+     "p": "",
+     "s": 10.888,
+     "e": 11.128
+    },
+    {
+     "d": "karta",
+     "sp": "karta",
+     "hl": false,
+     "p": "",
+     "s": 11.128,
+     "e": 11.545
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ".",
+     "s": 11.545,
+     "e": 11.785
+    },
+    {
+     "d": "Pichhle",
+     "sp": "pichhle",
+     "hl": false,
+     "p": "",
+     "s": 11.995,
+     "e": 12.437
+    },
+    {
+     "d": "version",
+     "sp": "version",
+     "hl": false,
+     "p": "",
+     "s": 12.437,
+     "e": 12.878
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 12.878,
+     "e": 13.131
+    },
+    {
+     "d": "100x",
+     "sp": "sau guna",
+     "hl": true,
+     "p": ".",
+     "s": 13.131,
+     "e": 13.76
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "start": 30.877,
+   "dur": 12.266,
+   "audio": "news01/vo/s4.wav",
+   "words": [
+    {
+     "d": "Doosri",
+     "sp": "doosri",
+     "hl": false,
+     "p": ":",
+     "s": 0.12,
+     "e": 0.54
+    },
+    {
+     "d": "ab",
+     "sp": "ab",
+     "hl": false,
+     "p": "",
+     "s": 0.904,
+     "e": 1.118
+    },
+    {
+     "d": "har",
+     "sp": "har",
+     "hl": false,
+     "p": "",
+     "s": 1.118,
+     "e": 1.333
+    },
+    {
+     "d": "eligible",
+     "sp": "eligible",
+     "hl": false,
+     "p": "",
+     "s": 1.333,
+     "e": 2.023
+    },
+    {
+     "d": "ad",
+     "sp": "ad",
+     "hl": false,
+     "p": "",
+     "s": 2.023,
+     "e": 2.238
+    },
+    {
+     "d": "ko",
+     "sp": "ko",
+     "hl": false,
+     "p": "",
+     "s": 2.238,
+     "e": 2.452
+    },
+    {
+     "d": "score",
+     "sp": "score",
+     "hl": true,
+     "p": "",
+     "s": 2.452,
+     "e": 2.825
+    },
+    {
+     "d": "kiya",
+     "sp": "kiya",
+     "hl": false,
+     "p": "",
+     "s": 2.825,
+     "e": 3.04
+    },
+    {
+     "d": "jaata",
+     "sp": "jaata",
+     "hl": false,
+     "p": "",
+     "s": 3.04,
+     "e": 3.413
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ",",
+     "s": 3.413,
+     "e": 3.627
+    },
+    {
+     "d": "ranking",
+     "sp": "ranking",
+     "hl": false,
+     "p": "",
+     "s": 3.892,
+     "e": 4.307
+    },
+    {
+     "d": "jaisi",
+     "sp": "jaisi",
+     "hl": false,
+     "p": "",
+     "s": 4.307,
+     "e": 4.723
+    },
+    {
+     "d": "samajh",
+     "sp": "samajh",
+     "hl": false,
+     "p": "",
+     "s": 4.723,
+     "e": 5.139
+    },
+    {
+     "d": "ke",
+     "sp": "ke",
+     "hl": false,
+     "p": "",
+     "s": 5.139,
+     "e": 5.378
+    },
+    {
+     "d": "saath",
+     "sp": "saath",
+     "hl": false,
+     "p": ".",
+     "s": 5.378,
+     "e": 5.617
+    },
+    {
+     "d": "Har",
+     "sp": "har",
+     "hl": false,
+     "p": "",
+     "s": 5.827,
+     "e": 6.118
+    },
+    {
+     "d": "insaan",
+     "sp": "insaan",
+     "hl": false,
+     "p": "",
+     "s": 6.118,
+     "e": 6.626
+    },
+    {
+     "d": "ke",
+     "sp": "ke",
+     "hl": false,
+     "p": "",
+     "s": 6.626,
+     "e": 6.918
+    },
+    {
+     "d": "liye",
+     "sp": "liye",
+     "hl": false,
+     "p": "",
+     "s": 6.918,
+     "e": 7.21
+    },
+    {
+     "d": "Meta",
+     "sp": "meta",
+     "hl": false,
+     "p": "",
+     "s": 7.21,
+     "e": 7.717
+    },
+    {
+     "d": "woh",
+     "sp": "woh",
+     "hl": false,
+     "p": "",
+     "s": 7.717,
+     "e": 8.009
+    },
+    {
+     "d": "ad",
+     "sp": "ad",
+     "hl": false,
+     "p": "",
+     "s": 8.009,
+     "e": 8.301
+    },
+    {
+     "d": "dhoondhta",
+     "sp": "dhoondhta",
+     "hl": false,
+     "p": "",
+     "s": 8.301,
+     "e": 8.809
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ",",
+     "s": 8.809,
+     "e": 9.1
+    },
+    {
+     "d": "jo",
+     "sp": "jo",
+     "hl": false,
+     "p": "",
+     "s": 9.654,
+     "e": 9.932
+    },
+    {
+     "d": "usse",
+     "sp": "usse",
+     "hl": false,
+     "p": "",
+     "s": 9.932,
+     "e": 10.415
+    },
+    {
+     "d": "sabse",
+     "sp": "sabse",
+     "hl": false,
+     "p": "",
+     "s": 10.415,
+     "e": 10.898
+    },
+    {
+     "d": "zyada",
+     "sp": "zyada",
+     "hl": false,
+     "p": "",
+     "s": 10.898,
+     "e": 11.381
+    },
+    {
+     "d": "fit",
+     "sp": "fit",
+     "hl": true,
+     "p": "",
+     "s": 11.381,
+     "e": 11.659
+    },
+    {
+     "d": "ho",
+     "sp": "ho",
+     "hl": false,
+     "p": ".",
+     "s": 11.659,
+     "e": 11.936
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "start": 43.143,
+   "dur": 11.205,
+   "audio": "news01/vo/s5.wav",
+   "words": [
+    {
+     "d": "Teesri",
+     "sp": "teesri",
+     "hl": false,
+     "p": ",",
+     "s": 0.12,
+     "e": 0.519
+    },
+    {
+     "d": "aapke",
+     "sp": "aapke",
+     "hl": false,
+     "p": "",
+     "s": 0.882,
+     "e": 1.221
+    },
+    {
+     "d": "paise",
+     "sp": "paise",
+     "hl": true,
+     "p": "",
+     "s": 1.221,
+     "e": 1.56
+    },
+    {
+     "d": "wali",
+     "sp": "wali",
+     "hl": false,
+     "p": ":",
+     "s": 1.56,
+     "e": 1.9
+    },
+    {
+     "d": "Meta",
+     "sp": "meta",
+     "hl": false,
+     "p": "",
+     "s": 2.11,
+     "e": 2.481
+    },
+    {
+     "d": "ke",
+     "sp": "ke",
+     "hl": false,
+     "p": "",
+     "s": 2.481,
+     "e": 2.695
+    },
+    {
+     "d": "hisaab",
+     "sp": "hisaab",
+     "hl": false,
+     "p": "",
+     "s": 2.695,
+     "e": 3.067
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 3.067,
+     "e": 3.28
+    },
+    {
+     "d": "is",
+     "sp": "is",
+     "hl": false,
+     "p": "",
+     "s": 3.28,
+     "e": 3.494
+    },
+    {
+     "d": "system",
+     "sp": "system",
+     "hl": false,
+     "p": "",
+     "s": 3.494,
+     "e": 3.866
+    },
+    {
+     "d": "ne",
+     "sp": "ne",
+     "hl": false,
+     "p": "",
+     "s": 3.866,
+     "e": 4.079
+    },
+    {
+     "d": "2025",
+     "sp": "do hazaar pachchees",
+     "hl": false,
+     "p": "",
+     "s": 4.079,
+     "e": 4.925
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 4.925,
+     "e": 5.139
+    },
+    {
+     "d": "Facebook",
+     "sp": "facebook",
+     "hl": false,
+     "p": "",
+     "s": 5.139,
+     "e": 5.669
+    },
+    {
+     "d": "pe",
+     "sp": "pe",
+     "hl": false,
+     "p": "",
+     "s": 5.669,
+     "e": 5.882
+    },
+    {
+     "d": "conversions",
+     "sp": "conversions",
+     "hl": false,
+     "p": "",
+     "s": 5.882,
+     "e": 6.412
+    },
+    {
+     "d": "+2.4%",
+     "sp": "do point chaar percent",
+     "hl": true,
+     "p": "",
+     "s": 6.412,
+     "e": 7.259
+    },
+    {
+     "d": "badhaye",
+     "sp": "badhaye",
+     "hl": false,
+     "p": ".",
+     "s": 7.259,
+     "e": 7.63
+    },
+    {
+     "d": "Aur",
+     "sp": "aur",
+     "hl": false,
+     "p": "",
+     "s": 7.84,
+     "e": 8.032
+    },
+    {
+     "d": "yeh",
+     "sp": "yeh",
+     "hl": false,
+     "p": "",
+     "s": 8.032,
+     "e": 8.223
+    },
+    {
+     "d": "fayda",
+     "sp": "fayda",
+     "hl": false,
+     "p": "",
+     "s": 8.223,
+     "e": 8.556
+    },
+    {
+     "d": "apne aap",
+     "sp": "apne aap",
+     "hl": true,
+     "p": "",
+     "s": 8.556,
+     "e": 9.03
+    },
+    {
+     "d": "milta",
+     "sp": "milta",
+     "hl": false,
+     "p": "",
+     "s": 9.03,
+     "e": 9.363
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ",",
+     "s": 9.363,
+     "e": 9.555
+    },
+    {
+     "d": "koi",
+     "sp": "koi",
+     "hl": false,
+     "p": "",
+     "s": 9.803,
+     "e": 9.999
+    },
+    {
+     "d": "nayi",
+     "sp": "nayi",
+     "hl": false,
+     "p": "",
+     "s": 9.999,
+     "e": 10.195
+    },
+    {
+     "d": "setting",
+     "sp": "setting",
+     "hl": false,
+     "p": "",
+     "s": 10.195,
+     "e": 10.535
+    },
+    {
+     "d": "nahi",
+     "sp": "nahi",
+     "hl": false,
+     "p": ".",
+     "s": 10.535,
+     "e": 10.875
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "start": 54.349,
+   "dur": 16.783,
+   "audio": "news01/vo/s6.wav",
+   "words": [
+    {
+     "d": "Ab",
+     "sp": "ab",
+     "hl": false,
+     "p": "",
+     "s": 0.12,
+     "e": 0.346
+    },
+    {
+     "d": "asli",
+     "sp": "asli",
+     "hl": true,
+     "p": "",
+     "s": 0.346,
+     "e": 0.74
+    },
+    {
+     "d": "sawaal",
+     "sp": "sawaal",
+     "hl": false,
+     "p": ":",
+     "s": 0.74,
+     "e": 1.134
+    },
+    {
+     "d": "jab",
+     "sp": "jab",
+     "hl": false,
+     "p": "",
+     "s": 1.649,
+     "e": 1.858
+    },
+    {
+     "d": "Meta",
+     "sp": "meta",
+     "hl": false,
+     "p": "",
+     "s": 1.858,
+     "e": 2.221
+    },
+    {
+     "d": "har",
+     "sp": "har",
+     "hl": false,
+     "p": "",
+     "s": 2.221,
+     "e": 2.43
+    },
+    {
+     "d": "insaan",
+     "sp": "insaan",
+     "hl": false,
+     "p": "",
+     "s": 2.43,
+     "e": 2.793
+    },
+    {
+     "d": "ke",
+     "sp": "ke",
+     "hl": false,
+     "p": "",
+     "s": 2.793,
+     "e": 3.002
+    },
+    {
+     "d": "liye",
+     "sp": "liye",
+     "hl": false,
+     "p": "",
+     "s": 3.002,
+     "e": 3.211
+    },
+    {
+     "d": "alag",
+     "sp": "alag",
+     "hl": false,
+     "p": "",
+     "s": 3.211,
+     "e": 3.574
+    },
+    {
+     "d": "ad",
+     "sp": "ad",
+     "hl": false,
+     "p": "",
+     "s": 3.574,
+     "e": 3.783
+    },
+    {
+     "d": "dhoondh",
+     "sp": "dhoondh",
+     "hl": false,
+     "p": "",
+     "s": 3.783,
+     "e": 3.991
+    },
+    {
+     "d": "raha",
+     "sp": "raha",
+     "hl": false,
+     "p": "",
+     "s": 3.991,
+     "e": 4.355
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ",",
+     "s": 4.355,
+     "e": 4.563
+    },
+    {
+     "d": "aapke",
+     "sp": "aapke",
+     "hl": false,
+     "p": "",
+     "s": 4.937,
+     "e": 5.329
+    },
+    {
+     "d": "paas",
+     "sp": "paas",
+     "hl": false,
+     "p": "",
+     "s": 5.329,
+     "e": 5.554
+    },
+    {
+     "d": "kitne",
+     "sp": "kitne",
+     "hl": false,
+     "p": "",
+     "s": 5.554,
+     "e": 5.947
+    },
+    {
+     "d": "alag",
+     "sp": "alag",
+     "hl": true,
+     "p": "",
+     "s": 5.947,
+     "e": 6.339
+    },
+    {
+     "d": "ads",
+     "sp": "ads",
+     "hl": false,
+     "p": "",
+     "s": 6.339,
+     "e": 6.565
+    },
+    {
+     "d": "hain?",
+     "sp": "hain",
+     "hl": false,
+     "p": "?",
+     "s": 6.565,
+     "e": 6.79
+    },
+    {
+     "d": "Maan",
+     "sp": "maan",
+     "hl": false,
+     "p": "",
+     "s": 7,
+     "e": 7.249
+    },
+    {
+     "d": "lo",
+     "sp": "lo",
+     "hl": false,
+     "p": "",
+     "s": 7.249,
+     "e": 7.498
+    },
+    {
+     "d": "ek",
+     "sp": "ek",
+     "hl": false,
+     "p": "",
+     "s": 7.498,
+     "e": 7.746
+    },
+    {
+     "d": "hi",
+     "sp": "hi",
+     "hl": false,
+     "p": "",
+     "s": 7.746,
+     "e": 7.995
+    },
+    {
+     "d": "ad",
+     "sp": "ad",
+     "hl": false,
+     "p": "",
+     "s": 7.995,
+     "e": 8.244
+    },
+    {
+     "d": "ke",
+     "sp": "ke",
+     "hl": false,
+     "p": "",
+     "s": 8.244,
+     "e": 8.492
+    },
+    {
+     "d": "10",
+     "sp": "dus",
+     "hl": false,
+     "p": "",
+     "s": 8.492,
+     "e": 8.741
+    },
+    {
+     "d": "version",
+     "sp": "version",
+     "hl": false,
+     "p": ",",
+     "s": 8.741,
+     "e": 9.174
+    },
+    {
+     "d": "₹20,000",
+     "sp": "bees hazaar",
+     "hl": true,
+     "p": "",
+     "s": 9.495,
+     "e": 10.045
+    },
+    {
+     "d": "mein",
+     "sp": "mein",
+     "hl": false,
+     "p": ":",
+     "s": 10.045,
+     "e": 10.267
+    },
+    {
+     "d": "baat",
+     "sp": "baat",
+     "hl": false,
+     "p": "",
+     "s": 10.267,
+     "e": 10.489
+    },
+    {
+     "d": "ek",
+     "sp": "ek",
+     "hl": true,
+     "p": "",
+     "s": 10.489,
+     "e": 10.71
+    },
+    {
+     "d": "hi",
+     "sp": "hi",
+     "hl": false,
+     "p": ".",
+     "s": 10.71,
+     "e": 10.932
+    },
+    {
+     "d": "4",
+     "sp": "chaar",
+     "hl": false,
+     "p": "",
+     "s": 11.142,
+     "e": 11.361
+    },
+    {
+     "d": "alag",
+     "sp": "alag",
+     "hl": false,
+     "p": "",
+     "s": 11.361,
+     "e": 11.743
+    },
+    {
+     "d": "angle",
+     "sp": "angle",
+     "hl": false,
+     "p": ",",
+     "s": 11.743,
+     "e": 12.124
+    },
+    {
+     "d": "₹8,000",
+     "sp": "aath hazaar",
+     "hl": true,
+     "p": "",
+     "s": 12.516,
+     "e": 13.086
+    },
+    {
+     "d": "mein",
+     "sp": "mein",
+     "hl": false,
+     "p": ":",
+     "s": 13.086,
+     "e": 13.316
+    },
+    {
+     "d": "4",
+     "sp": "chaar",
+     "hl": false,
+     "p": "",
+     "s": 13.747,
+     "e": 13.969
+    },
+    {
+     "d": "alag",
+     "sp": "alag",
+     "hl": false,
+     "p": "",
+     "s": 13.969,
+     "e": 14.356
+    },
+    {
+     "d": "baatein",
+     "sp": "baatein",
+     "hl": true,
+     "p": ",",
+     "s": 14.356,
+     "e": 14.744
+    },
+    {
+     "d": "4",
+     "sp": "chaar",
+     "hl": false,
+     "p": "",
+     "s": 14.956,
+     "e": 15.144
+    },
+    {
+     "d": "tarah",
+     "sp": "tarah",
+     "hl": false,
+     "p": "",
+     "s": 15.144,
+     "e": 15.471
+    },
+    {
+     "d": "ke",
+     "sp": "ke",
+     "hl": false,
+     "p": "",
+     "s": 15.471,
+     "e": 15.659
+    },
+    {
+     "d": "khareedne",
+     "sp": "khareedne",
+     "hl": true,
+     "p": "",
+     "s": 15.659,
+     "e": 16.126
+    },
+    {
+     "d": "wale",
+     "sp": "wale",
+     "hl": false,
+     "p": ".",
+     "s": 16.126,
+     "e": 16.453
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "start": 71.132,
+   "dur": 11.258,
+   "audio": "news01/vo/s7.wav",
+   "words": [
+    {
+     "d": "Toh",
+     "sp": "toh",
+     "hl": false,
+     "p": "",
+     "s": 0.12,
+     "e": 0.383
+    },
+    {
+     "d": "teen",
+     "sp": "teen",
+     "hl": true,
+     "p": "",
+     "s": 0.383,
+     "e": 0.645
+    },
+    {
+     "d": "kaam",
+     "sp": "kaam",
+     "hl": false,
+     "p": ".",
+     "s": 0.645,
+     "e": 0.908
+    },
+    {
+     "d": "Har",
+     "sp": "har",
+     "hl": false,
+     "p": "",
+     "s": 1.118,
+     "e": 1.352
+    },
+    {
+     "d": "creative",
+     "sp": "creative",
+     "hl": false,
+     "p": "",
+     "s": 1.352,
+     "e": 1.931
+    },
+    {
+     "d": "mein",
+     "sp": "mein",
+     "hl": false,
+     "p": "",
+     "s": 1.931,
+     "e": 2.165
+    },
+    {
+     "d": "alag",
+     "sp": "alag",
+     "hl": true,
+     "p": "",
+     "s": 2.165,
+     "e": 2.571
+    },
+    {
+     "d": "baat",
+     "sp": "baat",
+     "hl": false,
+     "p": ":",
+     "s": 2.571,
+     "e": 2.805
+    },
+    {
+     "d": "problem",
+     "sp": "problem",
+     "hl": false,
+     "p": ",",
+     "s": 3.016,
+     "e": 3.416
+    },
+    {
+     "d": "review",
+     "sp": "review",
+     "hl": false,
+     "p": ",",
+     "s": 3.703,
+     "e": 4.059
+    },
+    {
+     "d": "use",
+     "sp": "use",
+     "hl": false,
+     "p": ",",
+     "s": 4.313,
+     "e": 4.705
+    },
+    {
+     "d": "comparison",
+     "sp": "comparison",
+     "hl": false,
+     "p": ".",
+     "s": 5.001,
+     "e": 5.64
+    },
+    {
+     "d": "Har",
+     "sp": "har",
+     "hl": false,
+     "p": "",
+     "s": 5.85,
+     "e": 6.1
+    },
+    {
+     "d": "hafte",
+     "sp": "hafte",
+     "hl": false,
+     "p": "",
+     "s": 6.1,
+     "e": 6.534
+    },
+    {
+     "d": "2-3",
+     "sp": "do teen",
+     "hl": false,
+     "p": "",
+     "s": 6.534,
+     "e": 6.969
+    },
+    {
+     "d": "naye",
+     "sp": "naye",
+     "hl": false,
+     "p": "",
+     "s": 6.969,
+     "e": 7.218
+    },
+    {
+     "d": "angle",
+     "sp": "angle",
+     "hl": true,
+     "p": ".",
+     "s": 7.218,
+     "e": 7.653
+    },
+    {
+     "d": "Aur",
+     "sp": "aur",
+     "hl": false,
+     "p": "",
+     "s": 7.863,
+     "e": 8.058
+    },
+    {
+     "d": "targeting",
+     "sp": "targeting",
+     "hl": true,
+     "p": "",
+     "s": 8.058,
+     "e": 8.542
+    },
+    {
+     "d": "itni",
+     "sp": "itni",
+     "hl": false,
+     "p": "",
+     "s": 8.542,
+     "e": 8.882
+    },
+    {
+     "d": "tight",
+     "sp": "tight",
+     "hl": false,
+     "p": "",
+     "s": 8.882,
+     "e": 9.077
+    },
+    {
+     "d": "mat",
+     "sp": "mat",
+     "hl": false,
+     "p": "",
+     "s": 9.077,
+     "e": 9.272
+    },
+    {
+     "d": "karo",
+     "sp": "karo",
+     "hl": false,
+     "p": ",",
+     "s": 9.272,
+     "e": 9.612
+    },
+    {
+     "d": "ki",
+     "sp": "ki",
+     "hl": false,
+     "p": "",
+     "s": 9.612,
+     "e": 9.807
+    },
+    {
+     "d": "system",
+     "sp": "system",
+     "hl": false,
+     "p": "",
+     "s": 9.807,
+     "e": 10.147
+    },
+    {
+     "d": "ke",
+     "sp": "ke",
+     "hl": false,
+     "p": "",
+     "s": 10.147,
+     "e": 10.342
+    },
+    {
+     "d": "haath",
+     "sp": "haath",
+     "hl": false,
+     "p": "",
+     "s": 10.342,
+     "e": 10.537
+    },
+    {
+     "d": "bandh",
+     "sp": "bandh",
+     "hl": false,
+     "p": "",
+     "s": 10.537,
+     "e": 10.732
+    },
+    {
+     "d": "jaayein",
+     "sp": "jaayein",
+     "hl": false,
+     "p": ".",
+     "s": 10.732,
+     "e": 10.928
+    }
+   ]
+  },
+  {
+   "id": "s8",
+   "start": 82.389,
+   "dur": 12.181,
+   "audio": "news01/vo/s8.wav",
+   "words": [
+    {
+     "d": "Comment",
+     "sp": "comment",
+     "hl": false,
+     "p": "",
+     "s": 0.12,
+     "e": 0.416
+    },
+    {
+     "d": "karo",
+     "sp": "karo",
+     "hl": false,
+     "p": "",
+     "s": 0.416,
+     "e": 0.711
+    },
+    {
+     "d": "ANDROMEDA",
+     "sp": "andromeda",
+     "hl": true,
+     "p": ",",
+     "s": 0.711,
+     "e": 1.259
+    },
+    {
+     "d": "10",
+     "sp": "das",
+     "hl": false,
+     "p": "",
+     "s": 1.537,
+     "e": 1.736
+    },
+    {
+     "d": "creative",
+     "sp": "creative",
+     "hl": false,
+     "p": "",
+     "s": 1.736,
+     "e": 2.228
+    },
+    {
+     "d": "angles",
+     "sp": "angles",
+     "hl": false,
+     "p": "",
+     "s": 2.228,
+     "e": 2.573
+    },
+    {
+     "d": "DM",
+     "sp": "dee em",
+     "hl": true,
+     "p": "",
+     "s": 2.573,
+     "e": 2.918
+    },
+    {
+     "d": "mein",
+     "sp": "mein",
+     "hl": false,
+     "p": ".",
+     "s": 2.918,
+     "e": 3.117
+    },
+    {
+     "d": "Kal",
+     "sp": "kal",
+     "hl": false,
+     "p": "",
+     "s": 3.327,
+     "e": 3.521
+    },
+    {
+     "d": "ka",
+     "sp": "ka",
+     "hl": false,
+     "p": "",
+     "s": 3.521,
+     "e": 3.715
+    },
+    {
+     "d": "case",
+     "sp": "case",
+     "hl": false,
+     "p": ":",
+     "s": 3.715,
+     "e": 4.054
+    },
+    {
+     "d": "ads",
+     "sp": "ads",
+     "hl": false,
+     "p": "",
+     "s": 4.696,
+     "e": 4.935
+    },
+    {
+     "d": "band",
+     "sp": "band",
+     "hl": false,
+     "p": "",
+     "s": 4.935,
+     "e": 5.175
+    },
+    {
+     "d": "karte",
+     "sp": "karte",
+     "hl": false,
+     "p": "",
+     "s": 5.175,
+     "e": 5.591
+    },
+    {
+     "d": "hi",
+     "sp": "hi",
+     "hl": false,
+     "p": "",
+     "s": 5.591,
+     "e": 5.831
+    },
+    {
+     "d": "sales",
+     "sp": "sales",
+     "hl": false,
+     "p": "",
+     "s": 5.831,
+     "e": 6.247
+    },
+    {
+     "d": "zero?",
+     "sp": "zero",
+     "hl": true,
+     "p": "?",
+     "s": 6.247,
+     "e": 6.664
+    },
+    {
+     "d": "Meta",
+     "sp": "meta",
+     "hl": false,
+     "p": "",
+     "s": 6.874,
+     "e": 7.208
+    },
+    {
+     "d": "ka",
+     "sp": "ka",
+     "hl": false,
+     "p": "",
+     "s": 7.208,
+     "e": 7.399
+    },
+    {
+     "d": "har",
+     "sp": "har",
+     "hl": false,
+     "p": "",
+     "s": 7.399,
+     "e": 7.591
+    },
+    {
+     "d": "update",
+     "sp": "update",
+     "hl": false,
+     "p": "",
+     "s": 7.591,
+     "e": 8.066
+    },
+    {
+     "d": "aasaan",
+     "sp": "aasaan",
+     "hl": false,
+     "p": "",
+     "s": 8.066,
+     "e": 8.4
+    },
+    {
+     "d": "bhasha",
+     "sp": "bhasha",
+     "hl": false,
+     "p": "",
+     "s": 8.4,
+     "e": 8.734
+    },
+    {
+     "d": "mein",
+     "sp": "mein",
+     "hl": false,
+     "p": "",
+     "s": 8.734,
+     "e": 8.925
+    },
+    {
+     "d": "samajhne",
+     "sp": "samajhne",
+     "hl": false,
+     "p": "",
+     "s": 8.925,
+     "e": 9.401
+    },
+    {
+     "d": "ke",
+     "sp": "ke",
+     "hl": false,
+     "p": "",
+     "s": 9.401,
+     "e": 9.592
+    },
+    {
+     "d": "liye",
+     "sp": "liye",
+     "hl": false,
+     "p": "",
+     "s": 9.592,
+     "e": 9.784
+    },
+    {
+     "d": "follow",
+     "sp": "follow",
+     "hl": true,
+     "p": "",
+     "s": 9.784,
+     "e": 10.118
+    },
+    {
+     "d": "karo",
+     "sp": "karo",
+     "hl": false,
+     "p": ".",
+     "s": 10.118,
+     "e": 10.451
+    }
+   ]
+  }
+ ],
+ "total": 94.571
+}

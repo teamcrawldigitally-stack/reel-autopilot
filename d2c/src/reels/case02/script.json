@@ -1,0 +1,114 @@
+{
+  "id": "case02-audit",
+  "tag": "CASE #02",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.05,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.12,
+    "tail": 0.22,
+    "endHold": 1.0
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Ad *budget double karne wale ho?",
+          "voice": "ऐड बजट डबल करने वाले हो?",
+          "gapAfter": 0.2
+        },
+        {
+          "roman": "*Pehle yeh ek number dekho.",
+          "voice": "पहले ये एक नंबर देखो।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "*Conversion_rate.",
+          "voice": "कन्वर्ज़न रेट।"
+        },
+        {
+          "roman": "Yeh double hua, toh bina budget badhaye *orders double.",
+          "voice": "ये डबल हुआ, तो बिना बजट बढ़ाए ऑर्डर्स डबल।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Maan lo *₹10,000|das_hazaar ke ads se *1,000|ek_hazaar log aaye.",
+          "voice": "मान लो दस हज़ार के ऐड्स से एक हज़ार लोग आए।"
+        },
+        {
+          "roman": "Sau mein se ek ne khareeda: *10|das order.",
+          "voice": "सौ में से एक ने ख़रीदा: दस ऑर्डर।"
+        },
+        {
+          "roman": "Har order *₹1,000|ek_hazaar ka.",
+          "voice": "हर ऑर्डर एक हज़ार का।",
+          "gapAfter": 0.25
+        },
+        {
+          "roman": "Par sau mein se *do khareedein, toh *20|bees order.",
+          "voice": "पर सौ में से दो ख़रीदें, तो बीस ऑर्डर।"
+        },
+        {
+          "roman": "Har order sirf *₹500|paanch_sau ka.",
+          "voice": "हर ऑर्डर सिर्फ़ पाँच सौ का।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Toh 20|bees order ke liye *₹20,000|bees_hazaar mat lagao, *page sudhaaro.",
+          "voice": "तो बीस ऑर्डर के लिए बीस हज़ार मत लगाओ, पेज सुधारो।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Ilaaj: ek, bina scroll kiye *photo, price, rating, add to cart.",
+          "voice": "इलाज: एक, बिना स्क्रॉल किए फ़ोटो, प्राइस, रेटिंग, ऐड टू कार्ट।"
+        },
+        {
+          "roman": "Do, product use karte hue *video.",
+          "voice": "दो, प्रोडक्ट यूज़ करते हुए वीडियो।"
+        },
+        {
+          "roman": "Teen, price ke paas photo wale *reviews.",
+          "voice": "तीन, प्राइस के पास फ़ोटो वाले रिव्यूज़।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *AUDIT|audit, free page check *DM|dee_em mein.",
+          "voice": "कमेंट करो ऑडिट, फ़्री पेज चेक डी एम में।"
+        },
+        {
+          "roman": "Kal ka case: *bada bill.",
+          "voice": "कल का केस: बड़ा बिल।"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

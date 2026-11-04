@@ -1,0 +1,58 @@
+{
+  "id": "case03-combo",
+  "tag": "CASE #03",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.05, "lang": "hi-IN", "script": "all Devanagari" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 1.0 },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        { "roman": "Aur *customers chahiye?", "voice": "और कस्टमर्स चाहिए?" },
+        { "roman": "*Ruko.", "voice": "रुको।", "gapAfter": 0.15 },
+        { "roman": "Pehle har customer ka *bill badhao.", "voice": "पहले हर कस्टमर का बिल बढ़ाओ।" }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        { "roman": "Wahi customer, wahi ad kharcha, aur *4x|chaar_guna profit.", "voice": "वही कस्टमर, वही ऐड खर्चा, और चार गुना प्रॉफ़िट।" }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        { "roman": "Maan lo order *₹600|chhe_sau ka.", "voice": "मान लो ऑर्डर छह सौ का।" },
+        { "roman": "Aadha product aur shipping mein: *₹300|teen_sau bache.", "voice": "आधा प्रोडक्ट और शिपिंग में: तीन सौ बचे।" },
+        { "roman": "Ad pe *₹250|do_sau_pachaas.", "voice": "ऐड पे दो सौ पचास।" },
+        { "roman": "Haath mein sirf *₹50|pachaas.", "voice": "हाथ में सिर्फ़ पचास।", "gapAfter": 0.3 },
+        { "roman": "Ab wahi customer *combo le, *₹900|nau_sau ka.", "voice": "अब वही कस्टमर कॉम्बो ले, नौ सौ का।" },
+        { "roman": "*₹450|saade_chaar_sau bache, ad wahi *₹250|do_sau_pachaas.", "voice": "साढ़े चार सौ बचे, ऐड वही दो सौ पचास।" },
+        { "roman": "Haath mein *₹200|do_sau.", "voice": "हाथ में दो सौ।" }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        { "roman": "*100|sau order pe: *₹5,000|paanch_hazaar ya *₹20,000|bees_hazaar.", "voice": "सौ ऑर्डर पे: पाँच हज़ार या बीस हज़ार।" },
+        { "roman": "*4x|chaar_guna.", "voice": "चार गुना।" }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        { "roman": "Teen tareeke.", "voice": "तीन तरीक़े।" },
+        { "roman": "*Combo: do lo, sau bachao.", "voice": "कॉम्बो: दो लो, सौ बचाओ।" },
+        { "roman": "*Free_shipping limit, average order se thoda upar.", "voice": "फ़्री शिपिंग लिमिट, एवरेज ऑर्डर से थोड़ा ऊपर।" },
+        { "roman": "Aur cart mein: *isse saath lo.", "voice": "और कार्ट में: इसे साथ लो।" }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        { "roman": "Comment karo *COMBO|combo, calculator *DM|dee_em mein.", "voice": "कमेंट करो कॉम्बो, कैलकुलेटर डी एम में।" },
+        { "roman": "Kal: pehle order pe *loss, phir bhi smart?", "voice": "कल: पहले ऑर्डर पे लॉस, फिर भी स्मार्ट?" },
+        { "roman": "*Follow karo.", "voice": "फ़ॉलो करो।" }
+      ]
+    }
+  ]
+}

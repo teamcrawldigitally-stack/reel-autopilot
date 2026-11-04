@@ -1,0 +1,138 @@
+{
+  "id": "case01-brand",
+  "tag": "CASE #01",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.05,
+    "lang": "hi-IN",
+    "script": "all Devanagari (English words transliterated)"
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Ads *band karte hi sales *zero?",
+          "voice": "ऐड्स बंद करते ही सेल्स ज़ीरो?",
+          "gapAfter": 0.25
+        },
+        {
+          "roman": "Toh aapke paas *brand nahi, *ad_account hai.",
+          "voice": "तो आपके पास ब्रांड नहीं, ऐड अकाउंट है।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Ek *number hai, jo batata hai aapka brand ban raha hai ya nahi.",
+          "voice": "एक नंबर है, जो बताता है आपका ब्रांड बन रहा है या नहीं।"
+        },
+        {
+          "roman": "Aakhri mein usse badhane ke *teen tareeke.",
+          "voice": "आख़िरी में उसे बढ़ाने के तीन तरीक़े।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Maan lo *do brands, dono ke mahine mein *300|teen_sau order.",
+          "voice": "मान लो दो ब्रांड्स, दोनों के महीने में तीन सौ ऑर्डर।"
+        },
+        {
+          "roman": "Brand A|brand_ae ke *270|do_sau_sattar order ads se aate hain, sirf *30|tees bina ads ke.",
+          "voice": "ब्रांड ए के दो सौ सत्तर ऑर्डर ऐड्स से आते हैं, सिर्फ़ तीस बिना ऐड्स के।"
+        },
+        {
+          "roman": "Brand B|brand_bee ke *180|ek_sau_assi ads se, aur *120|ek_sau_bees bina ads ke.",
+          "voice": "ब्रांड बी के एक सौ अस्सी ऐड्स से, और एक सौ बीस बिना ऐड्स के।"
+        },
+        {
+          "roman": "Ab *ads band karo.",
+          "voice": "अब ऐड्स बंद करो।",
+          "gapAfter": 0.3
+        },
+        {
+          "roman": "Brand A|brand_ae ke bachte hain *30|tees order.",
+          "voice": "ब्रांड ए के बचते हैं तीस ऑर्डर।"
+        },
+        {
+          "roman": "Brand B|brand_bee ke *120|ek_sau_bees.",
+          "voice": "ब्रांड बी के एक सौ बीस।"
+        },
+        {
+          "roman": "Kaun sa brand zyada *majboot hai?",
+          "voice": "कौन सा ब्रांड ज़्यादा मज़बूत है?"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "*Sale season mein ads aksar *mehenge ho jaate hain.",
+          "voice": "सेल सीज़न में ऐड्स अक्सर महँगे हो जाते हैं।"
+        },
+        {
+          "roman": "Jiska har order ad se aata hai, uska *profit sabse pehle girta hai.",
+          "voice": "जिसका हर ऑर्डर ऐड से आता है, उसका प्रॉफ़िट सबसे पहले गिरता है।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Ilaaj, *teen kaam.",
+          "voice": "इलाज, तीन काम।"
+        },
+        {
+          "roman": "Purane customers ko *WhatsApp pe doosri baar bulao.",
+          "voice": "पुराने कस्टमर्स को व्हाट्सऐप पे दूसरी बार बुलाओ।"
+        },
+        {
+          "roman": "Har hafte *organic content daalo, ads ke bina.",
+          "voice": "हर हफ़्ते ऑर्गेनिक कंटेंट डालो, ऐड्स के बिना।"
+        },
+        {
+          "roman": "Aur har parcel mein ek *card rakho: brand ka naam, aur wapas aane ki ek wajah.",
+          "voice": "और हर पार्सल में एक कार्ड रखो: ब्रांड का नाम, और वापस आने की एक वजह।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Aaj apna *number nikalo: bina ads ke kitne order aaye, total ka kitna *percent.",
+          "voice": "आज अपना नंबर निकालो: बिना ऐड्स के कितने ऑर्डर आए, टोटल का कितना परसेंट।"
+        },
+        {
+          "roman": "Har mahine yeh *badhna chahiye.",
+          "voice": "हर महीने ये बढ़ना चाहिए।"
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "lines": [
+        {
+          "roman": "Comment karo *BRAND, 10|dus tareeke *DM|dee_em mein.",
+          "voice": "कमेंट करो ब्रांड, दस तरीक़े डी एम में।"
+        },
+        {
+          "roman": "Kal ka case: ad *budget double karne se pehle, yeh number dekh lena.",
+          "voice": "कल का केस: ऐड बजट डबल करने से पहले, ये नंबर देख लेना।"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

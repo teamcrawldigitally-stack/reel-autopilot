@@ -1,0 +1,71 @@
+{
+  "id": "news01-andromeda",
+  "tag": "NEWS #01",
+  "voice": { "speaker": "aditya", "model": "bulbul:v3", "pace": 1.15, "lang": "hi-IN" },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        { "roman": "Facebook ya Instagram pe *ads chalate ho?", "voice": "Facebook या Instagram पे ads चलाते हो?" },
+        { "roman": "Toh *ruko.", "voice": "तो रुको।", "gapBefore": 0.12, "gapAfter": 0.3 },
+        { "roman": "Meta ne woh *system badal diya hai, jo tay karta hai ki aapka ad *kise dikhega.", "voice": "Meta ने वो system बदल दिया है, जो तय करता है कि आपका ad किसे दिखेगा।" }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        { "roman": "Log ise *Andromeda 2.0|two_point_o keh rahe hain.", "voice": "लोग इसे Andromeda टू पॉइंट ओ कह रहे हैं।" },
+        { "roman": "*Teen cheezein badli hain, aur teesri seedha aapke ad ke *paise se judi hai.", "voice": "तीन चीज़ें बदली हैं, और तीसरी सीधा आपके ad के पैसे से जुड़ी है।" }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        { "roman": "Pehli: *speed.", "voice": "पहली: speed." },
+        { "roman": "Andromeda woh system hai, jo har insaan ke liye *chunta hai ki kaun se ads aage jaayenge.", "voice": "Andromeda वो system है, जो हर इंसान के लिए चुनता है कि कौन से ads आगे जाएँगे।" },
+        { "roman": "Naya version ek server pe har *second *100_crore|sau_crore se zyada ads check karta hai.", "voice": "नया version एक server पे हर second सौ करोड़ से ज़्यादा ads check करता है।" },
+        { "roman": "Pichhle version se *100x|sau_guna.", "voice": "पिछले version से सौ गुना।" }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        { "roman": "Doosri: ab har eligible ad ko *score kiya jaata hai, ranking jaisi samajh ke saath.", "voice": "दूसरी: अब हर eligible ad को score किया जाता है, ranking जैसी समझ के साथ।" },
+        { "roman": "Har insaan ke liye Meta woh ad dhoondhta hai, jo usse sabse zyada *fit ho.", "voice": "हर इंसान के लिए Meta वो ad ढूँढता है, जो उससे सबसे ज़्यादा fit हो।" }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        { "roman": "Teesri, aapke *paise wali:", "voice": "तीसरी, आपके पैसे वाली:" },
+        { "roman": "Meta ke hisaab se is system ne 2025|do_hazaar_pachchees se Facebook pe conversions *+2.4%|do_point_chaar_percent badhaye.", "voice": "Meta के हिसाब से इस system ने दो हज़ार पच्चीस से Facebook पे conversions दो पॉइंट चार percent बढ़ाए।" },
+        { "roman": "Aur yeh fayda *apne_aap milta hai, koi nayi setting nahi.", "voice": "और ये फ़ायदा अपने आप मिलता है, कोई नई setting नहीं।" }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        { "roman": "Ab *asli sawaal: jab Meta har insaan ke liye alag ad dhoondh raha hai, aapke paas kitne *alag ads hain?", "voice": "अब असली सवाल: जब Meta हर इंसान के लिए अलग ad ढूँढ रहा है, आपके पास कितने अलग ads हैं?" },
+        { "roman": "Maan lo ek hi ad ke 10|dus version, *₹20,000|bees_hazaar mein: baat *ek hi.", "voice": "मान लो एक ही ad के दस version, बीस हज़ार में: बात एक ही।" },
+        { "roman": "4|chaar alag angle, *₹8,000|aath_hazaar mein: 4|chaar alag *baatein, 4|chaar tarah ke *khareedne wale.", "voice": "चार अलग angle, आठ हज़ार में: चार अलग बातें, चार तरह के ख़रीदने वाले।" }
+      ]
+    },
+    {
+      "id": "s7",
+      "lines": [
+        { "roman": "Toh *teen kaam.", "voice": "तो तीन काम।" },
+        { "roman": "Har creative mein *alag baat: problem, review, use, comparison.", "voice": "हर creative में अलग बात: problem, review, use, comparison." },
+        { "roman": "Har hafte 2-3|do_teen naye *angle.", "voice": "हर हफ़्ते दो तीन नए angle." },
+        { "roman": "Aur *targeting itni tight mat karo, ki system ke haath bandh jaayein.", "voice": "और targeting इतनी tight मत करो, कि system के हाथ बँध जाएँ।" }
+      ]
+    },
+    {
+      "id": "s8",
+      "lines": [
+        { "roman": "Comment karo *ANDROMEDA, 10|das creative angles *DM|dee_em mein.", "voice": "Comment करो ANDROMEDA, दस creative angles DM में।" },
+        { "roman": "Kal ka case: ads band karte hi sales *zero?", "voice": "कल का case: ads बंद करते ही sales zero?" },
+        { "roman": "Meta ka har update aasaan bhasha mein samajhne ke liye *follow karo.", "voice": "Meta का हर update आसान भाषा में समझने के लिए follow करो।" }
+      ]
+    }
+  ]
+}
