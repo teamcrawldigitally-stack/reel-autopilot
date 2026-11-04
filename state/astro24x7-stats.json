@@ -1,0 +1,48 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-11-05",
+      "at": "2026-11-04T20:23:39.454Z",
+      "followers": 3327,
+      "mediaCount": 1,
+      "reels": [
+        {
+          "id": "01-12-crore-log",
+          "kind": "normal",
+          "title": "12 करोड़ लोग, एक राशिफल?",
+          "look": "sticker",
+          "type": "evergreen",
+          "hook": "question",
+          "slot": "00:20",
+          "ageHours": 2,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfVI7V8FM2g/"
+        },
+        {
+          "id": "01-12-crore-log",
+          "kind": "trial",
+          "title": "12 करोड़ लोग, एक राशिफल?",
+          "look": "sticker",
+          "type": "evergreen",
+          "hook": "question",
+          "slot": "00:30",
+          "ageHours": 1,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfVKAZdCNVD/"
+        }
+      ]
+    }
+  ],
+  "insightsRefused": [
+    "views: (#10) Application does not have permission for this action",
+    "reach: (#10) Application does not have permission for this action",
+    "saved: (#10) Application does not have permission for this action",
+    "shares: (#10) Application does not have permission for this action",
+    "total_interactions: (#10) Application does not have permission for this action",
+    "ig_reels_avg_watch_time: (#10) Application does not have permission for this action",
+    "follows: (#10) Application does not have permission for this action",
+    "profile_visits: (#10) Application does not have permission for this action"
+  ]
+}
