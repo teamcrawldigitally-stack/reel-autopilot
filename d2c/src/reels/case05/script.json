@@ -1,0 +1,54 @@
+{
+  "id": "case05-review",
+  "tag": "CASE #05",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.05, "lang": "hi-IN", "script": "all Devanagari" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 1.0 },
+  "source": "Spiegel Research Center, Northwestern University: How Online Reviews Influence Sales (2017) — purchase likelihood peaks at 4.0–4.7 and falls toward 5.0; 5 reviews = 270% higher purchase likelihood than 0",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        { "roman": "Perfect *5-star|five_star rating, phir bhi sale *kam?", "voice": "परफ़ेक्ट फ़ाइव स्टार रेटिंग, फिर भी सेल कम?" },
+        { "roman": "Ho sakta hai, *5.0|five_point_zero hi problem ho.", "voice": "हो सकता है, फ़ाइव पॉइंट ज़ीरो ही प्रॉब्लम हो।" }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        { "roman": "Northwestern University ki *research kehti hai:", "voice": "नॉर्थवेस्टर्न यूनिवर्सिटी की रिसर्च कहती है:" },
+        { "roman": "Log sabse zyada *4.0–4.7|chaar_se_chaar_point_saat rating pe khareedte hain.", "voice": "लोग सबसे ज़्यादा चार से चार पॉइंट सात रेटिंग पे ख़रीदते हैं।" },
+        { "roman": "*5|paanch ke paas pahunchte hi, chance *girne lagta hai.", "voice": "पाँच के पास पहुँचते ही, चांस गिरने लगता है।" }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        { "roman": "Kyunki customer sochta hai: itna *perfect? Kahin *fake toh nahi?", "voice": "क्योंकि कस्टमर सोचता है: इतना परफ़ेक्ट? कहीं फ़ेक तो नहीं?" }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        { "roman": "Aur *5|paanch reviews wala product? Zero wale se khareedne ka chance *270%|do_sau_sattar_percent zyada.", "voice": "और पाँच रिव्यूज़ वाला प्रोडक्ट? ज़ीरो वाले से ख़रीदने का चांस दो सौ सत्तर परसेंट ज़्यादा।" }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        { "roman": "Toh *teen kaam.", "voice": "तो तीन काम।" },
+        { "roman": "*3-star|three_star review mat chhupao, achha *jawab do.", "voice": "थ्री स्टार रिव्यू मत छुपाओ, अच्छा जवाब दो।" },
+        { "roman": "Har product pe pehle *5|paanch reviews laao.", "voice": "हर प्रोडक्ट पे पहले पाँच रिव्यूज़ लाओ।" },
+        { "roman": "Delivery ke *4|chaar din baad, WhatsApp pe *photo wala review maango.", "voice": "डिलीवरी के चार दिन बाद, व्हाट्सऐप पे फ़ोटो वाला रिव्यू माँगो।" }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        { "roman": "Comment karo *REVIEW|review,", "voice": "कमेंट करो रिव्यू," },
+        { "roman": "review maangne wale *messages free *DM|dee_em mein.", "voice": "रिव्यू माँगने वाले मैसेजेस फ़्री डी एम में।" },
+        { "roman": "Kal ka case: influencer ko *₹50,000|pachaas_hazaar diye, aur aaye sirf *3|teen order.", "voice": "कल का केस: इन्फ़्लुएंसर को पचास हज़ार दिए, और आए सिर्फ़ तीन ऑर्डर।" },
+        { "roman": "*Follow karo.", "voice": "फ़ॉलो करो।" }
+      ]
+    }
+  ]
+}
