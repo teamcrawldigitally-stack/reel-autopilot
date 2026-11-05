@@ -29,8 +29,11 @@ const today = localDate();
 const kindOf = (p) => p.kind ?? "normal";
 const done = (item, k) => posted.some((p) => p.id === item.id && kindOf(p) === k);
 const label = kind === "trial" ? "trial copy of " : "";
+// An item with "notBefore": "YYYY-MM-DD" (IST) is never posted earlier than that date, e.g. a reel that says "आज रात".
 const nextItem = () =>
-  manifest.items.find((i) => (kind === "trial" ? done(i, "normal") && !done(i, "trial") : !done(i, "normal")));
+  manifest.items.find((i) =>
+    kind === "trial" ? done(i, "normal") && !done(i, "trial") : !done(i, "normal") && (!i.notBefore || i.notBefore <= today)
+  );
 
 const summary = (lines) => {
   const out = process.env.GITHUB_STEP_SUMMARY;

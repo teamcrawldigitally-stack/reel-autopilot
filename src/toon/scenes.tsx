@@ -727,7 +727,7 @@ export const TipScene: React.FC<TP> = (p) => {
         {sc.emblem ? <Burst at={emAt} x={200} y={180} radius={230} count={8} /> : null}
       </Abs>
       {chips.map((ch, i) => (
-        <div key={i} style={{ position: "absolute", right: 46, top: 1080 + i * 130, display: "flex", justifyContent: "flex-end" }}>
+        <div key={i} style={{ position: "absolute", right: 46, top: (chips.length > 2 ? 1010 : 1080) + i * (chips.length > 2 ? 118 : 130), display: "flex", justifyContent: "flex-end" }}>
           <Pop at={chipAt[i]} from={0.3} rotate={i % 2 ? 2 : -2}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 16, padding: "10px 30px 14px", borderRadius: 999, background: i === chips.length - 1 ? C.orange : C.white, color: i === chips.length - 1 ? C.white : C.ink, ...sticker(C.ink, 6), fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 50 }}>
               {ch.icon ? <Icon name={ch.icon} /> : null}
