@@ -1,0 +1,122 @@
+{
+  "id": "case09-price",
+  "tag": "CASE #09",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.05,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.12,
+    "tail": 0.22,
+    "endHold": 1.0
+  },
+  "source": "Example numbers (maan lo), before GST: ₹300 + ₹25 + ₹70 + ₹12 + ₹40 + ₹200 = ₹647 per order; ₹599 − ₹647 = −₹48; ₹647 + ₹150 profit = ₹797 ≈ ₹799",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "*₹300|teen_sau ka product, *₹599|paanch_sau_ninyanve mein becha.",
+          "voice": "तीन सौ का प्रोडक्ट, पाँच सौ निन्यानवे में बेचा।"
+        },
+        {
+          "roman": "Double price. Phir bhi har order pe *loss?",
+          "voice": "डबल प्राइस। फिर भी हर ऑर्डर पे लॉस?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Galti: price sirf *lagat dekh ke rakha.",
+          "voice": "ग़लती: प्राइस सिर्फ़ लागत देख के रखा।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Maan lo: product *₹300|teen_sau, packing *₹25|pachchees, shipping *₹70|sattar.",
+          "voice": "मान लो: प्रोडक्ट तीन सौ, पैकिंग पच्चीस, शिपिंग सत्तर।"
+        },
+        {
+          "roman": "Payment fee *₹12|baarah, returns ka hissa *₹40|chaalees.",
+          "voice": "पेमेंट फ़ी बारह, रिटर्न्स का हिस्सा चालीस।"
+        },
+        {
+          "roman": "Aur har order ka *ad kharcha *₹200|do_sau.",
+          "voice": "और हर ऑर्डर का ऐड ख़र्चा दो सौ।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Total *₹647|chhe_sau_saintalees.",
+          "voice": "टोटल छह सौ सैंतालीस।"
+        },
+        {
+          "roman": "Har order pe *₹48|adtaalees rupaye ka *loss.",
+          "voice": "हर ऑर्डर पे अड़तालीस रुपये का लॉस।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Sahi price: *poora kharcha, plus *profit.",
+          "voice": "सही प्राइस: पूरा ख़र्चा, प्लस प्रॉफ़िट।"
+        },
+        {
+          "roman": "Matlab price kareeb *₹799|saat_sau_ninyanve.",
+          "voice": "मतलब प्राइस क़रीब सात सौ निन्यानवे।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Har order ka *poora kharcha likho.",
+          "voice": "हर ऑर्डर का पूरा ख़र्चा लिखो।"
+        },
+        {
+          "roman": "*Ad kharcha per order jodo.",
+          "voice": "ऐड ख़र्चा पर ऑर्डर जोड़ो।"
+        },
+        {
+          "roman": "Price nahi badha sakte? *Combo becho.",
+          "voice": "प्राइस नहीं बढ़ा सकते? कॉम्बो बेचो।"
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "lines": [
+        {
+          "roman": "Comment karo *PRICE|price,",
+          "voice": "कमेंट करो प्राइस,"
+        },
+        {
+          "roman": "pricing *calculator free *DM|dee_em mein.",
+          "voice": "प्राइसिंग कैलकुलेटर फ़्री डी एम में।"
+        },
+        {
+          "roman": "Kal dopahar: *10|das mein se *7|saat log cart *chhod kyun dete hain?",
+          "voice": "कल दोपहर: दस में से सात लोग कार्ट छोड़ क्यों देते हैं?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

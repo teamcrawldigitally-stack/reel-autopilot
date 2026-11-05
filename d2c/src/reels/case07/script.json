@@ -1,0 +1,109 @@
+{
+  "id": "case07-collab",
+  "tag": "CASE #07",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.05,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.12,
+    "tail": 0.22,
+    "endHold": 1.0
+  },
+  "source": "Example numbers (maan lo): ₹50,000 fee, 3 orders, ₹999 product with ₹450 left per order after all costs; ₹50,000 ÷ ₹450 = 111.1 → about 112 orders",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Influencer ko *₹50,000|pachaas_hazaar diye. Orders aaye: sirf *3|teen.",
+          "voice": "इन्फ़्लुएंसर को पचास हज़ार दिए। ऑर्डर्स आए: सिर्फ़ तीन।"
+        },
+        {
+          "roman": "Matlab har order *₹16,667|saade_solah_hazaar ka pada!",
+          "voice": "मतलब हर ऑर्डर साढ़े सोलह हज़ार का पड़ा!"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Galti influencer ki nahi, *hisaab ki thi.",
+          "voice": "ग़लती इन्फ़्लुएंसर की नहीं, हिसाब की थी।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Maan lo product *₹999|nau_sau_ninyanve ka.",
+          "voice": "मान लो प्रोडक्ट नौ सौ निन्यानवे का।"
+        },
+        {
+          "roman": "Saare kharche ke baad bachte hain *₹450|chaar_sau_pachaas.",
+          "voice": "सारे ख़र्चे के बाद बचते हैं चार सौ पचास।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "*₹50,000|pachaas_hazaar wapas laane ko chahiye kareeb *112|ek_sau_baarah orders.",
+          "voice": "पचास हज़ार वापस लाने को चाहिए क़रीब एक सौ बारह ऑर्डर्स।"
+        },
+        {
+          "roman": "Aaye sirf *3|teen.",
+          "voice": "आए सिर्फ़ तीन।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Ilaaj *teen step mein.",
+          "voice": "इलाज तीन स्टेप में।"
+        },
+        {
+          "roman": "Ek bade ki jagah, *10|das chhote creators ko *₹5,000|paanch_hazaar.",
+          "voice": "एक बड़े की जगह, दस छोटे क्रिएटर्स को पाँच-पाँच हज़ार।"
+        },
+        {
+          "roman": "Har creator ko *alag code ya link.",
+          "voice": "हर क्रिएटर को अलग कोड या लिंक।"
+        },
+        {
+          "roman": "Jo video chala, permission lekar *apne ad mein chalao.",
+          "voice": "जो वीडियो चला, परमिशन लेकर अपने ऐड में चलाओ।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *COLLAB|collab,",
+          "voice": "कमेंट करो कोलैब,"
+        },
+        {
+          "roman": "*calculator aur creator brief free *DM|dee_em mein.",
+          "voice": "कैलकुलेटर और क्रिएटर ब्रीफ़ फ़्री डी एम में।"
+        },
+        {
+          "roman": "Aaj shaam *7|saat baje: *₹300|teen_sau ka product, double price pe becha, phir bhi *loss kyun?",
+          "voice": "आज शाम सात बजे: तीन सौ का प्रोडक्ट, डबल प्राइस पे बेचा, फिर भी लॉस क्यों?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

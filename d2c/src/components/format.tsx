@@ -107,9 +107,11 @@ export const CtaFlow: React.FC<{
   giftIcon?: React.ReactNode;
   nextAt: number;
   nextNum: string;
+  /** Chip text above the teaser card; default "KAL KA CASE <nextNum>". Use e.g. "AAJ SHAAM 7 BAJE" to match the real slot. */
+  nextLabel?: string;
   next: React.ReactNode;
   followAt: number;
-}> = ({ keyword, typeAt, giftAt, giftTitle, giftSub, giftIcon, nextAt, nextNum, next, followAt }) => {
+}> = ({ keyword, typeAt, giftAt, giftTitle, giftSub, giftIcon, nextAt, nextNum, nextLabel, next, followAt }) => {
   const frame = useCurrentFrame();
   const outA = interpolate(frame, [nextAt - 6, nextAt + 2], [0, 1], { ...clamp, easing: theme.ease.in });
   return (
@@ -130,7 +132,7 @@ export const CtaFlow: React.FC<{
         <div style={{ position: "absolute", left: 84, right: 84, top: 300, display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
           <Enter delay={nextAt} cfg="snappy">
             <Chip size={34} bg={C.navy}>
-              KAL KA CASE {nextNum}
+              {nextLabel ?? `KAL KA CASE ${nextNum}`}
             </Chip>
           </Enter>
           <Enter delay={nextAt + 4}>
