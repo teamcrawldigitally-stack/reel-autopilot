@@ -1,0 +1,48 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-11-06",
+      "at": "2026-11-05T18:33:56.958Z",
+      "followers": 2,
+      "mediaCount": 2,
+      "reels": [
+        {
+          "id": "01-news01-andromeda",
+          "kind": "normal",
+          "title": "NEWS #01 · Meta Andromeda 2.0",
+          "look": "infographic",
+          "type": "news",
+          "hook": "news-explainer",
+          "slot": "14:05",
+          "ageHours": 10,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfWnSeBj7rQ/"
+        },
+        {
+          "id": "02-case01-ads-band-sales-zero",
+          "kind": "normal",
+          "title": "CASE #01 · Ads band, sales zero?",
+          "look": "infographic",
+          "type": "case",
+          "hook": "₹-pain question",
+          "slot": "21:58",
+          "ageHours": 2,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfXdWaijY5I/"
+        }
+      ]
+    }
+  ],
+  "insightsRefused": [
+    "views: (#10) Application does not have permission for this action",
+    "reach: (#10) Application does not have permission for this action",
+    "saved: (#10) Application does not have permission for this action",
+    "shares: (#10) Application does not have permission for this action",
+    "total_interactions: (#10) Application does not have permission for this action",
+    "ig_reels_avg_watch_time: (#10) Application does not have permission for this action",
+    "follows: (#10) Application does not have permission for this action",
+    "profile_visits: (#10) Application does not have permission for this action"
+  ]
+}
