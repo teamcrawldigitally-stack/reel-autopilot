@@ -1,33 +1,49 @@
 name: Post queued reels · D2C Founders
 
 # Posts 2 ready-made reels a day from queue/d2cfounders (perDay in the manifest) to @d2cfounders,
-# each followed 3 hours later by a trial copy (shown to non-followers first).
-# 10 minutes after the Astro slots, so the two pages never post at the same moment.
-# Cron is in UTC; GitHub can start runs a few minutes late.
-#   07:27 UTC = 12:57 PM IST  normal post
-#   10:27 UTC =  3:57 PM IST  trial copy
-#   13:27 UTC =  6:57 PM IST  normal post
-#   16:27 UTC =  9:57 PM IST  trial copy
+# each followed 3 hours later by a trial copy (shown to non-followers first; skipped by itself while
+# Instagram says the account is too small for trial reels).
+# GitHub starts scheduled runs late (about an hour on 5 Nov) or drops them, so every slot has backup
+# start times, and a Claude scheduled task also starts each slot on time with mode "slot".
+# A run only posts if that slot's post hasn't gone out yet today (--slot), so nothing posts twice.
+# Cron is in UTC:
+#   07:27 UTC = 12:57 PM IST  normal post 1   (backups 07:57, 08:57)
+#   10:27 UTC =  3:57 PM IST  trial copy 1    (backups 10:57, 11:57)
+#   13:27 UTC =  6:57 PM IST  normal post 2   (backups 13:57, 14:57)
+#   16:27 UTC =  9:57 PM IST  trial copy 2    (backups 16:57, 17:27)
 #   17:57 UTC = 11:27 PM IST  engagement stats
 on:
   schedule:
     - cron: "27 7 * * *"
+    - cron: "57 7 * * *"
+    - cron: "57 8 * * *"
     - cron: "27 10 * * *"
+    - cron: "57 10 * * *"
+    - cron: "57 11 * * *"
     - cron: "27 13 * * *"
+    - cron: "57 13 * * *"
+    - cron: "57 14 * * *"
     - cron: "27 16 * * *"
+    - cron: "57 16 * * *"
+    - cron: "27 17 * * *"
     - cron: "57 17 * * *"
   workflow_dispatch:
     inputs:
       mode:
-        description: "test = upload and let Instagram process the next reel, publish nothing · post-now = post right away · stats = save engagement numbers"
+        description: "test = upload and let Instagram process the next reel, publish nothing · post-now = post right away · slot = post only if that slot hasn't gone out today · stats = save engagement numbers"
         type: choice
-        options: [test, post-now, stats]
+        options: [test, post-now, slot, stats]
         default: test
       kind:
         description: "normal = next reel to followers · trial = trial copy of the latest normally posted reel"
         type: choice
         options: [normal, trial]
         default: normal
+      slot:
+        description: "slot mode only: which post of the day this is (1 or 2)"
+        type: choice
+        options: ["1", "2"]
+        default: "1"
 
 permissions:
   contents: write
@@ -56,16 +72,42 @@ jobs:
 
       - name: Install cloudflared (temporary video link)
         run: |
-          sudo curl -fsSL -o /usr/local/bin/cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
-          sudo chmod +x /usr/local/bin/cloudflared
+          # GitHub's download server sometimes answers 504; retry, then fall back to Cloudflare's own apt repo.
+          ok=
+          for i in 1 2 3; do sudo curl -fsSL --retry 2 -o /usr/local/bin/cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && ok=1 && break; sleep $((i * 10)); done
+          if [ -n "$ok" ]; then
+            sudo chmod +x /usr/local/bin/cloudflared
+          else
+            curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+            echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main" | sudo tee /etc/apt/sources.list.d/cloudflared.list
+            sudo apt-get update -qq && sudo apt-get install -y -qq cloudflared
+          fi
           cloudflared --version
 
       - name: Post the next reel
-        run: >
-          node pipeline/post-queue.mjs --page $PAGE
-          --kind ${{ github.event_name == 'schedule' && (contains(fromJSON('["27 10 * * *","27 16 * * *"]'), github.event.schedule) && 'trial' || 'normal') || inputs.kind }}
-          ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'test' && '--dry-run' || '' }}
-          ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'post-now' && '--force' || '' }}
+        env:
+          EVENT: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          MODE: ${{ inputs.mode }}
+          KIND: ${{ inputs.kind }}
+          SLOT: ${{ inputs.slot }}
+        run: |
+          if [ "$EVENT" = "schedule" ]; then
+            case "$SCHEDULE" in
+              "27 7 * * *"|"57 7 * * *"|"57 8 * * *")    ARGS="--kind normal --slot 1" ;;
+              "27 10 * * *"|"57 10 * * *"|"57 11 * * *") ARGS="--kind trial --slot 1" ;;
+              "27 13 * * *"|"57 13 * * *"|"57 14 * * *") ARGS="--kind normal --slot 2" ;;
+              "27 16 * * *"|"57 16 * * *"|"27 17 * * *") ARGS="--kind trial --slot 2" ;;
+              *) echo "Unknown schedule '$SCHEDULE'"; exit 1 ;;
+            esac
+          else
+            ARGS="--kind $KIND"
+            [ "$MODE" = "test" ] && ARGS="$ARGS --dry-run"
+            [ "$MODE" = "post-now" ] && ARGS="$ARGS --force"
+            [ "$MODE" = "slot" ] && ARGS="$ARGS --slot $SLOT"
+          fi
+          echo "post-queue.mjs $ARGS"
+          node pipeline/post-queue.mjs --page $PAGE $ARGS
 
       - name: Save what was posted
         if: always()

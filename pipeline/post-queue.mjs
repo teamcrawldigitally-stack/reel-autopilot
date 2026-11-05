@@ -27,6 +27,7 @@ const statePath = path.join(ROOT, "state", `${page}-posted.json`);
 const posted = readJson(statePath, []);
 const today = localDate();
 const kindOf = (p) => p.kind ?? "normal";
+const NOT_ELIGIBLE = /trial reel follower requirement/i;
 const done = (item, k) => posted.some((p) => p.id === item.id && kindOf(p) === k);
 const label = kind === "trial" ? "trial copy of " : "";
 // An item with "notBefore": "YYYY-MM-DD" (IST) is never posted earlier than that date, e.g. a reel that says "आज रात".
@@ -100,6 +101,7 @@ const main = async () => {
       how = "direct upload";
     } catch (e) {
       why = e.message.slice(0, 300);
+      if (NOT_ELIGIBLE.test(why)) throw e; // a video link won't help: the account can't make trial reels yet
       log(`direct upload didn't work (${why}), using a temporary video link instead`);
       host = await hostVideo(video);
       containerId = await prepareReel({ ...opts, videoUrl: host.url });
@@ -134,6 +136,11 @@ const main = async () => {
 main()
   .then(() => process.exit(0))
   .catch((e) => {
+    if (kind === "trial" && NOT_ELIGIBLE.test(e.message)) {
+      // New or small accounts can't make trial reels yet; skip quietly so the run stays green.
+      summary([`### Trial copy skipped`, `Instagram doesn't allow trial reels on this account yet (follower requirement). Normal posts are not affected; trial copies start by themselves once the account qualifies.`]);
+      process.exit(0);
+    }
     summary([`### Failed, nothing posted`, "```", e.message, "```"]);
     process.exit(1);
   });
