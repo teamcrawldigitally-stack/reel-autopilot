@@ -28,6 +28,12 @@ const posted = readJson(statePath, []);
 const today = localDate();
 const kindOf = (p) => p.kind ?? "normal";
 const NOT_ELIGIBLE = /trial reel follower requirement/i;
+// Every caption ends with the page's standing offer (manifest "captionCta"), placed just above the hashtags.
+const withCta = (caption, cta) => {
+  if (!cta || caption.includes(cta)) return caption;
+  const i = caption.lastIndexOf("\n\n#");
+  return i >= 0 ? `${caption.slice(0, i)}\n${cta}${caption.slice(i)}` : `${caption}\n\n${cta}`;
+};
 const done = (item, k) => posted.some((p) => p.id === item.id && kindOf(p) === k);
 const label = kind === "trial" ? "trial copy of " : "";
 // An item with "notBefore": "YYYY-MM-DD" (IST) is never posted earlier than that date, e.g. a reel that says "आज रात".
@@ -85,7 +91,7 @@ const main = async () => {
   const opts = {
     token: t.token,
     userId: me.user_id,
-    caption: next.caption,
+    caption: withCta(next.caption, manifest.captionCta),
     shareToFeed: manifest.shareToFeed ?? true,
     thumbOffsetMs: next.thumbOffsetMs,
     audioName: kind === "trial" ? undefined : next.audioName,
