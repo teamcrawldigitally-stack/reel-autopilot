@@ -25,15 +25,20 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "test = upload and let Instagram process the next reel, publish nothing · post-now = post right away"
+        description: "test = upload and let Instagram process the next reel, publish nothing · post-now = post right away · slot = post only if today's slot N for this kind hasn't gone out yet (used by Claude's on-time starts)"
         type: choice
-        options: [test, post-now]
+        options: [test, post-now, slot]
         default: test
       kind:
         description: "normal = next reel to followers · trial = trial copy of the latest normally posted reel"
         type: choice
         options: [normal, trial]
         default: normal
+      slot:
+        description: "for mode slot: 1 = first post of the day of this kind, 2 = second"
+        type: choice
+        options: ["1", "2"]
+        default: "1"
 
 permissions:
   contents: write
@@ -67,6 +72,7 @@ jobs:
           SCHEDULE: ${{ github.event.schedule }}
           MODE: ${{ inputs.mode }}
           KIND: ${{ inputs.kind }}
+          SLOT: ${{ inputs.slot }}
         run: |
           if [ "$EVENT" = "schedule" ]; then
             case "$SCHEDULE" in
@@ -80,6 +86,7 @@ jobs:
             ARGS="--kind $KIND"
             [ "$MODE" = "test" ] && ARGS="$ARGS --dry-run"
             [ "$MODE" = "post-now" ] && ARGS="$ARGS --force"
+            [ "$MODE" = "slot" ] && ARGS="$ARGS --slot ${SLOT:-1}"
           fi
           echo "post-queue.mjs $ARGS"
           node pipeline/post-queue.mjs --page astro24x7 $ARGS
