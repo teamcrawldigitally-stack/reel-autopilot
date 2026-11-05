@@ -80,51 +80,40 @@ const Receipt: React.FC<{ title: string; icon: React.ReactNode; items: Ded[]; fi
 };
 
 /* ===== S1: same ₹1,000 sale, marketplace or website? ===== */
+/* Clean hook: two buildings, one VS, two title lines. */
 export const S1Hook: React.FC<{ dur: number }> = ({ dur }) => {
   const mk = cue("s1", "marketplace");
   const web = cue("s1", "website");
   const kahan = cue("s1", "kahan");
-  const tag = (t: string) => <div style={{ ...big(44, C.white), background: C.green, border: `5px solid ${LINE}`, borderRadius: 16, padding: "10px 18px 4px", boxShadow: `5px 5px 0 ${LINE}` }}>{t}</div>;
+  const vs = useSpring(web - 4, "bouncy");
+  const tag = <div style={{ ...big(40, C.white), background: C.green, border: `5px solid ${LINE}`, borderRadius: 16, padding: "10px 18px 4px", boxShadow: `5px 5px 0 ${LINE}` }}>₹1,000</div>;
   return (
     <SceneShell dur={dur} noExit>
-      <Camera dur={dur} punches={[3, mk, web, kahan]} push={0.03}>
+      <Camera dur={dur} punches={[mk, web, kahan]} push={0.03}>
         <MoneyRoom />
-        <Enter delay={mk - 10} from="left" dist={80} style={{ position: "absolute", left: 30, top: 700, zIndex: 4, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+        <Enter delay={Math.min(mk - 10, 6)} from="left" dist={80} style={{ position: "absolute", left: 40, top: 720, zIndex: 4, display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
           <Stall w={420} />
-          {tag("₹1,000 sale")}
+          {tag}
         </Enter>
-        <Enter delay={web - 10} from="right" dist={80} style={{ position: "absolute", left: 630, top: 700, zIndex: 4, display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+        <Enter delay={Math.min(web - 10, 12)} from="right" dist={80} style={{ position: "absolute", left: 620, top: 720, zIndex: 4, display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
           <Home w={420} />
-          {tag("₹1,000 sale")}
+          {tag}
         </Enter>
-        <Place x={395} y={850} s={0.55} z={5}>
-          <Person
-            look={ROHIT}
-            seed="r121"
-            track={[
-              { at: -100, pose: "idle", mood: "neutral" },
-              { at: mk - 2, pose: "shrug", mood: "neutral" },
-              { at: kahan - 2, pose: "shrug", mood: "shock" },
-            ]}
-          />
-        </Place>
-        <div style={{ position: "absolute", left: 400, top: 700, zIndex: 6 }}>
-          <QMarks at={kahan - 2} />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 850, display: "flex", justifyContent: "center", zIndex: 6 }}>
+          <div style={{ transform: `scale(${vs}) rotate(-6deg)`, ...big(64, C.white), background: C.violet, border: `6px solid ${LINE}`, borderRadius: "50%", width: 130, height: 130, display: "flex", alignItems: "center", justifyContent: "center", paddingTop: 8, boxSizing: "border-box", boxShadow: `6px 6px 0 ${LINE}` }}>VS</div>
         </div>
         <HookTitle
-          top={276}
+          top={300}
           lines={[
-            { text: "Same ₹1,000 ki sale", at: 0, size: 60 },
-            { text: "MARKETPLACE vs WEBSITE", at: 8, kind: "violet", size: 66 },
-            { text: "zyada kahan BACHEGA?", at: 22, kind: "red", size: 70, rot: 2 },
+            { text: "Same ₹1,000 ki sale", at: -8, size: 68 },
+            { text: "kahan zyada BACHEGA?", at: 4, kind: "red", size: 72, rot: 2 },
           ]}
         />
       </Camera>
       <Sfx at={0} name="whoosh" vol={0.45} />
-      <Sfx at={8} name="stamp" vol={0.5} />
-      <Sfx at={22} name="stamp" vol={0.5} />
-      <Sfx at={mk - 10} name="swish" vol={0.35} />
-      <Sfx at={web - 10} name="swish" vol={0.35} />
+      <Sfx at={4} name="stamp" vol={0.5} />
+      <Sfx at={web - 4} name="pop" vol={0.45} />
+      <Sfx at={kahan} name="ding" vol={0.3} />
     </SceneShell>
   );
 };

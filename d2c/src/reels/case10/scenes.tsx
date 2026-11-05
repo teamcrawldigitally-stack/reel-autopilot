@@ -6,7 +6,7 @@ import { Camera } from "../../components/fx";
 import { CtaFlow, HookTitle, LINE, Place, makeMouth } from "../../components/format";
 import { Card, Chip, Enter, SceneShell, Sfx, clamp, useSpring } from "../../components/kit";
 import { QMarks } from "../../components/props";
-import { Clinic, Doorstep, OfficeWall, Whiteboard } from "../../components/sets";
+import { Clinic, Doorstep, MoneyRoom, OfficeWall, Whiteboard } from "../../components/sets";
 import { Stamp } from "../../components/widgets";
 import { C, theme } from "../../theme";
 import { T, cue } from "./timeline";
@@ -88,51 +88,48 @@ const Checkout: React.FC<{ shipAt: number; codAt: number; w?: number; scale?: nu
 };
 
 /* ===== S1: ₹799 product, ₹947 at checkout, 7 of 10 leave ===== */
+/* Clean hook: plain backdrop, one visual at a time (checkout phone → cart row). */
 export const S1Hook: React.FC<{ dur: number }> = ({ dur }) => {
+  const frame = useCurrentFrame();
   const total = cue("s1", "₹947");
   const seven = cue("s1", "7");
-  const gayab = cue("s1", "gayab");
+  const swap = seven - 8;
+  const phoneOut = interpolate(frame, [swap, swap + 8], [1, 0], { ...clamp, easing: theme.ease.in });
+  const rowIn = useSpring(swap + 4, "snappy");
   return (
     <SceneShell dur={dur} noExit>
-      <Camera dur={dur} punches={[3, total, seven]} push={0.03}>
-        <Doorstep />
-        <Place x={20} y={700} s={0.9} z={4}>
-          <Person
-            look={PRIYA}
-            seed="p101"
-            track={[
-              { at: -100, pose: "hold", mood: "happy" },
-              { at: total - 2, pose: "shrug", mood: "shock" },
-              { at: gayab - 2, pose: "wave", mood: "neutral" },
-            ]}
-          />
-        </Place>
-        <Place x={560} y={640} s={0.95} z={6}>
-          <Checkout shipAt={total - 10} codAt={total - 4} />
-        </Place>
-        <div style={{ position: "absolute", left: 0, right: 0, top: 1230, display: "flex", justifyContent: "center", zIndex: 8 }}>
-          <Enter delay={seven - 14} from="up" dist={30}>
-            <div style={{ background: "rgba(255,255,255,0.92)", border: `5px solid ${LINE}`, borderRadius: 26, padding: "14px 18px 10px" }}>
-              <CartRow goAt={seven} size={80} />
+      <Camera dur={dur} punches={[total, seven]} push={0.03}>
+        <MoneyRoom />
+        {phoneOut > 0 && (
+          <div style={{ position: "absolute", left: 0, right: 0, top: 640, display: "flex", justifyContent: "center", zIndex: 6, opacity: phoneOut, transform: `scale(${0.9 + 0.1 * phoneOut})` }}>
+            <div style={{ transform: "scale(1.15)", transformOrigin: "50% 0" }}>
+              <Checkout shipAt={total - 10} codAt={total - 4} />
             </div>
-          </Enter>
-        </div>
+          </div>
+        )}
+        {frame >= swap + 2 && (
+          <div style={{ position: "absolute", left: 0, right: 0, top: 760, display: "flex", flexDirection: "column", alignItems: "center", gap: 30, zIndex: 6, opacity: rowIn, transform: `scale(${0.85 + 0.15 * rowIn})` }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+              <CartRow goAt={seven} size={92} />
+            </div>
+            <div style={{ ...big(64, C.red), opacity: interpolate(frame, [seven + 14, seven + 22], [0, 1], clamp) }}>7 cart, 0 order</div>
+          </div>
+        )}
         <HookTitle
-          top={276}
+          top={300}
           lines={[
-            { text: "₹799 ka product, checkout pe ₹947", at: 0, size: 52 },
-            { text: "10 MEIN SE 7", at: 8, kind: "red", size: 104 },
-            { text: "cart chhod ke gayab!", at: 22, size: 64 },
+            { text: "Checkout pe ₹799 → ₹947", at: -8, size: 64 },
+            { text: "10 MEIN SE 7 GAYAB", at: 4, kind: "red", size: 92 },
           ]}
         />
       </Camera>
       <Sfx at={0} name="whoosh" vol={0.45} />
-      <Sfx at={8} name="stamp" vol={0.55} />
+      <Sfx at={4} name="stamp" vol={0.55} />
       <Sfx at={total - 10} name="pop" vol={0.35} />
       <Sfx at={total - 4} name="pop" vol={0.35} />
       <Sfx at={total} name="error" vol={0.3} />
-      <Sfx at={seven} name="swish" vol={0.4} />
-      <Sfx at={gayab} name="whoosh" vol={0.35} />
+      <Sfx at={swap} name="swish" vol={0.4} />
+      <Sfx at={seven + 14} name="bass" vol={0.4} />
     </SceneShell>
   );
 };
