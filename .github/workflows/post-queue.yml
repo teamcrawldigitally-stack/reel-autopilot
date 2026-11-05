@@ -1,17 +1,27 @@
 name: Post queued reels
 
 # Posts 2 ready-made reels a day from queue/astro24x7 (perDay in the manifest), each followed 3 hours
-# later by a trial copy (shown to non-followers first). Cron is in UTC; GitHub can start runs a few minutes late.
-#   07:17 UTC = 12:47 PM IST  normal post
-#   10:17 UTC =  3:47 PM IST  trial copy
-#   13:17 UTC =  6:47 PM IST  normal post
-#   16:17 UTC =  9:47 PM IST  trial copy
+# later by a trial copy (shown to non-followers first). Cron is in UTC. GitHub can start runs late or
+# drop them when busy, so every slot has two backup start times (+30 and +90 min); a backup only posts
+# if that slot's post hasn't gone out yet (--slot).
+#   07:17 UTC = 12:47 PM IST  normal post 1   (backups 07:47, 08:47)
+#   10:17 UTC =  3:47 PM IST  trial copy 1    (backups 10:47, 11:47)
+#   13:17 UTC =  6:47 PM IST  normal post 2   (backups 13:47, 14:47)
+#   16:17 UTC =  9:47 PM IST  trial copy 2    (backups 16:47, 17:37)
 on:
   schedule:
     - cron: "17 7 * * *"
+    - cron: "47 7 * * *"
+    - cron: "47 8 * * *"
     - cron: "17 10 * * *"
+    - cron: "47 10 * * *"
+    - cron: "47 11 * * *"
     - cron: "17 13 * * *"
+    - cron: "47 13 * * *"
+    - cron: "47 14 * * *"
     - cron: "17 16 * * *"
+    - cron: "47 16 * * *"
+    - cron: "37 17 * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -53,11 +63,26 @@ jobs:
         env:
           IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
           TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
-        run: >
-          node pipeline/post-queue.mjs --page astro24x7
-          --kind ${{ github.event_name == 'schedule' && (contains(fromJSON('["17 10 * * *","17 16 * * *"]'), github.event.schedule) && 'trial' || 'normal') || inputs.kind }}
-          ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'test' && '--dry-run' || '' }}
-          ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'post-now' && '--force' || '' }}
+          EVENT: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          MODE: ${{ inputs.mode }}
+          KIND: ${{ inputs.kind }}
+        run: |
+          if [ "$EVENT" = "schedule" ]; then
+            case "$SCHEDULE" in
+              "17 7 * * *"|"47 7 * * *"|"47 8 * * *")    ARGS="--kind normal --slot 1" ;;
+              "17 10 * * *"|"47 10 * * *"|"47 11 * * *") ARGS="--kind trial --slot 1" ;;
+              "17 13 * * *"|"47 13 * * *"|"47 14 * * *") ARGS="--kind normal --slot 2" ;;
+              "17 16 * * *"|"47 16 * * *"|"37 17 * * *") ARGS="--kind trial --slot 2" ;;
+              *) echo "Unknown schedule '$SCHEDULE'"; exit 1 ;;
+            esac
+          else
+            ARGS="--kind $KIND"
+            [ "$MODE" = "test" ] && ARGS="$ARGS --dry-run"
+            [ "$MODE" = "post-now" ] && ARGS="$ARGS --force"
+          fi
+          echo "post-queue.mjs $ARGS"
+          node pipeline/post-queue.mjs --page astro24x7 $ARGS
 
       - name: Save what was posted
         if: always()

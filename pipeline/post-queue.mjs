@@ -5,6 +5,8 @@
 //              normally; needs "trialCopy": {"enabled": true, "graduation": "SS_PERFORMANCE"|"MANUAL"}
 //   --dry-run  checks the token and account, uploads the video and lets Instagram process it, but publishes nothing
 //   --force    posts even if today's limit for this kind is reached
+//   --slot N   this run is for the Nth post of the day of this kind; skip if N posts of this kind already went out
+//              today (lets backup start times retry a slot that GitHub dropped without posting twice)
 import fs from "node:fs";
 import path from "node:path";
 import { hostVideo } from "./host-video.mjs";
@@ -16,6 +18,7 @@ const page = args[args.indexOf("--page") + 1] || "astro24x7";
 const dryRun = args.includes("--dry-run");
 const force = args.includes("--force");
 const kind = args.includes("--kind") ? args[args.indexOf("--kind") + 1] : "normal";
+const slot = args.includes("--slot") ? Number(args[args.indexOf("--slot") + 1]) : 0;
 if (!["normal", "trial"].includes(kind)) throw new Error(`--kind must be normal or trial, not ${kind}`);
 
 const queueDir = path.join(ROOT, "queue", page);
@@ -43,6 +46,8 @@ const main = async () => {
   const todayCount = posted.filter((p) => p.date === today && kindOf(p) === kind).length;
   if (!force && !dryRun && todayCount >= perDay)
     return summary([`Already posted ${todayCount} ${kind} reel${todayCount > 1 ? "s" : ""} today (${today}, limit ${perDay}). Nothing to do.`]);
+  if (!force && !dryRun && slot && todayCount >= slot)
+    return summary([`Slot ${slot} for ${kind} posts is already done today (${todayCount} posted). Nothing to do.`]);
   const next = nextItem();
   if (!next && !dryRun)
     return summary([kind === "trial" ? `No reel is waiting for a trial copy (each one gets its trial copy after its normal post).` : `The queue for ${page} is empty. Add reels to queue/${page}/manifest.json.`]);
