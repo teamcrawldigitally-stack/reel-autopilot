@@ -103,6 +103,19 @@
       "hook": "₹50,000 fee → 3 orders (hook title)",
       "keyword": "COLLAB",
       "pinnedComment": "Aapka sabse achha aur sabse bura influencer collab kaisa tha? 👇"
+    },
+    {
+      "id": "08-case09-price",
+      "title": "CASE #09 · Double price, phir bhi loss",
+      "video": "08-case09-price.mp4",
+      "caption": "CASE #09 · ₹300 ka maal, ₹599 mein becha. Double price, phir bhi LOSS? 📉\nMaan lo ek order ka poora kharcha: product ₹300 + packing ₹25 + shipping ₹70 + payment fee ₹12 + returns ka hissa ₹40 + ad ₹200 = ₹647.\nPrice ₹599 → har order pe −₹48. Jitna zyada becho, utna zyada loss.\nSahi price = poora kharcha + profit → ₹647 + ₹150 = ₹797 ≈ ₹799.\n(Example numbers, GST se pehle)\n✅ Har order ka poora kharcha ek baar likho\n✅ Ad ka kharcha per order bhi jodo (sab yahi bhoolte hain)\n✅ Price nahi badha sakte? Combo se order value badhao\n👇 Comment karo PRICE, pricing calculator free DM mein.\n💬 D2C founders ki free WhatsApp community: DM karo \"JOIN\"\n\n#D2CIndia #D2CFounders #ProductPricing #UnitEconomics #SmallBusinessIndia",
+      "audioName": "D2C Founders · CASE #09 · Double price, phir bhi loss",
+      "thumbOffsetMs": 2000,
+      "look": "cartoon",
+      "type": "case",
+      "hook": "₹300 → ₹599 double price + LOSS contradiction (hook title)",
+      "keyword": "PRICE",
+      "pinnedComment": "Aapke product ki lagat ka kitna guna price hai? 👇 2x, 3x ya 4x?"
     }
   ]
 }

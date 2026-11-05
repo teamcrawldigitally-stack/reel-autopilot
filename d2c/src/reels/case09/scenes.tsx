@@ -195,7 +195,7 @@ export const S3Stack: React.FC<{ dur: number }> = ({ dur }) => {
         })}
         <div style={{ position: "absolute", left: 640, top: 1000, zIndex: 5, background: C.white, border: `5px solid ${LINE}`, borderRadius: 18, boxShadow: `6px 6px 0 ${LINE}`, padding: "10px 22px 2px", ...big(54, over ? C.red : LINE), fontVariantNumeric: "tabular-nums" }}>Total ₹{total}</div>
         {frame >= ad && (
-          <div style={{ position: "absolute", left: 600, top: 470, zIndex: 8 }}>
+          <div style={{ position: "absolute", left: 590, top: 350, zIndex: 8 }}>
             <Stamp at={ad + 8} text="PRICE SE ZYADA" size={46} rotate={-6} />
           </div>
         )}
