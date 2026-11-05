@@ -1,0 +1,109 @@
+{
+  "id": "case10-cart",
+  "tag": "CASE #10",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.05,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.12,
+    "tail": 0.22,
+    "endHold": 1.0
+  },
+  "source": "Baymard Institute, cart abandonment rate list (re-checked 5 Nov 2026): average 70.22% across 50 studies; reasons excl. 'just browsing': extra costs too high 40%, delivery too slow 20%, had to create an account 18%. Prices are examples: ₹799 + ₹99 shipping + ₹49 COD fee = ₹947.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Product *₹799|saat_sau_ninyanve ka, checkout pe *₹947|nau_sau_saintalees.",
+          "voice": "प्रोडक्ट सात सौ निन्यानवे का, चेकआउट पे नौ सौ सैंतालीस।"
+        },
+        {
+          "roman": "*10|das mein se *7|saat log, cart chhod ke *gayab.",
+          "voice": "दस में से सात लोग, कार्ट छोड़ के ग़ायब।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Sirf aapke saath nahi. Duniya bhar mein *70%|sattar_percent cart *adhoore.",
+          "voice": "सिर्फ़ आपके साथ नहीं। दुनिया भर में सत्तर परसेंट कार्ट अधूरे।"
+        },
+        {
+          "roman": "Teen bade kaaran, teeno *fix ho sakte hain.",
+          "voice": "तीन बड़े कारण, तीनों फ़िक्स हो सकते हैं।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Pehla: checkout pe achanak *extra charge.",
+          "voice": "पहला: चेकआउट पे अचानक एक्स्ट्रा चार्ज।"
+        },
+        {
+          "roman": "Shipping *₹99|ninyanve, COD fee *₹49|unchaas. Priya *gayi.",
+          "voice": "शिपिंग निन्यानवे, सी ओ डी फ़ी उनचास। प्रिया गई।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Doosra: delivery *kab hogi, pata hi nahi.",
+          "voice": "दूसरा: डिलीवरी कब होगी, पता ही नहीं।"
+        },
+        {
+          "roman": "Teesra: pehle *account banao, *password banao.",
+          "voice": "तीसरा: पहले अकाउंट बनाओ, पासवर्ड बनाओ।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Ilaaj: *poora total product page pe hi dikhao.",
+          "voice": "इलाज: पूरा टोटल प्रोडक्ट पेज पे ही दिखाओ।"
+        },
+        {
+          "roman": "Pincode daalte hi *delivery date.",
+          "voice": "पिनकोड डालते ही डिलीवरी डेट।"
+        },
+        {
+          "roman": "Sign-up hatao. Sirf *phone aur OTP|o_tee_pee.",
+          "voice": "साइन अप हटाओ। सिर्फ़ फ़ोन और ओ टी पी।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *CART|cart,",
+          "voice": "कमेंट करो कार्ट,"
+        },
+        {
+          "roman": "teen *reminder message free *DM|dee_em mein.",
+          "voice": "तीन रिमाइंडर मैसेज फ़्री डी एम में।"
+        },
+        {
+          "roman": "Aaj shaam: *marketplace ya apni *website, zyada kahan bachta hai?",
+          "voice": "आज शाम: मार्केटप्लेस या अपनी वेबसाइट, ज़्यादा कहाँ बचता है?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

@@ -25,6 +25,9 @@ import { totalFrames as case07Frames } from "./reels/case07/timeline";
 import { Case09Reel } from "./reels/case09/Reel";
 import { Case09Cover } from "./reels/case09/Cover";
 import { totalFrames as case09Frames } from "./reels/case09/timeline";
+import { Case10Reel } from "./reels/case10/Reel";
+import { Case10Cover } from "./reels/case10/Cover";
+import { totalFrames as case10Frames } from "./reels/case10/timeline";
 import { News01Reel } from "./reels/news01/Reel";
 import { totalFrames as news01Frames } from "./reels/news01/timeline";
 
@@ -62,6 +65,8 @@ export const Root: React.FC = () => (
     <Composition id="Case07Cover" component={Case07Cover} durationInFrames={1} {...V} />
     <Composition id="Case09" component={Case09Reel} durationInFrames={case09Frames} {...V} />
     <Composition id="Case09Cover" component={Case09Cover} durationInFrames={1} {...V} />
+    <Composition id="Case10" component={Case10Reel} durationInFrames={case10Frames} {...V} />
+    <Composition id="Case10Cover" component={Case10Cover} durationInFrames={1} {...V} />
     <Composition id="CastTest" component={CastTest} durationInFrames={300} {...V} />
     <Composition id="DoctorTest" component={DoctorTest} durationInFrames={300} {...V} />
   </>

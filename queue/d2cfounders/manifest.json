@@ -116,6 +116,19 @@
       "hook": "₹300 → ₹599 double price + LOSS contradiction (hook title)",
       "keyword": "PRICE",
       "pinnedComment": "Aapke product ki lagat ka kitna guna price hai? 👇 2x, 3x ya 4x?"
+    },
+    {
+      "id": "09-case10-cart",
+      "title": "CASE #10 · 10 mein se 7 cart chhod dete hain",
+      "video": "09-case10-cart.mp4",
+      "caption": "CASE #10 · ₹799 ka product, checkout pe ₹947. 10 mein se 7 log cart chhod ke gayab! 🛒\nDuniya bhar mein ~70% carts adhoore rehte hain (Baymard Institute, 50 studies ka average: 70.22%).\nSabse bade kaaran: checkout pe extra charge (40%), delivery date pata nahi (20%), pehle account banao (18%).\nMaan lo product ₹799 + shipping ₹99 + COD fee ₹49 = ₹947 sirf checkout pe dikha. Customer wahin ruk gaya.\n✅ Poora total product page pe hi dikhao\n✅ Pincode daalte hi delivery date dikhao\n✅ Sign-up hatao: sirf phone + OTP\n👇 Comment karo CART, 3 cart reminder WhatsApp messages (copy-paste + sahi time) free DM mein.\n💬 D2C founders ki free WhatsApp community: DM karo \"JOIN\"\n\n#D2CIndia #D2CFounders #CartAbandonment #ShopifyIndia #EcommerceIndia",
+      "audioName": "D2C Founders · CASE #10 · 10 mein se 7 cart chhod dete hain",
+      "thumbOffsetMs": 1500,
+      "look": "cartoon",
+      "type": "case",
+      "hook": "₹799 → ₹947 at checkout + '10 mein se 7' (hook title)",
+      "keyword": "CART",
+      "pinnedComment": "Aapki website pe checkout mein kitne step hain? 👇 Number likho."
     }
   ]
 }
