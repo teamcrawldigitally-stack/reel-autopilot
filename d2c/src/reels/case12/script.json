@@ -1,0 +1,109 @@
+{
+  "id": "case12-channel",
+  "tag": "CASE #12",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.05,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.12,
+    "tail": 0.22,
+    "endHold": 1.0
+  },
+  "source": "Example numbers (maan lo): marketplace ₹1,000 − ₹180 commission − ₹30 fee − ₹70 shipping − ₹50 returns = ₹670; website ₹1,000 − ₹20 payment fee − ₹70 − ₹50 − ₹250 ad = ₹610; repeat website order via WhatsApp, no ad: ₹1,000 − ₹20 − ₹70 − ₹50 = ₹860. Product cost same on both, left out. Real commissions differ by marketplace and category.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "*₹1,000|ek_hazaar ki sale. *Marketplace pe, ya apni *website pe?",
+          "voice": "एक हज़ार की सेल। मार्केटप्लेस पे, या अपनी वेबसाइट पे?"
+        },
+        {
+          "roman": "Haath mein zyada *kahan bachega?",
+          "voice": "हाथ में ज़्यादा कहाँ बचेगा?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Maan lo marketplace: commission *₹180|ek_sau_assi, fee *₹30|tees,",
+          "voice": "मान लो मार्केटप्लेस: कमीशन एक सौ अस्सी, फ़ी तीस,"
+        },
+        {
+          "roman": "shipping *₹70|sattar, returns *₹50|pachaas. Bache *₹670|chhe_sau_sattar.",
+          "voice": "शिपिंग सत्तर, रिटर्न्स पचास। बचे छह सौ सत्तर।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Website: commission *zero, par *ad *₹250|do_sau_pachaas.",
+          "voice": "वेबसाइट: कमीशन ज़ीरो, पर ऐड दो सौ पचास।"
+        },
+        {
+          "roman": "Bache *₹610|chhe_sau_das. Pehla order: *marketplace jeeta.",
+          "voice": "बचे छह सौ दस। पहला ऑर्डर: मार्केटप्लेस जीता।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Ab *doosra order. Marketplace pe phir *₹670|chhe_sau_sattar.",
+          "voice": "अब दूसरा ऑर्डर। मार्केटप्लेस पे फिर छह सौ सत्तर।"
+        },
+        {
+          "roman": "Website pe Priya *WhatsApp se wapas aayi, koi ad nahi: *₹860|aath_sau_saath!",
+          "voice": "वेबसाइट पे प्रिया व्हाट्सऐप से वापस आई, कोई ऐड नहीं: आठ सौ साठ!"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Har channel ka *hisaab alag rakho.",
+          "voice": "हर चैनल का हिसाब अलग रखो।"
+        },
+        {
+          "roman": "Marketplace pe sirf *high_margin|haai_maarjin products.",
+          "voice": "मार्केटप्लेस पे सिर्फ़ हाई मार्जिन प्रोडक्ट्स।"
+        },
+        {
+          "roman": "Website customers ko *WhatsApp se wapas bulao.",
+          "voice": "वेबसाइट कस्टमर्स को व्हाट्सऐप से वापस बुलाओ।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *CHANNEL|channel,",
+          "voice": "कमेंट करो चैनल,"
+        },
+        {
+          "roman": "channel profit *calculator free *DM|dee_em mein.",
+          "voice": "चैनल प्रॉफ़िट कैलकुलेटर फ़्री डी एम में।"
+        },
+        {
+          "roman": "Kal dopahar: *profit hai, phir bhi *paisa kahan gaya?",
+          "voice": "कल दोपहर: प्रॉफ़िट है, फिर भी पैसा कहाँ गया?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}
