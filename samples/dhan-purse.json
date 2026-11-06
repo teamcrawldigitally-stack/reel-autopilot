@@ -5,11 +5,11 @@
   "look": "devo",
   "hook": "पूजा के बाद ये एक चीज़ पर्स में रख लीजिए। मान्यता है, पैसा टिकने लगता है।",
   "images": [
-    "dhan-bills-cut",
-    "dhan-coins-cut",
-    "dhan-purse-cut",
-    "dhan-rice-cut",
-    "dhan-silvercoin-cut",
+    "dhs-u1",
+    "dhs-u2",
+    "dhs-u3",
+    "dhs-u4",
+    "dhs-u5",
     "lakshmi-cut"
   ],
   "floats": [],
@@ -25,11 +25,9 @@
       "voiceover": "पूजा के बाद ये एक चीज़ पर्स में रख लीजिए। मान्यता है, पैसा टिकने लगता है।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "big",
-          "w": 1100,
-          "x": -10,
-          "y": 300
+          "img": "dhs-u1",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -52,19 +50,9 @@
       "voiceover": "वो चीज़ है, पूजा में रखा चाँदी का सिक्का। पूजा के बाद, उसे लाल कपड़े में लपेटकर पर्स में रखिए।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "close",
-          "w": 1500,
-          "x": -210,
-          "y": 240,
-          "prop": {
-            "img": "dhan-silvercoin-cut",
-            "word": "चाँदी",
-            "width": 380,
-            "top": 1090,
-            "right": 30,
-            "rot": -6
-          }
+          "img": "dhs-u2",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -86,19 +74,9 @@
       "voiceover": "साथ में चुटकी भर साबुत चावल, यानी अक्षत। अक्षत मतलब, जो कभी टूटे नहीं।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-rice-cut",
-            "word": "चावल",
-            "width": 420,
-            "top": 1100,
-            "right": 20,
-            "rot": 5
-          }
+          "img": "dhs-u3",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -120,19 +98,9 @@
       "voiceover": "और पर्स से निकाल दीजिए, फटे नोट और पुराने बिल। पर्स कूड़ेदान नहीं है।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-bills-cut",
-            "word": "फटे",
-            "width": 460,
-            "top": 1080,
-            "right": 10,
-            "rot": -4
-          }
+          "img": "dhs-u4",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -154,19 +122,9 @@
       "voiceover": "और पर्स कभी पूरा खाली मत छोड़िए। एक नोट हमेशा अंदर रहे।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-purse-cut",
-            "word": "पर्स",
-            "width": 460,
-            "top": 1090,
-            "right": 10,
-            "rot": 5
-          }
+          "img": "dhs-u5",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -216,12 +174,6 @@
     "glow": "112,32,38",
     "glow2": "58,14,18"
   },
-  "wallpaper": [
-    "dhan-silvercoin-cut",
-    "dhan-purse-cut",
-    "dhan-rice-cut",
-    "dhan-coins-cut",
-    "dhan-silvercoin-cut"
-  ],
+  "wallpaper": [],
   "typo": "gold"
 }

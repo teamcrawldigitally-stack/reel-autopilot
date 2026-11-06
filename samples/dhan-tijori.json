@@ -5,11 +5,11 @@
   "look": "devo",
   "hook": "आपकी तिजोरी का मुँह किस तरफ़ है? पैसा रुकेगा या जाएगा, यहीं से तय होता है।",
   "images": [
-    "dhan-coins-cut",
-    "dhan-compass-cut",
-    "dhan-moneyfly-cut",
-    "dhan-redcloth-cut",
-    "dhan-tijori-cut",
+    "dhs-t1",
+    "dhs-t2",
+    "dhs-t3",
+    "dhs-t4",
+    "dhs-t5",
     "lakshmi-cut"
   ],
   "floats": [],
@@ -25,11 +25,9 @@
       "voiceover": "आपकी तिजोरी का मुँह किस तरफ़ है? पैसा रुकेगा या जाएगा, यहीं से तय होता है।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "big",
-          "w": 1100,
-          "x": -10,
-          "y": 300
+          "img": "dhs-t1",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -53,19 +51,9 @@
       "voiceover": "वास्तु में उत्तर दिशा कुबेर की दिशा है। कुबेर, यानी धन के देवता।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "close",
-          "w": 1500,
-          "x": -210,
-          "y": 240,
-          "prop": {
-            "img": "dhan-compass-cut",
-            "word": "उत्तर",
-            "width": 400,
-            "top": 1090,
-            "right": 30,
-            "rot": -6
-          }
+          "img": "dhs-t2",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -86,19 +74,9 @@
       "voiceover": "पहला, तिजोरी दक्षिण वाली दीवार से सटाकर रखिए, ताकि दरवाज़ा उत्तर की तरफ़ खुले।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-tijori-cut",
-            "word": "तिजोरी",
-            "width": 440,
-            "top": 1060,
-            "right": 10,
-            "rot": 0
-          }
+          "img": "dhs-t3",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -120,19 +98,9 @@
       "voiceover": "दूसरा, अगर दरवाज़ा दक्षिण की तरफ़ खुलता है, तो मान्यता है, पैसा आता है, पर रुकता नहीं।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-moneyfly-cut",
-            "word": "रुकता",
-            "width": 500,
-            "top": 1060,
-            "right": -10,
-            "rot": 6
-          }
+          "img": "dhs-t4",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -154,19 +122,9 @@
       "voiceover": "तीसरा, अंदर लाल कपड़ा बिछाइए। तिजोरी कभी पूरी खाली नहीं, और उसके ऊपर कोई भारी सामान या कबाड़ नहीं।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-redcloth-cut",
-            "word": "लाल",
-            "width": 440,
-            "top": 1090,
-            "right": 20,
-            "rot": -5
-          }
+          "img": "dhs-t5",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -222,12 +180,6 @@
     "glow": "112,32,38",
     "glow2": "58,14,18"
   },
-  "wallpaper": [
-    "dhan-tijori-cut",
-    "dhan-compass-cut",
-    "dhan-coins-cut",
-    "dhan-redcloth-cut",
-    "dhan-compass-cut"
-  ],
+  "wallpaper": [],
   "typo": "gold"
 }

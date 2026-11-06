@@ -5,10 +5,11 @@
   "look": "devo",
   "hook": "ग्यारह कौड़ियाँ और दिवाली की रात। पैसे का सबसे पुराना उपाय।",
   "images": [
-    "dhan-haldi-cut",
-    "dhan-kaudi-cut",
-    "dhan-lotus-cut",
-    "dhan-potli-cut",
+    "dhs-k1",
+    "dhs-k2",
+    "dhs-k3",
+    "dhs-k4",
+    "dhs-k5",
     "lakshmi-cut"
   ],
   "floats": [],
@@ -24,11 +25,9 @@
       "voiceover": "ग्यारह कौड़ियाँ और दिवाली की रात। पैसे का सबसे पुराना उपाय।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "big",
-          "w": 1100,
-          "x": -10,
-          "y": 300
+          "img": "dhs-k1",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -51,19 +50,9 @@
       "voiceover": "कौड़ी समुद्र से आती है, और लक्ष्मी जी भी समुद्र मंथन से निकली थीं। इसलिए कौड़ी, लक्ष्मी जी को प्रिय मानी जाती है।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "close",
-          "w": 1500,
-          "x": -210,
-          "y": 240,
-          "prop": {
-            "img": "dhan-kaudi-cut",
-            "word": "कौड़ी",
-            "width": 460,
-            "top": 1100,
-            "right": 10,
-            "rot": -6
-          }
+          "img": "dhs-k2",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -84,19 +73,9 @@
       "voiceover": "पहला, ग्यारह पीली कौड़ियाँ लीजिए। सफ़ेद हों, तो हल्दी में रंग लीजिए।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-haldi-cut",
-            "word": "हल्दी",
-            "width": 420,
-            "top": 1080,
-            "right": 20,
-            "rot": 6
-          }
+          "img": "dhs-k3",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -118,19 +97,9 @@
       "voiceover": "दूसरा, लक्ष्मी पूजा में इन्हें लक्ष्मी जी के चरणों में रखिए।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-kaudi-cut",
-            "word": "चरणों",
-            "width": 420,
-            "top": 1120,
-            "right": 30,
-            "rot": 4
-          }
+          "img": "dhs-k4",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -152,19 +121,9 @@
       "voiceover": "तीसरा, अगली सुबह लाल कपड़े में बाँधकर, तिजोरी या पैसे की जगह पर रख दीजिए। पूरे साल वहीं रहें।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-potli-cut",
-            "word": "लाल",
-            "width": 400,
-            "top": 1080,
-            "right": 30,
-            "rot": -4
-          }
+          "img": "dhs-k5",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -220,12 +179,6 @@
     "glow": "112,32,38",
     "glow2": "58,14,18"
   },
-  "wallpaper": [
-    "dhan-kaudi-cut",
-    "dhan-haldi-cut",
-    "dhan-potli-cut",
-    "dhan-lotus-cut",
-    "dhan-kaudi-cut"
-  ],
+  "wallpaper": [],
   "typo": "gold"
 }

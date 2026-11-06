@@ -260,7 +260,7 @@ const HeroPic: React.FC<{ hero: Hero; src: string | null; sideSrc?: string | nul
     const drift = hero.zoom === "out" ? interpolate(t, [0, Math.max(30, dur)], [1.12, 1.0], clamp) : interpolate(t, [0, Math.max(30, dur)], [1.0, 1.12], clamp);
     const flash = interpolate(t, [0, 5], [0.55, 0], clamp);
     return (
-      <AbsoluteFill style={{ opacity: Math.min(1, t / 3 + (instant ? 1 : 0)), overflow: "hidden" }}>
+      <AbsoluteFill style={{ opacity: 1, overflow: "hidden" }}>
         <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: hero.focus ?? "50% 40%", transform: `scale(${snap * drift + punch})`, transformOrigin: hero.focus ?? "50% 40%" }} />
         <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(10,3,4,0.55) 0%, rgba(10,3,4,0) 18%, rgba(10,3,4,0) 45%, rgba(10,3,4,0.35) 70%)" }} />
         <AbsoluteFill style={{ background: "#FFF3D6", opacity: instant ? 0 : flash, mixBlendMode: "screen" }} />
@@ -725,8 +725,10 @@ const SceneView: React.FC<{ scene: DevoScene; words: W[]; images: Record<string,
     if (t >= 0 && t < 24) punch += 0.045 * Math.exp(-t / 4);
   });
   const titleUntil = scene.title ? (labelAt[0] > 0 ? labelAt[0] : 60) : 0;
-  const tin = isFirst ? 1 : interpolate(frame, [0, 6], [0, 1], clamp);
-  const tout = interpolate(frame, [durationInFrames - 5, durationInFrames], [1, 0], clamp);
+  // Full-bleed picture scenes cut hard (the picture flashes in itself); other scenes cross-fade.
+  const hardCut = scene.heroes[0]?.kind === "full";
+  const tin = isFirst || hardCut ? 1 : interpolate(frame, [0, 6], [0, 1], clamp);
+  const tout = hardCut ? 1 : interpolate(frame, [durationInFrames - 5, durationInFrames], [1, 0], clamp);
   const lift = scene.rise ? interpolate(frame, [0, durationInFrames], [40, -40]) : 0;
   return (
     <AbsoluteFill style={{ opacity: Math.min(tin, tout) }}>
