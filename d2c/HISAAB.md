@@ -175,7 +175,7 @@ Hisaab references:
 - `id`, `title`, `video`, `caption`
 - `audioName`: "D2C Founders · <title>"
 - `thumbOffsetMs`: about 1500
-- `look`: "hisaab"
+- `look`: "hisaab" or "cartoon" (whichever look was used)
 - `type`, `hook`, `keyword`, `pinnedComment`
 
 **Caption:**
