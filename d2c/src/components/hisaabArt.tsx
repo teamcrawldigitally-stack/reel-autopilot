@@ -198,3 +198,37 @@ export const Counter: React.FC<{ name: string; value: string; color?: string; si
     <div style={big(size, color)}>{value}</div>
   </div>
 );
+
+/** Flat face for "founder video" / "customer video" moments. `talk` 0..1 opens the mouth. */
+export const Face: React.FC<{ kind?: "founder" | "customer"; w?: number; talk?: number }> = ({ kind = "founder", w = 260, talk = 0 }) => {
+  const skin = kind === "founder" ? "#B8784C" : "#C98A60";
+  const hair = "#1B1030";
+  return (
+    <svg width={w} height={w * 1.15} viewBox="0 0 200 230">
+      {kind === "customer" && <path d="M40 70 Q30 190 70 200 L130 200 Q170 190 160 70 Z" fill={hair} />}
+      <path d="M30 230 Q30 168 100 162 Q170 168 170 230 Z" fill={kind === "founder" ? C.violet : "#2BB3A0"} />
+      <rect x={86} y={140} width={28} height={30} rx={10} fill={skin} />
+      <ellipse cx={100} cy={96} rx={56} ry={66} fill={skin} />
+      {kind === "founder" ? (
+        <>
+          <path d="M44 84 Q46 30 100 28 Q156 30 156 84 Q140 56 100 58 Q62 58 44 84 Z" fill={hair} />
+          <path d="M52 112 Q56 160 100 164 Q144 160 148 112 Q140 140 100 142 Q60 140 52 112 Z" fill={hair} opacity={0.9} />
+        </>
+      ) : (
+        <path d="M44 90 Q40 30 100 26 Q160 30 156 90 Q150 50 100 50 Q56 52 44 90 Z" fill={hair} />
+      )}
+      <ellipse cx={78} cy={98} rx={6} ry={7} fill={hair} />
+      <ellipse cx={122} cy={98} rx={6} ry={7} fill={hair} />
+      <path d="M68 82 Q78 76 88 82" stroke={hair} strokeWidth={5} fill="none" strokeLinecap="round" />
+      <path d="M112 82 Q122 76 132 82" stroke={hair} strokeWidth={5} fill="none" strokeLinecap="round" />
+      <ellipse cx={100} cy={132} rx={16} ry={3 + 9 * talk} fill="#5A1E2A" />
+    </svg>
+  );
+};
+
+/** Mouth flap 0..1 driven by frame (for a talking face while its line plays). */
+export const useTalk = (from: number, to: number) => {
+  const f = useCurrentFrame();
+  if (f < from || f > to) return 0;
+  return Math.abs(Math.sin(f / 2.2)) * 0.9;
+};

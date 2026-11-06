@@ -43,10 +43,40 @@ import { totalFrames as case16Frames } from "./reels/case16/timeline";
 import { Case17Reel } from "./reels/case17/Reel";
 import { Case17Cover } from "./reels/case17/Cover";
 import { totalFrames as case17Frames } from "./reels/case17/timeline";
+import { Case18Reel } from "./reels/case18/Reel";
+import { Case18Cover } from "./reels/case18/Cover";
+import { totalFrames as case18Frames } from "./reels/case18/timeline";
+import { Case19Reel } from "./reels/case19/Reel";
+import { Case19Cover } from "./reels/case19/Cover";
+import { totalFrames as case19Frames } from "./reels/case19/timeline";
+import { Case20Reel } from "./reels/case20/Reel";
+import { Case20Cover } from "./reels/case20/Cover";
+import { totalFrames as case20Frames } from "./reels/case20/timeline";
+import { Case21Reel } from "./reels/case21/Reel";
+import { Case21Cover } from "./reels/case21/Cover";
+import { totalFrames as case21Frames } from "./reels/case21/timeline";
+import { Case22Reel } from "./reels/case22/Reel";
+import { Case22Cover } from "./reels/case22/Cover";
+import { totalFrames as case22Frames } from "./reels/case22/timeline";
+import { Case23Reel } from "./reels/case23/Reel";
+import { Case23Cover } from "./reels/case23/Cover";
+import { totalFrames as case23Frames } from "./reels/case23/timeline";
+import { Case24Reel } from "./reels/case24/Reel";
+import { Case24Cover } from "./reels/case24/Cover";
+import { totalFrames as case24Frames } from "./reels/case24/timeline";
+import { Case25Reel } from "./reels/case25/Reel";
+import { Case25Cover } from "./reels/case25/Cover";
+import { totalFrames as case25Frames } from "./reels/case25/timeline";
+import { Case26Reel } from "./reels/case26/Reel";
+import { Case26Cover } from "./reels/case26/Cover";
+import { totalFrames as case26Frames } from "./reels/case26/timeline";
+import { Case27Reel } from "./reels/case27/Reel";
+import { Case27Cover } from "./reels/case27/Cover";
+import { totalFrames as case27Frames } from "./reels/case27/timeline";
+import { Case28Reel } from "./reels/case28/Reel";
+import { Case28Cover } from "./reels/case28/Cover";
+import { totalFrames as case28Frames } from "./reels/case28/timeline";
 import { News01Reel } from "./reels/news01/Reel";
-import { Astro01Reel } from "./reels/astro01/Reel";
-import { Astro01Cover } from "./reels/astro01/Cover";
-import { totalFrames as astro01Frames } from "./reels/astro01/timeline";
 import { totalFrames as news01Frames } from "./reels/news01/timeline";
 
 const fonts: [string, string, string][] = [
@@ -67,8 +97,6 @@ const V = { fps: 30, width: 1080, height: 1920 };
 
 export const Root: React.FC = () => (
   <>
-    <Composition id="Astro01" component={Astro01Reel} durationInFrames={astro01Frames} {...V} />
-    <Composition id="Astro01Cover" component={Astro01Cover} durationInFrames={1} {...V} />
     <Composition id="News01" component={News01Reel} durationInFrames={news01Frames} {...V} />
     <Composition id="News01Cover" component={News01Cover} durationInFrames={1} {...V} />
     <Composition id="Case01" component={Case01Reel} durationInFrames={case01Frames} {...V} />
@@ -97,6 +125,28 @@ export const Root: React.FC = () => (
     <Composition id="Case16Cover" component={Case16Cover} durationInFrames={1} {...V} />
     <Composition id="Case17" component={Case17Reel} durationInFrames={case17Frames} {...V} />
     <Composition id="Case17Cover" component={Case17Cover} durationInFrames={1} {...V} />
+    <Composition id="Case18" component={Case18Reel} durationInFrames={case18Frames} {...V} />
+    <Composition id="Case18Cover" component={Case18Cover} durationInFrames={1} {...V} />
+    <Composition id="Case19" component={Case19Reel} durationInFrames={case19Frames} {...V} />
+    <Composition id="Case19Cover" component={Case19Cover} durationInFrames={1} {...V} />
+    <Composition id="Case20" component={Case20Reel} durationInFrames={case20Frames} {...V} />
+    <Composition id="Case20Cover" component={Case20Cover} durationInFrames={1} {...V} />
+    <Composition id="Case21" component={Case21Reel} durationInFrames={case21Frames} {...V} />
+    <Composition id="Case21Cover" component={Case21Cover} durationInFrames={1} {...V} />
+    <Composition id="Case22" component={Case22Reel} durationInFrames={case22Frames} {...V} />
+    <Composition id="Case22Cover" component={Case22Cover} durationInFrames={1} {...V} />
+    <Composition id="Case23" component={Case23Reel} durationInFrames={case23Frames} {...V} />
+    <Composition id="Case23Cover" component={Case23Cover} durationInFrames={1} {...V} />
+    <Composition id="Case24" component={Case24Reel} durationInFrames={case24Frames} {...V} />
+    <Composition id="Case24Cover" component={Case24Cover} durationInFrames={1} {...V} />
+    <Composition id="Case25" component={Case25Reel} durationInFrames={case25Frames} {...V} />
+    <Composition id="Case25Cover" component={Case25Cover} durationInFrames={1} {...V} />
+    <Composition id="Case26" component={Case26Reel} durationInFrames={case26Frames} {...V} />
+    <Composition id="Case26Cover" component={Case26Cover} durationInFrames={1} {...V} />
+    <Composition id="Case27" component={Case27Reel} durationInFrames={case27Frames} {...V} />
+    <Composition id="Case27Cover" component={Case27Cover} durationInFrames={1} {...V} />
+    <Composition id="Case28" component={Case28Reel} durationInFrames={case28Frames} {...V} />
+    <Composition id="Case28Cover" component={Case28Cover} durationInFrames={1} {...V} />
     <Composition id="CastTest" component={CastTest} durationInFrames={300} {...V} />
     <Composition id="DoctorTest" component={DoctorTest} durationInFrames={300} {...V} />
   </>

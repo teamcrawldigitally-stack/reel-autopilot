@@ -5,14 +5,14 @@
   "voice": {
     "speaker": "aditya_hi_conversational",
     "model": "bulbul:v4-flash",
-    "pace": 1.25,
+    "pace": 1.15,
     "lang": "hi-IN",
     "script": "all Devanagari"
   },
   "timing": {
-    "gap": 0.06,
-    "tail": 0.12,
-    "endHold": 1.1
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
   },
   "source": "Calendar Scripts tab, CASE #17 (6 Nov). Example numbers (maan lo): 100 viewers, 2 clicks on the plain photo vs 5 on the in-hand photo.",
   "scenes": [
@@ -29,12 +29,8 @@
       "id": "s2",
       "lines": [
         {
-          "roman": "Rohit ki *serum ki photo, *white_background, ek bottle.",
-          "voice": "रोहित की सीरम की फ़ोटो, वाइट बैकग्राउंड, एक बोतल।"
-        },
-        {
-          "roman": "Priya *scroll karke aage.",
-          "voice": "प्रिया स्क्रॉल करके आगे।"
+          "roman": "Rohit ki *serum ki photo, *white_background, ek bottle. Priya *scroll karke aage.",
+          "voice": "रोहित की सीरम की फ़ोटो, वाइट बैकग्राउंड, एक बोतल। प्रिया स्क्रॉल करके आगे।"
         }
       ]
     },
@@ -42,12 +38,8 @@
       "id": "s3",
       "lines": [
         {
-          "roman": "Wahi serum, Priya ke *haath mein, chamakti *skin ke saath.",
-          "voice": "वही सीरम, प्रिया के हाथ में, चमकती स्किन के साथ।"
-        },
-        {
-          "roman": "Ab woh *ruk gayi.",
-          "voice": "अब वो रुक गई।"
+          "roman": "Wahi serum, Priya ke *haath mein, chamakti *skin ke saath. Ab woh *ruk gayi.",
+          "voice": "वही सीरम, प्रिया के हाथ में, चमकती स्किन के साथ। अब वो रुक गई।"
         }
       ]
     },
@@ -55,16 +47,8 @@
       "id": "s4",
       "lines": [
         {
-          "roman": "Kyunki customer *bottle nahi khareedta, *result khareedta hai.",
-          "voice": "क्योंकि कस्टमर बोतल नहीं ख़रीदता, रिज़ल्ट ख़रीदता है।"
-        },
-        {
-          "roman": "Maan lo *100|sau log dekhein.",
-          "voice": "मान लो सौ लोग देखें।"
-        },
-        {
-          "roman": "Plain photo pe *2|do click, haath wali photo pe *5|paanch.",
-          "voice": "प्लेन फ़ोटो पे दो क्लिक, हाथ वाली फ़ोटो पे पाँच।"
+          "roman": "Kyunki customer *bottle nahi khareedta, *result khareedta hai. Maan lo *100|sau log dekhein. Plain photo pe *2|do click, haath wali photo pe *5|paanch.",
+          "voice": "क्योंकि कस्टमर बोतल नहीं ख़रीदता, रिज़ल्ट ख़रीदता है। मान लो सौ लोग देखें। प्लेन फ़ोटो पे दो क्लिक, हाथ वाली फ़ोटो पे पाँच।"
         }
       ]
     },
@@ -72,20 +56,8 @@
       "id": "s5",
       "lines": [
         {
-          "roman": "Toh *teen photo zaroor rakho.",
-          "voice": "तो तीन फ़ोटो ज़रूर रखो।"
-        },
-        {
-          "roman": "*Use karte hue.",
-          "voice": "यूज़ करते हुए।"
-        },
-        {
-          "roman": "*Pehle aur baad ka fark.",
-          "voice": "पहले और बाद का फ़र्क।"
-        },
-        {
-          "roman": "Aur *haath mein pakda hua, taaki *size samajh aaye.",
-          "voice": "और हाथ में पकड़ा हुआ, ताकि साइज़ समझ आए।"
+          "roman": "Toh *teen photo zaroor rakho. *Use karte hue. *Pehle aur baad ka fark. Aur *haath mein pakda hua, taaki *size samajh aaye.",
+          "voice": "तो तीन फ़ोटो ज़रूर रखो। यूज़ करते हुए। पहले और बाद का फ़र्क। और हाथ में पकड़ा हुआ, ताकि साइज़ समझ आए।"
         }
       ]
     },
@@ -93,12 +65,8 @@
       "id": "s6",
       "lines": [
         {
-          "roman": "Comment karo *PHOTO|photo,",
-          "voice": "कमेंट करो फ़ोटो,"
-        },
-        {
-          "roman": "*10|das photo ideas ki list free *DM|dee_em mein.",
-          "voice": "दस फ़ोटो आइडियाज़ की लिस्ट फ़्री डी एम में।"
+          "roman": "Comment karo *PHOTO|photo, *10|das photo ideas ki list free *DM|dee_em mein.",
+          "voice": "कमेंट करो फ़ोटो, दस फ़ोटो आइडियाज़ की लिस्ट फ़्री डी एम में।"
         },
         {
           "roman": "*Kal dopahar, log brand se nahi, *insaan se kyun khareedte hain?",
