@@ -329,7 +329,7 @@ const LabelStack: React.FC<{ label: Label; at: number; until: number; index?: nu
     if (v === 1) {
       return (
         <div style={{ position: "absolute", left: 56, top: 1060, opacity: out, transform: `${slide} rotate(-2.5deg) scale(${0.8 + 0.2 * a})`, transformOrigin: "0% 50%" }}>
-          <div style={{ background: K.red, padding: "8px 34px 18px", fontFamily: HEAD, fontWeight: 800, fontSize: 84, lineHeight: 1.08, color: K.white, boxShadow: "0 16px 36px rgba(0,0,0,0.55)", maxWidth: 680 }}>
+          <div style={{ background: K.red, padding: "8px 34px 18px", fontFamily: HEAD, fontWeight: 800, fontSize: 84, lineHeight: 1.08, color: K.white, border: "5px solid #fff", boxShadow: "0 16px 36px rgba(0,0,0,0.6)", maxWidth: 680 }}>
             <div>{label.top}</div>
             <div>{label.bottom}</div>
           </div>
@@ -352,7 +352,7 @@ const LabelStack: React.FC<{ label: Label; at: number; until: number; index?: nu
         <div style={{ transform: `${slide} rotate(-3deg)`, opacity: a, background: K.white, padding: "4px 30px 12px", fontFamily: HEAD, fontWeight: 800, fontSize: 70, lineHeight: 1.15, color: K.ink, zIndex: 2, boxShadow: "0 12px 30px rgba(0,0,0,0.5)" }}>
           {label.top}
         </div>
-        <div style={{ marginTop: -6, marginLeft: 24, transform: `translateX(${(1 - b) * -300}px) rotate(-1deg)`, opacity: b, background: K.red, padding: "6px 34px 16px", fontFamily: HEAD, fontWeight: 800, fontSize: long ? 78 : 96, lineHeight: 1.1, color: K.white, boxShadow: "0 16px 40px rgba(0,0,0,0.6)", maxWidth: 760 }}>
+        <div style={{ marginTop: -6, marginLeft: 24, transform: `translateX(${(1 - b) * -300}px) rotate(-1deg)`, opacity: b, background: K.red, padding: "6px 34px 16px", fontFamily: HEAD, fontWeight: 800, fontSize: long ? 78 : 96, lineHeight: 1.1, color: K.white, border: "5px solid #fff", boxShadow: "0 16px 40px rgba(0,0,0,0.65)", maxWidth: 760 }}>
           {label.bottom}
         </div>
       </div>
@@ -381,7 +381,7 @@ const TitleCard: React.FC<{ text: string; sub?: string; until: number }> = ({ te
       {K.styled ? (
         <>
           {sub ? <div style={{ background: K.white, padding: "2px 26px 8px", fontFamily: HEAD, fontWeight: 800, fontSize: 56, color: K.ink, transform: `rotate(-2deg) scale(${s})`, boxShadow: "0 10px 26px rgba(0,0,0,0.5)" }}>{sub}</div> : null}
-          <div style={{ marginTop: -26, transform: `scale(${interpolate(s, [0, 1], [1.4, 1])})`, fontFamily: DISPLAY, fontSize: 250, lineHeight: 1.05, color: K.red, WebkitTextStroke: "7px #fff", paintOrder: "stroke fill", textShadow: `0 0 50px ${K.red}, 0 14px 30px rgba(0,0,0,0.6)` }}>{text}</div>
+          <div style={{ marginTop: -26, transform: `scale(${interpolate(s, [0, 1], [1.4, 1])})`, fontFamily: DISPLAY, fontSize: 250, lineHeight: 1.05, color: K.red, WebkitTextStroke: "9px #fff", paintOrder: "stroke fill", textShadow: "0 0 0 #000, 0 10px 0 rgba(0,0,0,0.55), 0 18px 40px rgba(0,0,0,0.7)" }}>{text}</div>
         </>
       ) : (
         <>
