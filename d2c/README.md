@@ -2,7 +2,7 @@
 
 Remotion project for the D2C Founders page.
 
-**From 7 Nov 2026 every new reel uses the "hisaab" look: read [HISAAB.md](HISAAB.md) first (script, voice, look, build, queue). Template reel: `src/reels/case15/`, kit: `src/components/hisaab.tsx`.** The cartoon kit (Rohit, Priya, D2C Doctor) below is kept only for the reels made before that.
+**Read [HISAAB.md](HISAAB.md) first (script, voice, look, build, queue).** From 7 Nov 2026 the page tests two looks side by side, one of each per day: **hisaab** (template `src/reels/case15/`, kit `src/components/hisaab.tsx`) and the **2D cartoon** (Rohit, Priya, D2C Doctor; template `src/reels/case14/`). HISAAB.md §0b says which look each CASE gets.
 Separate from the Astro project in the repo root (own package.json).
 
 - One folder per reel in `src/reels/<id>/`: `script.json` (Roman captions + Devanagari voice lines), `timing.json`, `scenes.tsx`, `Reel.tsx`, `Cover.tsx`.

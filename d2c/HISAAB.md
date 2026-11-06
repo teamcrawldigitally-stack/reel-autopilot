@@ -1,8 +1,43 @@
 # Hisaab reels: script, voice and video
 
-Akshay's standing rule (7 Nov 2026): every reel made from now on in this account uses this look and this voice setup.
-The template reel is **CASE #15 "ROAS 3, phir bhi loss?"** (`src/reels/case15/`, queued as `queue/d2cfounders/12-case15-roas.mp4`).
-Cartoon reels (Rohit / Priya / D2C Doctor) are no longer made. The ones already in the queue still post as they are.
+Akshay's rules (7 Nov 2026):
+- The script, voice and checking rules here apply to every reel in this account.
+- For the look, he is still testing what works. So D2C Founders runs two looks side by side: **hisaab** (sections 1–5) and the **2D cartoon** (section 6). Section 0b says which one to use.
+
+Hisaab references:
+- Template reel: D2C CASE #15 "ROAS 3, phir bhi loss?" (repo `d2c/src/reels/case15/`).
+- Kit: `d2c/src/components/hisaab.tsx`.
+- The same guide lives in the repo as `d2c/HISAAB.md`. If the two differ, use the newer one.
+
+## 0. Setup
+
+- **Repo:** `teamcrawldigitally-stack/reel-autopilot`.
+  - Attach it with add_repo (push access).
+  - Clone it to `/home/claude/reel-autopilot`.
+  - Run `npm install` in `d2c/`.
+  - The GitHub REST API works as `env -u GH_TOKEN gh api …`. GraphQL is blocked.
+- **Voice:** needs Akshay's Mac, through the linked-computer Sarvam tools. If the Mac can't be reached, stop before the voice step and say so.
+- **D2C content calendar** (Claude Docs): https://claude.ai/artifact/WL3M4uHLXLoUQ57Nn2SeDd
+  - Calendar tab: one row per reel. Its Status dropdown goes Approved → Queued → Posted.
+  - Scripts tab: the approved scripts.
+- **Akshay's standing rules:**
+  - Under 59 s; best is 35–50 s.
+  - Soft SFX only.
+  - Hooks and CTAs clear and strong.
+  - Show him the hook of every reel.
+  - Reference pages are for topic ideas only. Never copy their script, characters or layout.
+  - A reel counts as approved unless he asks for changes, so queue it without waiting.
+  - Write to him in simple English or Hinglish.
+
+## 0b. Which look (D2C test)
+
+- **Pick by the CASE number.** If the number divided by 4 leaves 1 or 2 → hisaab. If it leaves 3 or 0 → cartoon.
+  - This gives one reel of each look every day, and the two looks swap time slots every day.
+  - For example: Wed 11 has #16 cartoon at 12:57 and #17 hisaab at 6:57. Thu 12 has #18 hisaab at 12:57 and #19 cartoon at 6:57.
+  - CASE #15 (ROAS) is hisaab: it was the first test.
+- **Keep everything else the same for both looks**, so only the look differs: same voice settings, length, hook, CTA and caption rules.
+- **Set the manifest `look`** to `"hisaab"` or `"cartoon"`. The nightly stats (`state/d2cfounders-stats.json`) record it for every post.
+- **After about 10 posts of each look**, compare likes, comments and follower change by look. Tell Akshay which one is winning. He decides what to keep.
 
 ## 1. Script
 
@@ -15,7 +50,7 @@ Cartoon reels (Rohit / Priya / D2C Doctor) are no longer made. The ones already 
   6. The rule.
   7. 3 fixes, then the CTA.
 - **One measured object for the whole reel**, e.g. a coin tower (1 coin = ₹100), a bar, a meter, a calendar strip or a parcel scale. Every scene adds to it, cuts it or measures it.
-- **Length:** 35–50 s, never 59 s or more. At pace 1.25 that is about 90–110 Roman words: 6–7 scenes, each with 2–4 short lines (10 words or fewer per line, one idea per line).
+- **Length:** 35–50 s. At pace 1.25 that is about 90–110 Roman words: 6–7 scenes, each with 2–4 short lines (10 words or fewer per line, one idea per line).
 - **Hook:**
   - It is the first spoken line, e.g. "ROAS 3 hai, phir bhi paisa doob raha hai?".
   - The claim is on screen from frame 0. There is no fade-in on the hook text.
@@ -24,7 +59,6 @@ Cartoon reels (Rohit / Priya / D2C Doctor) are no longer made. The ones already 
   - Real statistics: open the source page and re-check them before making the voice, and put the source in the caption.
 - **Language:** simple Hinglish.
 - **CTA (one only):** "Comment karo KEYWORD," → "<what arrives> free DM mein." → teaser for the next reel as a full question, with its real slot ("Kal dopahar, …?" / "Aaj shaam, …?") → "Follow karo."
-- **Reference pages:** for topic ideas only. Never copy their script, characters or layout.
 - **Lines in `script.json`:**
   - `roman` is for timing cues. `*` marks a key word, and `display|spoken_words` uses `_` for spaces.
   - `voice` is all Devanagari.
@@ -34,12 +68,12 @@ Cartoon reels (Rohit / Priya / D2C Doctor) are no longer made. The ones already 
 **Settings:** `mcp__remote-devices__sarvam__sarvam_tools_tts_speak`
 - model `bulbul:v4-flash`
 - speaker `aditya_hi_conversational`
-- **pace 1.25** (changed from 1.05 on 6 Nov because Akshay found it too slow)
+- **pace 1.25** (1.05 was too slow for Akshay)
 - target_language_code `hi-IN`
 - speech_sample_rate 44100
 
 **Rules for the voice text:**
-- Make one call per line.
+- Make one call per line. Calls can run in parallel batches of about 10.
 - Write the voice text all in Devanagari:
   - English words go in Hindi script (ऐड, सेल, कैलकुलेटर).
   - Acronyms are spelled letter by letter (आर ओ ए एस).
@@ -49,7 +83,7 @@ Cartoon reels (Rohit / Priya / D2C Doctor) are no longer made. The ones already 
   - Use a comma only where a short breath is wanted.
 
 **Getting the files into the project:**
-1. The files are saved on Akshay's Mac as `/Users/akshayshukla/Movies/Astro24x7/sarvam-tts-<hash>.wav`.
+1. The files are saved on the Mac as `/Users/akshayshukla/Movies/Astro24x7/sarvam-tts-<hash>.wav`.
 2. Copy them over with `mcp__remote-devices__device_stage_files`. They arrive in `/mnt/user-data/uploads/Astro24x7/`.
 3. Copy each one to `public/<id>/vo/lines/<scene>_<n>.wav`, where n starts at 0 (s1_0, s1_1, …).
 
@@ -77,11 +111,12 @@ Cartoon reels (Rohit / Priya / D2C Doctor) are no longer made. The ones already 
 
 **Rules:**
 - No cartoon characters and no karaoke subtitles.
-- Few words on screen: one headline per beat, small letter-spaced labels, big numbers (80–230 px) that count up and land on the frame where the number is spoken.
+- Few words on screen: one headline per beat, small letter-spaced labels, big numbers (80–230 px) that count up and land on the frame where the number is spoken. Never show a "₹0" placeholder.
 - Colour:
-  - Use the brand violets for neutral things.
+  - Use the brand colours for neutral things.
   - **Green = money in / good, red = money out / loss.** Use no other colours.
   - Only one glowing "hero" element per frame.
+  - No emoji on screen.
 - Safe area:
   - Content sits between y 290 and 1500, x 84–996.
   - The top bar is at y 168.
@@ -91,7 +126,7 @@ Cartoon reels (Rohit / Priya / D2C Doctor) are no longer made. The ones already 
   - Stagger groups of items (coins 0.07–0.16 frames apart).
   - The twist lands with a stamp or shake on its cue word.
   - Use `Swipes` between scenes.
-- Sound: soft SFX only (pop, tick, stamp, error, check, ding, whoosh, swish, bass, key) at volume 0.35–0.8, with the Jailer bed underneath.
+- Sound: soft SFX only (pop, tick, stamp, error, check, ding, whoosh, swish, bass, key) at volume 0.35–0.8, with the Jailer bed underneath. Never use "Paint The Town Red".
 - **Scene pattern (CASE #15):**
 
   | Scene | Content |
@@ -109,16 +144,17 @@ Cartoon reels (Rohit / Priya / D2C Doctor) are no longer made. The ones already 
   - Show the claim huge: green number + "phir bhi" + red pill word, plus a mini version of the measured object.
   - Keep everything inside the 3:4 crop (y 240–1680).
 
-## 4. Build → check → render
+## 4. Build → check → render (inside `d2c/`)
 
 1. Copy `src/reels/case15/` to `src/reels/<id>/`. Change `script.json`, the scenes, the CTA props and the cover. Register `<Comp>` and `<Comp>Cover` in `src/Root.tsx`.
 2. Run `npx tsc --noEmit -p .`.
 3. Run `node scripts/stills.mjs <Comp> <f1> <f2> …` for 10–12 frames, at the moments with the most on screen in every scene.
-4. Make a contact sheet with PIL and **look at it**. Fix overlaps, clipped text, labels showing "₹0" before their count, and anything outside the safe area. Check again.
+4. Make a contact sheet with PIL and **look at it**. Fix overlaps, clipped text, labels showing "₹0" and anything outside the safe area. Check again.
 5. Render:
    ```
    npx remotion render src/index.ts <Comp> out/<id>_tmp.mp4 --codec h264 --crf 18 --x264-preset veryfast --audio-codec aac --audio-bitrate 256k --browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/chrome-headless-shell-linux64)/chrome-headless-shell --concurrency=2 --log=error
    ```
+   This takes several minutes, so run it in the background.
 6. Add the music: `bash scripts/mix_music.sh out/<id>_tmp.mp4 public/music/jailer-bed.wav 0 out/<id>_mix.mp4`.
 7. Encode for Instagram:
    ```
@@ -135,7 +171,7 @@ Cartoon reels (Rohit / Priya / D2C Doctor) are no longer made. The ones already 
 
 ## 5. Queue and report
 
-**Manifest item** in `queue/d2cfounders/manifest.json`, in calendar order. Fields:
+**Manifest item** in `queue/d2cfounders/manifest.json`, in calendar order. Never move posted items. Fields:
 - `id`, `title`, `video`, `caption`
 - `audioName`: "D2C Founders · <title>"
 - `thumbOffsetMs`: about 1500
@@ -148,19 +184,54 @@ Cartoon reels (Rohit / Priya / D2C Doctor) are no longer made. The ones already 
 3. 3 ✅ fixes.
 4. "👇 Comment karo KEYWORD, … free DM mein."
 5. A blank line.
-6. 5 hashtags.
+6. 5 hashtags (#D2CIndia #D2CFounders + 3 topical).
 
 Do not add the free-report or WhatsApp lines. The posting step adds the English footer from `captionCta`.
 
 **Finish up:**
-- Commit with the reel source and voice clips, rebase on origin/main, and push.
+- Commit (user.name reel-autopilot) with the reel source and voice clips.
+- Run `git fetch origin main && git rebase origin/main`, then push.
 - Set the calendar row's Status to "Queued".
-- Send Akshay the mp4, the cover and the hook.
+- Send Akshay the mp4 and the cover (SendUserFile) and the hook.
+- Posting reels or changing the posting workflows needs his explicit OK. Queueing a finished reel does not.
+
+## 6. Cartoon look (the other half of the D2C test)
+
+**References:**
+- Template reels: `d2c/src/reels/case14/` (newest) or `case04/`.
+- Kit in `d2c/src/components/`:
+  - `Cartoon.tsx`: Rohit and Priya, plus props.
+  - `Doctor.tsx`: the D2C Doctor.
+  - `sets.tsx`: Dispatch/PackTable, OfficeWall/Desk, Doorstep, MoneyRoom, Stage, Clinic/Whiteboard.
+  - `props.tsx`: Scale, Phone/Bubble, Coupon, Calendar, Bottle, Bell, Stars, QMarks, FlyTag, NameTag, Jar, Parcel, Piggy, Truck, Burst, Confetti.
+  - `format.tsx`: HookTitle, CtaFlow (with `nextLabel`), Place, makeMouth.
+  - Also `kit`, `fx`, `widgets` and `overlay`.
+
+**Cast:**
+- **Rohit** is the founder (mustard hoodie).
+- **Priya** is the customer (teal top).
+- The **D2C Doctor** walks in and explains the fixes.
+- Use the same cast every time, so viewers recognise the page.
+
+**Hook:**
+- The claim is on screen from frame 0 with `HookTitle`: at most 2 title lines, the first at `at: -8`.
+- Use a clean backdrop (for example `MoneyRoom`).
+- Show one visual at a time, swapping on cue words instead of stacking them.
+
+**Other rules:**
+- Karaoke `Captions` at top 1440, `Swipes` between scenes, `TopBar` tag, `Grade`/`Grain`/`Vignette`.
+- The CTA uses `CtaFlow`:
+  1. ① "Comment karo" + the keyword.
+  2. ② "DM mein milega" + what arrives.
+  3. The next-reel card, with `nextLabel` = the real slot.
+  4. Follow.
+- Script length, voice (pace 1.25, no colons), checks, render, mix, encode and queue are exactly as in sections 1, 2, 4 and 5. Set manifest `look` = `"cartoon"`.
 
 ## Other pages
 
-The script, voice and look rules above apply to every page. The page's palette and logo change:
+The script, voice and checking rules apply to every page. Astro 24x7 keeps testing its own looks in its own chat. When a page uses the hisaab look, change its palette and logo:
 - **D2C Founders:** navy #12044B, violet #6D4AFD → #3618B4, lavender #DFC8FD.
-- **Astro 24x7:** its own orange + white with a little black.
+- **Astro 24x7:** its own orange + white with a little black, and its own logo.
+- **A new page:** use its logo colours.
 
-Green and red stay for good/bad and money in/out. Each page has its own Remotion project (Astro 24x7 is in the repo root). Port `hisaab.tsx` into it, with that page's colours and logo, before its first hisaab reel.
+Green and red stay for good/bad and money in/out. Each page has its own Remotion project (Astro 24x7 is in the repo root). Port `hisaab.tsx` into it, with that page's colours and logo, and show Akshay the first reel before making more.
