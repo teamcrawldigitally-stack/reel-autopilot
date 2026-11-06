@@ -4,59 +4,101 @@
   "voice": {
     "speaker": "aditya_hi_conversational",
     "model": "bulbul:v4-flash",
-    "pace": 1.05,
+    "pace": 1.25,
     "lang": "hi-IN",
     "script": "all Devanagari"
   },
   "timing": {
-    "gap": 0.12,
-    "tail": 0.22,
-    "endHold": 1.0
+    "gap": 0.1,
+    "tail": 0.35,
+    "endHold": 1.2
   },
   "source": "Approved script from the calendar doc's Scripts tab (CASE #16, 6 Nov). Example numbers (maan lo): 40 orders a day in Diwali week, 12 a day after. No study or statistic quoted.",
   "scenes": [
     {
       "id": "s1",
       "lines": [
-        { "roman": "Diwali ke baad *sale achanak *gir_gayi?", "voice": "दिवाली के बाद सेल अचानक गिर गई?" },
-        { "roman": "*Ghabraiye mat, yeh *Diwali_hangover hai.", "voice": "घबराइए मत, ये दिवाली हैंगओवर है।" }
+        {
+          "roman": "Diwali ke baad *sale achanak *gir_gayi?",
+          "voice": "दिवाली के बाद सेल अचानक गिर गई?"
+        },
+        {
+          "roman": "*Ghabraiye mat, yeh *Diwali_hangover hai.",
+          "voice": "घबराइए मत, ये दिवाली हैंगओवर है।"
+        }
       ]
     },
     {
       "id": "s2",
       "lines": [
-        { "roman": "Maan lo Diwali hafte mein roz *40|chaalees order.", "voice": "मान लो, दिवाली हफ़्ते में रोज़ चालीस ऑर्डर।" },
-        { "roman": "Diwali ke *baad: roz *12|baarah.", "voice": "दिवाली के बाद: रोज़ बारह।" }
+        {
+          "roman": "Maan lo Diwali hafte mein roz *40|chaalees order.",
+          "voice": "मान लो दिवाली हफ़्ते में रोज़ चालीस ऑर्डर।"
+        },
+        {
+          "roman": "Diwali ke *baad, roz *12|baarah.",
+          "voice": "दिवाली के बाद, रोज़ बारह।"
+        }
       ]
     },
     {
       "id": "s3",
       "lines": [
-        { "roman": "Kyunki log apna *bonus aur *budget, dono Diwali pe *kharch kar chuke hain.", "voice": "क्योंकि लोग अपना बोनस और बजट, दोनों दिवाली पे ख़र्च कर चुके हैं।" }
+        {
+          "roman": "Kyunki log apna *bonus aur *budget, dono Diwali pe *kharch kar chuke hain.",
+          "voice": "क्योंकि लोग अपना बोनस और बजट, दोनों दिवाली पे ख़र्च कर चुके हैं।"
+        }
       ]
     },
     {
       "id": "s4",
       "lines": [
-        { "roman": "*Galti tab hoti hai jab *ghabra ke ad budget *double kar do.", "voice": "ग़लती तब होती है जब घबरा के ऐड बजट डबल कर दो।" },
-        { "roman": "*Kharcha upar, *order phir bhi *kam.", "voice": "ख़र्चा ऊपर, ऑर्डर फिर भी कम।" }
+        {
+          "roman": "*Galti tab hoti hai jab *ghabra ke ad budget *double kar do.",
+          "voice": "ग़लती तब होती है जब घबरा के ऐड बजट डबल कर दो।"
+        },
+        {
+          "roman": "*Kharcha upar, *order phir bhi *kam.",
+          "voice": "ख़र्चा ऊपर, ऑर्डर फिर भी कम।"
+        }
       ]
     },
     {
       "id": "s5",
       "lines": [
-        { "roman": "Toh *teen kaam. Ad budget *thoda kam karo, band nahi.", "voice": "तो तीन काम। ऐड बजट थोड़ा कम करो, बंद नहीं।" },
-        { "roman": "Diwali ke customers ko *thank-you|thankyou message bhejo.", "voice": "दिवाली के कस्टमर्स को थैंक यू मैसेज भेजो।" },
-        { "roman": "Aur *shaadi season ka offer *abhi se ready karo.", "voice": "और शादी सीज़न का ऑफ़र अभी से रेडी करो।" }
+        {
+          "roman": "Toh *teen kaam. Ad budget *thoda kam karo, band nahi.",
+          "voice": "तो तीन काम। ऐड बजट थोड़ा कम करो, बंद नहीं।"
+        },
+        {
+          "roman": "Diwali ke customers ko *thank-you|thankyou message bhejo.",
+          "voice": "दिवाली के कस्टमर्स को थैंक यू मैसेज भेजो।"
+        },
+        {
+          "roman": "Aur *shaadi season ka offer *abhi se ready karo.",
+          "voice": "और शादी सीज़न का ऑफ़र अभी से रेडी करो।"
+        }
       ]
     },
     {
       "id": "s6",
       "lines": [
-        { "roman": "Comment karo *PLAN|plan,", "voice": "कमेंट करो प्लान," },
-        { "roman": "Diwali ke baad *15|pandrah din ka *plan free *DM|dee_em mein.", "voice": "दिवाली के बाद पंद्रह दिन का प्लान फ़्री डी एम में।" },
-        { "roman": "Aaj shaam: *photo badli, aur *clicks badh gaye?", "voice": "आज शाम: फ़ोटो बदली, और क्लिक्स बढ़ गए?" },
-        { "roman": "*Follow karo.", "voice": "फ़ॉलो करो।" }
+        {
+          "roman": "Comment karo *PLAN|plan,",
+          "voice": "कमेंट करो प्लान,"
+        },
+        {
+          "roman": "Diwali ke baad *15|pandrah din ka *plan free *DM|dee_em mein.",
+          "voice": "दिवाली के बाद पंद्रह दिन का प्लान फ़्री डी एम में।"
+        },
+        {
+          "roman": "Aaj shaam, *photo badli, aur *clicks badh gaye?",
+          "voice": "आज शाम, फ़ोटो बदली, और क्लिक्स बढ़ गए?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
       ]
     }
   ]
