@@ -5,13 +5,13 @@
   "voice": {
     "speaker": "aditya_hi_conversational",
     "model": "bulbul:v4-flash",
-    "pace": 1.05,
+    "pace": 1.25,
     "lang": "hi-IN",
     "script": "all Devanagari"
   },
   "timing": {
-    "gap": 0.12,
-    "tail": 0.22,
+    "gap": 0.06,
+    "tail": 0.12,
     "endHold": 0.8
   },
   "scenes": [
@@ -49,16 +49,16 @@
           "voice": "अब तीस हज़ार को तोड़ो।"
         },
         {
-          "roman": "Maal: *₹12,000|baarah_hazaar.",
-          "voice": "माल: बारह हज़ार।"
+          "roman": "Maal *₹12,000|baarah_hazaar.",
+          "voice": "माल बारह हज़ार।"
         },
         {
-          "roman": "Packing aur delivery: *₹5,400|paanch_hazaar_chaar_sau.",
-          "voice": "पैकिंग और डिलीवरी: पाँच हज़ार चार सौ।"
+          "roman": "Packing aur delivery *₹5,400|paanch_hazaar_chaar_sau.",
+          "voice": "पैकिंग और डिलीवरी पाँच हज़ार चार सौ।"
         },
         {
-          "roman": "Returns aur payment charges: *₹3,600|teen_hazaar_chhe_sau.",
-          "voice": "रिटर्न्स और पेमेंट चार्जेस: तीन हज़ार छह सौ।"
+          "roman": "Returns aur payment charges *₹3,600|teen_hazaar_chhe_sau.",
+          "voice": "रिटर्न्स और पेमेंट चार्जेस तीन हज़ार छह सौ।"
         }
       ]
     },
@@ -74,8 +74,8 @@
           "voice": "ऊपर से ऐड का दस हज़ार।"
         },
         {
-          "roman": "Haath mein: *−₹1,000|minus_ek_hazaar.",
-          "voice": "हाथ में: माइनस एक हज़ार।"
+          "roman": "Haath mein *−₹1,000|minus_ek_hazaar.",
+          "voice": "हाथ में माइनस एक हज़ार।"
         }
       ]
     },
@@ -121,8 +121,8 @@
           "voice": "ब्रेक ईवन कैलकुलेटर फ़्री डी एम में।"
         },
         {
-          "roman": "Kal dopahar: Diwali ke baad *sale kyun girti hai?",
-          "voice": "कल दोपहर: दिवाली के बाद सेल क्यों गिरती है?"
+          "roman": "Kal dopahar, Diwali ke baad *sale kyun girti hai?",
+          "voice": "कल दोपहर, दिवाली के बाद सेल क्यों गिरती है?"
         },
         {
           "roman": "*Follow karo.",

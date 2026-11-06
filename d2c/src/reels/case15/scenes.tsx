@@ -146,20 +146,20 @@ export const S2AdSale: React.FC<SP> = ({ dur }) => {
   const adIn = ease(f, das - 6, das + 8);
   const saleIn = ease(f, sale - 4, sale + 8);
   const adVal = useCount(10000, das - 4, das + 14);
-  const saleVal = useCount(30000, fillA, fillA + 30);
+  const saleVal = useCount(30000, fillA, fillA + 22);
   const roas = useSpring(tees + 2, "bouncy");
   return (
     <SceneShell dur={dur}>
       <FigLabel n={1} text="AD vs SALE" />
       <TowerFrame o={ease(f, 0, 12)} />
       {Array.from({ length: 300 }).map((_, i) => {
-        const at = fillA + i * 0.1;
+        const at = fillA + i * 0.07;
         const p = ease(f, at, at + 6);
         if (p <= 0) return null;
         const { x, y } = coinXY(i);
         return <Coin key={i} x={x} y={y - (1 - p) * 26} tint="green" o={p} s={0.6 + 0.4 * p} />;
       })}
-      <SaleLine p={ease(f, fillA + 30, fillA + 44)} tag={false} />
+      <SaleLine p={ease(f, fillA + 20, fillA + 32)} tag={false} />
 
       {/* ad */}
       <div style={{ position: "absolute", left: AD.x, top: 500, opacity: adIn, transform: `translateX(${(1 - adIn) * 60}px)` }}>
@@ -201,7 +201,7 @@ export const S2AdSale: React.FC<SP> = ({ dur }) => {
       </div>
 
       <Sfx at={das - 6} name="pop" vol={0.5} />
-      {[0, 6, 12, 18, 24, 30].map((d) => (
+      {[0, 5, 10, 15, 20].map((d) => (
         <Sfx key={d} at={fillA + d} name="tick" vol={0.35} />
       ))}
       <Sfx at={tees} name="check" vol={0.55} />
