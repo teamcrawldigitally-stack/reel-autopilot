@@ -1,9 +1,14 @@
 import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { Logo, clamp } from "../../components/kit";
-import { C, theme } from "../../theme";
+import { Enter, Logo, Sfx, clamp } from "./kit";
+import { CommentBox, DmCard, FollowButton } from "./widgets";
+import { C, theme } from "../theme";
 
-/** "Hisaab" look: dark navy blueprint sheet, lavender lines, money in green/red only. */
+/**
+ * "Hisaab" look (standard for every reel from 7 Nov 2026; template reel: src/reels/case15).
+ * Dark navy blueprint sheet, lavender lines, big counting numbers, one object measured.
+ * Money numbers only in green (in) / red (out). See ../../HISAAB.md for the rules.
+ */
 export const BP = {
   ink: "#0D0238",
   line: "rgba(223,200,253,0.55)",
@@ -37,8 +42,8 @@ export const label = (size = 28, color: string = BP.dim): React.CSSProperties =>
 export const ease = (frame: number, a: number, b: number, k: keyof typeof theme.ease = "out") =>
   interpolate(frame, [a, b], [0, 1], { ...clamp, easing: theme.ease[k] });
 
-/** Navy sheet + drifting blueprint grid + edge rulers + corner marks. */
-export const BlueprintBg: React.FC = () => {
+/** Navy sheet + drifting blueprint grid + edge rulers + corner marks. `sheet` = the reel tag, e.g. "#15". */
+export const BlueprintBg: React.FC<{ sheet?: string }> = ({ sheet }) => {
   const frame = useCurrentFrame();
   const drift = frame * 0.25;
   const gx = Math.sin(frame / 80) * 70;
@@ -91,7 +96,7 @@ export const BlueprintBg: React.FC = () => {
           <div style={{ position: "absolute", top: 15, left: 0, height: 2, width: 32, background: BP.lineSoft }} />
         </div>
       ))}
-      <div style={{ position: "absolute", left: 84, top: 1556, ...label(20, "rgba(223,200,253,0.32)") }}>D2C FOUNDERS · HISAAB SHEET #15</div>
+      <div style={{ position: "absolute", left: 84, top: 1556, ...label(20, "rgba(223,200,253,0.32)") }}>D2C FOUNDERS · HISAAB SHEET{sheet ? ` ${sheet}` : ""}</div>
     </AbsoluteFill>
   );
 };
@@ -288,3 +293,122 @@ export const DimLabel: React.FC<{ y: number; name: string; value: React.ReactNod
     <div style={big(size, color)}>{value}</div>
   </div>
 );
+
+const NOISE = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")`;
+
+/** Dark-sheet finish: violet soft-light grade, overlay grain, deep vignette. */
+export const DarkFinish: React.FC = () => {
+  const frame = useCurrentFrame();
+  return (
+    <>
+      <AbsoluteFill style={{ pointerEvents: "none", backgroundColor: C.violet, mixBlendMode: "soft-light", opacity: 0.12 }} />
+      <AbsoluteFill
+        style={{
+          pointerEvents: "none",
+          backgroundImage: NOISE,
+          backgroundSize: "220px",
+          backgroundPosition: `${(frame * 7) % 220}px ${(frame * 13) % 220}px`,
+          opacity: 0.07,
+          mixBlendMode: "overlay",
+        }}
+      />
+      <AbsoluteFill style={{ pointerEvents: "none", background: "radial-gradient(ellipse at center, transparent 55%, rgba(5,0,25,0.5) 100%)" }} />
+    </>
+  );
+};
+
+/* ---------- shared blocks for every hisaab reel ---------- */
+
+export const glass: React.CSSProperties = {
+  background: "rgba(223,200,253,0.06)",
+  border: `2.5px solid ${BP.lineSoft}`,
+  borderRadius: 30,
+  boxShadow: "0 30px 60px -30px rgba(0,0,0,0.6)",
+};
+
+/** Count-up that lands on `to` between frames a and b (use with tabular numbers). */
+export const useCount = (to: number, a: number, b: number) => {
+  const f = useCurrentFrame();
+  return interpolate(f, [a, b], [0, to], { ...clamp, easing: theme.ease.out });
+};
+
+/** Highlight pill for one or two words inside a title. */
+export const Hl: React.FC<{ children: React.ReactNode; c?: string }> = ({ children, c = C.lavender }) => (
+  <span style={{ display: "inline-block", whiteSpace: "nowrap", background: c, color: C.navy, borderRadius: 12, padding: "4px 14px 0" }}>{children}</span>
+);
+
+/** Numbered fix card (stack 3 in a column, gap 30, from top 390). */
+export const FixCard: React.FC<{ n: number; at: number; title: React.ReactNode; sub: React.ReactNode }> = ({ n, at, title, sub }) => (
+  <Enter delay={at} from="right" dist={90} style={{ width: 912 }}>
+    <div style={{ ...glass, padding: "30px 34px 28px", display: "flex", alignItems: "center", gap: 30 }}>
+      <div style={{ flex: "0 0 92px", height: 92, borderRadius: "50%", background: theme.grad.violet, border: `3px solid ${C.lavender}`, display: "flex", alignItems: "center", justifyContent: "center", ...big(54, C.white), paddingTop: 6, boxSizing: "border-box" }}>{n}</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <div style={{ ...big(48), whiteSpace: "normal", lineHeight: 1.25 }}>{title}</div>
+        <div style={label(24, BP.dim)}>{sub}</div>
+      </div>
+    </div>
+  </Enter>
+);
+
+const CtaStep: React.FC<{ n: number; text: string; at: number; top: number }> = ({ n, text, at, top }) => (
+  <Enter delay={at} from="left" dist={60} style={{ position: "absolute", left: 84, top, display: "flex", alignItems: "center", gap: 16 }}>
+    <div style={{ width: 62, height: 62, borderRadius: "50%", background: theme.grad.violet, border: `3px solid ${C.lavender}`, display: "flex", alignItems: "center", justifyContent: "center", ...big(34, C.white), paddingTop: 4, boxSizing: "border-box" }}>{n}</div>
+    <div style={big(50)}>{text}</div>
+  </Enter>
+);
+
+/**
+ * The one CTA: ① Comment karo + keyword typed → ② DM mein milega + what arrives →
+ * next-reel teaser card (label must match the real slot) → Follow.
+ * All `*At` values are scene frames (use cue()). `next` is the teaser card body.
+ */
+export const HisaabCta: React.FC<{
+  keyword: string;
+  typeAt: number;
+  giftAt: number;
+  giftTitle: string;
+  giftSub: string;
+  giftIcon: React.ReactNode;
+  nextAt: number;
+  nextLabel: string;
+  next: React.ReactNode;
+  followAt: number;
+}> = ({ keyword, typeAt, giftAt, giftTitle, giftSub, giftIcon, nextAt, nextLabel, next, followAt }) => {
+  const f = useCurrentFrame();
+  const out = ease(f, nextAt - 6, nextAt + 2, "in");
+  return (
+    <>
+      {f < nextAt + 4 && (
+        <div style={{ position: "absolute", inset: 0, opacity: 1 - out, transform: `translateY(${-60 * out}px)` }}>
+          <CtaStep n={1} text="Comment karo" at={0} top={300} />
+          <Enter delay={2} style={{ position: "absolute", left: 84, top: 385 }}>
+            <CommentBox word={keyword} typeStart={typeAt} />
+          </Enter>
+          <CtaStep n={2} text="DM mein milega" at={giftAt - 4} top={570} />
+          <Enter delay={giftAt} from="right" dist={120} style={{ position: "absolute", left: 84, top: 655 }}>
+            <DmCard title={giftTitle} sub={giftSub} icon={giftIcon} />
+          </Enter>
+        </div>
+      )}
+      {f >= nextAt - 2 && (
+        <div style={{ position: "absolute", left: 84, right: 84, top: 300, display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
+          <Enter delay={nextAt} cfg="snappy">
+            <div style={{ ...label(32, C.navy), background: C.lavender, borderRadius: 999, padding: "14px 28px 12px", letterSpacing: "0.08em" }}>{nextLabel}</div>
+          </Enter>
+          <Enter delay={nextAt + 4}>
+            <div style={{ background: C.white, borderRadius: 30, border: `5px solid ${C.lavender}`, boxShadow: `10px 10px 0 ${C.violet}`, padding: "30px 44px 24px", display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>{next}</div>
+          </Enter>
+        </div>
+      )}
+      {f >= followAt - 10 && (
+        <div style={{ position: "absolute", left: 0, right: 0, top: 880, zIndex: 6 }}>
+          <FollowButton at={followAt} />
+        </div>
+      )}
+      <Sfx at={typeAt} name="key" vol={0.4} />
+      <Sfx at={giftAt} name="pop" vol={0.5} />
+      <Sfx at={nextAt - 2} name="whoosh" vol={0.5} />
+      <Sfx at={followAt + 12} name="ding" vol={0.5} />
+    </>
+  );
+};

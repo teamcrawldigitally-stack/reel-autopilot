@@ -2,9 +2,8 @@ import React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
 import { CheckIcon, CrossIcon } from "../../components/icons";
 import { Enter, SceneShell, Sfx, clamp, inr, useSpring } from "../../components/kit";
-import { CommentBox, DmCard, FollowButton } from "../../components/widgets";
 import { C, theme } from "../../theme";
-import { BP, Coin, DimLabel, DimLine, FigLabel, SaleLine, TW, Tint, TowerFrame, big, coinXY, ease, label, rowTop, yAt } from "./blueprint";
+import { BP, Coin, DimLabel, DimLine, FigLabel, FixCard, HisaabCta, Hl, SaleLine, TW, Tint, TowerFrame, big, coinXY, ease, glass, label, rowTop, useCount, yAt } from "../../components/hisaab";
 import { cue } from "./timeline";
 
 type SP = { dur: number };
@@ -14,18 +13,7 @@ const SEG = { maal: [0, 120], pack: [120, 174], ret: [174, 210], bacha: [210, 30
 const AD = { x: 660, y: 680 };
 const adCoin = (j: number) => ({ x: AD.x + (j % 10) * TW.p + 2, y: AD.y + Math.floor(j / 10) * TW.p + 2 });
 
-const glass: React.CSSProperties = {
-  background: "rgba(223,200,253,0.06)",
-  border: `2.5px solid ${BP.lineSoft}`,
-  borderRadius: 30,
-  boxShadow: "0 30px 60px -30px rgba(0,0,0,0.6)",
-};
 
-/** Count-up that lands on `to` between frames a and b. */
-const useCount = (to: number, a: number, b: number) => {
-  const f = useCurrentFrame();
-  return interpolate(f, [a, b], [0, to], { ...clamp, easing: theme.ease.out });
-};
 
 /* ================= S1 · hook ================= */
 
@@ -497,21 +485,7 @@ export const S5Meter: React.FC<SP> = ({ dur }) => {
 
 /* ================= S6 · three fixes ================= */
 
-const Fix: React.FC<{ n: number; at: number; title: React.ReactNode; sub: React.ReactNode }> = ({ n, at, title, sub }) => (
-  <Enter delay={at} from="right" dist={90} style={{ width: 912 }}>
-    <div style={{ ...glass, padding: "30px 34px 28px", display: "flex", alignItems: "center", gap: 30 }}>
-      <div style={{ flex: "0 0 92px", height: 92, borderRadius: "50%", background: theme.grad.violet, border: `3px solid ${C.lavender}`, display: "flex", alignItems: "center", justifyContent: "center", ...big(54, C.white), paddingTop: 6, boxSizing: "border-box" }}>{n}</div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-        <div style={{ ...big(48), whiteSpace: "normal", lineHeight: 1.25 }}>{title}</div>
-        <div style={label(24, BP.dim)}>{sub}</div>
-      </div>
-    </div>
-  </Enter>
-);
 
-const Hl: React.FC<{ children: React.ReactNode; c?: string }> = ({ children, c = C.lavender }) => (
-  <span style={{ display: "inline-block", whiteSpace: "nowrap", background: c, color: C.navy, borderRadius: 12, padding: "4px 14px 0" }}>{children}</span>
-);
 
 export const S6Fixes: React.FC<SP> = ({ dur }) => {
   const a = cue("s6", "poora", 1, -10);
@@ -521,9 +495,9 @@ export const S6Fixes: React.FC<SP> = ({ dur }) => {
     <SceneShell dur={dur}>
       <FigLabel n={5} text="AB KYA KAREIN" />
       <div style={{ position: "absolute", left: 84, top: 390, display: "flex", flexDirection: "column", gap: 30 }}>
-        <Fix n={1} at={a} title={<>Har product ka <Hl>poora kharcha</Hl> likho</>} sub="maal + packing + delivery + returns" />
-        <Fix n={2} at={b} title={<>Uska <Hl>break-even ROAS</Hl> nikaalo</>} sub="sale ÷ (sale − kharcha)" />
-        <Fix n={3} at={c} title={<>Ad sirf <Hl c={BP.green}>usse upar</Hl> badhao</>} sub="3.0 pe ruko · 3.3+ pe scale" />
+        <FixCard n={1} at={a} title={<>Har product ka <Hl>poora kharcha</Hl> likho</>} sub="maal + packing + delivery + returns" />
+        <FixCard n={2} at={b} title={<>Uska <Hl>break-even ROAS</Hl> nikaalo</>} sub="sale ÷ (sale − kharcha)" />
+        <FixCard n={3} at={c} title={<>Ad sirf <Hl c={BP.green}>usse upar</Hl> badhao</>} sub="3.0 pe ruko · 3.3+ pe scale" />
       </div>
       <Sfx at={a} name="pop" vol={0.5} />
       <Sfx at={b} name="pop" vol={0.5} />
@@ -534,12 +508,6 @@ export const S6Fixes: React.FC<SP> = ({ dur }) => {
 
 /* ================= S7 · CTA ================= */
 
-const Step: React.FC<{ n: number; text: string; at: number; top: number }> = ({ n, text, at, top }) => (
-  <Enter delay={at} from="left" dist={60} style={{ position: "absolute", left: 84, top, display: "flex", alignItems: "center", gap: 16 }}>
-    <div style={{ width: 62, height: 62, borderRadius: "50%", background: theme.grad.violet, border: `3px solid ${C.lavender}`, display: "flex", alignItems: "center", justifyContent: "center", ...big(34, C.white), paddingTop: 4, boxSizing: "border-box" }}>{n}</div>
-    <div style={big(50)}>{text}</div>
-  </Enter>
-);
 
 const CalcIcon: React.FC = () => (
   <svg width={86} height={100} viewBox="0 0 86 100">
@@ -559,51 +527,30 @@ const FallChart: React.FC<{ p: number }> = ({ p }) => (
 
 export const S7Cta: React.FC<SP> = ({ dur }) => {
   const f = useCurrentFrame();
-  const kw = cue("s7", "aar o e es");
-  const calc = cue("s7", "break even");
   const kal = cue("s7", "kal");
-  const follow = cue("s7", "follow");
-  const out = ease(f, kal - 6, kal + 2, "in");
   return (
     <SceneShell dur={dur} noExit>
-      {f < kal + 4 && (
-        <div style={{ position: "absolute", inset: 0, opacity: 1 - out, transform: `translateY(${-60 * out}px)` }}>
-          <Step n={1} text="Comment karo" at={0} top={300} />
-          <Enter delay={2} style={{ position: "absolute", left: 84, top: 385 }}>
-            <CommentBox word="ROAS" typeStart={kw - 8} />
-          </Enter>
-          <Step n={2} text="DM mein milega" at={calc - 10} top={570} />
-          <Enter delay={calc - 6} from="right" dist={120} style={{ position: "absolute", left: 84, top: 655 }}>
-            <DmCard title="Break-even ROAS Calculator" sub="free · Google Sheet · 2 minute" icon={<CalcIcon />} />
-          </Enter>
-        </div>
-      )}
-      {f >= kal - 2 && (
-        <div style={{ position: "absolute", left: 84, right: 84, top: 300, display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
-          <Enter delay={kal} cfg="snappy">
-            <div style={{ ...label(32, C.navy), background: C.lavender, borderRadius: 999, padding: "14px 28px 12px", letterSpacing: "0.08em" }}>KAL DOPAHAR 1 BAJE · AGLA CASE</div>
-          </Enter>
-          <Enter delay={kal + 4}>
-            <div style={{ background: C.white, borderRadius: 30, border: `5px solid ${C.lavender}`, boxShadow: `10px 10px 0 ${C.violet}`, padding: "30px 44px 24px", display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
-              <div style={big(56, C.navy)}>Diwali ke baad</div>
-              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                <div style={{ ...big(64, C.white), background: C.red, borderRadius: 16, padding: "8px 20px 0" }}>SALE</div>
-                <div style={big(56, C.navy)}>kyun girti hai?</div>
-              </div>
-              <FallChart p={ease(f, kal + 10, kal + 34)} />
+      <HisaabCta
+        keyword="ROAS"
+        typeAt={cue("s7", "aar o e es") - 8}
+        giftAt={cue("s7", "break even") - 6}
+        giftTitle="Break-even ROAS Calculator"
+        giftSub="free · Google Sheet · 2 minute"
+        giftIcon={<CalcIcon />}
+        nextAt={kal}
+        nextLabel="KAL DOPAHAR 1 BAJE · AGLA CASE"
+        next={
+          <>
+            <div style={big(56, C.navy)}>Diwali ke baad</div>
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div style={{ ...big(64, C.white), background: C.red, borderRadius: 16, padding: "8px 20px 0" }}>SALE</div>
+              <div style={big(56, C.navy)}>kyun girti hai?</div>
             </div>
-          </Enter>
-        </div>
-      )}
-      {f >= follow - 10 && (
-        <div style={{ position: "absolute", left: 0, right: 0, top: 880, zIndex: 6 }}>
-          <FollowButton at={follow} />
-        </div>
-      )}
-      <Sfx at={kw - 8} name="key" vol={0.4} />
-      <Sfx at={calc - 6} name="pop" vol={0.5} />
-      <Sfx at={kal - 2} name="whoosh" vol={0.5} />
-      <Sfx at={follow + 12} name="ding" vol={0.5} />
+            <FallChart p={ease(f, kal + 10, kal + 34)} />
+          </>
+        }
+        followAt={cue("s7", "follow")}
+      />
     </SceneShell>
   );
 };

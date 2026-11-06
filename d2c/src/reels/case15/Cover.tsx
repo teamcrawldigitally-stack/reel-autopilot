@@ -2,8 +2,8 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import { Logo } from "../../components/kit";
 import { C } from "../../theme";
-import { BP, BlueprintBg, Coin, big, label } from "./blueprint";
-import { DarkFinish } from "./Reel";
+import { BP, BlueprintBg, Coin, DarkFinish, big, label } from "../../components/hisaab";
+
 
 /** Cover: inside the 3:4 grid crop (y 240–1680). */
 export const Case15Cover: React.FC = () => {
@@ -11,7 +11,7 @@ export const Case15Cover: React.FC = () => {
   const rows = 10;
   return (
     <AbsoluteFill style={{ background: C.navy }}>
-      <BlueprintBg />
+      <BlueprintBg sheet="#15" />
       <div style={{ position: "absolute", top: 290, left: 84, right: 84, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14, background: "rgba(13,2,56,0.7)", border: `2.5px solid ${BP.line}`, borderRadius: 999, padding: "12px 26px 12px 20px", ...label(30, BP.text), letterSpacing: "0.1em" }}>
           <div style={{ width: 18, height: 18, borderRadius: "50%", background: BP.red }} />
