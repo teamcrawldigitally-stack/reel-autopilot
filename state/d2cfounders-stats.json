@@ -33,6 +33,66 @@
           "permalink": "https://www.instagram.com/reel/DfXdWaijY5I/"
         }
       ]
+    },
+    {
+      "date": "2026-11-07",
+      "at": "2026-11-06T18:37:05.482Z",
+      "followers": 2,
+      "mediaCount": 4,
+      "reels": [
+        {
+          "id": "01-news01-andromeda",
+          "kind": "normal",
+          "title": "NEWS #01 · Meta Andromeda 2.0",
+          "look": "infographic",
+          "type": "news",
+          "hook": "news-explainer",
+          "slot": "14:05",
+          "ageHours": 34,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfWnSeBj7rQ/"
+        },
+        {
+          "id": "02-case01-ads-band-sales-zero",
+          "kind": "normal",
+          "title": "CASE #01 · Ads band, sales zero?",
+          "look": "infographic",
+          "type": "case",
+          "hook": "₹-pain question",
+          "slot": "21:58",
+          "ageHours": 26,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfXdWaijY5I/"
+        },
+        {
+          "id": "03-case02-budget-double",
+          "kind": "normal",
+          "title": "CASE #02 · Ad budget double se pehle",
+          "look": "doctor-host",
+          "type": "case",
+          "hook": "stop (RUKO) + number",
+          "slot": "13:00",
+          "ageHours": 11,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfZEuP5DDJa/"
+        },
+        {
+          "id": "04-case03-bada-bill",
+          "kind": "normal",
+          "title": "CASE #03 · Naya customer nahi, bada bill",
+          "look": "cartoon",
+          "type": "case",
+          "hook": "contradiction (4× profit)",
+          "slot": "19:07",
+          "ageHours": 5,
+          "likes": 7,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfZuov0nOEA/"
+        }
+      ]
     }
   ],
   "insightsRefused": [
