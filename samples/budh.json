@@ -1,0 +1,214 @@
+{
+  "topic": "बुध वालों की 3 पहचान",
+  "title": "बुध वालों की 3 पहचान",
+  "composition": "DevoReel",
+  "look": "devo",
+  "hook": "3 पहचान",
+  "images": [
+    "budh-bag-cut",
+    "budh-calc-cut",
+    "budh-cut",
+    "budh-mic-cut",
+    "budh-phone-cut"
+  ],
+  "floats": [],
+  "caption": "💚 बुध वालों की 3 पहचान · बातों से किसी को भी मना लेना, एक साथ चार काम और दिमाग़ कभी बंद नहीं होता, और उम्र से कम दिखना: 30 के होकर भी कॉलेज वाले लगते हैं। तीसरी सबसे अजीब है 👀 नौ ग्रह पूरे! 👇 आप किस ग्रह वाले निकले? कमेंट में ग्रह का नाम लिखिए, और उस दोस्त को भेजिए जो बुध वाला है।",
+  "hashtags": [
+    "बुध",
+    "Mercury",
+    "Kundli"
+  ],
+  "music": "music/dolce-nonna.mp3",
+  "scenes": [
+    {
+      "voiceover": "बुध वालों की तीन पहचान। तीनों आप में हैं, तो आपका बुध बहुत तेज़ है। और तीसरी सबसे अजीब है।",
+      "heroes": [
+        {
+          "img": "budh-cut",
+          "kind": "big"
+        }
+      ],
+      "title": "बुध",
+      "titleSub": "3 पहचान",
+      "labels": [
+        {
+          "top": "बुध वालों की",
+          "bottom": "3 पहचान",
+          "word": "तीनों"
+        },
+        {
+          "top": "तीसरी",
+          "bottom": "सबसे अजीब",
+          "word": "तीसरी"
+        }
+      ],
+      "questionWord": "तीसरी",
+      "visual": "devo"
+    },
+    {
+      "voiceover": "बुध बुद्धि, बोली और व्यापार के ग्रह हैं।",
+      "heroes": [
+        {
+          "img": "budh-cut",
+          "kind": "close",
+          "prop": {
+            "img": "budh-calc-cut",
+            "word": "व्यापार",
+            "width": 480,
+            "top": 1120,
+            "right": 10,
+            "rot": -8
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "बुद्धि,",
+          "bottom": "बोली",
+          "word": "बुद्धि,"
+        },
+        {
+          "top": "और",
+          "bottom": "व्यापार",
+          "word": "व्यापार"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "पहली: बातों से किसी को भी मना लेना।",
+      "heroes": [
+        {
+          "img": "budh-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "budh-mic-cut",
+            "word": "बातों",
+            "width": 300,
+            "top": 960,
+            "right": 60,
+            "rot": 6
+          }
+        }
+      ],
+      "counter": "1",
+      "labels": [
+        {
+          "top": "बातों से",
+          "bottom": "किसी को भी",
+          "word": "बातों"
+        },
+        {
+          "top": "मना",
+          "bottom": "लेना",
+          "word": "मना"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "दूसरी: एक साथ चार काम। दिमाग़ कभी बंद नहीं होता।",
+      "heroes": [
+        {
+          "img": "budh-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "budh-phone-cut",
+            "word": "चार",
+            "width": 520,
+            "top": 1110,
+            "right": -10,
+            "rot": -6
+          }
+        }
+      ],
+      "counter": "2",
+      "labels": [
+        {
+          "top": "एक साथ",
+          "bottom": "चार काम",
+          "word": "चार"
+        },
+        {
+          "top": "दिमाग़ कभी",
+          "bottom": "बंद नहीं",
+          "word": "दिमाग़"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "और तीसरी, सबसे अजीब: उम्र से कम दिखना। तीस के होकर भी कॉलेज वाले लगते हैं।",
+      "heroes": [
+        {
+          "img": "budh-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "budh-bag-cut",
+            "word": "उम्र",
+            "width": 420,
+            "top": 1030,
+            "right": 20,
+            "rot": 4
+          }
+        }
+      ],
+      "counter": "3",
+      "labels": [
+        {
+          "top": "उम्र से",
+          "bottom": "कम दिखना",
+          "word": "उम्र"
+        },
+        {
+          "top": "30 के होकर भी",
+          "bottom": "कॉलेज वाले",
+          "word": "कॉलेज"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "नौ ग्रह पूरे। आप किस ग्रह वाले निकले? कमेंट में ग्रह का नाम लिखिए। अगले हफ़्ते नई सीरीज़ शुरू, फॉलो कर लीजिए।",
+      "heroes": [
+        {
+          "img": "budh-cut",
+          "kind": "big"
+        }
+      ],
+      "labels": [
+        {
+          "top": "नौ ग्रह",
+          "bottom": "पूरे",
+          "word": "नौ"
+        },
+        {
+          "top": "आप किस",
+          "bottom": "ग्रह वाले?",
+          "word": "किस"
+        },
+        {
+          "top": "अगले हफ़्ते",
+          "bottom": "नई सीरीज़",
+          "word": "अगले"
+        }
+      ],
+      "visual": "devo",
+      "questionWord": "किस"
+    }
+  ],
+  "palette": {
+    "accent": "#17A35A",
+    "accentDeep": "#0B5A31",
+    "bg": "#04140B",
+    "glow": "24,84,50",
+    "glow2": "10,44,26"
+  },
+  "wallpaper": [
+    "budh-calc-cut",
+    "budh-mic-cut",
+    "budh-phone-cut",
+    "budh-bag-cut",
+    "budh-calc-cut"
+  ]
+}

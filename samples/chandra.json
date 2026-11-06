@@ -1,0 +1,218 @@
+{
+  "topic": "चंद्र वालों की 3 पहचान",
+  "title": "चंद्र वालों की 3 पहचान",
+  "composition": "DevoReel",
+  "look": "devo",
+  "hook": "3 पहचान",
+  "images": [
+    "chandra-clock-cut",
+    "chandra-conch-cut",
+    "chandra-cut",
+    "chandra-home-cut",
+    "chandra-milk-cut",
+    "chandra-mood-cut",
+    "chandra-moon-cut",
+    "chandra-sleep-cut",
+    "surya-cut"
+  ],
+  "floats": [],
+  "caption": "🌙 चंद्र वालों की 3 पहचान · दूसरों का मूड बिना बताए समझ जाना, घर और माँ से गहरा लगाव, और पूर्णिमा के आसपास नींद कम और भावनाएँ ज़्यादा। तीसरी सबसे अजीब है 👀 👇 तीनों आप में हैं? कमेंट में लिखिए \"चंद्र\", और उस दोस्त को भेजिए जिसमें ये सब है।",
+  "hashtags": [
+    "चंद्र",
+    "Moon",
+    "Kundli"
+  ],
+  "music": "music/dolce-nonna.mp3",
+  "scenes": [
+    {
+      "voiceover": "चंद्र वालों की तीन पहचान। तीनों आप में हैं, तो आपका चंद्रमा बहुत ताकतवर है। तीसरी सबसे अजीब है।",
+      "heroes": [
+        {
+          "img": "chandra-cut",
+          "kind": "big"
+        }
+      ],
+      "title": "चंद्र",
+      "titleSub": "3 पहचान",
+      "labels": [
+        {
+          "top": "चंद्र वालों की",
+          "bottom": "3 पहचान",
+          "word": "तीनों"
+        },
+        {
+          "top": "तीसरी",
+          "bottom": "सबसे अजीब",
+          "word": "तीसरी"
+        }
+      ],
+      "questionWord": "तीसरी",
+      "visual": "devo"
+    },
+    {
+      "voiceover": "चंद्रमा मन है। जिसका चंद्र मज़बूत, उसका मन समंदर जैसा गहरा।",
+      "heroes": [
+        {
+          "img": "chandra-cut",
+          "kind": "close",
+          "prop": {
+            "img": "chandra-moon-cut",
+            "word": "समंदर",
+            "width": 380,
+            "top": 1080,
+            "right": 40,
+            "rot": -4
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "चंद्रमा",
+          "bottom": "= मन",
+          "word": "चंद्रमा"
+        },
+        {
+          "top": "मन समंदर",
+          "bottom": "जैसा गहरा",
+          "word": "समंदर"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "पहली: दूसरों का मूड बिना बताए समझ जाना।",
+      "heroes": [
+        {
+          "img": "chandra-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "chandra-mood-cut",
+            "word": "मूड",
+            "width": 640,
+            "top": 1060,
+            "right": -30,
+            "rot": 0
+          }
+        }
+      ],
+      "counter": "1",
+      "labels": [
+        {
+          "top": "दूसरों का",
+          "bottom": "मूड समझना",
+          "word": "मूड"
+        },
+        {
+          "top": "बिना",
+          "bottom": "बताए",
+          "word": "बताए"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "दूसरी: घर और माँ से गहरा लगाव। घर से दूर रहें, तो मन नहीं लगता।",
+      "heroes": [
+        {
+          "img": "chandra-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "chandra-home-cut",
+            "word": "माँ",
+            "width": 600,
+            "top": 1040,
+            "right": -40,
+            "rot": 0
+          }
+        }
+      ],
+      "counter": "2",
+      "labels": [
+        {
+          "top": "घर और",
+          "bottom": "माँ से लगाव",
+          "word": "माँ"
+        },
+        {
+          "top": "घर से दूर",
+          "bottom": "मन नहीं लगता",
+          "word": "दूर"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "तीसरी, सबसे अजीब: पूर्णिमा के आसपास नींद कम और भावनाएँ ज़्यादा।",
+      "heroes": [
+        {
+          "img": "chandra-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "chandra-sleep-cut",
+            "word": "पूर्णिमा",
+            "width": 600,
+            "top": 1120,
+            "right": -10,
+            "rot": -4
+          }
+        }
+      ],
+      "counter": "3",
+      "labels": [
+        {
+          "top": "पूर्णिमा के",
+          "bottom": "आसपास",
+          "word": "पूर्णिमा"
+        },
+        {
+          "top": "नींद कम",
+          "bottom": "भावनाएँ ज़्यादा",
+          "word": "नींद"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "तीनों आप में हैं? कमेंट में लिखिए \"चंद्र\"। अगली बारी सूर्य वालों की, फॉलो कर लीजिए।",
+      "heroes": [
+        {
+          "img": "chandra-cut",
+          "kind": "big"
+        },
+        {
+          "img": "surya-cut",
+          "kind": "big",
+          "word": "सूर्य"
+        }
+      ],
+      "labels": [
+        {
+          "top": "कमेंट में",
+          "bottom": "लिखिए: चंद्र",
+          "word": "कमेंट"
+        },
+        {
+          "top": "अगली बारी",
+          "bottom": "सूर्य वालों की",
+          "word": "सूर्य"
+        }
+      ],
+      "visual": "devo",
+      "questionWord": "तीनों"
+    }
+  ],
+  "palette": {
+    "accent": "#3D7BD9",
+    "accentDeep": "#173A6E",
+    "bg": "#0A0E1C",
+    "glow": "52,66,104",
+    "glow2": "26,32,58"
+  },
+  "wallpaper": [
+    "chandra-moon-cut",
+    "chandra-conch-cut",
+    "chandra-clock-cut",
+    "chandra-milk-cut",
+    "chandra-moon-cut"
+  ]
+}

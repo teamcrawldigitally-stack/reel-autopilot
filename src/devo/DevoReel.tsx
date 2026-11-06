@@ -672,7 +672,7 @@ const CutWallpaper: React.FC<{ srcs: string[]; burst?: boolean }> = ({ srcs, bur
   const spots = [
     { x: -120, y: 330, w: 420, r: -10, bx: 40, by: 380, bw: 560 },
     { x: 810, y: 290, w: 330, r: 9, bx: 560, by: 260, bw: 420 },
-    { x: -140, y: 1330, w: 460, r: 7, bx: 60, by: 1000, bw: 620 },
+    { x: -140, y: 1330, w: 460, r: 7, bx: 70, by: 1000, bw: 500 },
     { x: 860, y: 1480, w: 200, r: -7, bx: 700, by: 900, bw: 260 },
     { x: 360, y: 1720, w: 320, r: 4, bx: 380, by: 620, bw: 400 },
   ];

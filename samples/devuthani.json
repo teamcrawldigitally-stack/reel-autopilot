@@ -1,0 +1,219 @@
+{
+  "topic": "देवउठनी एकादशी: आज से शुभ काम शुरू",
+  "title": "देवउठनी एकादशी: आज से शुभ काम शुरू",
+  "composition": "DevoReel",
+  "look": "devo",
+  "hook": "festival",
+  "images": [
+    "budh-cut",
+    "devu-diya-cut",
+    "devu-diyaganna-cut",
+    "devu-ganna-cut",
+    "devu-mala-cut",
+    "devu-tulsi-cut",
+    "vishnu-cut"
+  ],
+  "floats": [],
+  "caption": "🪔 देवउठनी एकादशी: आज से शुभ काम शुरू · चार महीने की योगनिद्रा के बाद भगवान विष्णु आज जागते हैं, और चातुर्मास ख़त्म होते ही शादी और गृह प्रवेश जैसे शुभ काम फिर शुरू। परंपराएँ: तुलसी और शालिग्राम का विवाह, शाम को घर में दीये और गन्ने का मंडप, और आज से शादी का सीज़न। 🙏 कमेंट में लिखिए \"नारायण\", और जिसकी इस सीज़न में शादी है, उसे टैग कीजिए।",
+  "hashtags": [
+    "देवउठनीएकादशी",
+    "तुलसीविवाह",
+    "DevUthaniEkadashi"
+  ],
+  "music": "music/masakali.mp3",
+  "scenes": [
+    {
+      "voiceover": "आज देवउठनी एकादशी है। चार महीने की योगनिद्रा के बाद भगवान विष्णु आज जागते हैं, और आज से शादी के मुहूर्त फिर खुलते हैं।",
+      "heroes": [
+        {
+          "img": "vishnu-cut",
+          "kind": "big"
+        }
+      ],
+      "title": "देवउठनी",
+      "titleSub": "एकादशी",
+      "labels": [
+        {
+          "top": "भगवान विष्णु",
+          "bottom": "आज जागते हैं",
+          "word": "जागते"
+        },
+        {
+          "top": "शादी के मुहूर्त",
+          "bottom": "फिर खुले",
+          "word": "मुहूर्त"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "देवशयनी एकादशी से चातुर्मास शुरू हुआ था। उसमें शादी और गृह प्रवेश जैसे शुभ काम रोके जाते हैं।",
+      "heroes": [
+        {
+          "img": "vishnu-cut",
+          "kind": "close",
+          "prop": {
+            "img": "devu-diya-cut",
+            "word": "चातुर्मास",
+            "width": 460,
+            "top": 1200,
+            "right": 10,
+            "rot": 0
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "चातुर्मास:",
+          "bottom": "4 महीने",
+          "word": "चातुर्मास"
+        },
+        {
+          "top": "शादी, गृह प्रवेश",
+          "bottom": "रुके रहते हैं",
+          "word": "शादी"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "पहली परंपरा: आज या कल तुलसी विवाह, तुलसी और शालिग्राम का विवाह।",
+      "heroes": [
+        {
+          "img": "vishnu-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "devu-tulsi-cut",
+            "word": "तुलसी",
+            "width": 420,
+            "top": 1020,
+            "right": 30,
+            "rot": -3
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "आज या कल",
+          "bottom": "तुलसी विवाह",
+          "word": "तुलसी"
+        },
+        {
+          "top": "तुलसी +",
+          "bottom": "शालिग्राम",
+          "word": "शालिग्राम"
+        }
+      ],
+      "visual": "devo",
+      "counter": "1"
+    },
+    {
+      "voiceover": "दूसरी: शाम को घर में दीये, और गन्ने का मंडप।",
+      "heroes": [
+        {
+          "img": "vishnu-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "devu-diyaganna-cut",
+            "word": "दीये,",
+            "width": 560,
+            "top": 1060,
+            "right": -10,
+            "rot": 0
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "शाम को",
+          "bottom": "घर में दीये",
+          "word": "दीये,"
+        },
+        {
+          "top": "गन्ने का",
+          "bottom": "मंडप",
+          "word": "गन्ने"
+        }
+      ],
+      "visual": "devo",
+      "counter": "2"
+    },
+    {
+      "voiceover": "और तीसरी: आज से शादी का सीज़न। जिनकी बात अटकी थी, उनके लिए नए मुहूर्त।",
+      "heroes": [
+        {
+          "img": "vishnu-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "devu-mala-cut",
+            "word": "शादी",
+            "width": 500,
+            "top": 1100,
+            "right": 0,
+            "rot": -6
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "आज से",
+          "bottom": "शादी का सीज़न",
+          "word": "शादी"
+        },
+        {
+          "top": "अटकी बात?",
+          "bottom": "नए मुहूर्त",
+          "word": "अटकी"
+        }
+      ],
+      "visual": "devo",
+      "counter": "3"
+    },
+    {
+      "voiceover": "कमेंट में \"नारायण\" लिखिए। जिसकी इस सीज़न में शादी है, उसे टैग कीजिए। आज शाम आख़िरी ग्रह, बुध वालों की तीन पहचान, फॉलो कर लीजिए।",
+      "heroes": [
+        {
+          "img": "vishnu-cut",
+          "kind": "big"
+        },
+        {
+          "img": "budh-cut",
+          "kind": "big",
+          "word": "बुध"
+        }
+      ],
+      "labels": [
+        {
+          "top": "कमेंट में",
+          "bottom": "लिखिए: नारायण",
+          "word": "नारायण"
+        },
+        {
+          "top": "जिसकी शादी है",
+          "bottom": "उसे टैग कीजिए",
+          "word": "टैग"
+        },
+        {
+          "top": "आज शाम",
+          "bottom": "बुध वालों की 3 पहचान",
+          "word": "बुध"
+        }
+      ],
+      "visual": "devo"
+    }
+  ],
+  "palette": {
+    "accent": "#E8701A",
+    "accentDeep": "#7A3300",
+    "bg": "#0E0A1A",
+    "glow": "66,48,92",
+    "glow2": "34,24,52"
+  },
+  "wallpaper": [
+    "devu-mala-cut",
+    "devu-tulsi-cut",
+    "devu-diya-cut",
+    "devu-ganna-cut",
+    "devu-tulsi-cut"
+  ]
+}

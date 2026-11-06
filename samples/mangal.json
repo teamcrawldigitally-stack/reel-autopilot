@@ -1,0 +1,215 @@
+{
+  "topic": "मंगल वालों की 3 पहचान",
+  "title": "मंगल वालों की 3 पहचान",
+  "composition": "DevoReel",
+  "look": "devo",
+  "hook": "3 पहचान",
+  "images": [
+    "guru-cut",
+    "mangal-cut",
+    "mangal-dumbbell-cut",
+    "mangal-glove-cut",
+    "mangal-shoes-cut",
+    "mangal-toolbox-cut"
+  ],
+  "floats": [],
+  "caption": "🔥 मंगल वालों की 3 पहचान · गुस्सा जल्दी आता है और उतनी ही जल्दी चला भी जाता है, \"नहीं हो सकता\" सुनते ही ज़िद आ जाती है, और ख़ाली बैठ ही नहीं सकते, छुट्टी के दिन भी कुछ न कुछ करना है। तीसरी सबसे अजीब है 👀 👇 तीनों आप में हैं? कमेंट में लिखिए \"मंगल\", और उस दोस्त को भेजिए जिसमें ये सब है।",
+  "hashtags": [
+    "मंगल",
+    "Mangal",
+    "Kundli"
+  ],
+  "music": "music/jailer-bodhi-theme-loop.mp3",
+  "scenes": [
+    {
+      "voiceover": "मंगल वालों की तीन पहचान। तीनों आप में हैं, तो मंगल आपकी कुंडली में आग जैसा है। और तीसरी सबसे अजीब है।",
+      "heroes": [
+        {
+          "img": "mangal-cut",
+          "kind": "big"
+        }
+      ],
+      "title": "मंगल",
+      "titleSub": "3 पहचान",
+      "labels": [
+        {
+          "top": "मंगल वालों की",
+          "bottom": "3 पहचान",
+          "word": "तीनों"
+        },
+        {
+          "top": "तीसरी",
+          "bottom": "सबसे अजीब",
+          "word": "तीसरी"
+        }
+      ],
+      "questionWord": "तीसरी",
+      "visual": "devo"
+    },
+    {
+      "voiceover": "मंगल हिम्मत, ज़मीन और ख़ून के ग्रह हैं।",
+      "heroes": [
+        {
+          "img": "mangal-cut",
+          "kind": "close",
+          "prop": {
+            "img": "mangal-dumbbell-cut",
+            "word": "हिम्मत,",
+            "width": 480,
+            "top": 1110,
+            "right": 20,
+            "rot": -6
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "हिम्मत,",
+          "bottom": "ज़मीन",
+          "word": "हिम्मत,"
+        },
+        {
+          "top": "और",
+          "bottom": "ख़ून",
+          "word": "ख़ून"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "पहली: गुस्सा जल्दी आता है, और उतनी ही जल्दी चला भी जाता है।",
+      "heroes": [
+        {
+          "img": "mangal-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "mangal-glove-cut",
+            "word": "गुस्सा",
+            "width": 500,
+            "top": 1080,
+            "right": 0,
+            "rot": -8
+          }
+        }
+      ],
+      "counter": "1",
+      "labels": [
+        {
+          "top": "गुस्सा",
+          "bottom": "जल्दी आता है",
+          "word": "गुस्सा"
+        },
+        {
+          "top": "उतनी ही जल्दी",
+          "bottom": "चला जाता है",
+          "word": "उतनी"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "दूसरी: \"नहीं हो सकता\" सुनते ही ज़िद आ जाती है। अब तो करके दिखाऊँगा।",
+      "heroes": [
+        {
+          "img": "mangal-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "mangal-shoes-cut",
+            "word": "ज़िद",
+            "width": 560,
+            "top": 1160,
+            "right": -10,
+            "rot": -4
+          }
+        }
+      ],
+      "counter": "2",
+      "labels": [
+        {
+          "top": "\"नहीं हो सकता\"",
+          "bottom": "= ज़िद",
+          "word": "ज़िद"
+        },
+        {
+          "top": "अब तो",
+          "bottom": "करके दिखाऊँगा",
+          "word": "करके"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "और तीसरी, सबसे अजीब: ख़ाली बैठ ही नहीं सकते। छुट्टी के दिन भी कुछ न कुछ करना है।",
+      "heroes": [
+        {
+          "img": "mangal-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "mangal-toolbox-cut",
+            "word": "ख़ाली",
+            "width": 560,
+            "top": 1130,
+            "right": -10,
+            "rot": -3
+          }
+        }
+      ],
+      "counter": "3",
+      "labels": [
+        {
+          "top": "ख़ाली बैठ ही",
+          "bottom": "नहीं सकते",
+          "word": "ख़ाली"
+        },
+        {
+          "top": "छुट्टी में भी",
+          "bottom": "कुछ न कुछ",
+          "word": "छुट्टी"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "तीनों आप में हैं? कमेंट में लिखिए \"मंगल\"। जिस दोस्त में ये सब है, उसे भेजिए। अगली बारी गुरु वालों की, फॉलो कर लीजिए।",
+      "heroes": [
+        {
+          "img": "mangal-cut",
+          "kind": "big"
+        },
+        {
+          "img": "guru-cut",
+          "kind": "big",
+          "word": "गुरु"
+        }
+      ],
+      "labels": [
+        {
+          "top": "कमेंट में",
+          "bottom": "लिखिए: मंगल",
+          "word": "कमेंट"
+        },
+        {
+          "top": "अगली बारी",
+          "bottom": "गुरु वालों की",
+          "word": "गुरु"
+        }
+      ],
+      "visual": "devo",
+      "questionWord": "तीनों"
+    }
+  ],
+  "palette": {
+    "accent": "#E0302A",
+    "accentDeep": "#7E0F0C",
+    "bg": "#180606",
+    "glow": "110,26,20",
+    "glow2": "58,10,8"
+  },
+  "wallpaper": [
+    "mangal-glove-cut",
+    "mangal-dumbbell-cut",
+    "mangal-shoes-cut",
+    "mangal-toolbox-cut",
+    "mangal-glove-cut"
+  ]
+}

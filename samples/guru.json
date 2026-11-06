@@ -1,0 +1,215 @@
+{
+  "topic": "गुरु वालों की 3 पहचान",
+  "title": "गुरु वालों की 3 पहचान",
+  "composition": "DevoReel",
+  "look": "devo",
+  "hook": "3 पहचान",
+  "images": [
+    "budh-cut",
+    "guru-books-cut",
+    "guru-chai-cut",
+    "guru-cut",
+    "guru-key-cut",
+    "guru-teddy-cut"
+  ],
+  "floats": [],
+  "caption": "🙏 गुरु वालों की 3 पहचान · दोस्त अपनी परेशानी सबसे पहले आपको बताते हैं, जब सारे रास्ते बंद लगें ठीक तभी कोई मदद आ जाती है, और बच्चों और बुज़ुर्गों, दोनों से पहली मुलाकात में दोस्ती हो जाती है। तीसरी सबसे अजीब है 👀 👇 तीनों आप में हैं? कमेंट में लिखिए \"गुरु जी\", और उस दोस्त को भेजिए जिसमें ये सब है।",
+  "hashtags": [
+    "गुरु",
+    "Brihaspati",
+    "Kundli"
+  ],
+  "music": "music/dolce-nonna.mp3",
+  "scenes": [
+    {
+      "voiceover": "गुरु वालों की तीन पहचान। तीनों आप में हैं, तो गुरु आपकी कुंडली में आशीर्वाद बनकर बैठे हैं। और तीसरी सबसे अजीब है।",
+      "heroes": [
+        {
+          "img": "guru-cut",
+          "kind": "big"
+        }
+      ],
+      "title": "गुरु",
+      "titleSub": "3 पहचान",
+      "labels": [
+        {
+          "top": "गुरु वालों की",
+          "bottom": "3 पहचान",
+          "word": "तीनों"
+        },
+        {
+          "top": "तीसरी",
+          "bottom": "सबसे अजीब",
+          "word": "तीसरी"
+        }
+      ],
+      "questionWord": "तीसरी",
+      "visual": "devo"
+    },
+    {
+      "voiceover": "गुरु ज्ञान, धर्म और किस्मत के ग्रह हैं।",
+      "heroes": [
+        {
+          "img": "guru-cut",
+          "kind": "close",
+          "prop": {
+            "img": "guru-books-cut",
+            "word": "ज्ञान,",
+            "width": 480,
+            "top": 1120,
+            "right": 10,
+            "rot": -5
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "ज्ञान,",
+          "bottom": "धर्म",
+          "word": "ज्ञान,"
+        },
+        {
+          "top": "और",
+          "bottom": "किस्मत",
+          "word": "किस्मत"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "पहली: दोस्त अपनी परेशानी सबसे पहले आपको बताते हैं।",
+      "heroes": [
+        {
+          "img": "guru-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "guru-chai-cut",
+            "word": "दोस्त",
+            "width": 520,
+            "top": 1120,
+            "right": -10,
+            "rot": -4
+          }
+        }
+      ],
+      "counter": "1",
+      "labels": [
+        {
+          "top": "दोस्त की परेशानी",
+          "bottom": "सबसे पहले आपसे",
+          "word": "परेशानी"
+        },
+        {
+          "top": "आप पर",
+          "bottom": "भरोसा",
+          "word": "बताते"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "दूसरी: जब सारे रास्ते बंद लगें, ठीक तभी कोई मदद आ जाती है।",
+      "heroes": [
+        {
+          "img": "guru-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "guru-key-cut",
+            "word": "रास्ते",
+            "width": 360,
+            "top": 1000,
+            "right": 40,
+            "rot": 12
+          }
+        }
+      ],
+      "counter": "2",
+      "labels": [
+        {
+          "top": "सारे रास्ते",
+          "bottom": "बंद लगें",
+          "word": "रास्ते"
+        },
+        {
+          "top": "ठीक तभी",
+          "bottom": "मदद आ जाती है",
+          "word": "मदद"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "और तीसरी, सबसे अजीब: बच्चों और बुज़ुर्गों, दोनों से पहली मुलाकात में दोस्ती हो जाती है।",
+      "heroes": [
+        {
+          "img": "guru-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "guru-teddy-cut",
+            "word": "बच्चों",
+            "width": 400,
+            "top": 1080,
+            "right": 30,
+            "rot": -6
+          }
+        }
+      ],
+      "counter": "3",
+      "labels": [
+        {
+          "top": "बच्चे और",
+          "bottom": "बुज़ुर्ग",
+          "word": "बच्चों"
+        },
+        {
+          "top": "पहली मुलाकात में",
+          "bottom": "दोस्ती",
+          "word": "पहली"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "तीनों आप में हैं? कमेंट में लिखिए \"गुरु जी\"। अगली बारी बुध वालों की, और फिर नौ ग्रह पूरे। फॉलो कर लीजिए।",
+      "heroes": [
+        {
+          "img": "guru-cut",
+          "kind": "big"
+        },
+        {
+          "img": "budh-cut",
+          "kind": "big",
+          "word": "बुध"
+        }
+      ],
+      "labels": [
+        {
+          "top": "कमेंट में",
+          "bottom": "लिखिए: गुरु जी",
+          "word": "कमेंट"
+        },
+        {
+          "top": "अगली बारी",
+          "bottom": "बुध वालों की",
+          "word": "बुध"
+        }
+      ],
+      "visual": "devo",
+      "questionWord": "तीनों"
+    }
+  ],
+  "palette": {
+    "accent": "#C97A00",
+    "accentDeep": "#6E4300",
+    "bg": "#160E03",
+    "glow": "100,72,18",
+    "glow2": "54,38,8"
+  },
+  "wallpaper": [
+    "guru-books-cut",
+    "guru-teddy-cut",
+    "guru-chai-cut",
+    "guru-key-cut",
+    "guru-books-cut"
+  ]
+}

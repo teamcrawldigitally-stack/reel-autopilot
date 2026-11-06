@@ -1,0 +1,215 @@
+{
+  "topic": "सूर्य वालों की 3 पहचान",
+  "title": "सूर्य वालों की 3 पहचान",
+  "composition": "DevoReel",
+  "look": "devo",
+  "hook": "3 पहचान",
+  "images": [
+    "mangal-cut",
+    "surya-clock-cut",
+    "surya-crown-cut",
+    "surya-cut",
+    "surya-lota-cut",
+    "surya-trophy-cut"
+  ],
+  "floats": [],
+  "caption": "☀️ सूर्य वालों की 3 पहचान · भीड़ में भी अलग दिखना और लोग अपने आप आपको लीडर मान लेते हैं, इज़्ज़त पर बात आए तो पैसा भी छोड़ दें, और सुबह जल्दी उठें तो पूरा दिन ऊर्जा, देर से उठें तो पूरा दिन भारी। तीसरी सबसे अजीब है 👀 👇 तीनों आप में हैं? कमेंट में लिखिए \"सूर्य\", और उस दोस्त को भेजिए जिसमें ये सब है।",
+  "hashtags": [
+    "सूर्य",
+    "Surya",
+    "Kundli"
+  ],
+  "music": "music/jailer-bodhi-theme-loop.mp3",
+  "scenes": [
+    {
+      "voiceover": "सूर्य वालों की तीन पहचान। तीनों आप में हैं, तो सूर्य आपकी कुंडली में चमक रहे हैं। और तीसरी सबसे अजीब है।",
+      "heroes": [
+        {
+          "img": "surya-cut",
+          "kind": "big"
+        }
+      ],
+      "title": "सूर्य",
+      "titleSub": "3 पहचान",
+      "labels": [
+        {
+          "top": "सूर्य वालों की",
+          "bottom": "3 पहचान",
+          "word": "तीनों"
+        },
+        {
+          "top": "तीसरी",
+          "bottom": "सबसे अजीब",
+          "word": "तीसरी"
+        }
+      ],
+      "questionWord": "तीसरी",
+      "visual": "devo"
+    },
+    {
+      "voiceover": "सूर्य आत्मा, पिता और सम्मान के ग्रह हैं।",
+      "heroes": [
+        {
+          "img": "surya-cut",
+          "kind": "close",
+          "prop": {
+            "img": "surya-lota-cut",
+            "word": "आत्मा,",
+            "width": 460,
+            "top": 1100,
+            "right": 20,
+            "rot": -4
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "आत्मा,",
+          "bottom": "पिता",
+          "word": "आत्मा,"
+        },
+        {
+          "top": "और",
+          "bottom": "सम्मान",
+          "word": "सम्मान"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "पहली: भीड़ में भी अलग दिखना। लोग अपने आप आपको लीडर मान लेते हैं।",
+      "heroes": [
+        {
+          "img": "surya-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "surya-trophy-cut",
+            "word": "लीडर",
+            "width": 420,
+            "top": 1080,
+            "right": 30,
+            "rot": -5
+          }
+        }
+      ],
+      "counter": "1",
+      "labels": [
+        {
+          "top": "भीड़ में भी",
+          "bottom": "अलग दिखना",
+          "word": "भीड़"
+        },
+        {
+          "top": "लोग मानें",
+          "bottom": "लीडर",
+          "word": "लीडर"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "दूसरी: इज़्ज़त पर बात आए, तो पैसा भी छोड़ दें।",
+      "heroes": [
+        {
+          "img": "surya-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "surya-crown-cut",
+            "word": "इज़्ज़त",
+            "width": 560,
+            "top": 1150,
+            "right": -10,
+            "rot": -6
+          }
+        }
+      ],
+      "counter": "2",
+      "labels": [
+        {
+          "top": "इज़्ज़त पर",
+          "bottom": "बात आए",
+          "word": "इज़्ज़त"
+        },
+        {
+          "top": "तो पैसा भी",
+          "bottom": "छोड़ दें",
+          "word": "पैसा"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "और तीसरी, सबसे अजीब: सुबह जल्दी उठें, तो पूरा दिन ऊर्जा। देर से उठें, तो पूरा दिन भारी।",
+      "heroes": [
+        {
+          "img": "surya-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "surya-clock-cut",
+            "word": "सुबह",
+            "width": 440,
+            "top": 1080,
+            "right": 20,
+            "rot": 5
+          }
+        }
+      ],
+      "counter": "3",
+      "labels": [
+        {
+          "top": "सुबह जल्दी",
+          "bottom": "= पूरा दिन ऊर्जा",
+          "word": "सुबह"
+        },
+        {
+          "top": "देर से उठे",
+          "bottom": "= दिन भारी",
+          "word": "देर"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "तीनों आप में हैं? कमेंट में लिखिए \"सूर्य\"। कल सुबह छठ का उषा अर्घ्य है। अगली बारी मंगल वालों की, फॉलो कर लीजिए।",
+      "heroes": [
+        {
+          "img": "surya-cut",
+          "kind": "big"
+        },
+        {
+          "img": "mangal-cut",
+          "kind": "big",
+          "word": "मंगल"
+        }
+      ],
+      "labels": [
+        {
+          "top": "कमेंट में",
+          "bottom": "लिखिए: सूर्य",
+          "word": "कमेंट"
+        },
+        {
+          "top": "अगली बारी",
+          "bottom": "मंगल वालों की",
+          "word": "मंगल"
+        }
+      ],
+      "visual": "devo",
+      "questionWord": "तीनों"
+    }
+  ],
+  "palette": {
+    "accent": "#EE7A12",
+    "accentDeep": "#8A3D05",
+    "bg": "#1A0A04",
+    "glow": "112,54,18",
+    "glow2": "60,26,8"
+  },
+  "wallpaper": [
+    "surya-crown-cut",
+    "surya-lota-cut",
+    "surya-trophy-cut",
+    "surya-clock-cut",
+    "surya-lota-cut"
+  ]
+}

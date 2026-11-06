@@ -38,7 +38,9 @@ export type ToonScene = {
   // generic "tip" scene
   counter?: string;
   counterOf?: string;
-  emblem?: "budhRetro" | "budhMargi" | "paper" | "phone" | "chat" | "clock" | "sun" | "koota" | "stat";
+  emblem?: "budhRetro" | "budhMargi" | "paper" | "phone" | "chat" | "clock" | "sun" | "koota" | "stat" | "grid";
+  // 12 rashi tiles (4 x 3) for the "grid" emblem; a tile lights up when its word is spoken
+  grid?: { name: string; sub?: string; word?: string }[];
   highlight?: number[];
   struck?: boolean;
   emblemWord?: string;
@@ -671,6 +673,29 @@ const StatCard: React.FC<{ text: string; struck?: boolean; p: number }> = ({ tex
   </div>
 );
 
+// 4 x 3 board of the 12 rashis. Tiles pop in one by one; a tile with a cue word turns orange when spoken.
+const RashiGrid: React.FC<{ cells: NonNullable<ToonScene["grid"]>; hotAt: number[]; p: number }> = ({ cells, hotAt, p }) => {
+  const frame = useCurrentFrame();
+  const tw = 222;
+  const th = 150;
+  const gap = 14;
+  return (
+    <div style={{ position: "relative", width: tw * 4 + gap * 3 + 40, height: th * 3 + gap * 2 + 40, borderRadius: 40, background: C.white, ...sticker(C.ink, 10), boxSizing: "border-box", padding: 20 }}>
+      {cells.slice(0, 12).map((c, i) => {
+        const on = interpolate(p, [i / 16, i / 16 + 0.25], [0, 1], clamp);
+        const hot = hotAt[i] >= 0 && frame >= hotAt[i];
+        const pop = hot ? interpolate(frame - hotAt[i], [0, 4, 10], [1, 1.12, 1], clamp) : 1;
+        return (
+          <div key={i} style={{ position: "absolute", left: 20 + (i % 4) * (tw + gap), top: 20 + Math.floor(i / 4) * (th + gap), width: tw, height: th, borderRadius: 22, background: hot ? C.orange : C.orangeSoft, border: `4px solid ${C.ink}`, boxSizing: "border-box", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", opacity: on, transform: `scale(${(0.7 + 0.3 * on) * pop})` }}>
+            <div style={{ fontFamily: astro.fonts.display, fontSize: 46, lineHeight: 1.05, color: hot ? C.white : C.ink }}>{c.name}</div>
+            {c.sub ? <div style={{ fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 32, lineHeight: 1.1, color: hot ? C.white : C.orangeDeep, marginTop: 2 }}>{c.sub}</div> : null}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 const HeroCard: React.FC<{ kind: NonNullable<ToonScene["emblem"]>; p: number; scene?: ToonScene; strikeP?: number }> = ({ kind, p, scene, strikeP = 0 }) => {
   const frame = useCurrentFrame();
   if (kind === "koota") return <KootaBars p={p} highlight={scene?.highlight ?? []} />;
@@ -699,6 +724,8 @@ export const TipScene: React.FC<TP> = (p) => {
   const bubbleAt = useAt(p, sc.bubbleWord, 110);
   const poseAt = useAt(p, sc.poseWord, 9999);
   const strikeAt = useAt(p, sc.statWord, 9999);
+  const gridHot = (sc.grid ?? []).map((g) => (g.word ? useAt(p, g.word, -1) : -1)); // eslint-disable-line react-hooks/rules-of-hooks
+  const isGrid = sc.emblem === "grid";
   const pose = usePose([
     [0, "explain"],
     [Math.max(4, emAt - 6), "point"],
@@ -720,14 +747,21 @@ export const TipScene: React.FC<TP> = (p) => {
       <Center y={headY}>
         <Headline text={`${sc.headline ?? ""}${sc.accent ? " " + sc.accent : ""}`} highlight={sc.accent} size={sc.counter ? 104 : 118} delay={0} maxWidth={940} />
       </Center>
-      <Abs x={sc.emblem?.startsWith("budh") ? 430 : sc.emblem === "koota" ? 440 : sc.emblem === "stat" ? 520 : 620} y={sc.emblem?.startsWith("budh") ? 600 : sc.emblem === "koota" ? (sc.counter ? 600 : 560) : sc.bubble ? 760 : 700}>
+      {isGrid ? (
+        <Abs x={56} y={sc.counter ? 560 : 500}>
+          <Pop at={emAt - 4} from={0.5} rotate={0}>
+            <RashiGrid cells={sc.grid ?? []} hotAt={gridHot} p={draw} />
+          </Pop>
+        </Abs>
+      ) : null}
+      <Abs x={isGrid ? 3000 : sc.emblem?.startsWith("budh") ? 430 : sc.emblem === "koota" ? 440 : sc.emblem === "stat" ? 520 : 620} y={sc.emblem?.startsWith("budh") ? 600 : sc.emblem === "koota" ? (sc.counter ? 600 : 560) : sc.bubble ? 760 : 700}>
         <Pop at={emAt - 4} from={0.3} rotate={sc.emblem?.startsWith("budh") || sc.emblem === "koota" ? 0 : 4}>
           {sc.emblem ? <HeroCard kind={sc.emblem} p={draw} scene={sc} strikeP={interpolate(frame, [strikeAt, strikeAt + 8], [0, 1], clamp)} /> : null}
         </Pop>
         {sc.emblem ? <Burst at={emAt} x={200} y={180} radius={230} count={8} /> : null}
       </Abs>
       {chips.map((ch, i) => (
-        <div key={i} style={{ position: "absolute", right: 46, top: (chips.length > 2 ? 1010 : 1080) + i * (chips.length > 2 ? 118 : 130), display: "flex", justifyContent: "flex-end" }}>
+        <div key={i} style={{ position: "absolute", right: 46, top: (isGrid ? 1100 : chips.length > 2 ? 1010 : 1080) + i * (chips.length > 2 ? 112 : 130), display: "flex", justifyContent: "flex-end" }}>
           <Pop at={chipAt[i]} from={0.3} rotate={i % 2 ? 2 : -2}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 16, padding: "10px 30px 14px", borderRadius: 999, background: i === chips.length - 1 ? C.orange : C.white, color: i === chips.length - 1 ? C.white : C.ink, ...sticker(C.ink, 6), fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 50 }}>
               {ch.icon ? <Icon name={ch.icon} /> : null}
@@ -743,8 +777,8 @@ export const TipScene: React.FC<TP> = (p) => {
           </Pop>
         </Abs>
       ) : null}
-      <Abs x={0} y={860}>
-        <Character width={440} {...pose} mouth={m} brows={0.4} lookX={0.5} />
+      <Abs x={isGrid ? -60 : 0} y={isGrid ? 1180 : 860}>
+        <Character width={isGrid ? 380 : 440} {...pose} mouth={m} brows={0.4} lookX={0.5} />
       </Abs>
     </>
   );
