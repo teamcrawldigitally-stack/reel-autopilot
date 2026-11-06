@@ -1,0 +1,227 @@
+{
+  "topic": "आज शनिवार, पीपल का दीया",
+  "title": "आज शनिवार, पीपल का दीया",
+  "composition": "DevoReel",
+  "look": "devo",
+  "hook": "आज शनिवार और कल दिवाली। पीपल के नीचे ये एक दीया, और पैसे की रुकावट दूर।",
+  "images": [
+    "devu-diya-cut",
+    "dhan-coins-cut",
+    "dhan-mustard-cut",
+    "dhan-peepal-cut",
+    "dhan-peepalleaf-cut",
+    "lakshmi-cut"
+  ],
+  "floats": [],
+  "caption": "🪔 आज शनिवार और कल दिवाली। मान्यता है कि शनिवार को पीपल में लक्ष्मी जी का वास होता है। आज शाम: सूरज ढलने के बाद पीपल की जड़ के पास सरसों के तेल का एक दीया, सात परिक्रमा, और हाथ जोड़कर \"ॐ नमो भगवते वासुदेवाय\"। 👇 जिसे पैसे की टेंशन है, उसे ये भेजिए।",
+  "hashtags": [
+    "दिवाली",
+    "शनिवार",
+    "उपाय"
+  ],
+  "music": "music/dolce-nonna.mp3",
+  "scenes": [
+    {
+      "voiceover": "आज शनिवार और कल दिवाली। पीपल के नीचे ये एक दीया, और पैसे की रुकावट दूर।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "big",
+          "w": 1100,
+          "x": -10,
+          "y": 300
+        }
+      ],
+      "labels": [
+        {
+          "top": "आज शनिवार",
+          "bottom": "कल दिवाली",
+          "word": "शनिवार"
+        },
+        {
+          "top": "पैसे की",
+          "bottom": "रुकावट दूर",
+          "word": "रुकावट"
+        }
+      ],
+      "visual": "devo",
+      "title": "पीपल का दीया",
+      "titleSub": "आज शाम"
+    },
+    {
+      "voiceover": "मान्यता है, शनिवार को पीपल में लक्ष्मी जी का वास होता है। और इस बार, दिवाली से ठीक पहले शनिवार पड़ा है।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "close",
+          "w": 1500,
+          "x": -210,
+          "y": 240,
+          "prop": {
+            "img": "dhan-peepal-cut",
+            "word": "पीपल",
+            "width": 560,
+            "top": 1060,
+            "right": -30,
+            "rot": 0
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "शनिवार को पीपल में",
+          "bottom": "लक्ष्मी जी",
+          "word": "वास"
+        },
+        {
+          "top": "दिवाली से",
+          "bottom": "ठीक पहले",
+          "word": "ठीक"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "पहला, सूरज ढलने के बाद, सरसों के तेल का एक दीया, पीपल की जड़ के पास।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-mustard-cut",
+            "word": "सरसों",
+            "width": 300,
+            "top": 1000,
+            "right": 50,
+            "rot": 6
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "सूरज ढलने",
+          "bottom": "के बाद",
+          "word": "ढलने"
+        },
+        {
+          "top": "सरसों के तेल",
+          "bottom": "का दीया",
+          "word": "सरसों"
+        }
+      ],
+      "visual": "devo",
+      "counter": "1"
+    },
+    {
+      "voiceover": "दूसरा, पीपल की सात परिक्रमा, और मन में अपनी पैसे वाली मुश्किल बोलिए।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-peepalleaf-cut",
+            "word": "परिक्रमा",
+            "width": 400,
+            "top": 1060,
+            "right": 30,
+            "rot": -8
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "सात",
+          "bottom": "परिक्रमा",
+          "word": "परिक्रमा"
+        },
+        {
+          "top": "मन में अपनी",
+          "bottom": "मुश्किल बोलिए",
+          "word": "मुश्किल"
+        }
+      ],
+      "visual": "devo",
+      "counter": "2"
+    },
+    {
+      "voiceover": "तीसरा, दीया जलाकर हाथ जोड़िए, और ये मंत्र बोलिए, ओम् नमो भगवते वासुदेवाय।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "devu-diya-cut",
+            "word": "दीया",
+            "width": 380,
+            "top": 1080,
+            "right": 40,
+            "rot": 0
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "हाथ जोड़कर",
+          "bottom": "ये मंत्र",
+          "word": "मंत्र"
+        },
+        {
+          "top": "ॐ नमो भगवते",
+          "bottom": "वासुदेवाय",
+          "word": "भगवते"
+        }
+      ],
+      "visual": "devo",
+      "counter": "3"
+    },
+    {
+      "voiceover": "जिसे पैसे की टेंशन है, उसे ये भेजिए। और फ़्री कुंडली रिपोर्ट के लिए डीएम कीजिए।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "big",
+          "w": 1100,
+          "x": -10,
+          "y": 300
+        }
+      ],
+      "labels": [
+        {
+          "top": "पैसे की टेंशन?",
+          "bottom": "उसे भेजिए",
+          "word": "भेजिए"
+        },
+        {
+          "top": "फ़्री कुंडली",
+          "bottom": "DM कीजिए",
+          "word": "डीएम"
+        }
+      ],
+      "visual": "devo"
+    }
+  ],
+  "palette": {
+    "accent": "#F2A516",
+    "accentDeep": "#7A4A06",
+    "bg": "#1C0709",
+    "glow": "112,32,38",
+    "glow2": "58,14,18"
+  },
+  "wallpaper": [
+    "dhan-peepalleaf-cut",
+    "devu-diya-cut",
+    "dhan-coins-cut",
+    "dhan-mustard-cut",
+    "dhan-peepalleaf-cut"
+  ],
+  "typo": "gold"
+}

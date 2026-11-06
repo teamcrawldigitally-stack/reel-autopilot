@@ -1,0 +1,233 @@
+{
+  "topic": "तिजोरी का मुँह किस तरफ़?",
+  "title": "तिजोरी का मुँह किस तरफ़?",
+  "composition": "DevoReel",
+  "look": "devo",
+  "hook": "आपकी तिजोरी का मुँह किस तरफ़ है? पैसा रुकेगा या जाएगा, यहीं से तय होता है।",
+  "images": [
+    "dhan-coins-cut",
+    "dhan-compass-cut",
+    "dhan-moneyfly-cut",
+    "dhan-redcloth-cut",
+    "dhan-tijori-cut",
+    "lakshmi-cut"
+  ],
+  "floats": [],
+  "caption": "🪔 आपकी तिजोरी का मुँह किस तरफ़ है? वास्तु में उत्तर दिशा कुबेर (धन के देवता) की दिशा मानी जाती है। तिजोरी दक्षिण वाली दीवार से सटाकर रखें, ताकि दरवाज़ा उत्तर की तरफ़ खुले। दक्षिण की तरफ़ खुले, तो मान्यता है पैसा रुकता नहीं। अंदर लाल कपड़ा, तिजोरी कभी पूरी खाली नहीं, ऊपर कबाड़ नहीं। 👇 आज ही दिशा चेक कीजिए, और घर में भेजिए।",
+  "hashtags": [
+    "दिवाली",
+    "वास्तु",
+    "कुबेर"
+  ],
+  "music": "music/jailer-bodhi-theme-loop.mp3",
+  "scenes": [
+    {
+      "voiceover": "आपकी तिजोरी का मुँह किस तरफ़ है? पैसा रुकेगा या जाएगा, यहीं से तय होता है।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "big",
+          "w": 1100,
+          "x": -10,
+          "y": 300
+        }
+      ],
+      "labels": [
+        {
+          "top": "तिजोरी का मुँह",
+          "bottom": "किस तरफ़?",
+          "word": "तिजोरी"
+        },
+        {
+          "top": "रुकेगा",
+          "bottom": "या जाएगा?",
+          "word": "रुकेगा"
+        }
+      ],
+      "visual": "devo",
+      "title": "तिजोरी",
+      "titleSub": "किस तरफ़?",
+      "questionWord": "तरफ़"
+    },
+    {
+      "voiceover": "वास्तु में उत्तर दिशा कुबेर की दिशा है। कुबेर, यानी धन के देवता।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "close",
+          "w": 1500,
+          "x": -210,
+          "y": 240,
+          "prop": {
+            "img": "dhan-compass-cut",
+            "word": "उत्तर",
+            "width": 400,
+            "top": 1090,
+            "right": 30,
+            "rot": -6
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "उत्तर",
+          "bottom": "कुबेर की दिशा",
+          "word": "उत्तर"
+        },
+        {
+          "top": "धन के",
+          "bottom": "देवता",
+          "word": "देवता"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "पहला, तिजोरी दक्षिण वाली दीवार से सटाकर रखिए, ताकि दरवाज़ा उत्तर की तरफ़ खुले।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-tijori-cut",
+            "word": "तिजोरी",
+            "width": 440,
+            "top": 1060,
+            "right": 10,
+            "rot": 0
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "दक्षिण की",
+          "bottom": "दीवार से सटी",
+          "word": "दक्षिण"
+        },
+        {
+          "top": "दरवाज़ा खुले",
+          "bottom": "उत्तर की तरफ़",
+          "word": "खुले"
+        }
+      ],
+      "visual": "devo",
+      "counter": "1"
+    },
+    {
+      "voiceover": "दूसरा, अगर दरवाज़ा दक्षिण की तरफ़ खुलता है, तो मान्यता है, पैसा आता है, पर रुकता नहीं।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-moneyfly-cut",
+            "word": "रुकता",
+            "width": 500,
+            "top": 1060,
+            "right": -10,
+            "rot": 6
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "दक्षिण की",
+          "bottom": "तरफ़ खुले",
+          "word": "खुलता"
+        },
+        {
+          "top": "पैसा",
+          "bottom": "रुकता नहीं",
+          "word": "रुकता"
+        }
+      ],
+      "visual": "devo",
+      "counter": "2"
+    },
+    {
+      "voiceover": "तीसरा, अंदर लाल कपड़ा बिछाइए। तिजोरी कभी पूरी खाली नहीं, और उसके ऊपर कोई भारी सामान या कबाड़ नहीं।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-redcloth-cut",
+            "word": "लाल",
+            "width": 440,
+            "top": 1090,
+            "right": 20,
+            "rot": -5
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "अंदर",
+          "bottom": "लाल कपड़ा",
+          "word": "लाल"
+        },
+        {
+          "top": "ऊपर कबाड़",
+          "bottom": "नहीं",
+          "word": "कबाड़"
+        }
+      ],
+      "visual": "devo",
+      "counter": "3"
+    },
+    {
+      "voiceover": "आज ही दिशा चेक कीजिए, घर में ये भेजिए। और फ़्री कुंडली रिपोर्ट के लिए डीएम कीजिए।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "big",
+          "w": 1100,
+          "x": -10,
+          "y": 300
+        }
+      ],
+      "labels": [
+        {
+          "top": "आज ही",
+          "bottom": "दिशा चेक कीजिए",
+          "word": "दिशा"
+        },
+        {
+          "top": "घर में",
+          "bottom": "भेजिए",
+          "word": "भेजिए"
+        },
+        {
+          "top": "फ़्री कुंडली",
+          "bottom": "DM कीजिए",
+          "word": "डीएम"
+        }
+      ],
+      "visual": "devo"
+    }
+  ],
+  "palette": {
+    "accent": "#F2A516",
+    "accentDeep": "#7A4A06",
+    "bg": "#1C0709",
+    "glow": "112,32,38",
+    "glow2": "58,14,18"
+  },
+  "wallpaper": [
+    "dhan-tijori-cut",
+    "dhan-compass-cut",
+    "dhan-coins-cut",
+    "dhan-redcloth-cut",
+    "dhan-compass-cut"
+  ],
+  "typo": "gold"
+}

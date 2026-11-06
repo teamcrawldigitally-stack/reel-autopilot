@@ -23,6 +23,7 @@ const BASE = {
   glow: "150,14,22",
   glow2: "90,8,14",
   styled: false,
+  goldTypo: false,
 };
 const K = { ...BASE };
 export type Palette = { accent: string; accentDeep: string; bg: string; glow: string; glow2: string };
@@ -30,7 +31,7 @@ const HEAD = '"Mukta", sans-serif';
 const DISPLAY = '"Rozha One", "Mukta", serif';
 
 type Prop = { img: string; word?: string; width?: number; top?: number; right?: number; rot?: number };
-type Hero = { img: string; kind: "deity" | "photo" | "object" | "inset" | "big" | "close"; word?: string; side?: string; prop?: Prop };
+type Hero = { img: string; kind: "deity" | "photo" | "object" | "inset" | "big" | "close"; word?: string; side?: string; prop?: Prop; w?: number; x?: number; y?: number };
 type Label = { top: string; bottom: string; word: string };
 export type DevoScene = {
   visual: "devo";
@@ -61,6 +62,7 @@ export type DevoReelProps = {
   images: Record<string, string | null>;
   floats?: string[];
   palette?: Palette | null;
+  typo?: string | null;
   wallpaper?: string[] | null;
 };
 
@@ -227,7 +229,7 @@ const CutHero: React.FC<{ hero: Hero; src: string; sideSrc: string | null; propS
   return (
     <>
       <div style={{ position: "absolute", left: 540 - 380, top: top - 120, width: 760, height: 760, borderRadius: 380, background: "radial-gradient(circle, rgba(255,240,248,0.24) 0%, rgba(255,240,248,0) 70%)", opacity: tin }} />
-      <div style={{ position: "absolute", left: 0, top, width: 1080, height: H, opacity: tin, transform: `translateY(${sway}px) scale(${scale})`, transformOrigin: "50% 18%", filter: "drop-shadow(0 24px 40px rgba(0,0,0,0.45))" }}>
+      <div style={{ position: "absolute", left: hero.w ? hero.x ?? (1080 - hero.w) / 2 : 0, top: hero.w ? hero.y ?? top : top, width: hero.w ?? 1080, height: hero.w ? hero.w * 2.4 : H, opacity: tin, transform: `translateY(${sway}px) scale(${scale})`, transformOrigin: "50% 18%", filter: "drop-shadow(0 24px 40px rgba(0,0,0,0.45))" }}>
         <Img src={staticFile(main)} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "50% 0%" }} />
       </div>
       {p && propSrc && frame - frame0 >= propAt - 2 ? (
@@ -312,6 +314,84 @@ const HeroPic: React.FC<{ hero: Hero; src: string | null; sideSrc?: string | nul
 };
 
 // ---------- overlays ----------
+
+
+// ---------- "gold" typography (typo: "gold"): no boxes; a gold serif keyword over a soft lower-third scrim ----------
+const SERIF = '"Eczar", "Rozha One", serif';
+const ROUND = '"Baloo 2", "Mukta", sans-serif';
+const goldText = (size: number): React.CSSProperties => ({
+  fontFamily: SERIF,
+  fontWeight: 800,
+  fontSize: size,
+  lineHeight: 1.3,
+  padding: "0.2em 0.08em 0.1em",
+  margin: "-0.2em -0.08em -0.1em",
+  background: "linear-gradient(180deg, #FFF6CF 0%, #FFF0A8 24%, #FFE07A 44%, #F5B21E 70%, #B8720C 100%)",
+  WebkitBackgroundClip: "text",
+  backgroundClip: "text",
+  color: "transparent",
+  WebkitTextStroke: "2px rgba(70,28,0,0.85)",
+  filter: "drop-shadow(0 5px 0 rgba(48,14,0,0.95)) drop-shadow(0 16px 26px rgba(0,0,0,0.75))",
+});
+const whiteText = (size: number): React.CSSProperties => ({
+  fontFamily: ROUND,
+  fontWeight: 800,
+  fontSize: size,
+  lineHeight: 1.1,
+  color: "#FFF8EC",
+  WebkitTextStroke: "7px rgba(30,6,4,0.92)",
+  paintOrder: "stroke fill",
+  textShadow: "0 8px 22px rgba(0,0,0,0.7)",
+});
+
+const GoldScrim: React.FC = () => (
+  <div style={{ position: "absolute", left: 0, right: 0, top: 880, height: 1040, background: "linear-gradient(180deg, rgba(14,3,5,0) 0%, rgba(14,3,5,0.55) 30%, rgba(14,3,5,0.86) 62%, rgba(14,3,5,0.94) 100%)", pointerEvents: "none" }} />
+);
+
+const GoldLabel: React.FC<{ label: Label; at: number; until: number }> = ({ label, at, until }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  if (frame < at || frame >= until) return null;
+  const a = spring({ frame: frame - at, fps, config: { damping: 18, stiffness: 210, mass: 0.6 } });
+  const b = spring({ frame: frame - at - 3, fps, config: { damping: 13, stiffness: 190, mass: 0.7 } });
+  const line = interpolate(frame - at, [6, 18], [0, 1], { ...clamp, easing: (x) => 1 - Math.pow(1 - x, 3) });
+  const out = interpolate(frame, [until - 4, until], [1, 0], clamp);
+  const n = Math.max(label.top.length, label.bottom.length);
+  const size = label.bottom.length > 14 ? 92 : label.bottom.length > 9 ? 112 : 136;
+  return (
+    <div style={{ position: "absolute", left: 70, right: 60, top: 1110, display: "flex", flexDirection: "column", alignItems: "flex-start", opacity: out }}>
+      <div style={{ ...whiteText(n > 16 ? 56 : 66), opacity: a, transform: `translateY(${(1 - a) * 30}px)` }}>{label.top}</div>
+      <div style={{ ...goldText(size), marginTop: -6, opacity: Math.min(1, b * 1.4), transform: `scale(${interpolate(b, [0, 1], [1.18, 1])})`, transformOrigin: "0% 60%" }}>{label.bottom}</div>
+      <div style={{ marginTop: 2, height: 6, width: 420 * line, borderRadius: 3, background: "linear-gradient(90deg, #FFE07A, #F5B21E 60%, rgba(245,178,30,0))", boxShadow: "0 0 18px rgba(255,200,80,0.6)" }} />
+    </div>
+  );
+};
+
+const GoldTitle: React.FC<{ text: string; sub?: string; until: number }> = ({ text, sub, until }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  if (frame >= until) return null;
+  const s = spring({ frame: frame + 6, fps, config: { damping: 13, stiffness: 170, mass: 0.7 } });
+  const out = interpolate(frame, [until - 5, until], [1, 0], clamp);
+  return (
+    <div style={{ position: "absolute", left: 0, width: 1080, top: 1060, display: "flex", flexDirection: "column", alignItems: "center", opacity: out }}>
+      <div style={{ ...goldText(text.length > 9 ? 150 : 190), transform: `scale(${interpolate(s, [0, 1], [1.25, 1])})` }}>{text}</div>
+      {sub ? <div style={{ ...whiteText(84), marginTop: -10, transform: `translateY(${(1 - s) * 24}px)` }}>{sub}</div> : null}
+    </div>
+  );
+};
+
+const GoldCounter: React.FC<{ n: string }> = ({ n }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = spring({ frame: frame - 2, fps, config: { damping: 12, stiffness: 200, mass: 0.6 } });
+  return (
+    <div style={{ position: "absolute", left: 66, top: 300, display: "flex", alignItems: "baseline", gap: 8, transform: `scale(${s})`, transformOrigin: "0% 50%" }}>
+      <span style={goldText(150)}>{n}</span>
+      <span style={{ ...whiteText(54) }}>/ 3</span>
+    </div>
+  );
+};
 
 const LabelStack: React.FC<{ label: Label; at: number; until: number; index?: number }> = ({ label, at, until, index = 0 }) => {
   const frame = useCurrentFrame();
@@ -601,10 +681,10 @@ const SubPage: React.FC<{ page: TikTokPage }> = ({ page }) => {
   const { fps } = useVideoConfig();
   const nowMs = page.startMs + (frame / fps) * 1000;
   return (
-    <div style={{ position: "absolute", top: K.styled ? 1520 : 1470, left: 90, right: 90, textAlign: "center", opacity: interpolate(frame, [0, 4], [0, 1], clamp) }}>
-      <span style={{ whiteSpace: "pre-wrap", fontFamily: HEAD, fontWeight: 700, fontSize: K.styled ? 42 : 48, lineHeight: 1.35, color: K.white, textShadow: "0 2px 12px rgba(0,0,0,0.9)" }}>
+    <div style={{ position: "absolute", top: K.goldTypo ? 1452 : K.styled ? 1520 : 1470, left: 90, right: 90, textAlign: "center", opacity: interpolate(frame, [0, 4], [0, 1], clamp) }}>
+      <span style={K.goldTypo ? { whiteSpace: "pre-wrap", fontFamily: ROUND, fontWeight: 700, fontSize: 46, lineHeight: 1.3, color: "#FFF8EC", WebkitTextStroke: "6px rgba(20,4,4,0.9)", paintOrder: "stroke fill" } : { whiteSpace: "pre-wrap", fontFamily: HEAD, fontWeight: 700, fontSize: K.styled ? 42 : 48, lineHeight: 1.35, color: K.white, textShadow: "0 2px 12px rgba(0,0,0,0.9)" }}>
         {page.tokens.map((tok, i) => (
-          <span key={i} style={{ color: tok.fromMs <= nowMs && tok.toMs > nowMs ? (K.styled ? "#FFC6E0" : K.gold) : K.white }}>
+          <span key={i} style={{ color: tok.fromMs <= nowMs && tok.toMs > nowMs ? (K.goldTypo ? "#FFD45C" : K.styled ? "#FFC6E0" : K.gold) : K.white }}>
             {tok.text}
           </span>
         ))}
@@ -645,11 +725,12 @@ const SceneView: React.FC<{ scene: DevoScene; words: W[]; images: Record<string,
       </div>
       {scene.paths ? <Paths at={labelAt[0]} /> : null}
       {scene.chakraWord ? <Chakra at={at(scene.chakraWord, 60)} /> : null}
-      {scene.counter ? <Counter n={scene.counter} /> : null}
+      {K.goldTypo ? <GoldScrim /> : null}
+      {scene.counter ? K.goldTypo ? <GoldCounter n={scene.counter} /> : <Counter n={scene.counter} /> : null}
       {scene.questionWord ? <Question at={at(scene.questionWord, 50)} /> : null}
-      {scene.title ? <TitleCard text={scene.title} sub={scene.titleSub} until={titleUntil} /> : null}
+      {scene.title ? K.goldTypo ? <GoldTitle text={scene.title} sub={scene.titleSub} until={titleUntil} /> : <TitleCard text={scene.title} sub={scene.titleSub} until={titleUntil} /> : null}
       {scene.labels.map((l, i) => (
-        <LabelStack key={i} index={i} label={l} at={labelAt[i]} until={labelAt[i + 1] ?? durationInFrames + 1} />
+        K.goldTypo ? <GoldLabel key={i} label={l} at={labelAt[i]} until={labelAt[i + 1] ?? durationInFrames + 1} /> : <LabelStack key={i} index={i} label={l} at={labelAt[i]} until={labelAt[i + 1] ?? durationInFrames + 1} />
       ))}
     </AbsoluteFill>
   );
@@ -723,6 +804,7 @@ const Wallpaper: React.FC<{ srcs: string[] }> = ({ srcs }) => {
 export const DevoReel: React.FC<DevoReelProps> = (props) => {
   const { fps, durationInFrames } = useVideoConfig();
   Object.assign(K, BASE, props.palette ? { red: props.palette.accent, redDeep: props.palette.accentDeep, bg: props.palette.bg, glow: props.palette.glow, glow2: props.palette.glow2, styled: true } : {});
+  K.goldTypo = props.typo === "gold";
   const toFrame = (ms: number) => Math.round((ms / 1000) * fps);
   const wall = (props.wallpaper ?? []).map((k) => props.images[k]).filter((x): x is string => !!x);
   const starts = props.scenes.map((s, i) => (i === 0 ? 0 : toFrame(s.startMs)));
@@ -758,7 +840,7 @@ export const DevoReel: React.FC<DevoReelProps> = (props) => {
           <span style={{ padding: "2px 12px", borderRadius: 10, background: K.red, color: K.white, fontFamily: HEAD, fontWeight: 800, fontSize: 26 }}>24X7</span>
         </div>
       </div>
-      {wall.length && wall.every((x) => x.endsWith("-cut.png")) ? <CutWallpaper srcs={wall} burst /> : null}
+      {wall.length && wall.every((x) => x.endsWith("-cut.png")) ? <CutWallpaper srcs={wall} burst={!K.goldTypo} /> : null}
       {props.captions && props.words.length ? <Subtitles words={props.words} sceneEnds={props.scenes.map((s) => s.endMs)} /> : null}
       <AbsoluteFill style={{ pointerEvents: "none", background: `radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,${K.styled ? 0.35 : 0.6}) 100%)` }} />
 

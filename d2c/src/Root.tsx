@@ -44,6 +44,9 @@ import { Case17Reel } from "./reels/case17/Reel";
 import { Case17Cover } from "./reels/case17/Cover";
 import { totalFrames as case17Frames } from "./reels/case17/timeline";
 import { News01Reel } from "./reels/news01/Reel";
+import { Astro01Reel } from "./reels/astro01/Reel";
+import { Astro01Cover } from "./reels/astro01/Cover";
+import { totalFrames as astro01Frames } from "./reels/astro01/timeline";
 import { totalFrames as news01Frames } from "./reels/news01/timeline";
 
 const fonts: [string, string, string][] = [
@@ -64,6 +67,8 @@ const V = { fps: 30, width: 1080, height: 1920 };
 
 export const Root: React.FC = () => (
   <>
+    <Composition id="Astro01" component={Astro01Reel} durationInFrames={astro01Frames} {...V} />
+    <Composition id="Astro01Cover" component={Astro01Cover} durationInFrames={1} {...V} />
     <Composition id="News01" component={News01Reel} durationInFrames={news01Frames} {...V} />
     <Composition id="News01Cover" component={News01Cover} durationInFrames={1} {...V} />
     <Composition id="Case01" component={Case01Reel} durationInFrames={case01Frames} {...V} />

@@ -40,6 +40,7 @@ const props = {
   mouth: timeline.mouth ?? [],
   floats: script.floats ?? null,
   palette: script.palette ?? null,
+  typo: script.typo ?? null,
   wallpaper: script.wallpaper ?? null,
   images: Object.fromEntries(
     (script.images ?? []).map((k) => {

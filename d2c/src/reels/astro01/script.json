@@ -1,0 +1,143 @@
+{
+  "id": "astro01",
+  "tag": "धन हिसाब #1",
+  "format": "hisaab (by the numbers) · Astro 24x7",
+  "voice": {
+    "speaker": "aditya",
+    "model": "bulbul:v3",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.06,
+    "tail": 0.12,
+    "endHold": 0.8
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Salary aate hi paisa *khatam?",
+          "voice": "सैलरी आते ही पैसा ख़त्म?"
+        },
+        {
+          "roman": "Diwali par ye *ek kaam kijiye.",
+          "voice": "दिवाली पर ये एक काम कीजिए।"
+        },
+        {
+          "roman": "Humne *hisaab lagaya.",
+          "voice": "हमने हिसाब लगाया।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Maan lo salary *₹30,000|tees_hazaar.",
+          "voice": "मान लो सैलरी तीस हज़ार।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Kiraya *₹10,000|das_hazaar.",
+          "voice": "किराया दस हज़ार।"
+        },
+        {
+          "roman": "EMI|ee_em_aai *₹6,000|chhah_hazaar.",
+          "voice": "ई एम आई छह हज़ार।"
+        },
+        {
+          "roman": "Ghar ka kharch *₹9,000|nau_hazaar.",
+          "voice": "घर का खर्च नौ हज़ार।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Bache *₹5,000|paanch_hazaar.",
+          "voice": "बचे पाँच हज़ार।"
+        },
+        {
+          "roman": "Woh chhote mote kharch mein *ud gaye.",
+          "voice": "वो छोटे मोटे खर्च में उड़ गए।"
+        },
+        {
+          "roman": "Mahine ke aakhir mein, *zero.",
+          "voice": "महीने के आख़िर में, ज़ीरो।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Ye chhote kharch, saal bhar mein *₹60,000|saath_hazaar.",
+          "voice": "ये छोटे खर्च, साल भर में साठ हज़ार।"
+        },
+        {
+          "roman": "Aur bachat? *Kabhi nahi hui.",
+          "voice": "और बचत? कभी नहीं हुई।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Niyam, pehle *bachat, phir kharch.",
+          "voice": "नियम, पहले बचत, फिर खर्च।"
+        },
+        {
+          "roman": "Salary aate hi *10%|das_pratishat, yaani *₹3,000|teen_hazaar, alag.",
+          "voice": "सैलरी आते ही दस प्रतिशत, यानी तीन हज़ार, अलग।"
+        },
+        {
+          "roman": "Saal bhar mein *₹36,000|chhattees_hazaar.",
+          "voice": "साल भर में छत्तीस हज़ार।"
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "lines": [
+        {
+          "roman": "Upaay, Lakshmi puja mein ek *lifaafa rakhiye, us par likhiye bachat.",
+          "voice": "उपाय, लक्ष्मी पूजा में एक लिफ़ाफ़ा रखिए, उस पर लिखिए बचत।"
+        },
+        {
+          "roman": "Har salary par, pehle ₹3,000|teen_hazaar *usi mein.",
+          "voice": "हर सैलरी पर, पहले तीन हज़ार उसी में।"
+        },
+        {
+          "roman": "Aur Diwali sale mein, EMI|ee_em_aai par *naya saamaan nahi.",
+          "voice": "और दिवाली सेल में, ई एम आई पर नया सामान नहीं।"
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "lines": [
+        {
+          "roman": "Free *kundli report ke liye, DM|dee_em mein likhiye *kundli.",
+          "voice": "फ़्री कुंडली रिपोर्ट के लिए, डीएम में लिखिए कुंडली।"
+        },
+        {
+          "roman": "Aaj shaam, peepal ke neeche *kaun sa diya?",
+          "voice": "आज शाम, पीपल के नीचे कौन सा दीया?"
+        },
+        {
+          "roman": "*Follow kijiye.",
+          "voice": "फॉलो कीजिए।"
+        }
+      ]
+    }
+  ]
+}

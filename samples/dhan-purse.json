@@ -1,0 +1,227 @@
+{
+  "topic": "पूजा के बाद पर्स में 1 चीज़",
+  "title": "पूजा के बाद पर्स में 1 चीज़",
+  "composition": "DevoReel",
+  "look": "devo",
+  "hook": "पूजा के बाद ये एक चीज़ पर्स में रख लीजिए। मान्यता है, पैसा टिकने लगता है।",
+  "images": [
+    "dhan-bills-cut",
+    "dhan-coins-cut",
+    "dhan-purse-cut",
+    "dhan-rice-cut",
+    "dhan-silvercoin-cut",
+    "lakshmi-cut"
+  ],
+  "floats": [],
+  "caption": "🪔 पूजा के बाद ये 1 चीज़ पर्स में: लक्ष्मी पूजा में रखा चाँदी का सिक्का, लाल कपड़े में लपेटकर। साथ में चुटकी भर अक्षत (साबुत चावल)। और पर्स से फटे नोट और पुराने बिल निकाल दीजिए, पर्स कभी पूरा खाली नहीं। (मान्यता के अनुसार) 👇 जो सबसे ज़्यादा पैसे उड़ाता है, उसे भेजिए।",
+  "hashtags": [
+    "दिवाली",
+    "लक्ष्मीपूजा",
+    "उपाय"
+  ],
+  "music": "music/masakali.mp3",
+  "scenes": [
+    {
+      "voiceover": "पूजा के बाद ये एक चीज़ पर्स में रख लीजिए। मान्यता है, पैसा टिकने लगता है।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "big",
+          "w": 1100,
+          "x": -10,
+          "y": 300
+        }
+      ],
+      "labels": [
+        {
+          "top": "पूजा के बाद",
+          "bottom": "पर्स में 1 चीज़",
+          "word": "पर्स"
+        },
+        {
+          "top": "पैसा",
+          "bottom": "टिकने लगता है",
+          "word": "टिकने"
+        }
+      ],
+      "visual": "devo",
+      "title": "पर्स में",
+      "titleSub": "1 चीज़"
+    },
+    {
+      "voiceover": "वो चीज़ है, पूजा में रखा चाँदी का सिक्का। पूजा के बाद, उसे लाल कपड़े में लपेटकर पर्स में रखिए।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "close",
+          "w": 1500,
+          "x": -210,
+          "y": 240,
+          "prop": {
+            "img": "dhan-silvercoin-cut",
+            "word": "चाँदी",
+            "width": 380,
+            "top": 1090,
+            "right": 30,
+            "rot": -6
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "पूजा में रखा",
+          "bottom": "चाँदी का सिक्का",
+          "word": "चाँदी"
+        },
+        {
+          "top": "लाल कपड़े",
+          "bottom": "में लपेटकर",
+          "word": "लाल"
+        }
+      ],
+      "visual": "devo",
+      "counter": "1"
+    },
+    {
+      "voiceover": "साथ में चुटकी भर साबुत चावल, यानी अक्षत। अक्षत मतलब, जो कभी टूटे नहीं।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-rice-cut",
+            "word": "चावल",
+            "width": 420,
+            "top": 1100,
+            "right": 20,
+            "rot": 5
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "चुटकी भर",
+          "bottom": "साबुत चावल",
+          "word": "चावल"
+        },
+        {
+          "top": "जो कभी",
+          "bottom": "टूटे नहीं",
+          "word": "टूटे"
+        }
+      ],
+      "visual": "devo",
+      "counter": "2"
+    },
+    {
+      "voiceover": "और पर्स से निकाल दीजिए, फटे नोट और पुराने बिल। पर्स कूड़ेदान नहीं है।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-bills-cut",
+            "word": "फटे",
+            "width": 460,
+            "top": 1080,
+            "right": 10,
+            "rot": -4
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "फटे नोट",
+          "bottom": "निकालिए",
+          "word": "फटे"
+        },
+        {
+          "top": "पुराने",
+          "bottom": "बिल भी",
+          "word": "बिल"
+        }
+      ],
+      "visual": "devo",
+      "counter": "3"
+    },
+    {
+      "voiceover": "और पर्स कभी पूरा खाली मत छोड़िए। एक नोट हमेशा अंदर रहे।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-purse-cut",
+            "word": "पर्स",
+            "width": 460,
+            "top": 1090,
+            "right": 10,
+            "rot": 5
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "पर्स कभी",
+          "bottom": "पूरा खाली नहीं",
+          "word": "खाली"
+        },
+        {
+          "top": "एक नोट",
+          "bottom": "हमेशा अंदर",
+          "word": "हमेशा"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "जो सबसे ज़्यादा पैसे उड़ाता है, उसे ये भेजिए। और फ़्री कुंडली रिपोर्ट के लिए डीएम कीजिए।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "big",
+          "w": 1100,
+          "x": -10,
+          "y": 300
+        }
+      ],
+      "labels": [
+        {
+          "top": "पैसे उड़ाने वाले को",
+          "bottom": "भेजिए",
+          "word": "भेजिए"
+        },
+        {
+          "top": "फ़्री कुंडली",
+          "bottom": "DM कीजिए",
+          "word": "डीएम"
+        }
+      ],
+      "visual": "devo"
+    }
+  ],
+  "palette": {
+    "accent": "#F2A516",
+    "accentDeep": "#7A4A06",
+    "bg": "#1C0709",
+    "glow": "112,32,38",
+    "glow2": "58,14,18"
+  },
+  "wallpaper": [
+    "dhan-silvercoin-cut",
+    "dhan-purse-cut",
+    "dhan-rice-cut",
+    "dhan-coins-cut",
+    "dhan-silvercoin-cut"
+  ],
+  "typo": "gold"
+}

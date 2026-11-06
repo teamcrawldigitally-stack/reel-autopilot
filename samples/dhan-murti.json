@@ -1,0 +1,225 @@
+{
+  "topic": "लक्ष्मी जी बैठी या खड़ी?",
+  "title": "लक्ष्मी जी बैठी या खड़ी?",
+  "composition": "DevoReel",
+  "look": "devo",
+  "hook": "लक्ष्मी जी की मूर्ति बैठी हुई लें या खड़ी? गलत चुनी, तो पैसा टिकता नहीं।",
+  "images": [
+    "devu-diya-cut",
+    "dhan-coins-cut",
+    "dhan-ganesh-cut",
+    "dhan-lotus-cut",
+    "lakshmi-cut",
+    "lakshmi-stand-cut"
+  ],
+  "floats": [],
+  "caption": "🪔 लक्ष्मी जी की मूर्ति बैठी हुई लें या खड़ी? मान्यता है: घर के लिए हमेशा कमल पर बैठी (विराजमान) लक्ष्मी जी, हाथ वरमुद्रा में धन बरसाते हुए। लक्ष्मी जी और गणेश जी की मूर्ति अलग-अलग, और उल्लू पर बैठी मूर्ति घर के लिए नहीं। 👇 मूर्ति लेने जा रहे हैं? पहले ये रील उन्हें भेजिए।",
+  "hashtags": [
+    "दिवाली",
+    "लक्ष्मीपूजा",
+    "Diwali2026"
+  ],
+  "music": "music/masakali.mp3",
+  "scenes": [
+    {
+      "voiceover": "लक्ष्मी जी की मूर्ति बैठी हुई लें या खड़ी? गलत चुनी, तो पैसा टिकता नहीं।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "big",
+          "w": 1100,
+          "x": -10,
+          "y": 300
+        }
+      ],
+      "labels": [
+        {
+          "top": "बैठी या",
+          "bottom": "खड़ी?",
+          "word": "बैठी"
+        },
+        {
+          "top": "गलत चुनी तो",
+          "bottom": "पैसा टिकता नहीं",
+          "word": "टिकता"
+        }
+      ],
+      "visual": "devo",
+      "title": "लक्ष्मी जी",
+      "titleSub": "बैठी या खड़ी?",
+      "questionWord": "खड़ी"
+    },
+    {
+      "voiceover": "मान्यता है, खड़ी लक्ष्मी जी जाने की मुद्रा में होती हैं। पैसा आता है, पर रुकता नहीं।",
+      "heroes": [
+        {
+          "img": "lakshmi-stand-cut",
+          "kind": "deity",
+          "w": 580,
+          "x": 250,
+          "y": 300
+        }
+      ],
+      "labels": [
+        {
+          "top": "खड़ी",
+          "bottom": "लक्ष्मी जी",
+          "word": "खड़ी"
+        },
+        {
+          "top": "पैसा आता है",
+          "bottom": "रुकता नहीं",
+          "word": "रुकता"
+        }
+      ],
+      "visual": "devo"
+    },
+    {
+      "voiceover": "पहला नियम, घर के लिए हमेशा बैठी हुई लक्ष्मी जी, कमल पर।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-lotus-cut",
+            "word": "कमल",
+            "width": 460,
+            "top": 1080,
+            "right": 20,
+            "rot": -6
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "हमेशा",
+          "bottom": "बैठी हुई",
+          "word": "बैठी"
+        },
+        {
+          "top": "कमल",
+          "bottom": "पर",
+          "word": "कमल"
+        }
+      ],
+      "visual": "devo",
+      "counter": "1"
+    },
+    {
+      "voiceover": "दूसरा, उनका हाथ वरमुद्रा में हो, और उससे धन बरसता दिखे।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-coins-cut",
+            "word": "धन",
+            "width": 520,
+            "top": 1110,
+            "right": -10,
+            "rot": 5
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "हाथ",
+          "bottom": "वरमुद्रा में",
+          "word": "वरमुद्रा"
+        },
+        {
+          "top": "धन",
+          "bottom": "बरसता हुआ",
+          "word": "बरसता"
+        }
+      ],
+      "visual": "devo",
+      "counter": "2"
+    },
+    {
+      "voiceover": "तीसरा, लक्ष्मी जी और गणेश जी की मूर्ति अलग अलग लीजिए। और उल्लू पर बैठी लक्ष्मी जी, घर के लिए नहीं।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "deity",
+          "w": 860,
+          "x": 110,
+          "y": 380,
+          "prop": {
+            "img": "dhan-ganesh-cut",
+            "word": "गणेश",
+            "width": 380,
+            "top": 1040,
+            "right": 30,
+            "rot": 4
+          }
+        }
+      ],
+      "labels": [
+        {
+          "top": "मूर्तियाँ",
+          "bottom": "अलग-अलग",
+          "word": "अलग"
+        },
+        {
+          "top": "उल्लू वाली",
+          "bottom": "घर के लिए नहीं",
+          "word": "उल्लू"
+        }
+      ],
+      "visual": "devo",
+      "counter": "3"
+    },
+    {
+      "voiceover": "आज दिवाली से पहले पैसे के आठ उपाय आ रहे हैं, फॉलो कर लीजिए। और फ़्री कुंडली रिपोर्ट के लिए डीएम कीजिए।",
+      "heroes": [
+        {
+          "img": "lakshmi-cut",
+          "kind": "big",
+          "w": 1100,
+          "x": -10,
+          "y": 300
+        }
+      ],
+      "labels": [
+        {
+          "top": "आज पैसे के",
+          "bottom": "8 उपाय",
+          "word": "आठ"
+        },
+        {
+          "top": "फॉलो",
+          "bottom": "कर लीजिए",
+          "word": "फॉलो"
+        },
+        {
+          "top": "फ़्री कुंडली",
+          "bottom": "DM कीजिए",
+          "word": "डीएम"
+        }
+      ],
+      "visual": "devo"
+    }
+  ],
+  "palette": {
+    "accent": "#F2A516",
+    "accentDeep": "#7A4A06",
+    "bg": "#1C0709",
+    "glow": "112,32,38",
+    "glow2": "58,14,18"
+  },
+  "wallpaper": [
+    "dhan-lotus-cut",
+    "dhan-coins-cut",
+    "devu-diya-cut",
+    "dhan-ganesh-cut",
+    "dhan-coins-cut"
+  ],
+  "typo": "gold"
+}
