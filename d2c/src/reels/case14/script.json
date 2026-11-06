@@ -1,0 +1,64 @@
+{
+  "id": "case14-cash",
+  "tag": "CASE #14",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.05,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.12,
+    "tail": 0.22,
+    "endHold": 1.0
+  },
+  "source": "Example numbers (maan lo): profit on paper ₹1,20,000; stuck: COD with courier ₹52,000 + unsold stock ₹40,000 + ad bills paid before those orders paid out ₹20,000 = ₹1,12,000; bank ₹1,20,000 − ₹1,12,000 = ₹8,000. From the CASE #14 concept and Cash Flow Parts 1–2. One standalone reel, no series.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        { "roman": "Profit *₹1.2_lakh|ek_lakh_bees_hazaar. Bank mein sirf *₹8,000|aath_hazaar?", "voice": "प्रॉफ़िट एक लाख बीस हज़ार। बैंक में सिर्फ़ आठ हज़ार?" },
+        { "roman": "Toh *paisa gaya *kahan?", "voice": "तो पैसा गया कहाँ?" }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        { "roman": "Profit *kaagaz pe hota hai, *cash bank mein.", "voice": "प्रॉफ़िट काग़ज़ पे होता है, कैश बैंक में।" },
+        { "roman": "Aur dono *ek din nahi aate. Maan lo Rohit ka *hisaab.", "voice": "और दोनों एक दिन नहीं आते। मान लो, रोहित का हिसाब।" }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        { "roman": "*₹52,000|baawan_hazaar ka *COD|see_o_dee abhi *courier ke paas.", "voice": "बावन हज़ार का सी ओ डी अभी कूरियर के पास।" },
+        { "roman": "*₹40,000|chaalees_hazaar ka maal *godown mein pada hai.", "voice": "चालीस हज़ार का माल गोडाउन में पड़ा है।" }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        { "roman": "Aur *₹20,000|bees_hazaar ke *ad bill pehle hi bhar diye, orders ka paisa *baad mein.", "voice": "और बीस हज़ार के ऐड बिल पहले ही भर दिए, ऑर्डर्स का पैसा बाद में।" },
+        { "roman": "Kul *₹1,12,000|ek_lakh_baarah_hazaar atka. Bache *₹8,000|aath_hazaar.", "voice": "कुल एक लाख बारह हज़ार अटका। बचे आठ हज़ार।" }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        { "roman": "Courier se *chhota *COD|see_o_dee *payout cycle maango.", "voice": "कूरियर से छोटा सी ओ डी पेआउट साइकल माँगो।" },
+        { "roman": "Stock *chhote batch mein lo, *best_seller pehle.", "voice": "स्टॉक छोटे बैच में लो, बेस्ट सेलर पहले।" },
+        { "roman": "Aur har *Monday bank ka *cash dekho, sirf profit nahi.", "voice": "और हर मंडे बैंक का कैश देखो, सिर्फ़ प्रॉफ़िट नहीं।" }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        { "roman": "Comment karo *CASH|cash,", "voice": "कमेंट करो कैश," },
+        { "roman": "weekly *cash_tracker free *DM|dee_em mein.", "voice": "वीकली कैश ट्रैकर फ़्री डी एम में।" },
+        { "roman": "Aaj shaam: *ROAS|aar_o_e_es teen hai, phir bhi *loss kyun?", "voice": "आज शाम: आर ओ ए एस तीन है, फिर भी लॉस क्यों?" },
+        { "roman": "*Follow karo.", "voice": "फ़ॉलो करो।" }
+      ]
+    }
+  ]
+}
