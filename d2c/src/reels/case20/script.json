@@ -1,0 +1,82 @@
+{
+  "id": "case20-sale",
+  "tag": "CASE #20",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #20 (6 Nov). Black Friday 2026 = Fri 27 Nov (US Thanksgiving is Thu 26 Nov). Example numbers (maan lo): price ₹1,000, product + packing + delivery ₹450, ad ₹250, left ₹300; at 30% off the price is ₹700 and the cost is still ₹700.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "*27_Nov|sattaais_november ko *Black_Friday. *30%_off|tees_percent_off lagaya, toh *kitna bachega?",
+          "voice": "सत्ताईस नवंबर को ब्लैक फ़्राइडे। तीस परसेंट ऑफ़ लगाया, तो कितना बचेगा?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Maan lo product *₹1,000|ek_hazaar ka. Maal, packing, delivery, *₹450|chaar_sau_pachaas. Ad pe *₹250|do_sau_pachaas. Bacha *₹300|teen_sau.",
+          "voice": "मान लो प्रोडक्ट एक हज़ार का। माल, पैकिंग, डिलीवरी, चार सौ पचास। ऐड पे दो सौ पचास। बचा तीन सौ।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Ab *30%_off|tees_percent_off, price *₹700|saat_sau. Kharcha wahi *₹700|saat_sau. Bacha *zero.",
+          "voice": "अब तीस परसेंट ऑफ़, प्राइस सात सौ। ख़र्चा वही सात सौ। बचा ज़ीरो।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Matlab sale mein *order double hue, aur *profit gayab.",
+          "voice": "मतलब सेल में ऑर्डर डबल हुए, और प्रॉफ़िट ग़ायब।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh discount se pehle *hisaab lagao. Discount ki jagah *free_gift do. Offer sirf *purane customers ko bhejo. Aur sale sirf *2_din|do_din, poora hafta nahi.",
+          "voice": "तो डिस्काउंट से पहले हिसाब लगाओ। डिस्काउंट की जगह फ़्री गिफ़्ट दो। ऑफ़र सिर्फ़ पुराने कस्टमर्स को भेजो। और सेल सिर्फ़ दो दिन, पूरा हफ़्ता नहीं।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *SALE|sale, Sale profit *calculator free *DM|dee_em mein.",
+          "voice": "कमेंट करो सेल, सेल प्रॉफ़िट कैलकुलेटर फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, har mahine *₹5,000|paanch_hazaar kahan ja rahe hain?",
+          "voice": "आज शाम, हर महीने पाँच हज़ार कहाँ जा रहे हैं?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

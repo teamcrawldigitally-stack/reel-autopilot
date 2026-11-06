@@ -1,0 +1,82 @@
+{
+  "id": "case21-apps",
+  "tag": "CASE #21",
+  "look": "hisaab",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #21 (6 Nov). Example numbers (maan lo): 7 apps × ₹700 = ₹4,900 a month = ₹58,800 a year; 3 of them not opened in 30 days.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Har mahine *₹5,000|paanch_hazaar un *apps pe jo aap *kholte hi nahi?",
+          "voice": "हर महीने पाँच हज़ार उन ऐप्स पे जो आप खोलते ही नहीं?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Rohit ka *card_statement. *Review app, *popup app, *design tool, aur *chaar aur.",
+          "voice": "रोहित का कार्ड स्टेटमेंट। रिव्यू ऐप, पॉपअप ऐप, डिज़ाइन टूल, और चार और।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Maan lo *saat apps, har ek *₹700|saat_sau. Har mahine *₹4,900|chaar_hazaar_nau_sau. Saal ka *₹58,800|atthavan_hazaar_aath_sau.",
+          "voice": "मान लो सात ऐप्स, हर एक सात सौ। हर महीने चार हज़ार नौ सौ। साल का अट्ठावन हज़ार आठ सौ।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Aur inme se *teen, pichle *30|tees din mein *ek baar bhi nahi khule.",
+          "voice": "और इनमें से तीन, पिछले तीस दिन में एक बार भी नहीं खुले।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh pichle mahine ka *card_statement kholo, har *subscription likho. Jo *30|tees din se nahi khula, *band karo. Aur roz wale *2-3|do_teen apps ka *yearly plan lo.",
+          "voice": "तो पिछले महीने का कार्ड स्टेटमेंट खोलो, हर सब्सक्रिप्शन लिखो। जो तीस दिन से नहीं खुला, बंद करो। और रोज़ वाले दो तीन ऐप्स का ईयरली प्लान लो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *APPS|apps, *Subscription audit sheet free *DM|dee_em mein.",
+          "voice": "कमेंट करो ऐप्स, सब्सक्रिप्शन ऑडिट शीट फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Kal dopahar, *₹5|paanch_rupaye ka sample, aur *₹500|paanch_sau ka agla order?",
+          "voice": "कल दोपहर, पाँच रुपये का सैंपल, और पाँच सौ का अगला ऑर्डर?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}
