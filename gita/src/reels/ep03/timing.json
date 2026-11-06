@@ -1,0 +1,1229 @@
+{
+ "fps": 30,
+ "scenes": [
+  {
+   "id": "s1",
+   "start": 0,
+   "dur": 7.695,
+   "audio": null,
+   "mouth": null,
+   "words": [
+    {
+     "d": "Krishna",
+     "sp": "krishna",
+     "hl": false,
+     "p": "",
+     "s": 0.1,
+     "e": 0.469
+    },
+    {
+     "d": "ne",
+     "sp": "ne",
+     "hl": false,
+     "p": "",
+     "s": 0.469,
+     "e": 0.682
+    },
+    {
+     "d": "bataya",
+     "sp": "bataya",
+     "hl": false,
+     "p": "",
+     "s": 0.682,
+     "e": 1.051
+    },
+    {
+     "d": "tha",
+     "sp": "tha",
+     "hl": false,
+     "p": ",",
+     "s": 1.051,
+     "e": 1.263
+    },
+    {
+     "d": "insaan",
+     "sp": "insaan",
+     "hl": false,
+     "p": "",
+     "s": 1.263,
+     "e": 1.633
+    },
+    {
+     "d": "aath",
+     "sp": "aath",
+     "hl": true,
+     "p": "",
+     "s": 1.633,
+     "e": 1.845
+    },
+    {
+     "d": "kadam",
+     "sp": "kadam",
+     "hl": false,
+     "p": "",
+     "s": 1.845,
+     "e": 2.214
+    },
+    {
+     "d": "mein",
+     "sp": "mein",
+     "hl": false,
+     "p": "",
+     "s": 2.214,
+     "e": 2.427
+    },
+    {
+     "d": "barbaad",
+     "sp": "barbaad",
+     "hl": true,
+     "p": "",
+     "s": 2.427,
+     "e": 2.796
+    },
+    {
+     "d": "hota",
+     "sp": "hota",
+     "hl": false,
+     "p": "",
+     "s": 2.796,
+     "e": 3.165
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ".",
+     "s": 3.165,
+     "e": 3.378
+    },
+    {
+     "d": "Gussa",
+     "sp": "gussa",
+     "hl": true,
+     "p": "",
+     "s": 3.438,
+     "e": 3.819
+    },
+    {
+     "d": "toh",
+     "sp": "toh",
+     "hl": false,
+     "p": "",
+     "s": 3.819,
+     "e": 4.038
+    },
+    {
+     "d": "sirf",
+     "sp": "sirf",
+     "hl": false,
+     "p": "",
+     "s": 4.038,
+     "e": 4.256
+    },
+    {
+     "d": "chautha",
+     "sp": "chautha",
+     "hl": true,
+     "p": "",
+     "s": 4.256,
+     "e": 4.638
+    },
+    {
+     "d": "kadam",
+     "sp": "kadam",
+     "hl": false,
+     "p": "",
+     "s": 4.638,
+     "e": 5.019
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ".",
+     "s": 5.019,
+     "e": 5.238
+    },
+    {
+     "d": "Aur",
+     "sp": "aur",
+     "hl": false,
+     "p": "",
+     "s": 5.298,
+     "e": 5.526
+    },
+    {
+     "d": "pehla",
+     "sp": "pehla",
+     "hl": true,
+     "p": "",
+     "s": 5.526,
+     "e": 5.924
+    },
+    {
+     "d": "kadam",
+     "sp": "kadam",
+     "hl": false,
+     "p": ",",
+     "s": 5.924,
+     "e": 6.322
+    },
+    {
+     "d": "aap",
+     "sp": "aap",
+     "hl": false,
+     "p": "",
+     "s": 6.322,
+     "e": 6.551
+    },
+    {
+     "d": "roz",
+     "sp": "roz",
+     "hl": true,
+     "p": "",
+     "s": 6.551,
+     "e": 6.779
+    },
+    {
+     "d": "uthaate",
+     "sp": "uthaate",
+     "hl": false,
+     "p": "",
+     "s": 6.779,
+     "e": 7.347
+    },
+    {
+     "d": "ho",
+     "sp": "ho",
+     "hl": false,
+     "p": ".",
+     "s": 7.347,
+     "e": 7.575
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "start": 7.695,
+   "dur": 4.288,
+   "audio": null,
+   "mouth": null,
+   "words": [
+    {
+     "d": "Gita",
+     "sp": "gita",
+     "hl": false,
+     "p": "",
+     "s": 0.1,
+     "e": 0.51
+    },
+    {
+     "d": "shlok",
+     "sp": "shlok",
+     "hl": false,
+     "p": "",
+     "s": 0.51,
+     "e": 0.745
+    },
+    {
+     "d": "series",
+     "sp": "series",
+     "hl": true,
+     "p": ",",
+     "s": 0.745,
+     "e": 1.154
+    },
+    {
+     "d": "episode",
+     "sp": "episode",
+     "hl": true,
+     "p": "",
+     "s": 1.154,
+     "e": 1.913
+    },
+    {
+     "d": "teen",
+     "sp": "teen",
+     "hl": false,
+     "p": ".",
+     "s": 1.913,
+     "e": 2.148
+    },
+    {
+     "d": "Adhyay",
+     "sp": "adhyay",
+     "hl": true,
+     "p": "",
+     "s": 2.208,
+     "e": 2.623
+    },
+    {
+     "d": "do",
+     "sp": "do",
+     "hl": false,
+     "p": ",",
+     "s": 2.623,
+     "e": 2.861
+    },
+    {
+     "d": "shlok",
+     "sp": "shlok",
+     "hl": false,
+     "p": "",
+     "s": 2.861,
+     "e": 3.1
+    },
+    {
+     "d": "baasath",
+     "sp": "baasath",
+     "hl": true,
+     "p": "",
+     "s": 3.1,
+     "e": 3.515
+    },
+    {
+     "d": "aur",
+     "sp": "aur",
+     "hl": false,
+     "p": "",
+     "s": 3.515,
+     "e": 3.753
+    },
+    {
+     "d": "tirsath",
+     "sp": "tirsath",
+     "hl": true,
+     "p": ".",
+     "s": 3.753,
+     "e": 4.168
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "start": 11.983,
+   "dur": 4.835,
+   "audio": null,
+   "mouth": null,
+   "words": [
+    {
+     "d": "Pehla",
+     "sp": "pehla",
+     "hl": false,
+     "p": "",
+     "s": 0.1,
+     "e": 0.491
+    },
+    {
+     "d": "kadam",
+     "sp": "kadam",
+     "hl": false,
+     "p": ",",
+     "s": 0.491,
+     "e": 0.881
+    },
+    {
+     "d": "kisi",
+     "sp": "kisi",
+     "hl": false,
+     "p": "",
+     "s": 0.881,
+     "e": 1.272
+    },
+    {
+     "d": "cheez",
+     "sp": "cheez",
+     "hl": false,
+     "p": "",
+     "s": 1.272,
+     "e": 1.496
+    },
+    {
+     "d": "ko",
+     "sp": "ko",
+     "hl": false,
+     "p": "",
+     "s": 1.496,
+     "e": 1.721
+    },
+    {
+     "d": "baar",
+     "sp": "baar",
+     "hl": true,
+     "p": "",
+     "s": 1.721,
+     "e": 1.945
+    },
+    {
+     "d": "baar",
+     "sp": "baar",
+     "hl": false,
+     "p": "",
+     "s": 1.945,
+     "e": 2.169
+    },
+    {
+     "d": "sochna",
+     "sp": "sochna",
+     "hl": true,
+     "p": ".",
+     "s": 2.169,
+     "e": 2.56
+    },
+    {
+     "d": "Isse",
+     "sp": "isse",
+     "hl": false,
+     "p": "",
+     "s": 2.62,
+     "e": 3.027
+    },
+    {
+     "d": "lagaav",
+     "sp": "lagaav",
+     "hl": true,
+     "p": ",",
+     "s": 3.027,
+     "e": 3.434
+    },
+    {
+     "d": "aur",
+     "sp": "aur",
+     "hl": false,
+     "p": "",
+     "s": 3.434,
+     "e": 3.668
+    },
+    {
+     "d": "lagaav",
+     "sp": "lagaav",
+     "hl": false,
+     "p": "",
+     "s": 3.668,
+     "e": 4.074
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 4.074,
+     "e": 4.308
+    },
+    {
+     "d": "chaahat",
+     "sp": "chaahat",
+     "hl": true,
+     "p": ".",
+     "s": 4.308,
+     "e": 4.715
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "start": 16.818,
+   "dur": 2.815,
+   "audio": null,
+   "mouth": null,
+   "words": [
+    {
+     "d": "Chaahat",
+     "sp": "chaahat",
+     "hl": false,
+     "p": "",
+     "s": 0.1,
+     "e": 0.486
+    },
+    {
+     "d": "poori",
+     "sp": "poori",
+     "hl": false,
+     "p": "",
+     "s": 0.486,
+     "e": 0.872
+    },
+    {
+     "d": "nahi",
+     "sp": "nahi",
+     "hl": false,
+     "p": "",
+     "s": 0.872,
+     "e": 1.258
+    },
+    {
+     "d": "hui",
+     "sp": "hui",
+     "hl": false,
+     "p": ",",
+     "s": 1.258,
+     "e": 1.48
+    },
+    {
+     "d": "toh",
+     "sp": "toh",
+     "hl": false,
+     "p": "",
+     "s": 1.48,
+     "e": 1.701
+    },
+    {
+     "d": "aata",
+     "sp": "aata",
+     "hl": false,
+     "p": "",
+     "s": 1.701,
+     "e": 2.087
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": "",
+     "s": 2.087,
+     "e": 2.309
+    },
+    {
+     "d": "gussa",
+     "sp": "gussa",
+     "hl": true,
+     "p": ".",
+     "s": 2.309,
+     "e": 2.695
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "start": 19.633,
+   "dur": 6.513,
+   "audio": null,
+   "mouth": null,
+   "words": [
+    {
+     "d": "Krodhaad",
+     "sp": "krodhaad",
+     "hl": true,
+     "p": "",
+     "s": 0.1,
+     "e": 0.495
+    },
+    {
+     "d": "bhavati",
+     "sp": "bhavati",
+     "hl": false,
+     "p": "",
+     "s": 0.495,
+     "e": 1.059
+    },
+    {
+     "d": "sammohah",
+     "sp": "sammohah",
+     "hl": true,
+     "p": ".",
+     "s": 1.059,
+     "e": 1.623
+    },
+    {
+     "d": "Gusse",
+     "sp": "gusse",
+     "hl": false,
+     "p": "",
+     "s": 1.683,
+     "e": 2.087
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 2.087,
+     "e": 2.32
+    },
+    {
+     "d": "bhram",
+     "sp": "bhram",
+     "hl": true,
+     "p": ",",
+     "s": 2.32,
+     "e": 2.552
+    },
+    {
+     "d": "bhram",
+     "sp": "bhram",
+     "hl": false,
+     "p": "",
+     "s": 2.552,
+     "e": 2.784
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 2.784,
+     "e": 3.017
+    },
+    {
+     "d": "yaaddaasht",
+     "sp": "yaaddaasht",
+     "hl": true,
+     "p": "",
+     "s": 3.017,
+     "e": 3.421
+    },
+    {
+     "d": "gadbad",
+     "sp": "gadbad",
+     "hl": false,
+     "p": ".",
+     "s": 3.421,
+     "e": 3.825
+    },
+    {
+     "d": "Phir",
+     "sp": "phir",
+     "hl": false,
+     "p": "",
+     "s": 3.885,
+     "e": 4.109
+    },
+    {
+     "d": "buddhi",
+     "sp": "buddhi",
+     "hl": true,
+     "p": "",
+     "s": 4.109,
+     "e": 4.498
+    },
+    {
+     "d": "ka",
+     "sp": "ka",
+     "hl": false,
+     "p": "",
+     "s": 4.498,
+     "e": 4.721
+    },
+    {
+     "d": "naash",
+     "sp": "naash",
+     "hl": false,
+     "p": ",",
+     "s": 4.721,
+     "e": 4.945
+    },
+    {
+     "d": "aur",
+     "sp": "aur",
+     "hl": false,
+     "p": "",
+     "s": 4.945,
+     "e": 5.168
+    },
+    {
+     "d": "insaan",
+     "sp": "insaan",
+     "hl": false,
+     "p": "",
+     "s": 5.168,
+     "e": 5.557
+    },
+    {
+     "d": "gir",
+     "sp": "gir",
+     "hl": true,
+     "p": "",
+     "s": 5.557,
+     "e": 5.78
+    },
+    {
+     "d": "jaata",
+     "sp": "jaata",
+     "hl": false,
+     "p": "",
+     "s": 5.78,
+     "e": 6.169
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ".",
+     "s": 6.169,
+     "e": 6.393
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "start": 26.146,
+   "dur": 7.948,
+   "audio": null,
+   "mouth": null,
+   "words": [
+    {
+     "d": "Gusse",
+     "sp": "gusse",
+     "hl": false,
+     "p": "",
+     "s": 0.1,
+     "e": 0.47
+    },
+    {
+     "d": "ko",
+     "sp": "ko",
+     "hl": false,
+     "p": "",
+     "s": 0.47,
+     "e": 0.683
+    },
+    {
+     "d": "chauthe",
+     "sp": "chauthe",
+     "hl": true,
+     "p": "",
+     "s": 0.683,
+     "e": 1.053
+    },
+    {
+     "d": "kadam",
+     "sp": "kadam",
+     "hl": false,
+     "p": "",
+     "s": 1.053,
+     "e": 1.424
+    },
+    {
+     "d": "par",
+     "sp": "par",
+     "hl": false,
+     "p": "",
+     "s": 1.424,
+     "e": 1.636
+    },
+    {
+     "d": "nahi",
+     "sp": "nahi",
+     "hl": false,
+     "p": ",",
+     "s": 1.636,
+     "e": 2.007
+    },
+    {
+     "d": "pehle",
+     "sp": "pehle",
+     "hl": true,
+     "p": "",
+     "s": 2.007,
+     "e": 2.377
+    },
+    {
+     "d": "kadam",
+     "sp": "kadam",
+     "hl": false,
+     "p": "",
+     "s": 2.377,
+     "e": 2.747
+    },
+    {
+     "d": "par",
+     "sp": "par",
+     "hl": false,
+     "p": "",
+     "s": 2.747,
+     "e": 2.96
+    },
+    {
+     "d": "pakdo",
+     "sp": "pakdo",
+     "hl": true,
+     "p": ".",
+     "s": 2.96,
+     "e": 3.33
+    },
+    {
+     "d": "Agli",
+     "sp": "agli",
+     "hl": false,
+     "p": "",
+     "s": 3.39,
+     "e": 3.759
+    },
+    {
+     "d": "baar",
+     "sp": "baar",
+     "hl": false,
+     "p": "",
+     "s": 3.759,
+     "e": 3.971
+    },
+    {
+     "d": "koi",
+     "sp": "koi",
+     "hl": false,
+     "p": "",
+     "s": 3.971,
+     "e": 4.184
+    },
+    {
+     "d": "baat",
+     "sp": "baat",
+     "hl": false,
+     "p": "",
+     "s": 4.184,
+     "e": 4.396
+    },
+    {
+     "d": "dimaag",
+     "sp": "dimaag",
+     "hl": false,
+     "p": "",
+     "s": 4.396,
+     "e": 4.765
+    },
+    {
+     "d": "mein",
+     "sp": "mein",
+     "hl": false,
+     "p": "",
+     "s": 4.765,
+     "e": 4.977
+    },
+    {
+     "d": "ghoome",
+     "sp": "ghoome",
+     "hl": true,
+     "p": ",",
+     "s": 4.977,
+     "e": 5.346
+    },
+    {
+     "d": "khud",
+     "sp": "khud",
+     "hl": false,
+     "p": "",
+     "s": 5.346,
+     "e": 5.558
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 5.558,
+     "e": 5.77
+    },
+    {
+     "d": "poochho",
+     "sp": "poochho",
+     "hl": true,
+     "p": ",",
+     "s": 5.77,
+     "e": 6.139
+    },
+    {
+     "d": "kya",
+     "sp": "kya",
+     "hl": false,
+     "p": "",
+     "s": 6.139,
+     "e": 6.351
+    },
+    {
+     "d": "ise",
+     "sp": "ise",
+     "hl": false,
+     "p": "",
+     "s": 6.351,
+     "e": 6.72
+    },
+    {
+     "d": "sochna",
+     "sp": "sochna",
+     "hl": false,
+     "p": "",
+     "s": 6.72,
+     "e": 7.09
+    },
+    {
+     "d": "zaroori",
+     "sp": "zaroori",
+     "hl": true,
+     "p": "",
+     "s": 7.09,
+     "e": 7.616
+    },
+    {
+     "d": "hai?",
+     "sp": "hai",
+     "hl": false,
+     "p": "?",
+     "s": 7.616,
+     "e": 7.828
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "start": 34.094,
+   "dur": 14.805,
+   "audio": null,
+   "mouth": null,
+   "words": [
+    {
+     "d": "Ye",
+     "sp": "ye",
+     "hl": false,
+     "p": "",
+     "s": 0.1,
+     "e": 0.317
+    },
+    {
+     "d": "reel",
+     "sp": "reel",
+     "hl": false,
+     "p": "",
+     "s": 0.317,
+     "e": 0.533
+    },
+    {
+     "d": "usse",
+     "sp": "usse",
+     "hl": false,
+     "p": "",
+     "s": 0.533,
+     "e": 0.91
+    },
+    {
+     "d": "bhejo",
+     "sp": "bhejo",
+     "hl": true,
+     "p": ",",
+     "s": 0.91,
+     "e": 1.288
+    },
+    {
+     "d": "jise",
+     "sp": "jise",
+     "hl": false,
+     "p": "",
+     "s": 1.288,
+     "e": 1.665
+    },
+    {
+     "d": "gussa",
+     "sp": "gussa",
+     "hl": false,
+     "p": "",
+     "s": 1.665,
+     "e": 2.042
+    },
+    {
+     "d": "jaldi",
+     "sp": "jaldi",
+     "hl": true,
+     "p": "",
+     "s": 2.042,
+     "e": 2.419
+    },
+    {
+     "d": "aata",
+     "sp": "aata",
+     "hl": false,
+     "p": "",
+     "s": 2.419,
+     "e": 2.796
+    },
+    {
+     "d": "hai",
+     "sp": "hai",
+     "hl": false,
+     "p": ".",
+     "s": 2.796,
+     "e": 3.013
+    },
+    {
+     "d": "Aur",
+     "sp": "aur",
+     "hl": false,
+     "p": "",
+     "s": 3.073,
+     "e": 3.286
+    },
+    {
+     "d": "comment",
+     "sp": "comment",
+     "hl": true,
+     "p": "",
+     "s": 3.286,
+     "e": 3.658
+    },
+    {
+     "d": "mein",
+     "sp": "mein",
+     "hl": false,
+     "p": "",
+     "s": 3.658,
+     "e": 3.872
+    },
+    {
+     "d": "batao",
+     "sp": "batao",
+     "hl": false,
+     "p": ",",
+     "s": 3.872,
+     "e": 4.244
+    },
+    {
+     "d": "aap",
+     "sp": "aap",
+     "hl": false,
+     "p": "",
+     "s": 4.244,
+     "e": 4.458
+    },
+    {
+     "d": "kaun",
+     "sp": "kaun",
+     "hl": false,
+     "p": "",
+     "s": 4.458,
+     "e": 4.672
+    },
+    {
+     "d": "se",
+     "sp": "se",
+     "hl": false,
+     "p": "",
+     "s": 4.672,
+     "e": 4.885
+    },
+    {
+     "d": "kadam",
+     "sp": "kadam",
+     "hl": true,
+     "p": "",
+     "s": 4.885,
+     "e": 5.257
+    },
+    {
+     "d": "par",
+     "sp": "par",
+     "hl": false,
+     "p": "",
+     "s": 5.257,
+     "e": 5.471
+    },
+    {
+     "d": "atakte",
+     "sp": "atakte",
+     "hl": false,
+     "p": "",
+     "s": 5.471,
+     "e": 6.001
+    },
+    {
+     "d": "ho",
+     "sp": "ho",
+     "hl": false,
+     "p": ".",
+     "s": 6.001,
+     "e": 6.215
+    },
+    {
+     "d": "Agle",
+     "sp": "agle",
+     "hl": false,
+     "p": "",
+     "s": 6.275,
+     "e": 6.653
+    },
+    {
+     "d": "episode",
+     "sp": "episode",
+     "hl": true,
+     "p": "",
+     "s": 6.653,
+     "e": 7.354
+    },
+    {
+     "d": "mein",
+     "sp": "mein",
+     "hl": false,
+     "p": ",",
+     "s": 7.354,
+     "e": 7.571
+    },
+    {
+     "d": "mann",
+     "sp": "mann",
+     "hl": false,
+     "p": "",
+     "s": 7.571,
+     "e": 7.788
+    },
+    {
+     "d": "control",
+     "sp": "control",
+     "hl": false,
+     "p": "",
+     "s": 7.788,
+     "e": 8.167
+    },
+    {
+     "d": "kyun",
+     "sp": "kyun",
+     "hl": false,
+     "p": "",
+     "s": 8.167,
+     "e": 8.384
+    },
+    {
+     "d": "nahi",
+     "sp": "nahi",
+     "hl": false,
+     "p": "",
+     "s": 8.384,
+     "e": 8.762
+    },
+    {
+     "d": "hota?",
+     "sp": "hota",
+     "hl": false,
+     "p": "?",
+     "s": 8.762,
+     "e": 9.141
+    },
+    {
+     "d": "Arjun",
+     "sp": "arjun",
+     "hl": true,
+     "p": "",
+     "s": 9.201,
+     "e": 9.582
+    },
+    {
+     "d": "ki",
+     "sp": "ki",
+     "hl": false,
+     "p": "",
+     "s": 9.582,
+     "e": 9.801
+    },
+    {
+     "d": "bhi",
+     "sp": "bhi",
+     "hl": false,
+     "p": "",
+     "s": 9.801,
+     "e": 10.019
+    },
+    {
+     "d": "yahi",
+     "sp": "yahi",
+     "hl": false,
+     "p": "",
+     "s": 10.019,
+     "e": 10.401
+    },
+    {
+     "d": "shikaayat",
+     "sp": "shikaayat",
+     "hl": false,
+     "p": "",
+     "s": 10.401,
+     "e": 10.782
+    },
+    {
+     "d": "thi",
+     "sp": "thi",
+     "hl": false,
+     "p": ".",
+     "s": 10.782,
+     "e": 11.001
+    },
+    {
+     "d": "Gita",
+     "sp": "gita",
+     "hl": false,
+     "p": "",
+     "s": 11.061,
+     "e": 11.44
+    },
+    {
+     "d": "ka",
+     "sp": "ka",
+     "hl": false,
+     "p": "",
+     "s": 11.44,
+     "e": 11.658
+    },
+    {
+     "d": "agla",
+     "sp": "agla",
+     "hl": false,
+     "p": "",
+     "s": 11.658,
+     "e": 12.037
+    },
+    {
+     "d": "shlok",
+     "sp": "shlok",
+     "hl": false,
+     "p": "",
+     "s": 12.037,
+     "e": 12.255
+    },
+    {
+     "d": "miss",
+     "sp": "miss",
+     "hl": true,
+     "p": "",
+     "s": 12.255,
+     "e": 12.473
+    },
+    {
+     "d": "na",
+     "sp": "na",
+     "hl": false,
+     "p": "",
+     "s": 12.473,
+     "e": 12.691
+    },
+    {
+     "d": "ho",
+     "sp": "ho",
+     "hl": false,
+     "p": ",",
+     "s": 12.691,
+     "e": 12.909
+    },
+    {
+     "d": "toh",
+     "sp": "toh",
+     "hl": false,
+     "p": "",
+     "s": 12.909,
+     "e": 13.127
+    },
+    {
+     "d": "follow",
+     "sp": "follow",
+     "hl": true,
+     "p": "",
+     "s": 13.127,
+     "e": 13.506
+    },
+    {
+     "d": "karo",
+     "sp": "karo",
+     "hl": false,
+     "p": ".",
+     "s": 13.506,
+     "e": 13.885
+    }
+   ]
+  }
+ ],
+ "total": 48.899
+}
