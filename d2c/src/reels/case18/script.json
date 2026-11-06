@@ -1,0 +1,82 @@
+{
+  "id": "case18-face",
+  "tag": "CASE #18",
+  "look": "hisaab",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #18 (6 Nov). Example story numbers: 60 posts, 3 likes each; one 20-second founder video, 15 DMs that night.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Log *logo se nahi, *insaan se khareedte hain. Aapka *chehra kahan hai?",
+          "voice": "लोग लोगो से नहीं, इंसान से ख़रीदते हैं। आपका चेहरा कहाँ है?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Rohit ka page, *60|saath post, sab *product photos. Har post pe *3|teen like.",
+          "voice": "रोहित का पेज, साठ पोस्ट, सब प्रोडक्ट फ़ोटोज़। हर पोस्ट पे तीन लाइक।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Ek din usne *20|bees second ka *video daala. Maine yeh *serum kyun banaya. Usi raat *15|pandrah DM|dee_em.",
+          "voice": "एक दिन उसने बीस सेकंड का वीडियो डाला। मैंने ये सीरम क्यों बनाया। उसी रात पंद्रह डी एम।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Kyunki *logo pe bharosa nahi hota. *Insaan pe hota hai.",
+          "voice": "क्योंकि लोगो पे भरोसा नहीं होता। इंसान पे होता है।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh hafte mein *ek founder video. Product *kaise banta hai, dikhao. Ek *galti jo sudhari, batao. Aur *comments ka jawab khud do.",
+          "voice": "तो हफ़्ते में एक फ़ाउंडर वीडियो। प्रोडक्ट कैसे बनता है, दिखाओ। एक ग़लती जो सुधारी, बताओ। और कमेंट्स का जवाब ख़ुद दो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *FACE|face, Phone pe shoot hone wale *15|pandrah video ideas free *DM|dee_em mein.",
+          "voice": "कमेंट करो फ़ेस, फ़ोन पे शूट होने वाले पंद्रह वीडियो आइडियाज़ फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, shaadi season mein aapka product *kahan fit hota hai?",
+          "voice": "आज शाम, शादी सीज़न में आपका प्रोडक्ट कहाँ फ़िट होता है?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

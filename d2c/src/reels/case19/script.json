@@ -1,0 +1,82 @@
+{
+  "id": "case19-shaadi",
+  "tag": "CASE #19",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #19 (6 Nov). Date checked 7 Nov: Dev Uthani Ekadashi is 20 Nov 2026 and the first vivah muhurat is 21 Nov (smartpuja.com vivah muhurat 2026), so the script says 'after 20 November'.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Agle hafte se *shaadi_season shuru. Aapka product shaadi mein *kahan fit hota hai?",
+          "voice": "अगले हफ़्ते से शादी सीज़न शुरू। आपका प्रोडक्ट शादी में कहाँ फ़िट होता है?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "*20_November|bees_november ke baad shaadiyon ka season. Har ghar mein *gift, *kapde, *makeup, sabki shopping.",
+          "voice": "बीस नवंबर के बाद शादियों का सीज़न। हर घर में गिफ़्ट, कपड़े, मेकअप, सबकी शॉपिंग।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Rohit sochta hai, mera *serum toh shaadi ka product *nahi hai.",
+          "voice": "रोहित सोचता है, मेरा सीरम तो शादी का प्रोडक्ट नहीं है।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "*Galat. *Dulhan ki skin care, *mehmaanon ke gift, *return gift. Har product ki *ek jagah hai.",
+          "voice": "ग़लत। दुल्हन की स्किन केयर, मेहमानों के गिफ़्ट, रिटर्न गिफ़्ट। हर प्रोडक्ट की एक जगह है।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh *teen kaam. Shaadi wala *combo banao. *Packaging gift jaisi karo. Aur *ad mein shaadi dikhao, sirf product nahi.",
+          "voice": "तो तीन काम। शादी वाला कॉम्बो बनाओ। पैकेजिंग गिफ़्ट जैसी करो। और ऐड में शादी दिखाओ, सिर्फ़ प्रोडक्ट नहीं।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *SHAADI|shaadi, Shaadi season ke *10|das offer ideas free *DM|dee_em mein.",
+          "voice": "कमेंट करो शादी, शादी सीज़न के दस ऑफ़र आइडियाज़ फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Kal dopahar, Black Friday pe *30%_off|tees_percent_off, haath mein kitna bachega?",
+          "voice": "कल दोपहर, ब्लैक फ़्राइडे पे तीस परसेंट ऑफ़, हाथ में कितना बचेगा?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}
