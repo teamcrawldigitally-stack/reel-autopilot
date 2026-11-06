@@ -5,11 +5,11 @@
   "look": "devo",
   "hook": "आज शनिवार और कल दिवाली। पीपल के नीचे ये एक दीया, और पैसे की रुकावट दूर।",
   "images": [
-    "devu-diya-cut",
-    "dhan-coins-cut",
-    "dhan-mustard-cut",
-    "dhan-peepal-cut",
-    "dhan-peepalleaf-cut",
+    "dhs-p1",
+    "dhs-p2",
+    "dhs-p3",
+    "dhs-p4",
+    "dhs-p5",
     "lakshmi-cut"
   ],
   "floats": [],
@@ -25,11 +25,9 @@
       "voiceover": "आज शनिवार और कल दिवाली। पीपल के नीचे ये एक दीया, और पैसे की रुकावट दूर।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "big",
-          "w": 1100,
-          "x": -10,
-          "y": 300
+          "img": "dhs-p1",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -52,19 +50,9 @@
       "voiceover": "मान्यता है, शनिवार को पीपल में लक्ष्मी जी का वास होता है। और इस बार, दिवाली से ठीक पहले शनिवार पड़ा है।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "close",
-          "w": 1500,
-          "x": -210,
-          "y": 240,
-          "prop": {
-            "img": "dhan-peepal-cut",
-            "word": "पीपल",
-            "width": 560,
-            "top": 1060,
-            "right": -30,
-            "rot": 0
-          }
+          "img": "dhs-p2",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -85,19 +73,9 @@
       "voiceover": "पहला, सूरज ढलने के बाद, सरसों के तेल का एक दीया, पीपल की जड़ के पास।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-mustard-cut",
-            "word": "सरसों",
-            "width": 300,
-            "top": 1000,
-            "right": 50,
-            "rot": 6
-          }
+          "img": "dhs-p3",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -119,19 +97,9 @@
       "voiceover": "दूसरा, पीपल की सात परिक्रमा, और मन में अपनी पैसे वाली मुश्किल बोलिए।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-peepalleaf-cut",
-            "word": "परिक्रमा",
-            "width": 400,
-            "top": 1060,
-            "right": 30,
-            "rot": -8
-          }
+          "img": "dhs-p4",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -153,19 +121,9 @@
       "voiceover": "तीसरा, दीया जलाकर हाथ जोड़िए, और ये मंत्र बोलिए, ओम् नमो भगवते वासुदेवाय।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "devu-diya-cut",
-            "word": "दीया",
-            "width": 380,
-            "top": 1080,
-            "right": 40,
-            "rot": 0
-          }
+          "img": "dhs-p5",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -216,12 +174,6 @@
     "glow": "112,32,38",
     "glow2": "58,14,18"
   },
-  "wallpaper": [
-    "dhan-peepalleaf-cut",
-    "devu-diya-cut",
-    "dhan-coins-cut",
-    "dhan-mustard-cut",
-    "dhan-peepalleaf-cut"
-  ],
+  "wallpaper": [],
   "typo": "gold"
 }
