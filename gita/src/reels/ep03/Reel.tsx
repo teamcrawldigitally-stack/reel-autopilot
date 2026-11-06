@@ -21,7 +21,7 @@ export const Ep03Reel: React.FC = () => {
         const t = sceneById(s.id);
         return (
           <Sequence key={s.id} from={from} durationInFrames={dur} name={s.id}>
-            <Comp dur={NO_SWIPE.has(s.id) || s.id === "s3" ? dur + 40 : dur} />
+            <Comp dur={dur} />
             {t.audio && <Audio src={staticFile(t.audio)} />}
           </Sequence>
         );
