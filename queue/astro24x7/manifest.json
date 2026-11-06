@@ -4,6 +4,7 @@
   "paused": false,
   "igUserId": "17841471833395374",
   "expectUsername": "astro_24x7",
+  "captionCta": "📩 फ़्री कुंडली रिपोर्ट के लिए हमें DM कीजिए।",
   "shareToFeed": true,
   "perDay": 2,
   "schedule": "Normal posts 12:47 PM + 6:47 PM IST, trial copies 3:47 PM + 9:47 PM IST (see .github/workflows/post-queue.yml)",
