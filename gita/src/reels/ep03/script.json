@@ -7,68 +7,121 @@
   "voice": {
     "speaker": "aditya_hi_conversational",
     "model": "bulbul:v4-flash",
-    "pace": 1.25,
+    "pace": 1.15,
     "lang": "hi-IN",
     "script": "all Devanagari"
   },
   "timing": {
-    "gap": 0.06,
-    "tail": 0.12,
-    "endHold": 0.8,
-    "estSyl": 7.4
+    "gap": 0.12,
+    "tail": 0.22,
+    "endHold": 0.8
   },
   "scenes": [
     {
       "id": "s1",
       "lines": [
-        { "roman": "Krishna ne bataya tha, insaan *aath kadam mein *barbaad hota hai.", "voice": "कृष्ण ने बताया था, इंसान आठ कदम में बर्बाद होता है।" },
-        { "roman": "*Gussa toh sirf *chautha kadam hai.", "voice": "गुस्सा तो सिर्फ़ चौथा कदम है।" },
-        { "roman": "Aur *pehla kadam, aap *roz uthaate ho.", "voice": "और पहला कदम, आप रोज़ उठाते हो।" }
+        {
+          "roman": "Krishna ne bataya tha, insaan *aath kadam mein *barbaad hota hai.",
+          "voice": "कृष्ण ने बताया था, इंसान आठ कदम में बर्बाद होता है।"
+        },
+        {
+          "roman": "*Gussa toh sirf *chautha kadam hai.",
+          "voice": "गुस्सा तो सिर्फ़ चौथा कदम है।"
+        },
+        {
+          "roman": "Aur *pehla kadam, aap *roz uthaate ho.",
+          "voice": "और पहला कदम, आप रोज़ उठाते हो।"
+        }
       ]
     },
     {
       "id": "s2",
       "lines": [
-        { "roman": "Gita shlok *series, *episode teen.", "voice": "गीता श्लोक सीरीज़, एपिसोड तीन।" },
-        { "roman": "*Adhyay do, shlok *baasath aur *tirsath.", "voice": "अध्याय दो, श्लोक बासठ और तिरसठ।" }
+        {
+          "roman": "Gita shlok *series, *episode teen.",
+          "voice": "गीता श्लोक सीरीज़, एपिसोड तीन।"
+        },
+        {
+          "roman": "*Adhyay do, shlok *baasath aur *tirsath.",
+          "voice": "अध्याय दो, श्लोक बासठ और तिरसठ।"
+        }
       ]
     },
     {
       "id": "s3",
       "lines": [
-        { "roman": "Pehla kadam, kisi cheez ko *baar baar *sochna.", "voice": "पहला कदम, किसी चीज़ को बार बार सोचना।" },
-        { "roman": "Isse *lagaav, aur lagaav se *chaahat.", "voice": "इससे लगाव, और लगाव से चाहत।" }
+        {
+          "roman": "Pehla kadam, kisi cheez ko *baar baar *sochna.",
+          "voice": "पहला कदम, किसी चीज़ को बार बार सोचना।"
+        },
+        {
+          "roman": "Isse *lagaav, aur lagaav se *chaahat.",
+          "voice": "इससे लगाव, और लगाव से चाहत।"
+        }
       ]
     },
     {
       "id": "s4",
       "lines": [
-        { "roman": "Chaahat poori nahi hui, toh aata hai *gussa.", "voice": "चाहत पूरी नहीं हुई, तो आता है गुस्सा।" }
+        {
+          "roman": "Chaahat poori nahi hui, toh aata hai *gussa.",
+          "voice": "चाहत पूरी नहीं हुई, तो आता है गुस्सा।"
+        }
       ]
     },
     {
       "id": "s5",
       "lines": [
-        { "roman": "*Krodhaad bhavati *sammohah.", "voice": "क्रोधाद्भवति सम्मोहः।" },
-        { "roman": "Gusse se *bhram, bhram se *yaaddaasht gadbad.", "voice": "गुस्से से भ्रम, भ्रम से याददाश्त गड़बड़।" },
-        { "roman": "Phir *buddhi ka naash, aur insaan *gir jaata hai.", "voice": "फिर बुद्धि का नाश, और इंसान गिर जाता है।" }
+        {
+          "roman": "*Krodhaad bhavati *sammohah.",
+          "voice": "क्रोधाद्भवति सम्मोहः।"
+        },
+        {
+          "roman": "Gusse se *bhram, bhram se *yaaddaasht gadbad.",
+          "voice": "गुस्से से भ्रम, भ्रम से याददाश्त गड़बड़।"
+        },
+        {
+          "roman": "Phir *buddhi ka naash, aur insaan *gir jaata hai.",
+          "voice": "फिर बुद्धि का नाश, और इंसान गिर जाता है।"
+        }
       ]
     },
     {
       "id": "s6",
       "lines": [
-        { "roman": "Gusse ko *chauthe kadam par nahi, *pehle kadam par *pakdo.", "voice": "गुस्से को चौथे कदम पर नहीं, पहले कदम पर पकड़ो।" },
-        { "roman": "Agli baar koi baat dimaag mein *ghoome, khud se *poochho, kya ise sochna *zaroori hai?", "voice": "अगली बार कोई बात दिमाग में घूमे, खुद से पूछो, क्या इसे सोचना ज़रूरी है?" }
+        {
+          "roman": "Gusse ko *chauthe kadam par nahi, *pehle kadam par *pakdo.",
+          "voice": "गुस्से को चौथे कदम पर नहीं, पहले कदम पर पकड़ो।"
+        },
+        {
+          "roman": "Agli baar koi baat dimaag mein *ghoome, khud se *poochho, kya ise sochna *zaroori hai?",
+          "voice": "अगली बार कोई बात दिमाग में घूमे, खुद से पूछो, क्या इसे सोचना ज़रूरी है?"
+        }
       ]
     },
     {
       "id": "s7",
       "lines": [
-        { "roman": "Ye reel usse *bhejo, jise gussa *jaldi aata hai.", "voice": "ये रील उसे भेजो, जिसे गुस्सा जल्दी आता है।" },
-        { "roman": "Aur *comment mein batao, aap kaun se *kadam par atakte ho.", "voice": "और कमेंट में बताओ, आप कौन से कदम पर अटकते हो।" },
-        { "roman": "Agle *episode mein, mann control kyun nahi hota?", "voice": "अगले एपिसोड में, मन कंट्रोल क्यों नहीं होता?" },
-        { "roman": "*Arjun ki bhi yahi shikaayat thi.", "voice": "अर्जुन की भी यही शिकायत थी।" },
-        { "roman": "Gita ka agla shlok *miss na ho, toh *follow karo.", "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+        {
+          "roman": "Ye reel usse *bhejo, jise gussa *jaldi aata hai.",
+          "voice": "ये रील उसे भेजो, जिसे गुस्सा जल्दी आता है।"
+        },
+        {
+          "roman": "Aur *comment mein batao, aap kaun se *kadam par atakte ho.",
+          "voice": "और कमेंट में बताओ, आप कौन से कदम पर अटकते हो।"
+        },
+        {
+          "roman": "Agle *episode mein, mann control kyun nahi hota?",
+          "voice": "अगले एपिसोड में, मन कंट्रोल क्यों नहीं होता?"
+        },
+        {
+          "roman": "*Arjun ki bhi yahi shikaayat thi.",
+          "voice": "अर्जुन की भी यही शिकायत थी।"
+        },
+        {
+          "roman": "Gita ka agla shlok *miss na ho, toh *follow karo.",
+          "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।"
+        }
       ]
     }
   ]

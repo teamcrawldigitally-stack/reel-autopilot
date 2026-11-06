@@ -2,7 +2,7 @@ export type Word = { d: string; sp: string; hl: boolean; p: string; s: number; e
 export type SceneTiming = { id: string; start: number; dur: number; audio: string | null; words: Word[] };
 export type Timing = { fps: number; total: number; scenes: SceneTiming[] };
 
-const norm = (x: string) => x.toLowerCase().replace(/[^a-z0-9₹%.+]/g, "");
+const norm = (x: string) => x.toLowerCase().replace(/[\u0964\u0965]/g, "").replace(/[^a-z0-9₹%.+\u0900-\u097F]/g, "");
 
 /** Helpers bound to one reel's timing.json. */
 export const createTimeline = (timing: Timing) => {

@@ -1,0 +1,122 @@
+{
+  "id": "ep08",
+  "ep": 8,
+  "tag": "#08",
+  "shlok": "2.14",
+  "title": "बुरा वक्त कब खत्म होगा?",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "pictures": {
+    "man-rain": "Young Indian man, white t-shirt, dark jeans, hunched on a wooden stool in cold heavy rain, head down; cold blue light, pure black background, 9:16",
+    "man-sun": "Same man, same stool and pose, dry and relaxed, calm smile, eyes closed, face lifted to warm golden sunlight; pure black background, 9:16",
+    "man-blanket": "Same man on the stool wrapped in a thick woollen blanket with a cup of hot tea, snowflakes, patient; pure black background, 9:16"
+  },
+  "cover": {
+    "pic": { "src": "img/man-rain-cut.png", "h": 1000, "bottom": 1640 },
+    "mood": "blue",
+    "rows": ["बुरा वक्त", "कब {g:खत्म} होगा?"],
+    "pill": { "text": "सर्दी-गर्मी जैसा", "tone": "gold" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [{ "voice": "बुरा वक्त कब खत्म होगा?" }, { "voice": "कृष्ण ने इसे सर्दी गर्मी जैसा बताया था।" }],
+      "dust": "none",
+      "pics": [
+        { "src": "img/man-rain-cut.png", "h": 900, "bottom": 1580, "glow": "blue", "out": "गर्मी-4" },
+        { "src": "img/man-sun-cut.png", "h": 960, "bottom": 1580, "glow": "gold", "at": "गर्मी-6", "from": "none" }
+      ],
+      "widgets": [{ "type": "rain", "out": "गर्मी-4", "n": 80 }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "बुरा वक्त", "size": 120 }, { "t": "कब {g:खत्म} होगा?", "size": 110 }] },
+        { "at": "कृष्ण-4", "rows": [{ "t": "{d:कृष्ण ने बताया था}", "size": 60 }, { "t": "{b:सर्दी}", "size": 120 }, { "t": "{d:और} {s:गर्मी} {d:जैसा}", "size": 110, "at": "गर्मी" }] }
+      ],
+      "sfx": [{ "at": "गर्मी-4", "name": "riser", "vol": 0.35 }]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड आठ।" }, { "voice": "अध्याय दो, श्लोक चौदह।" }],
+      "ep": 8,
+      "ref": "2.14",
+      "chapter": "2",
+      "verse": "14",
+      "speaker": "श्रीभगवानुवाच",
+      "shloka": ["मात्रास्पर्शास्तु कौन्तेय", "{शीतोष्ण}{सुखदुःख}दाः।", "{आगमापायिनो}ऽ{नित्या}स्", "{तांस्तितिक्षस्व} भारत॥"],
+      "note": "= सुख दुख, सर्दी गर्मी जैसे",
+      "bg": { "src": "img/krishna-arjun-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "lines": [{ "voice": "कृष्ण कहते हैं, सुख और दुख, सर्दी और गर्मी की तरह हैं।" }, { "voice": "ये इंद्रियों के छूने से आते हैं।" }],
+      "widgets": [{ "type": "wheel", "top": 820, "r": 250, "speed": 1.6 }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{s:सुख} {d:और} {b:दुख}", "size": 120 }] },
+        { "at": "सर्दी-2", "rows": [{ "t": "{b:सर्दी} {d:और} {s:गर्मी}", "size": 110 }, { "t": "{d:की तरह}", "size": 64 }] },
+        { "at": "इंद्रियों-4", "sa": "मात्रास्पर्शाः", "saSize": 96, "rows": [{ "t": "{d:इंद्रियों के छूने से}", "size": 62 }] }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "swipe": false,
+      "lines": [{ "voice": "आगमापायिनः, यानी आते हैं और जाते हैं।" }, { "voice": "अनित्याः, यानी हमेशा नहीं रहते।" }, { "voice": "तांस्तितिक्षस्व, इन्हें सहन करो।" }],
+      "widgets": [{ "type": "wheel", "top": 820, "r": 250, "speed": 1.6, "phase": 300, "fast": "जाते" }],
+      "beats": [
+        { "at": "start", "sa": "आगमापायिनः", "saSize": 100, "rows": [{ "t": "आते हैं, {g:जाते हैं}", "size": 84, "at": "आते" }] },
+        { "at": "अनित्याः-2", "sa": "अनित्याः", "saSize": 100, "rows": [{ "t": "{g:हमेशा नहीं} रहते", "size": 92, "at": "हमेशा" }] },
+        { "at": "तांस्तितिक्षस्व-2", "sa": "तांस्तितिक्षस्व", "saSize": 100, "rows": [{ "t": "इन्हें {E:सहन करो}", "size": 96, "at": "इन्हें" }] }
+      ]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "lines": [{ "voice": "जैसे सर्दी में कोई मौसम से नहीं लड़ता, बस कंबल ओढ़ लेता है, और इंतज़ार करता है।" }],
+      "dust": "none",
+      "pics": [
+        { "src": "img/man-rain-cut.png", "h": 860, "bottom": 1580, "glow": "blue", "out": "कंबल-4" },
+        { "src": "img/man-blanket-cut.png", "h": 900, "bottom": 1580, "glow": "saffron", "at": "कंबल-6", "from": "none" }
+      ],
+      "widgets": [{ "type": "rain", "snow": true, "n": 60 }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{b:सर्दी} में कोई", "size": 96 }, { "t": "मौसम से {R:नहीं लड़ता}", "size": 96, "at": "मौसम" }] },
+        { "at": "कंबल-4", "rows": [{ "t": "बस {g:कंबल} ओढ़ो", "size": 104 }, { "t": "{d:और} {E:इंतज़ार} करो", "size": 104, "at": "इंतज़ार" }] }
+      ]
+    },
+    {
+      "id": "s6",
+      "kind": "beats",
+      "lines": [{ "voice": "आज जो दुख है, उसे तारीख डालकर लिख लो।" }, { "voice": "तीन महीने बाद पढ़ना।" }, { "voice": "ज़्यादातर बातें मौसम निकलेंगी।" }],
+      "widgets": [
+        {
+          "type": "diary",
+          "top": 760,
+          "date": "आज",
+          "text": "आज का दुख: बॉस ने सबके सामने डाँटा। लगता है सब खत्म हो गया।",
+          "later": { "at": "तीन", "text": "+3 महीने" },
+          "stamp": { "at": "मौसम", "text": "मौसम था" }
+        }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "आज का दुख", "size": 84 }, { "t": "{g:तारीख डालकर} लिखो", "size": 96, "at": "तारीख" }] },
+        { "at": "तीन-2", "rows": [{ "t": "{n:3} महीने बाद", "size": 96 }, { "t": "{g:पढ़ना}", "size": 96 }] },
+        { "at": "ज़्यादातर-2", "rows": [{ "t": "ज़्यादातर बातें", "size": 90 }, { "t": "{E:मौसम} निकलेंगी", "size": 104, "at": "मौसम" }] }
+      ]
+    },
+    {
+      "id": "s7",
+      "kind": "cta",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जिसका अभी बुरा वक्त चल रहा है।" },
+        { "voice": "और कमेंट में बताओ, आपका सबसे लंबा बुरा मौसम कितना लंबा था?" },
+        { "voice": "अगले एपिसोड में, एटम बम बनाने वाले साइंटिस्ट को गीता का कौन सा श्लोक याद आया था?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जिसका अभी बुरा वक्त चल रहा है", "pic": { "src": "img/man-rain-cut.png", "h": 600, "bottom": 1500, "glow": "blue" } },
+      "comment": { "q": "आपका सबसे लंबा बुरा मौसम कितना लंबा था?", "typed": "पूरे 2 साल" },
+      "next": { "ep": "#09", "rows": ["एटम बम वाले साइंटिस्ट को", "गीता का कौन सा", "श्लोक याद आया?"], "pic": { "src": "img/fireball.jpg", "full": true, "h": 640, "bottom": 1220 } }
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "id": "ep07",
+  "ep": 7,
+  "tag": "#07",
+  "shlok": "1.1",
+  "title": "गीता का पहला श्लोक",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "pictures": {
+    "dhritarashtra-sanjaya": "Old blind king Dhritarashtra on an ornate golden throne asking a worried question, Sanjaya standing beside him narrating; realistic 3D render, golden rim light, pure black background, 9:16",
+    "armies": "Two vast ancient Indian armies at Kurukshetra at dawn, chariots, elephants, flags, dust, golden light, a wide strip between them; 9:16",
+    "family-split": "Modern Indian family split into two groups after a fight, arms crossed, turned away, a glowing red crack between them; pure black background, 9:16"
+  },
+  "cover": {
+    "pic": { "src": "img/dhritarashtra-sanjaya-cut.png", "h": 1000, "bottom": 1640 },
+    "rows": ["गीता का {g:पहला} श्लोक", { "t": "{d:किसने बोला था?}", "size": 80 }],
+    "pill": { "text": "कृष्ण ने नहीं!", "tone": "red" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [
+        { "voice": "सात सौ श्लोकों की गीता का पहला श्लोक, एक अंधे राजा ने बोला था।" },
+        { "voice": "और सवाल था, मेरे बेटे क्या कर रहे हैं?" }
+      ],
+      "pics": [{ "src": "img/dhritarashtra-sanjaya-cut.png", "h": 980, "bottom": 1580, "at": "अंधे-6", "from": "up" }],
+      "widgets": [
+        {
+          "type": "dots",
+          "at": -20,
+          "out": "अंधे-6",
+          "top": 640,
+          "total": 700,
+          "cols": 35,
+          "size": 15,
+          "counter": { "label": "श्लोक" },
+          "groups": [{ "n": 1, "at": "पहला", "tone": "gold" }]
+        }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "गीता का {g:पहला} श्लोक", "size": 110 }, { "t": "{r:कृष्ण ने नहीं} बोला", "size": 96 }] },
+        {
+          "at": "सवाल-4",
+          "rows": [{ "t": "{d:अंधे राजा का सवाल}", "size": 60 }, { "t": "“{g:मेरे बेटे}", "size": 100 }, { "t": "क्या कर रहे हैं?”", "size": 100 }]
+        }
+      ],
+      "sfx": [{ "at": "अंधे-4", "name": "bass", "vol": 0.5 }]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड सात।" }, { "voice": "अध्याय एक, श्लोक एक।" }],
+      "ep": 7,
+      "ref": "1.1",
+      "chapter": "1",
+      "verse": "1",
+      "speaker": "धृतराष्ट्र उवाच",
+      "shloka": ["धर्मक्षेत्रे कुरुक्षेत्रे", "समवेता युयुत्सवः।", "{मामकाः} {पाण्डवा}श्चैव", "किमकुर्वत सञ्जय॥"],
+      "note": "= धृतराष्ट्र का सवाल, संजय से",
+      "bg": { "src": "img/dhritarashtra-sanjaya-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "lines": [{ "voice": "धृतराष्ट्र संजय से पूछते हैं, कुरुक्षेत्र में मेरे बेटे और पांडु के बेटे, युद्ध के लिए इकट्ठा होकर क्या कर रहे हैं?" }],
+      "pics": [
+        { "src": "img/dhritarashtra-sanjaya-cut.png", "h": 940, "bottom": 1560, "out": "कुरुक्षेत्र-4" },
+        { "src": "img/armies.jpg", "full": true, "h": 1380, "bottom": 1640, "at": "कुरुक्षेत्र-6", "dim": 0.15, "fx": [{ "type": "zoom", "at": "कुरुक्षेत्र", "to": "end" }] }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{g:धृतराष्ट्र} पूछते हैं", "size": 96 }, { "t": "{d:संजय से}", "size": 64 }] },
+        {
+          "at": "कुरुक्षेत्र-2",
+          "rows": [{ "t": "{g:कुरुक्षेत्र} में", "size": 100 }, { "t": "{s:मेरे बेटे} {d:और} {s:पांडु के बेटे}", "size": 76, "at": "मेरे" }]
+        },
+        { "at": "युद्ध-2", "rows": [{ "t": "युद्ध के लिए इकट्ठा", "size": 84 }, { "t": "{g:क्या कर रहे हैं?}", "size": 100 }] }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "lines": [
+        { "voice": "ध्यान दो, उन्होंने कहा मेरे बेटे, और पांडु के बेटे।" },
+        { "voice": "अपने ही भतीजों को अलग गिना।" },
+        { "voice": "मेरा और तेरा, यही बँटवारा पूरे युद्ध की जड़ बना।" }
+      ],
+      "mood": "red",
+      "pics": [
+        { "src": "img/dhritarashtra-sanjaya-cut.png", "h": 720, "bottom": 1600, "x": 540, "glow": "saffron", "out": "मेरा-6" },
+        { "src": "img/armies.jpg", "full": true, "h": 1300, "bottom": 1640, "at": "मेरा-6", "dim": 0.25, "fx": [{ "type": "redflash", "at": "जड़" }, { "type": "shake", "at": "जड़", "to": "जड़+16" }] }
+      ],
+      "widgets": [
+        {
+          "type": "vs",
+          "top": 640,
+          "size": 76,
+          "out": "मेरा-6",
+          "left": { "text": "मेरे बेटे", "tone": "gold", "at": "मेरे" },
+          "right": { "text": "पांडु के बेटे", "tone": "saffron", "at": "पांडु" },
+          "split": "अलग"
+        }
+      ],
+      "beats": [
+        { "at": "start", "sa": "मामकाः पाण्डवाश्चैव", "saSize": 84, "rows": [{ "t": "{d:ध्यान दो}", "size": 60 }] },
+        { "at": "भतीजों-4", "rows": [{ "t": "अपने ही {g:भतीजों} को", "size": 88 }, { "t": "{r:अलग} गिना", "size": 96 }] },
+        { "at": "मेरा-2", "rows": [{ "t": "{g:मेरा} और {R:तेरा}", "size": 130 }, { "t": "{d:यही बँटवारा}", "size": 64, "at": "बँटवारा" }, { "t": "युद्ध की {r:जड़} बना", "size": 90, "at": "युद्ध" }] }
+      ]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "lines": [{ "voice": "घर हो या दफ़्तर, जब भी मेरे लोग और बाकी लोग बोलने लगो, रुक जाओ।" }, { "voice": "झगड़ा अक्सर वहीं से शुरू होता है।" }],
+      "pics": [{ "src": "img/family-split-cut.png", "h": 820, "bottom": 1560, "glow": "saffron" }],
+      "widgets": [{ "type": "split", "x": 556, "top": 760, "bottom": 1560, "at": "बाकी" }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "घर हो या {g:दफ़्तर}", "size": 96 }] },
+        {
+          "at": "मेरे-4",
+          "rows": [{ "t": "{x:“मेरे लोग”}", "size": 92, "strike": "रुक" }, { "t": "{d:और} {x:“बाकी लोग”}", "size": 92, "at": "बाकी", "strike": "रुक+4" }],
+          "card": { "label": "जब भी ये बोलने लगो", "text": "{E:रुक जाओ।} झगड़ा अक्सर वहीं से शुरू होता है।", "at": "रुक-2", "tone": "green", "top": 1160 }
+        }
+      ],
+      "sfx": [{ "at": "रुक-2", "name": "check", "vol": 0.6 }]
+    },
+    {
+      "id": "s6",
+      "kind": "cta",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जो गीता रोज़ पढ़ता है।" },
+        { "voice": "और कमेंट में बताओ, क्या आपको ये पता था?" },
+        { "voice": "अगले एपिसोड में, बुरा वक्त कब खत्म होगा?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जो गीता रोज़ पढ़ता है", "pic": { "src": "img/krishna-face-cut.png", "h": 640, "bottom": 1500 } },
+      "comment": { "q": "कमेंट में बताओ, क्या आपको ये पता था?", "typed": "नहीं पता था!" },
+      "next": { "ep": "#08", "rows": ["बुरा वक्त", "कब खत्म होगा?"], "pic": { "src": "img/man-rain-cut.png", "h": 480, "bottom": 1150, "glow": "gold" } }
+    }
+  ]
+}

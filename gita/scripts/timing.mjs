@@ -20,15 +20,18 @@ let TAIL = 0.3; // after the last line, before the next scene
 let END_HOLD = 1.4; // extra at the very end
 let SYL_PER_SEC = 5.2; // only for the no-audio estimate (script.timing.estSyl)
 if (script.timing) { GAP = script.timing.gap ?? GAP; TAIL = script.timing.tail ?? TAIL; END_HOLD = script.timing.endHold ?? END_HOLD; LEAD = script.timing.lead ?? LEAD; SYL_PER_SEC = script.timing.estSyl ?? SYL_PER_SEC; }
-const PAUSE_S = { ",": 0.16, ":": 0.2, ".": 0.3, "?": 0.3, "!": 0.3 };
+const PAUSE_S = { ",": 0.16, ":": 0.2, ".": 0.3, "?": 0.3, "!": 0.3, "\u0964": 0.3, "\u0965": 0.3 };
 
-const syllables = (w) => Math.max(1, (w.toLowerCase().match(/[aeiouy]+/g) || []).length);
+const DEVA = /[\u0900-\u097F]/;
+// Devanagari: count aksharas (consonants / independent vowels not followed by a virama)
+const devaSyl = (w) => { let n = 0; for (let i = 0; i < w.length; i++) { const c = w.charCodeAt(i); const isCons = (c >= 0x0915 && c <= 0x0939) || (c >= 0x0958 && c <= 0x095F); const isVow = c >= 0x0904 && c <= 0x0914; if ((isCons && w.charCodeAt(i + 1) !== 0x094D) || isVow) n++; } return Math.max(1, Math.round(n * 0.85)); };
+const syllables = (w) => DEVA.test(w) ? devaSyl(w) : Math.max(1, (w.toLowerCase().match(/[aeiouy]+/g) || []).length);
 
 function tokenize(roman) {
   return roman.split(/\s+/).filter(Boolean).map((raw) => {
     let hl = false;
     if (raw.startsWith("*")) { hl = true; raw = raw.slice(1); }
-    const pm = raw.match(/[,.:?!]+$/);
+    const pm = raw.match(/[,.:?!\u0964\u0965]+$/);
     const punct = pm ? pm[0] : "";
     if (pm) raw = raw.slice(0, -punct.length);
     let [display, spoken] = raw.split("|");
@@ -104,7 +107,7 @@ for (const [si, sc] of script.scenes.entries()) {
   let allAudio = true;
   let info = [];
   for (const [li, line] of sc.lines.entries()) {
-    const tokens = tokenize(line.roman);
+    const tokens = tokenize(line.roman ?? line.voice);
     const raw = path.join(voDir, "lines", `${sc.id}_${li}.wav`);
     const gapBefore = li === 0 ? 0 : line.gapBefore ?? sc.lines[li - 1].gapAfter ?? GAP;
     t += gapBefore;
