@@ -256,9 +256,10 @@ const HeroPic: React.FC<{ hero: Hero; src: string | null; sideSrc?: string | nul
   }
   if (hero.kind === "full" && src) {
     // Full-bleed scene picture: snap-zoom entrance, then a slow Ken Burns push (or pull) for the rest of the shot.
-    const snap = interpolate(t, [0, 9], [1.16, 1], { ...clamp, easing: (x) => 1 - Math.pow(1 - x, 3) });
-    const drift = hero.zoom === "out" ? interpolate(t, [0, Math.max(30, dur)], [1.12, 1.0], clamp) : interpolate(t, [0, Math.max(30, dur)], [1.0, 1.12], clamp);
-    const flash = interpolate(t, [0, 5], [0.55, 0], clamp);
+    // Calm flow: a gentle settle on the cut, a soft light bloom, then a slow push (or pull) through the shot.
+    const snap = interpolate(t, [0, 14], [1.06, 1], { ...clamp, easing: (x) => 1 - Math.pow(1 - x, 3) });
+    const drift = hero.zoom === "out" ? interpolate(t, [0, Math.max(30, dur)], [1.08, 1.0], clamp) : interpolate(t, [0, Math.max(30, dur)], [1.0, 1.08], clamp);
+    const flash = interpolate(t, [0, 8], [0.22, 0], clamp);
     return (
       <AbsoluteFill style={{ opacity: 1, overflow: "hidden" }}>
         <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: hero.focus ?? "50% 40%", transform: `scale(${snap * drift + punch})`, transformOrigin: hero.focus ?? "50% 40%" }} />

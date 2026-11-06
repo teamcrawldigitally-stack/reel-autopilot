@@ -29,12 +29,12 @@ KARZ_CAPTION = (
 PLAN = {  # qid: (sample name or None, title, hook, look, caption override)
     "33-dhan-murti": ("dhan-murti", None, "बैठी या खड़ी?", "devo", None),
     "34-dhan-namak": ("dhan-namak", None, "पैसा टिकता नहीं?", "devo", None),
-    "35-dhan-salary": (None, "सैलरी आते ही पैसा ख़त्म?", "सैलरी आते ही पैसा ख़त्म?", "hisaab", SALARY_CAPTION),
+    "35-dhan-salary": ("dhan-salary", None, "सैलरी आते ही पैसा ख़त्म?", "devo", SALARY_CAPTION),
     "36-dhan-peepal": ("dhan-peepal", None, "आज शनिवार, पीपल का दीया", "devo", None),
     "37-dhan-kaudi": ("dhan-kaudi", None, "11 कौड़ियाँ", "devo", None),
     "38-dhan-purse": ("dhan-purse", None, "पर्स में 1 चीज़", "devo", None),
     "39-dhan-tijori": ("dhan-tijori", None, "तिजोरी किस तरफ़?", "devo", None),
-    "40-dhan-karz": (None, "कर्ज़ नहीं उतर रहा?", "कर्ज़ नहीं उतर रहा?", "hisaab", KARZ_CAPTION),
+    "40-dhan-karz": ("dhan-karz", None, "कर्ज़ नहीं उतर रहा?", "devo", KARZ_CAPTION),
 }
 order = list(PLAN)
 
@@ -50,7 +50,7 @@ for qid in sys.argv[1:]:
     if name:
         s = json.load(open(os.path.join(SAMPLES, f"{name}.json")))
         title = s["title"]
-        cap = s["caption"]
+        cap = cap or s["caption"]
         tags = [f"#{t}" for t in s.get("hashtags", [])] + ["#Astro24x7", "#ज्योतिष"]
     item = {
         "id": qid, "title": title, "video": f"{qid}.mp4",
