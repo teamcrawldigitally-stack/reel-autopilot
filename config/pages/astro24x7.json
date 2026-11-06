@@ -35,13 +35,12 @@
         "mood": "intense, powerful, dark planets (Rahu, Shani, Mangal)"
       },
       {
-        "file": "music/paint-the-town-red-inst.mp3",
-        "mood": "moody, mysterious, trendy"
-      },
-      {
         "file": "music/masakali.mp3",
         "mood": "joyful, light (has vocals: keep very low under voice)"
       }
+    ],
+    "bannedMusic": [
+      "music/paint-the-town-red-inst.mp3"
     ]
   },
   "posting": {

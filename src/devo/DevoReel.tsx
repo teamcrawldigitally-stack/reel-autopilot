@@ -11,18 +11,25 @@ import { findWordFrame, W } from "../astro/parts";
 import { ART_FOR, CodeArt } from "./art";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-const K = {
+// Colours. `red` is the accent; a script can set "palette" (e.g. pink for Shukra) to recolour the
+// whole reel: glow, ring, labels, counter, title. Set once per render in DevoReel().
+const BASE = {
   bg: "#0B0607",
   red: "#D7262E",
   redDeep: "#8E0F16",
   white: "#FFFFFF",
   ink: "#0E0A0A",
   gold: "#F4C46A",
+  glow: "150,14,22",
+  glow2: "90,8,14",
+  styled: false,
 };
+const K = { ...BASE };
+export type Palette = { accent: string; accentDeep: string; bg: string; glow: string; glow2: string };
 const HEAD = '"Mukta", sans-serif';
 const DISPLAY = '"Rozha One", "Mukta", serif';
 
-type Hero = { img: string; kind: "deity" | "photo" | "object"; word?: string };
+type Hero = { img: string; kind: "deity" | "photo" | "object" | "inset"; word?: string; side?: string };
 type Label = { top: string; bottom: string; word: string };
 export type DevoScene = {
   visual: "devo";
@@ -52,6 +59,8 @@ export type DevoReelProps = {
   durationMs: number;
   images: Record<string, string | null>;
   floats?: string[];
+  palette?: Palette | null;
+  wallpaper?: string[] | null;
 };
 
 // ---------- background ----------
@@ -61,7 +70,7 @@ const Stage: React.FC = () => {
   const pulse = 0.5 + 0.08 * Math.sin(frame / 24);
   return (
     <AbsoluteFill style={{ background: K.bg, overflow: "hidden" }}>
-      <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 45% at 50% 42%, rgba(150,14,22,${pulse}) 0%, rgba(90,8,14,0.35) 45%, transparent 80%)` }} />
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 45% at 50% 42%, rgba(${K.glow},${pulse}) 0%, rgba(${K.glow2},0.35) 45%, transparent 80%)` }} />
       <AbsoluteFill
         style={{
           opacity: 0.09,
@@ -194,7 +203,7 @@ const NeonRing: React.FC<{ cx: number; cy: number; r: number; on: number }> = ({
   );
 };
 
-const HeroPic: React.FC<{ hero: Hero; src: string | null; frame0: number; dur: number; punch: number; instant?: boolean }> = ({ hero, src, frame0, dur, punch, instant }) => {
+const HeroPic: React.FC<{ hero: Hero; src: string | null; sideSrc?: string | null; frame0: number; dur: number; punch: number; instant?: boolean }> = ({ hero, src, sideSrc, frame0, dur, punch, instant }) => {
   const frame = useCurrentFrame();
   const t = frame - frame0 + (instant ? 8 : 0);
   const tin = interpolate(t, [0, 8], [0, 1], { ...clamp, easing: (x) => 1 - Math.pow(1 - x, 3) });
@@ -212,6 +221,23 @@ const HeroPic: React.FC<{ hero: Hero; src: string | null; frame0: number; dur: n
   ) : (
     <Placeholder name={hero.img} kind={hero.kind} />
   );
+  if (hero.kind === "inset") {
+    // Scene picture as a large soft-edged panel low on the left, with the planet's deity small at the
+    // top right (as in the reference reels: the planet stays on screen while the example plays out).
+    const side = hero.side ? sideSrc : null;
+    return (
+      <>
+        <div style={{ position: "absolute", left: -20, top: 640, width: 900, height: 1080, opacity: tin, transform: `scale(${scale})`, transformOrigin: "30% 60%", WebkitMaskImage: "radial-gradient(ellipse 47% 47% at 50% 50%, #000 45%, transparent 100%)", maskImage: "radial-gradient(ellipse 47% 47% at 50% 50%, #000 45%, transparent 100%)" }}>
+          {img}
+        </div>
+        {side ? (
+          <div style={{ position: "absolute", right: 10, top: 250, width: 420, height: 620, opacity: interpolate(t, [2, 12], [0, 1], clamp), transform: `translateY(${Math.sin(frame / 30) * 6}px)`, WebkitMaskImage: "radial-gradient(ellipse 50% 52% at 50% 46%, #000 60%, transparent 100%)", maskImage: "radial-gradient(ellipse 50% 52% at 50% 46%, #000 60%, transparent 100%)", mixBlendMode: "lighten" }}>
+            <Img src={staticFile(side)} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+          </div>
+        ) : null}
+      </>
+    );
+  }
   if (hero.kind === "photo") {
     return (
       <div style={{ position: "absolute", left: 0, top: 230, width: 1080, height: 1380, opacity: tin, transform: `scale(${scale})`, WebkitMaskImage: "linear-gradient(180deg, transparent 0%, #000 14%, #000 72%, transparent 100%)", maskImage: "linear-gradient(180deg, transparent 0%, #000 14%, #000 72%, transparent 100%)" }}>
@@ -258,10 +284,10 @@ const LabelStack: React.FC<{ label: Label; at: number; until: number }> = ({ lab
   const long = label.bottom.length > 12;
   return (
     <div style={{ position: "absolute", left: 0, width: 1080, top: 1010, display: "flex", flexDirection: "column", alignItems: "center", opacity: out }}>
-      <div style={{ transform: `translateX(${(1 - a) * -260}px) rotate(-2deg) scaleX(${0.6 + 0.4 * a})`, opacity: a, background: K.ink, border: "3px solid rgba(255,255,255,0.9)", padding: "4px 30px 12px", fontFamily: HEAD, fontWeight: 800, fontSize: 70, lineHeight: 1.15, color: K.white, zIndex: 2, boxShadow: "0 12px 30px rgba(0,0,0,0.6)" }}>
+      <div style={{ transform: `translateX(${(1 - a) * -260}px) rotate(-2deg) scaleX(${0.6 + 0.4 * a})`, opacity: a, background: K.styled ? K.white : K.ink, border: K.styled ? "none" : "3px solid rgba(255,255,255,0.9)", padding: "4px 30px 12px", fontFamily: HEAD, fontWeight: 800, fontSize: 70, lineHeight: 1.15, color: K.styled ? K.ink : K.white, zIndex: 2, boxShadow: "0 12px 30px rgba(0,0,0,0.6)" }}>
         {label.top}
       </div>
-      <div style={{ marginTop: -8, transform: `translateX(${(1 - b) * 260}px) rotate(1deg) scaleX(${0.6 + 0.4 * b})`, opacity: b, background: K.white, padding: "6px 36px 16px", fontFamily: HEAD, fontWeight: 800, fontSize: long ? 76 : 100, lineHeight: 1.1, color: K.red, boxShadow: "0 16px 40px rgba(0,0,0,0.7)", maxWidth: 960, textAlign: "center" }}>
+      <div style={{ marginTop: -8, transform: `translateX(${(1 - b) * 260}px) rotate(1deg) scaleX(${0.6 + 0.4 * b})`, opacity: b, background: K.styled ? K.red : K.white, padding: "6px 36px 16px", fontFamily: HEAD, fontWeight: 800, fontSize: long ? 76 : 100, lineHeight: 1.1, color: K.styled ? K.white : K.red, boxShadow: "0 16px 40px rgba(0,0,0,0.7)", maxWidth: 960, textAlign: "center" }}>
         {label.bottom}
       </div>
     </div>
@@ -276,8 +302,17 @@ const TitleCard: React.FC<{ text: string; sub?: string; until: number }> = ({ te
   const out = interpolate(frame, [until - 5, until], [1, 0], clamp);
   return (
     <div style={{ position: "absolute", left: 0, width: 1080, top: 1000, display: "flex", flexDirection: "column", alignItems: "center", gap: 16, opacity: out }}>
-      <div style={{ transform: `scale(${interpolate(s, [0, 1], [1.4, 1])})`, border: "4px solid #fff", padding: "4px 60px 20px", background: "rgba(11,6,7,0.55)", fontFamily: DISPLAY, fontSize: 170, lineHeight: 1.1, color: K.white, textShadow: `0 0 40px ${K.red}` }}>{text}</div>
-      {sub ? <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 28, letterSpacing: 8, color: "rgba(255,255,255,0.75)", opacity: s }}>{sub}</div> : null}
+      {K.styled ? (
+        <>
+          {sub ? <div style={{ background: K.white, padding: "2px 26px 8px", fontFamily: HEAD, fontWeight: 800, fontSize: 56, color: K.ink, transform: `rotate(-2deg) scale(${s})`, boxShadow: "0 10px 26px rgba(0,0,0,0.5)" }}>{sub}</div> : null}
+          <div style={{ marginTop: -26, transform: `scale(${interpolate(s, [0, 1], [1.4, 1])})`, fontFamily: DISPLAY, fontSize: 250, lineHeight: 1.05, color: K.red, WebkitTextStroke: "7px #fff", paintOrder: "stroke fill", textShadow: `0 0 50px ${K.red}, 0 14px 30px rgba(0,0,0,0.6)` }}>{text}</div>
+        </>
+      ) : (
+        <>
+          <div style={{ transform: `scale(${interpolate(s, [0, 1], [1.4, 1])})`, border: "4px solid #fff", padding: "4px 60px 20px", background: "rgba(11,6,7,0.55)", fontFamily: DISPLAY, fontSize: 170, lineHeight: 1.1, color: K.white, textShadow: `0 0 40px ${K.red}` }}>{text}</div>
+          {sub ? <div style={{ fontFamily: HEAD, fontWeight: 700, fontSize: 28, letterSpacing: 8, color: "rgba(255,255,255,0.75)", opacity: s }}>{sub}</div> : null}
+        </>
+      )}
     </div>
   );
 };
@@ -520,7 +555,7 @@ const SceneView: React.FC<{ scene: DevoScene; words: W[]; images: Record<string,
       {scene.dial ? <Dial at={at(scene.dial.word, 10)} planetsAt={scene.dial.planetsWord ? at(scene.dial.planetsWord, 60) : -9999} lifeAt={scene.dial.lifeWord ? at(scene.dial.lifeWord, 80) : -1} /> : null}
       <div style={{ position: "absolute", inset: 0, transform: `translateY(${lift}px)` }}>
         {scene.heroes.map((h, i) =>
-          i === cur ? <HeroPic key={i} hero={h} src={images[h.img] ?? null} frame0={heroAt[i]} dur={(heroAt[i + 1] ?? durationInFrames) - heroAt[i]} punch={punch} instant={isFirst && i === 0} /> : null,
+          i === cur ? <HeroPic key={i} hero={h} src={images[h.img] ?? null} sideSrc={h.side ? images[h.side] ?? null : null} frame0={heroAt[i]} dur={(heroAt[i + 1] ?? durationInFrames) - heroAt[i]} punch={punch} instant={isFirst && i === 0} /> : null,
         )}
       </div>
       {scene.paths ? <Paths at={labelAt[0]} /> : null}
@@ -544,8 +579,33 @@ const Sfx: React.FC<{ at: number; src: string; volume: number; len?: number }> =
   );
 };
 
+// Faint, blurred pictures in the four corners behind everything (the reference's "object wallpaper").
+const Wallpaper: React.FC<{ srcs: string[] }> = ({ srcs }) => {
+  const frame = useCurrentFrame();
+  const spots = [
+    { x: -120, y: 160, r: -8 },
+    { x: 700, y: 120, r: 7 },
+    { x: -140, y: 1250, r: 6 },
+    { x: 720, y: 1320, r: -6 },
+  ];
+  return (
+    <AbsoluteFill style={{ overflow: "hidden" }}>
+      {spots.map((p, i) => {
+        const src = srcs[i % srcs.length];
+        if (!src) return null;
+        return (
+          <div key={i} style={{ position: "absolute", left: p.x, top: p.y + Math.sin(frame / 40 + i) * 10, width: 500, height: 560, opacity: 0.16, transform: `rotate(${p.r}deg)`, filter: "blur(2px) saturate(0.8)", WebkitMaskImage: "radial-gradient(ellipse 50% 50% at 50% 50%, #000 40%, transparent 100%)", maskImage: "radial-gradient(ellipse 50% 50% at 50% 50%, #000 40%, transparent 100%)" }}>
+            <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          </div>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
 export const DevoReel: React.FC<DevoReelProps> = (props) => {
   const { fps, durationInFrames } = useVideoConfig();
+  Object.assign(K, BASE, props.palette ? { red: props.palette.accent, redDeep: props.palette.accentDeep, bg: props.palette.bg, glow: props.palette.glow, glow2: props.palette.glow2, styled: true } : {});
   const toFrame = (ms: number) => Math.round((ms / 1000) * fps);
   const starts = props.scenes.map((s, i) => (i === 0 ? 0 : toFrame(s.startMs)));
   const pops: number[] = [];
@@ -563,6 +623,7 @@ export const DevoReel: React.FC<DevoReelProps> = (props) => {
   return (
     <AbsoluteFill style={{ background: K.bg }}>
       <Stage />
+      {props.wallpaper?.length ? <Wallpaper srcs={props.wallpaper.map((k) => props.images[k]).filter((x): x is string => !!x)} /> : null}
       <Floats kinds={props.floats ?? ["diya", "moon", "star", "coin"]} />
       {props.scenes.map((scene, i) => {
         const from = starts[i];

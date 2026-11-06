@@ -4,73 +4,191 @@
   "composition": "DevoReel",
   "look": "devo",
   "hook": "3 पहचान",
-  "images": ["shukra", "shukra-room", "shukra-aura", "shukra-memory", "chandra"],
-  "floats": ["star", "diya", "star", "coin"],
+  "images": [
+    "shukra",
+    "shukra-room",
+    "shukra-aura",
+    "shukra-memory",
+    "chandra"
+  ],
+  "floats": [
+    "star",
+    "diya",
+    "star",
+    "coin"
+  ],
   "caption": "💗 शुक्र वालों की 3 पहचान · बिखरा कमरा, बेमेल कपड़े, गंदी प्लेट बर्दाश्त नहीं; लोग बिना वजह आपकी तरफ़ खिंचते हैं; और कोई गाना या ख़ुशबू आपको सालों पुरानी याद में ले जाती है। तीसरी सबसे अजीब है 👀 👇 तीनों आप में हैं? कमेंट में लिखिए \"शुक्र\", और उस दोस्त को भेजिए जिसमें ये सब है।",
-  "hashtags": ["शुक्र", "Venus", "Kundli"],
-  "music": "music/paint-the-town-red-inst.mp3",
+  "hashtags": [
+    "शुक्र",
+    "Venus",
+    "Kundli"
+  ],
+  "music": "music/dolce-nonna.mp3",
   "scenes": [
     {
       "voiceover": "शुक्र वालों की 3 पहचान। तीनों आप में हैं, तो शुक्र आपकी कुंडली में खिले हुए हैं। और तीसरी सबसे अजीब है।",
-      "heroes": [{ "img": "shukra", "kind": "deity" }],
+      "heroes": [
+        {
+          "img": "shukra",
+          "kind": "deity"
+        }
+      ],
       "title": "शुक्र",
-      "titleSub": "SHUKRA · VENUS",
+      "titleSub": "3 पहचान",
       "labels": [
-        { "top": "शुक्र वालों की", "bottom": "3 पहचान", "word": "तीनों" },
-        { "top": "तीसरी", "bottom": "सबसे अजीब", "word": "तीसरी" }
+        {
+          "top": "शुक्र वालों की",
+          "bottom": "3 पहचान",
+          "word": "तीनों"
+        },
+        {
+          "top": "तीसरी",
+          "bottom": "सबसे अजीब",
+          "word": "तीसरी"
+        }
       ],
       "questionWord": "तीसरी",
       "visual": "devo"
     },
     {
       "voiceover": "शुक्र सुंदरता, प्रेम और आराम के ग्रह हैं।",
-      "heroes": [{ "img": "shukra", "kind": "deity" }],
+      "heroes": [
+        {
+          "img": "shukra",
+          "kind": "deity"
+        }
+      ],
       "labels": [
-        { "top": "सुंदरता", "bottom": "प्रेम", "word": "सुंदरता," },
-        { "top": "और", "bottom": "आराम", "word": "आराम" }
+        {
+          "top": "सुंदरता",
+          "bottom": "प्रेम",
+          "word": "सुंदरता,"
+        },
+        {
+          "top": "और",
+          "bottom": "आराम",
+          "word": "आराम"
+        }
       ],
       "visual": "devo"
     },
     {
       "voiceover": "पहली: बिखरा कमरा, बेमेल कपड़े, गंदी प्लेट, ये सब बर्दाश्त नहीं।",
-      "heroes": [{ "img": "shukra-room", "kind": "photo" }],
+      "heroes": [
+        {
+          "img": "shukra-room",
+          "kind": "inset",
+          "side": "shukra"
+        }
+      ],
       "counter": "1",
       "labels": [
-        { "top": "बिखरा कमरा", "bottom": "बेमेल कपड़े", "word": "बिखरा" },
-        { "top": "बर्दाश्त", "bottom": "नहीं", "word": "बर्दाश्त" }
+        {
+          "top": "बिखरा कमरा",
+          "bottom": "बेमेल कपड़े",
+          "word": "बिखरा"
+        },
+        {
+          "top": "बर्दाश्त",
+          "bottom": "नहीं",
+          "word": "बर्दाश्त"
+        }
       ],
       "visual": "devo"
     },
     {
       "voiceover": "दूसरी: लोग बिना वजह आपकी तरफ़ खिंचते हैं। आप कमरे में आएँ, तो माहौल बदल जाता है।",
-      "heroes": [{ "img": "shukra-aura", "kind": "photo" }],
+      "heroes": [
+        {
+          "img": "shukra-aura",
+          "kind": "inset",
+          "side": "shukra"
+        }
+      ],
       "counter": "2",
       "labels": [
-        { "top": "लोग खिंचते", "bottom": "बिना वजह", "word": "खिंचते" },
-        { "top": "माहौल", "bottom": "बदल जाता है", "word": "माहौल" }
+        {
+          "top": "लोग खिंचते",
+          "bottom": "बिना वजह",
+          "word": "खिंचते"
+        },
+        {
+          "top": "माहौल",
+          "bottom": "बदल जाता है",
+          "word": "माहौल"
+        }
       ],
       "visual": "devo"
     },
     {
       "voiceover": "और तीसरी, सबसे अजीब: कोई गाना या ख़ुशबू आपको सालों पुरानी याद में ले जाती है, बिल्कुल उसी पल में।",
-      "heroes": [{ "img": "shukra-memory", "kind": "photo" }],
+      "heroes": [
+        {
+          "img": "shukra-memory",
+          "kind": "inset",
+          "side": "shukra"
+        }
+      ],
       "counter": "3",
       "labels": [
-        { "top": "गाना या", "bottom": "ख़ुशबू", "word": "गाना" },
-        { "top": "सालों पुरानी", "bottom": "याद में", "word": "सालों" }
+        {
+          "top": "गाना या",
+          "bottom": "ख़ुशबू",
+          "word": "गाना"
+        },
+        {
+          "top": "सालों पुरानी",
+          "bottom": "याद में",
+          "word": "सालों"
+        }
       ],
       "visual": "devo"
     },
     {
       "voiceover": "तीनों आप में हैं? कमेंट में लिखिए \"शुक्र\"। जिस दोस्त में ये सब है, उसे भेजिए। अगली बारी चंद्र वालों की, फॉलो कर लीजिए।",
-      "heroes": [{ "img": "shukra", "kind": "deity" }, { "img": "chandra", "kind": "deity", "word": "चंद्र" }],
+      "heroes": [
+        {
+          "img": "shukra",
+          "kind": "deity"
+        },
+        {
+          "img": "chandra",
+          "kind": "deity",
+          "word": "चंद्र"
+        }
+      ],
       "questionWord": "तीनों",
       "labels": [
-        { "top": "कमेंट में", "bottom": "लिखिए: शुक्र", "word": "कमेंट" },
-        { "top": "दोस्त को", "bottom": "भेजिए", "word": "दोस्त" },
-        { "top": "अगली बारी", "bottom": "चंद्र वालों की", "word": "चंद्र" }
+        {
+          "top": "कमेंट में",
+          "bottom": "लिखिए: शुक्र",
+          "word": "कमेंट"
+        },
+        {
+          "top": "दोस्त को",
+          "bottom": "भेजिए",
+          "word": "दोस्त"
+        },
+        {
+          "top": "अगली बारी",
+          "bottom": "चंद्र वालों की",
+          "word": "चंद्र"
+        }
       ],
       "visual": "devo"
     }
+  ],
+  "palette": {
+    "accent": "#E5428F",
+    "accentDeep": "#7A1747",
+    "bg": "#12060E",
+    "glow": "140,30,95",
+    "glow2": "70,12,48"
+  },
+  "wallpaper": [
+    "shukra-memory",
+    "shukra-room",
+    "shukra-memory",
+    "shukra-room"
   ]
 }

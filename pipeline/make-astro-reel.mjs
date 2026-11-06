@@ -39,6 +39,8 @@ const props = {
   header: script.header ?? null,
   mouth: timeline.mouth ?? [],
   floats: script.floats ?? null,
+  palette: script.palette ?? null,
+  wallpaper: script.wallpaper ?? null,
   images: Object.fromEntries(
     (script.images ?? []).map((k) => {
       const ext = ["jpg", "jpeg", "png", "webp"].find((e) => fs.existsSync(path.join(ROOT, "public/devo/img", `${k}.${e}`)));
