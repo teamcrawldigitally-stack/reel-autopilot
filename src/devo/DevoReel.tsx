@@ -29,7 +29,8 @@ export type Palette = { accent: string; accentDeep: string; bg: string; glow: st
 const HEAD = '"Mukta", sans-serif';
 const DISPLAY = '"Rozha One", "Mukta", serif';
 
-type Hero = { img: string; kind: "deity" | "photo" | "object" | "inset"; word?: string; side?: string };
+type Prop = { img: string; word?: string; width?: number; top?: number; right?: number; rot?: number };
+type Hero = { img: string; kind: "deity" | "photo" | "object" | "inset" | "big" | "close"; word?: string; side?: string; prop?: Prop };
 type Label = { top: string; bottom: string; word: string };
 export type DevoScene = {
   visual: "devo";
@@ -68,6 +69,12 @@ export type DevoReelProps = {
 const Stage: React.FC = () => {
   const frame = useCurrentFrame();
   const pulse = 0.5 + 0.08 * Math.sin(frame / 24);
+  if (K.styled) {
+    // Reference look: a soft plum/mauve backdrop, lighter in the middle, no pattern.
+    return (
+      <AbsoluteFill style={{ background: `radial-gradient(ellipse 85% 60% at 50% 40%, rgb(${K.glow}) 0%, rgb(${K.glow2}) 55%, ${K.bg} 100%)` }} />
+    );
+  }
   return (
     <AbsoluteFill style={{ background: K.bg, overflow: "hidden" }}>
       <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 45% at 50% 42%, rgba(${K.glow},${pulse}) 0%, rgba(${K.glow2},0.35) 45%, transparent 80%)` }} />
@@ -203,7 +210,36 @@ const NeonRing: React.FC<{ cx: number; cy: number; r: number; on: number }> = ({
   );
 };
 
-const HeroPic: React.FC<{ hero: Hero; src: string | null; sideSrc?: string | null; frame0: number; dur: number; punch: number; instant?: boolean }> = ({ hero, src, sideSrc, frame0, dur, punch, instant }) => {
+// Reference ("styled") look: the deity is a clean cut-out standing on the plum backdrop, with a soft
+// glow behind the head (no ring). "big" crops at the knees, "close" at the waist, "deity" is full
+// length. A scene can add a "prop": an everyday object cut-out that pops in at the bottom right,
+// overlapping the deity, when its word is spoken.
+const CutHero: React.FC<{ hero: Hero; src: string; sideSrc: string | null; propSrc: string | null; t: number; tin: number; push: number; punch: number; propAt: number; frame0: number }> = ({ hero, src, sideSrc, propSrc, t, tin, push, punch, propAt, frame0 }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const main = hero.kind === "inset" && sideSrc ? sideSrc : src;
+  const H = hero.kind === "close" ? 3000 : hero.kind === "big" ? 2250 : hero.prop ? 1300 : 1460;
+  const top = hero.kind === "close" ? 250 : hero.kind === "big" ? 270 : hero.prop ? 330 : 320;
+  const sway = Math.sin(frame / 34) * 6;
+  const scale = push * interpolate(tin, [0, 1], [1.08, 1]) + punch;
+  const pa = hero.prop ? spring({ frame: frame - frame0 - propAt + 2, fps, config: { damping: 13, stiffness: 170, mass: 0.7 } }) : 0;
+  const p = hero.prop;
+  return (
+    <>
+      <div style={{ position: "absolute", left: 540 - 380, top: top - 120, width: 760, height: 760, borderRadius: 380, background: "radial-gradient(circle, rgba(255,240,248,0.24) 0%, rgba(255,240,248,0) 70%)", opacity: tin }} />
+      <div style={{ position: "absolute", left: 0, top, width: 1080, height: H, opacity: tin, transform: `translateY(${sway}px) scale(${scale})`, transformOrigin: "50% 18%", filter: "drop-shadow(0 24px 40px rgba(0,0,0,0.45))" }}>
+        <Img src={staticFile(main)} style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "50% 0%" }} />
+      </div>
+      {p && propSrc && frame - frame0 >= propAt - 2 ? (
+        <div style={{ position: "absolute", right: p.right ?? 0, top: p.top ?? 1040, width: p.width ?? 640, transform: `translateY(${(1 - pa) * 160}px) rotate(${(p.rot ?? -4) + (1 - pa) * -10}deg) scale(${0.7 + 0.3 * pa})`, opacity: Math.min(1, pa * 1.6), transformOrigin: "50% 100%", filter: "drop-shadow(0 30px 34px rgba(0,0,0,0.6))" }}>
+          <Img src={staticFile(propSrc)} style={{ width: "100%", height: "auto", display: "block" }} />
+        </div>
+      ) : null}
+    </>
+  );
+};
+
+const HeroPic: React.FC<{ hero: Hero; src: string | null; sideSrc?: string | null; propSrc?: string | null; propAt?: number; frame0: number; dur: number; punch: number; instant?: boolean }> = ({ hero, src, sideSrc, propSrc, propAt, frame0, dur, punch, instant }) => {
   const frame = useCurrentFrame();
   const t = frame - frame0 + (instant ? 8 : 0);
   const tin = interpolate(t, [0, 8], [0, 1], { ...clamp, easing: (x) => 1 - Math.pow(1 - x, 3) });
@@ -215,6 +251,9 @@ const HeroPic: React.FC<{ hero: Hero; src: string | null; sideSrc?: string | nul
         <CodeArt kind={ART_FOR[hero.img]} />
       </AbsoluteFill>
     );
+  }
+  if (K.styled && src && src.endsWith("-cut.png")) {
+    return <CutHero hero={hero} src={src} sideSrc={sideSrc ?? null} propSrc={propSrc ?? null} t={t} tin={tin} push={push} punch={punch} propAt={propAt ?? 20} frame0={frame0} />;
   }
   const img = src ? (
     <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: hero.kind === "photo" ? "cover" : "contain" }} />
@@ -249,7 +288,7 @@ const HeroPic: React.FC<{ hero: Hero; src: string | null; sideSrc?: string | nul
   const deity = hero.kind === "deity";
   return (
     <>
-      {deity ? <NeonRing cx={540} cy={src ? 470 : 560} r={src ? 165 : 190} on={tin} /> : null}
+      {deity && !K.styled ? <NeonRing cx={540} cy={src ? 470 : 560} r={src ? 165 : 190} on={tin} /> : null}
       <div
         style={{
           position: "absolute",
@@ -274,7 +313,7 @@ const HeroPic: React.FC<{ hero: Hero; src: string | null; sideSrc?: string | nul
 
 // ---------- overlays ----------
 
-const LabelStack: React.FC<{ label: Label; at: number; until: number }> = ({ label, at, until }) => {
+const LabelStack: React.FC<{ label: Label; at: number; until: number; index?: number }> = ({ label, at, until, index = 0 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   if (frame < at || frame >= until) return null;
@@ -282,6 +321,43 @@ const LabelStack: React.FC<{ label: Label; at: number; until: number }> = ({ lab
   const b = spring({ frame: frame - at - 4, fps, config: { damping: 14, stiffness: 200, mass: 0.6 } });
   const out = interpolate(frame, [until - 4, until], [1, 0], clamp);
   const long = label.bottom.length > 12;
+  if (K.styled) {
+    // Reference labels sit on the left, over the deity's arm: (0) white box over an accent box,
+    // (1) one accent box with both lines, (2) a taped paper note.
+    const v = index % 3;
+    const slide = `translateX(${(1 - a) * -300}px)`;
+    if (v === 1) {
+      return (
+        <div style={{ position: "absolute", left: 56, top: 1060, opacity: out, transform: `${slide} rotate(-2.5deg) scale(${0.8 + 0.2 * a})`, transformOrigin: "0% 50%" }}>
+          <div style={{ background: K.red, padding: "8px 34px 18px", fontFamily: HEAD, fontWeight: 800, fontSize: 84, lineHeight: 1.08, color: K.white, boxShadow: "0 16px 36px rgba(0,0,0,0.55)", maxWidth: 680 }}>
+            <div>{label.top}</div>
+            <div>{label.bottom}</div>
+          </div>
+        </div>
+      );
+    }
+    if (v === 2) {
+      return (
+        <div style={{ position: "absolute", left: 60, top: 1090, opacity: out, transform: `${slide} rotate(-4deg) scale(${0.8 + 0.2 * a})`, transformOrigin: "0% 50%" }}>
+          <div style={{ position: "relative", background: "#F2E4C8", padding: "22px 40px 26px", fontFamily: DISPLAY, fontSize: 88, lineHeight: 1.12, color: "#2A1A12", boxShadow: "0 18px 34px rgba(0,0,0,0.55)", maxWidth: 660 }}>
+            <div style={{ position: "absolute", left: "50%", top: -22, width: 170, height: 46, marginLeft: -85, background: "rgba(255,255,255,0.55)", transform: "rotate(3deg)" }} />
+            <div>{label.top}</div>
+            <div>{label.bottom}</div>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div style={{ position: "absolute", left: 56, top: 930, display: "flex", flexDirection: "column", alignItems: "flex-start", opacity: out }}>
+        <div style={{ transform: `${slide} rotate(-3deg)`, opacity: a, background: K.white, padding: "4px 30px 12px", fontFamily: HEAD, fontWeight: 800, fontSize: 70, lineHeight: 1.15, color: K.ink, zIndex: 2, boxShadow: "0 12px 30px rgba(0,0,0,0.5)" }}>
+          {label.top}
+        </div>
+        <div style={{ marginTop: -6, marginLeft: 24, transform: `translateX(${(1 - b) * -300}px) rotate(-1deg)`, opacity: b, background: K.red, padding: "6px 34px 16px", fontFamily: HEAD, fontWeight: 800, fontSize: long ? 78 : 96, lineHeight: 1.1, color: K.white, boxShadow: "0 16px 40px rgba(0,0,0,0.6)", maxWidth: 760 }}>
+          {label.bottom}
+        </div>
+      </div>
+    );
+  }
   return (
     <div style={{ position: "absolute", left: 0, width: 1080, top: 1010, display: "flex", flexDirection: "column", alignItems: "center", opacity: out }}>
       <div style={{ transform: `translateX(${(1 - a) * -260}px) rotate(-2deg) scaleX(${0.6 + 0.4 * a})`, opacity: a, background: K.styled ? K.white : K.ink, border: K.styled ? "none" : "3px solid rgba(255,255,255,0.9)", padding: "4px 30px 12px", fontFamily: HEAD, fontWeight: 800, fontSize: 70, lineHeight: 1.15, color: K.styled ? K.ink : K.white, zIndex: 2, boxShadow: "0 12px 30px rgba(0,0,0,0.6)" }}>
@@ -321,6 +397,15 @@ const Counter: React.FC<{ n: string }> = ({ n }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const s = spring({ frame: frame - 2, fps, config: { damping: 10, stiffness: 200, mass: 0.6 } });
+  if (K.styled) {
+    // A square tag (no circle) in the reference style.
+    return (
+      <div style={{ position: "absolute", left: 60, top: 320, transform: `scale(${s}) rotate(-5deg)`, background: K.white, padding: "0 26px 6px", boxShadow: "0 12px 28px rgba(0,0,0,0.5)", display: "flex", alignItems: "baseline", gap: 6 }}>
+        <span style={{ fontFamily: DISPLAY, fontSize: 104, lineHeight: 1.15, color: K.red }}>{n}</span>
+        <span style={{ fontFamily: HEAD, fontWeight: 800, fontSize: 40, color: K.ink }}>/ 3</span>
+      </div>
+    );
+  }
   return (
     <div style={{ position: "absolute", left: 70, top: 330, transform: `scale(${s}) rotate(${(1 - s) * -30}deg)`, width: 170, height: 170, borderRadius: 85, background: K.red, border: "6px solid #fff", boxShadow: `0 0 50px ${K.red}`, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
       <span style={{ fontFamily: DISPLAY, fontSize: 110, lineHeight: 1, color: K.white, marginTop: 8 }}>{n}</span>
@@ -516,10 +601,10 @@ const SubPage: React.FC<{ page: TikTokPage }> = ({ page }) => {
   const { fps } = useVideoConfig();
   const nowMs = page.startMs + (frame / fps) * 1000;
   return (
-    <div style={{ position: "absolute", top: 1470, left: 90, right: 90, textAlign: "center", opacity: interpolate(frame, [0, 4], [0, 1], clamp) }}>
-      <span style={{ whiteSpace: "pre-wrap", fontFamily: HEAD, fontWeight: 700, fontSize: 48, lineHeight: 1.35, color: K.white, textShadow: "0 2px 12px rgba(0,0,0,0.9)" }}>
+    <div style={{ position: "absolute", top: K.styled ? 1520 : 1470, left: 90, right: 90, textAlign: "center", opacity: interpolate(frame, [0, 4], [0, 1], clamp) }}>
+      <span style={{ whiteSpace: "pre-wrap", fontFamily: HEAD, fontWeight: 700, fontSize: K.styled ? 42 : 48, lineHeight: 1.35, color: K.white, textShadow: "0 2px 12px rgba(0,0,0,0.9)" }}>
         {page.tokens.map((tok, i) => (
-          <span key={i} style={{ color: tok.fromMs <= nowMs && tok.toMs > nowMs ? K.gold : K.white }}>
+          <span key={i} style={{ color: tok.fromMs <= nowMs && tok.toMs > nowMs ? (K.styled ? "#FFC6E0" : K.gold) : K.white }}>
             {tok.text}
           </span>
         ))}
@@ -555,7 +640,7 @@ const SceneView: React.FC<{ scene: DevoScene; words: W[]; images: Record<string,
       {scene.dial ? <Dial at={at(scene.dial.word, 10)} planetsAt={scene.dial.planetsWord ? at(scene.dial.planetsWord, 60) : -9999} lifeAt={scene.dial.lifeWord ? at(scene.dial.lifeWord, 80) : -1} /> : null}
       <div style={{ position: "absolute", inset: 0, transform: `translateY(${lift}px)` }}>
         {scene.heroes.map((h, i) =>
-          i === cur ? <HeroPic key={i} hero={h} src={images[h.img] ?? null} sideSrc={h.side ? images[h.side] ?? null : null} frame0={heroAt[i]} dur={(heroAt[i + 1] ?? durationInFrames) - heroAt[i]} punch={punch} instant={isFirst && i === 0} /> : null,
+          i === cur ? <HeroPic key={i} hero={h} src={images[h.img] ?? null} sideSrc={h.side ? images[h.side] ?? null : null} propSrc={h.prop ? images[h.prop.img] ?? null : null} propAt={h.prop ? at(h.prop.word, 20) - heroAt[i] : 20} frame0={heroAt[i]} dur={(heroAt[i + 1] ?? durationInFrames) - heroAt[i]} punch={punch} instant={isFirst && i === 0} /> : null,
         )}
       </div>
       {scene.paths ? <Paths at={labelAt[0]} /> : null}
@@ -564,7 +649,7 @@ const SceneView: React.FC<{ scene: DevoScene; words: W[]; images: Record<string,
       {scene.questionWord ? <Question at={at(scene.questionWord, 50)} /> : null}
       {scene.title ? <TitleCard text={scene.title} sub={scene.titleSub} until={titleUntil} /> : null}
       {scene.labels.map((l, i) => (
-        <LabelStack key={i} label={l} at={labelAt[i]} until={labelAt[i + 1] ?? durationInFrames + 1} />
+        <LabelStack key={i} index={i} label={l} at={labelAt[i]} until={labelAt[i + 1] ?? durationInFrames + 1} />
       ))}
     </AbsoluteFill>
   );
@@ -580,6 +665,38 @@ const Sfx: React.FC<{ at: number; src: string; volume: number; len?: number }> =
 };
 
 // Faint, blurred pictures in the four corners behind everything (the reference's "object wallpaper").
+// Cut-out objects instead: dim, at the screen edges; with `burst` they first fill the screen as a
+// collage over the deity (the reference's opening frame) and fly out to the edges.
+const CutWallpaper: React.FC<{ srcs: string[]; burst?: boolean }> = ({ srcs, burst }) => {
+  const frame = useCurrentFrame();
+  const spots = [
+    { x: -120, y: 330, w: 420, r: -10, bx: 40, by: 380, bw: 560 },
+    { x: 810, y: 290, w: 330, r: 9, bx: 560, by: 260, bw: 420 },
+    { x: -140, y: 1330, w: 460, r: 7, bx: 60, by: 1000, bw: 620 },
+    { x: 860, y: 1480, w: 200, r: -7, bx: 700, by: 900, bw: 260 },
+    { x: 360, y: 1720, w: 320, r: 4, bx: 380, by: 620, bw: 400 },
+  ];
+  const k = burst ? interpolate(frame, [0, 9, 20], [0, 0, 1], { ...clamp, easing: (x) => x * x }) : 1;
+  if (burst && frame > 22) return null;
+  return (
+    <AbsoluteFill style={{ overflow: "hidden" }}>
+      {spots.map((p, i) => {
+        const src = srcs[i % srcs.length];
+        if (!src) return null;
+        const x = burst ? interpolate(k, [0, 1], [p.bx, p.x]) : p.x;
+        const y = burst ? interpolate(k, [0, 1], [p.by, p.y]) : p.y + Math.sin(frame / 40 + i) * 10;
+        const w = burst ? interpolate(k, [0, 1], [p.bw, p.w]) : p.w;
+        const op = burst ? interpolate(k, [0, 1], [1, 0]) : 0.26;
+        return (
+          <div key={i} style={{ position: "absolute", left: x, top: y, width: w, opacity: op, transform: `rotate(${p.r}deg)`, filter: burst ? "drop-shadow(0 20px 30px rgba(0,0,0,0.5))" : "brightness(0.75) saturate(0.7) blur(1px)" }}>
+            <Img src={staticFile(src)} style={{ width: "100%", height: "auto", display: "block" }} />
+          </div>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
 const Wallpaper: React.FC<{ srcs: string[] }> = ({ srcs }) => {
   const frame = useCurrentFrame();
   const spots = [
@@ -607,6 +724,7 @@ export const DevoReel: React.FC<DevoReelProps> = (props) => {
   const { fps, durationInFrames } = useVideoConfig();
   Object.assign(K, BASE, props.palette ? { red: props.palette.accent, redDeep: props.palette.accentDeep, bg: props.palette.bg, glow: props.palette.glow, glow2: props.palette.glow2, styled: true } : {});
   const toFrame = (ms: number) => Math.round((ms / 1000) * fps);
+  const wall = (props.wallpaper ?? []).map((k) => props.images[k]).filter((x): x is string => !!x);
   const starts = props.scenes.map((s, i) => (i === 0 ? 0 : toFrame(s.startMs)));
   const pops: number[] = [];
   const swaps: number[] = [];
@@ -623,8 +741,8 @@ export const DevoReel: React.FC<DevoReelProps> = (props) => {
   return (
     <AbsoluteFill style={{ background: K.bg }}>
       <Stage />
-      {props.wallpaper?.length ? <Wallpaper srcs={props.wallpaper.map((k) => props.images[k]).filter((x): x is string => !!x)} /> : null}
-      <Floats kinds={props.floats ?? ["diya", "moon", "star", "coin"]} />
+      {wall.length && wall.every((x) => x.endsWith("-cut.png")) ? <CutWallpaper srcs={wall} /> : wall.length ? <Wallpaper srcs={wall} /> : null}
+      {K.styled ? null : <Floats kinds={props.floats ?? ["diya", "moon", "star", "coin"]} />}
       {props.scenes.map((scene, i) => {
         const from = starts[i];
         const to = starts[i + 1] ?? durationInFrames;
@@ -640,8 +758,9 @@ export const DevoReel: React.FC<DevoReelProps> = (props) => {
           <span style={{ padding: "2px 12px", borderRadius: 10, background: K.red, color: K.white, fontFamily: HEAD, fontWeight: 800, fontSize: 26 }}>24X7</span>
         </div>
       </div>
+      {wall.length && wall.every((x) => x.endsWith("-cut.png")) ? <CutWallpaper srcs={wall} burst /> : null}
       {props.captions && props.words.length ? <Subtitles words={props.words} sceneEnds={props.scenes.map((s) => s.endMs)} /> : null}
-      <AbsoluteFill style={{ pointerEvents: "none", background: "radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.6) 100%)" }} />
+      <AbsoluteFill style={{ pointerEvents: "none", background: `radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,${K.styled ? 0.35 : 0.6}) 100%)` }} />
 
       {props.audio ? <Audio src={staticFile(props.audio)} /> : null}
       {props.music ? (

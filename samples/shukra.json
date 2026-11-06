@@ -5,11 +5,13 @@
   "look": "devo",
   "hook": "3 पहचान",
   "images": [
-    "shukra",
-    "shukra-room",
-    "shukra-aura",
-    "shukra-memory",
-    "chandra"
+    "shukra-cut",
+    "chandra-cut",
+    "shukra-crowd-cut",
+    "shukra-radio-cut",
+    "shukra-roses-cut",
+    "shukra-mess-cut",
+    "shukra-perfume-cut"
   ],
   "floats": [
     "star",
@@ -29,8 +31,8 @@
       "voiceover": "शुक्र वालों की 3 पहचान। तीनों आप में हैं, तो शुक्र आपकी कुंडली में खिले हुए हैं। और तीसरी सबसे अजीब है।",
       "heroes": [
         {
-          "img": "shukra",
-          "kind": "deity"
+          "img": "shukra-cut",
+          "kind": "big"
         }
       ],
       "title": "शुक्र",
@@ -54,8 +56,16 @@
       "voiceover": "शुक्र सुंदरता, प्रेम और आराम के ग्रह हैं।",
       "heroes": [
         {
-          "img": "shukra",
-          "kind": "deity"
+          "img": "shukra-cut",
+          "kind": "close",
+          "prop": {
+            "img": "shukra-roses-cut",
+            "word": "प्रेम",
+            "width": 400,
+            "top": 1080,
+            "right": 40,
+            "rot": -5
+          }
         }
       ],
       "labels": [
@@ -76,9 +86,16 @@
       "voiceover": "पहली: बिखरा कमरा, बेमेल कपड़े, गंदी प्लेट, ये सब बर्दाश्त नहीं।",
       "heroes": [
         {
-          "img": "shukra-room",
-          "kind": "inset",
-          "side": "shukra"
+          "img": "shukra-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "shukra-mess-cut",
+            "word": "बिखरा",
+            "width": 700,
+            "top": 1100,
+            "right": -30,
+            "rot": -4
+          }
         }
       ],
       "counter": "1",
@@ -100,9 +117,16 @@
       "voiceover": "दूसरी: लोग बिना वजह आपकी तरफ़ खिंचते हैं। आप कमरे में आएँ, तो माहौल बदल जाता है।",
       "heroes": [
         {
-          "img": "shukra-aura",
-          "kind": "inset",
-          "side": "shukra"
+          "img": "shukra-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "shukra-crowd-cut",
+            "word": "खिंचते",
+            "width": 620,
+            "top": 1040,
+            "right": -40,
+            "rot": 0
+          }
         }
       ],
       "counter": "2",
@@ -124,9 +148,16 @@
       "voiceover": "और तीसरी, सबसे अजीब: कोई गाना या ख़ुशबू आपको सालों पुरानी याद में ले जाती है, बिल्कुल उसी पल में।",
       "heroes": [
         {
-          "img": "shukra-memory",
-          "kind": "inset",
-          "side": "shukra"
+          "img": "shukra-cut",
+          "kind": "deity",
+          "prop": {
+            "img": "shukra-radio-cut",
+            "word": "गाना",
+            "width": 640,
+            "top": 1110,
+            "right": 0,
+            "rot": -5
+          }
         }
       ],
       "counter": "3",
@@ -148,12 +179,12 @@
       "voiceover": "तीनों आप में हैं? कमेंट में लिखिए \"शुक्र\"। जिस दोस्त में ये सब है, उसे भेजिए। अगली बारी चंद्र वालों की, फॉलो कर लीजिए।",
       "heroes": [
         {
-          "img": "shukra",
-          "kind": "deity"
+          "img": "shukra-cut",
+          "kind": "big"
         },
         {
-          "img": "chandra",
-          "kind": "deity",
+          "img": "chandra-cut",
+          "kind": "big",
           "word": "चंद्र"
         }
       ],
@@ -179,16 +210,17 @@
     }
   ],
   "palette": {
-    "accent": "#E5428F",
+    "accent": "#E6449A",
     "accentDeep": "#7A1747",
-    "bg": "#12060E",
-    "glow": "140,30,95",
-    "glow2": "70,12,48"
+    "bg": "#1E0C17",
+    "glow": "96,48,74",
+    "glow2": "52,24,40"
   },
   "wallpaper": [
-    "shukra-memory",
-    "shukra-room",
-    "shukra-memory",
-    "shukra-room"
+    "shukra-radio-cut",
+    "shukra-roses-cut",
+    "shukra-mess-cut",
+    "shukra-perfume-cut",
+    "shukra-roses-cut"
   ]
 }
