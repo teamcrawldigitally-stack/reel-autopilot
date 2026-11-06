@@ -5,10 +5,11 @@
   "look": "devo",
   "hook": "लक्ष्मी जी की मूर्ति बैठी हुई लें या खड़ी? गलत चुनी, तो पैसा टिकता नहीं।",
   "images": [
-    "devu-diya-cut",
-    "dhan-coins-cut",
-    "dhan-ganesh-cut",
-    "dhan-lotus-cut",
+    "dhs-m1",
+    "dhs-m2",
+    "dhs-m3",
+    "dhs-m4",
+    "dhs-m5",
     "lakshmi-cut",
     "lakshmi-stand-cut"
   ],
@@ -25,11 +26,9 @@
       "voiceover": "लक्ष्मी जी की मूर्ति बैठी हुई लें या खड़ी? गलत चुनी, तो पैसा टिकता नहीं।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "big",
-          "w": 1100,
-          "x": -10,
-          "y": 300
+          "img": "dhs-m1",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -58,6 +57,12 @@
           "w": 580,
           "x": 250,
           "y": 300
+        },
+        {
+          "img": "dhs-m2",
+          "kind": "full",
+          "zoom": "out",
+          "word": "पैसा"
         }
       ],
       "labels": [
@@ -78,19 +83,9 @@
       "voiceover": "पहला नियम, घर के लिए हमेशा बैठी हुई लक्ष्मी जी, कमल पर।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-lotus-cut",
-            "word": "कमल",
-            "width": 460,
-            "top": 1080,
-            "right": 20,
-            "rot": -6
-          }
+          "img": "dhs-m3",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -112,19 +107,9 @@
       "voiceover": "दूसरा, उनका हाथ वरमुद्रा में हो, और उससे धन बरसता दिखे।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-coins-cut",
-            "word": "धन",
-            "width": 520,
-            "top": 1110,
-            "right": -10,
-            "rot": 5
-          }
+          "img": "dhs-m4",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -146,19 +131,9 @@
       "voiceover": "तीसरा, लक्ष्मी जी और गणेश जी की मूर्ति अलग अलग लीजिए। और उल्लू पर बैठी लक्ष्मी जी, घर के लिए नहीं।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-ganesh-cut",
-            "word": "गणेश",
-            "width": 380,
-            "top": 1040,
-            "right": 30,
-            "rot": 4
-          }
+          "img": "dhs-m5",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -214,12 +189,6 @@
     "glow": "112,32,38",
     "glow2": "58,14,18"
   },
-  "wallpaper": [
-    "dhan-lotus-cut",
-    "dhan-coins-cut",
-    "devu-diya-cut",
-    "dhan-ganesh-cut",
-    "dhan-coins-cut"
-  ],
+  "wallpaper": [],
   "typo": "gold"
 }

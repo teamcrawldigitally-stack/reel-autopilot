@@ -31,7 +31,7 @@ const HEAD = '"Mukta", sans-serif';
 const DISPLAY = '"Rozha One", "Mukta", serif';
 
 type Prop = { img: string; word?: string; width?: number; top?: number; right?: number; rot?: number };
-type Hero = { img: string; kind: "deity" | "photo" | "object" | "inset" | "big" | "close"; word?: string; side?: string; prop?: Prop; w?: number; x?: number; y?: number };
+type Hero = { img: string; kind: "deity" | "photo" | "object" | "inset" | "big" | "close" | "full"; word?: string; side?: string; prop?: Prop; w?: number; x?: number; y?: number; zoom?: "in" | "out"; focus?: string };
 type Label = { top: string; bottom: string; word: string };
 export type DevoScene = {
   visual: "devo";
@@ -251,6 +251,19 @@ const HeroPic: React.FC<{ hero: Hero; src: string | null; sideSrc?: string | nul
     return (
       <AbsoluteFill style={{ opacity: tin, transform: `scale(${scale})`, transformOrigin: "540px 720px" }}>
         <CodeArt kind={ART_FOR[hero.img]} />
+      </AbsoluteFill>
+    );
+  }
+  if (hero.kind === "full" && src) {
+    // Full-bleed scene picture: snap-zoom entrance, then a slow Ken Burns push (or pull) for the rest of the shot.
+    const snap = interpolate(t, [0, 9], [1.16, 1], { ...clamp, easing: (x) => 1 - Math.pow(1 - x, 3) });
+    const drift = hero.zoom === "out" ? interpolate(t, [0, Math.max(30, dur)], [1.12, 1.0], clamp) : interpolate(t, [0, Math.max(30, dur)], [1.0, 1.12], clamp);
+    const flash = interpolate(t, [0, 5], [0.55, 0], clamp);
+    return (
+      <AbsoluteFill style={{ opacity: Math.min(1, t / 3 + (instant ? 1 : 0)), overflow: "hidden" }}>
+        <Img src={staticFile(src)} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: hero.focus ?? "50% 40%", transform: `scale(${snap * drift + punch})`, transformOrigin: hero.focus ?? "50% 40%" }} />
+        <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(10,3,4,0.55) 0%, rgba(10,3,4,0) 18%, rgba(10,3,4,0) 45%, rgba(10,3,4,0.35) 70%)" }} />
+        <AbsoluteFill style={{ background: "#FFF3D6", opacity: instant ? 0 : flash, mixBlendMode: "screen" }} />
       </AbsoluteFill>
     );
   }

@@ -5,11 +5,11 @@
   "look": "devo",
   "hook": "पैसा आता है, पर टिकता नहीं? दिवाली पर पोंछे के पानी में ये डालिए।",
   "images": [
-    "devu-diya-cut",
-    "dhan-bucket-cut",
-    "dhan-coins-cut",
-    "dhan-door-cut",
-    "dhan-salt-cut",
+    "dhs-n1",
+    "dhs-n2",
+    "dhs-n3",
+    "dhs-n4",
+    "dhs-n5",
     "lakshmi-cut"
   ],
   "floats": [],
@@ -25,11 +25,9 @@
       "voiceover": "पैसा आता है, पर टिकता नहीं? दिवाली पर पोंछे के पानी में ये डालिए।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "big",
-          "w": 1100,
-          "x": -10,
-          "y": 300
+          "img": "dhs-n1",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -53,19 +51,9 @@
       "voiceover": "नमक। मान्यता है, नमक घर की नकारात्मकता खींच लेता है। और जहाँ नकारात्मकता कम, वहाँ लक्ष्मी जी टिकती हैं।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "close",
-          "w": 1500,
-          "x": -210,
-          "y": 240,
-          "prop": {
-            "img": "dhan-salt-cut",
-            "word": "नमक",
-            "width": 460,
-            "top": 1100,
-            "right": 0,
-            "rot": -5
-          }
+          "img": "dhs-n2",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -86,19 +74,9 @@
       "voiceover": "पहला, बाल्टी में एक मुट्ठी साबुत नमक, या सेंधा नमक।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-bucket-cut",
-            "word": "बाल्टी",
-            "width": 480,
-            "top": 1080,
-            "right": 0,
-            "rot": 4
-          }
+          "img": "dhs-n3",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -120,19 +98,9 @@
       "voiceover": "दूसरा, पोंछा मुख्य दरवाज़े से शुरू कीजिए, और कोनों पर ख़ास ध्यान।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-door-cut",
-            "word": "दरवाज़े",
-            "width": 420,
-            "top": 1000,
-            "right": 20,
-            "rot": 0
-          }
+          "img": "dhs-n4",
+          "kind": "full",
+          "zoom": "out"
         }
       ],
       "labels": [
@@ -154,19 +122,9 @@
       "voiceover": "तीसरा, ये आज ही कर लीजिए। मान्यता है, दिवाली की रात झाड़ू पोंछा नहीं करते, लक्ष्मी जी उसी रात आती हैं।",
       "heroes": [
         {
-          "img": "lakshmi-cut",
-          "kind": "deity",
-          "w": 860,
-          "x": 110,
-          "y": 380,
-          "prop": {
-            "img": "dhan-coins-cut",
-            "word": "लक्ष्मी",
-            "width": 460,
-            "top": 1110,
-            "right": -10,
-            "rot": 5
-          }
+          "img": "dhs-n5",
+          "kind": "full",
+          "zoom": "in"
         }
       ],
       "labels": [
@@ -222,12 +180,6 @@
     "glow": "112,32,38",
     "glow2": "58,14,18"
   },
-  "wallpaper": [
-    "dhan-salt-cut",
-    "dhan-bucket-cut",
-    "dhan-coins-cut",
-    "dhan-salt-cut",
-    "devu-diya-cut"
-  ],
+  "wallpaper": [],
   "typo": "gold"
 }
