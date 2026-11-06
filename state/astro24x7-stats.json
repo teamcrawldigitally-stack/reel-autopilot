@@ -93,6 +93,118 @@
           "permalink": "https://www.instagram.com/reel/DfXdZA4jzkk/"
         }
       ]
+    },
+    {
+      "date": "2026-11-07",
+      "at": "2026-11-06T18:34:03.757Z",
+      "followers": 3354,
+      "mediaCount": 5,
+      "reels": [
+        {
+          "id": "01-12-crore-log",
+          "kind": "normal",
+          "title": "12 करोड़ लोग, एक राशिफल?",
+          "look": "sticker",
+          "type": "evergreen",
+          "hook": "question",
+          "slot": "00:20",
+          "ageHours": 48,
+          "likes": 4,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfVI7V8FM2g/"
+        },
+        {
+          "id": "01-12-crore-log",
+          "kind": "trial",
+          "title": "12 करोड़ लोग, एक राशिफल?",
+          "look": "sticker",
+          "type": "evergreen",
+          "hook": "question",
+          "slot": "00:30",
+          "ageHours": 48,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfVKAZdCNVD/"
+        },
+        {
+          "id": "02-sade-sati",
+          "kind": "normal",
+          "title": "साढ़े साती का सच",
+          "look": "paper",
+          "type": "gochar",
+          "hook": "myth-bust (का सच)",
+          "slot": "13:57",
+          "ageHours": 34,
+          "likes": 40,
+          "comments": 6,
+          "permalink": "https://www.instagram.com/reel/DfWmWTFHCad/"
+        },
+        {
+          "id": "02-sade-sati",
+          "kind": "trial",
+          "title": "साढ़े साती का सच",
+          "look": "paper",
+          "type": "gochar",
+          "hook": "myth-bust (का सच)",
+          "slot": "21:58",
+          "ageHours": 26,
+          "likes": 85,
+          "comments": 4,
+          "permalink": "https://www.instagram.com/reel/DfXdZA4jzkk/"
+        },
+        {
+          "id": "06-dhanteras",
+          "kind": "normal",
+          "title": "धनतेरस पर ये 3 चीज़ें मत खरीदना",
+          "look": "devo",
+          "type": "festival",
+          "hook": "3 things",
+          "slot": "12:42",
+          "ageHours": 11,
+          "likes": 34,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfZCoE7GD02/"
+        },
+        {
+          "id": "06-dhanteras",
+          "kind": "trial",
+          "title": "धनतेरस पर ये 3 चीज़ें मत खरीदना",
+          "look": "devo",
+          "type": "festival",
+          "hook": "3 things",
+          "slot": "15:49",
+          "ageHours": 8,
+          "likes": 14,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfZX-7BgG8c/"
+        },
+        {
+          "id": "03-budh-ki-boli",
+          "kind": "normal",
+          "title": "बुध की बोली",
+          "look": "toon",
+          "type": "planet",
+          "hook": "explainer",
+          "slot": "17:21",
+          "ageHours": 7,
+          "likes": 4,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfZihDDFd2R/"
+        },
+        {
+          "id": "03-budh-ki-boli",
+          "kind": "trial",
+          "title": "बुध की बोली",
+          "look": "toon",
+          "type": "planet",
+          "hook": "explainer",
+          "slot": "21:55",
+          "ageHours": 2,
+          "likes": 3,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfaB6s6DgMJ/"
+        }
+      ]
     }
   ],
   "insightsRefused": [
