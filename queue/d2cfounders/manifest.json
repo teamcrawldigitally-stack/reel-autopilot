@@ -156,6 +156,19 @@
       "hook": "Profit ₹1.2 lakh, bank ₹8,000: paisa kahan gaya? (hook title)",
       "keyword": "CASH",
       "pinnedComment": "Aapka sabse zyada paisa kahan atakta hai? 👇 COD, stock ya ads?"
+    },
+    {
+      "id": "12-case15-roas",
+      "title": "CASE #15 · ROAS 3, phir bhi loss?",
+      "video": "12-case15-roas.mp4",
+      "caption": "CASE #15 · ROAS 3 hai, phir bhi paisa doob raha hai? 📉\nHumne har rupaye ka hisaab lagaya.\nAd pe ₹10,000 → sale ₹30,000. ROAS 3, dashboard hara.\nAb ₹30,000 todo: maal ₹12,000 + packing-delivery ₹5,400 + returns-charges ₹3,600 = ₹21,000.\nUpar se ad ₹10,000. Total ₹31,000. Haath mein: −₹1,000.\nROAS sirf sale ginta hai, kharcha nahi. Is product ka break-even ROAS = 30,000 ÷ (30,000 − 21,000) = 3.3.\n(Example numbers; aapke product ka kharcha alag hoga)\n✅ Har product ka poora kharcha likho\n✅ Uska break-even ROAS nikaalo\n✅ Ad sirf usse upar scale karo\n👇 Comment karo ROAS, break-even calculator free DM mein.\n\n#D2CIndia #D2CFounders #MetaAds #ROAS #ShopifyIndia",
+      "audioName": "D2C Founders · CASE #15 · ROAS 3, phir bhi loss?",
+      "thumbOffsetMs": 1500,
+      "look": "hisaab",
+      "type": "case",
+      "hook": "ROAS 3, phir bhi paisa doob raha? (hook on screen from frame 0)",
+      "keyword": "ROAS",
+      "pinnedComment": "Aapke best product ka break-even ROAS kitna hai? 👇"
     }
   ]
 }
