@@ -6,8 +6,8 @@
   "expectUsername": "astro_24x7",
   "captionCta": "📩 फ़्री कुंडली रिपोर्ट के लिए हमें DM कीजिए।",
   "shareToFeed": true,
-  "perDay": 2,
-  "schedule": "Normal posts 12:47 PM + 6:47 PM IST, trial copies 3:47 PM + 9:47 PM IST (see .github/workflows/post-queue.yml)",
+  "perDay": 8,
+  "schedule": "Normal posts 12:47 PM + 6:47 PM IST, trial copies 3:47 PM + 9:47 PM IST (see .github/workflows/post-queue.yml). Sat 7 Nov: Diwali money series, normal posts every 1.5 h from 11:17 AM (perDay 8 for that day only), no trial copies.",
   "trialCopy": {
     "enabled": true,
     "graduation": "SS_PERFORMANCE",
@@ -60,26 +60,18 @@
       "hook": "explainer"
     },
     {
-      "id": "04-zindagi-ke-9-adhyay",
-      "title": "ज़िंदगी के 9 अध्याय",
-      "video": "04-zindagi-ke-9-adhyay.mp4",
-      "caption": "📖 ज़िंदगी के 9 अध्याय · विंशोत्तरी दशा 120 साल का चक्र है, जिसमें 9 ग्रह बारी-बारी से कमान संभालते हैं। ⏳ शुक्र 20 साल, शनि 19, सूर्य सिर्फ़ 6। पहला अध्याय तय करता है आपका जन्म नक्षत्र। 👇 आप अभी किस ग्रह की महादशा में हैं? कमेंट कीजिए।\n\n#दशा #महादशा #Vimshottari #Astro24x7 #ज्योतिष",
-      "audioName": "Astro 24x7 · ज़िंदगी के 9 अध्याय",
-      "thumbOffsetMs": 1200,
-      "look": "devo",
-      "type": "evergreen",
-      "hook": "explainer"
-    },
-    {
-      "id": "05-rahu-3-pehchaan",
-      "title": "राहु वालों की 3 पहचान",
-      "video": "05-rahu-3-pehchaan.mp4",
-      "caption": "🐍 राहु वालों की 3 पहचान · आधी रात को तेज़ दिमाग़, सीधे रास्ते से बोरियत, और जो नहीं मिला उसी की चाह। तीसरी सबसे अजीब है 👀 👇 तीनों आप में हैं? कमेंट में लिखिए \"राहु\", और उस दोस्त को भेजिए जिसमें ये सब है।\n\n#राहु #Rahu #Jyotish #Astro24x7 #ज्योतिष",
-      "audioName": "Astro 24x7 · राहु वालों की 3 पहचान",
-      "thumbOffsetMs": 1200,
-      "look": "devo",
-      "type": "planet-series",
-      "hook": "3 पहचान"
+      "id": "35-dhan-salary",
+      "title": "सैलरी आते ही पैसा ख़त्म?",
+      "video": "35-dhan-salary.mp4",
+      "caption": "🪔 सैलरी आते ही पैसा ख़त्म? हमने हिसाब लगाया: सैलरी ₹30,000 = किराया ₹10,000 + EMI ₹6,000 + घर ₹9,000 + छोटे-मोटे खर्च ₹5,000। ये छोटे खर्च साल भर में ₹60,000 बन जाते हैं, और बचत ₹0। (ये उदाहरण के नंबर हैं)\n\n✅ लक्ष्मी पूजा में एक लिफ़ाफ़ा रखिए, उस पर लिखिए \"बचत\"\n✅ हर सैलरी पर पहले 10% (₹3,000) उसी में = साल भर में ₹36,000\n✅ दिवाली सेल में EMI पर नया सामान नहीं\n\n👇 जिसकी सैलरी आते ही ख़त्म हो जाती है, उसे ये भेजिए।\n\n#दिवाली #लक्ष्मीपूजा #धन #Astro24x7 #ज्योतिष",
+      "audioName": "Astro 24x7 · सैलरी आते ही पैसा ख़त्म?",
+      "thumbOffsetMs": 1500,
+      "look": "hisaab",
+      "type": "diwali-money",
+      "hook": "सैलरी आते ही पैसा ख़त्म?",
+      "notBefore": "2026-11-07",
+      "notAfter": "2026-11-07",
+      "trialCopy": false
     },
     {
       "id": "07-diwali",
@@ -384,6 +376,28 @@
       "type": "planet-series",
       "hook": "3 पहचान",
       "notBefore": "2026-11-20"
+    },
+    {
+      "id": "04-zindagi-ke-9-adhyay",
+      "title": "ज़िंदगी के 9 अध्याय",
+      "video": "04-zindagi-ke-9-adhyay.mp4",
+      "caption": "📖 ज़िंदगी के 9 अध्याय · विंशोत्तरी दशा 120 साल का चक्र है, जिसमें 9 ग्रह बारी-बारी से कमान संभालते हैं। ⏳ शुक्र 20 साल, शनि 19, सूर्य सिर्फ़ 6। पहला अध्याय तय करता है आपका जन्म नक्षत्र। 👇 आप अभी किस ग्रह की महादशा में हैं? कमेंट कीजिए।\n\n#दशा #महादशा #Vimshottari #Astro24x7 #ज्योतिष",
+      "audioName": "Astro 24x7 · ज़िंदगी के 9 अध्याय",
+      "thumbOffsetMs": 1200,
+      "look": "devo",
+      "type": "evergreen",
+      "hook": "explainer"
+    },
+    {
+      "id": "05-rahu-3-pehchaan",
+      "title": "राहु वालों की 3 पहचान",
+      "video": "05-rahu-3-pehchaan.mp4",
+      "caption": "🐍 राहु वालों की 3 पहचान · आधी रात को तेज़ दिमाग़, सीधे रास्ते से बोरियत, और जो नहीं मिला उसी की चाह। तीसरी सबसे अजीब है 👀 👇 तीनों आप में हैं? कमेंट में लिखिए \"राहु\", और उस दोस्त को भेजिए जिसमें ये सब है।\n\n#राहु #Rahu #Jyotish #Astro24x7 #ज्योतिष",
+      "audioName": "Astro 24x7 · राहु वालों की 3 पहचान",
+      "thumbOffsetMs": 1200,
+      "look": "devo",
+      "type": "planet-series",
+      "hook": "3 पहचान"
     }
   ]
 }
