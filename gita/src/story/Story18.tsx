@@ -200,7 +200,7 @@ export const Story18Cover: React.FC = () => (
   <TLCtx.Provider value={TL}>
     <AbsoluteFill style={{ background: "#0b0805" }}>
       <SceneId.Provider value="s1">
-        <Sequence from={-60} layout="none">
+        <Sequence from={-30} layout="none">
           <S1 />
         </Sequence>
       </SceneId.Provider>
