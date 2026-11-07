@@ -10,6 +10,16 @@ import { STORY01_FRAMES, Story01, Story01Cover } from "./story/Story01";
 import { STORY01V_FRAMES, Story01V } from "./story/Story01V";
 import { STORY02_FRAMES, Story02, Story02Cover } from "./story/Story02";
 import { STORY03_FRAMES, Story03, Story03Cover } from "./story/Story03";
+import { STORY04_FRAMES, Story04, Story04Cover } from "./story/Story04";
+import { STORY05_FRAMES, Story05, Story05Cover } from "./story/Story05";
+import { STORY06_FRAMES, Story06, Story06Cover } from "./story/Story06";
+import { STORY07_FRAMES, Story07, Story07Cover } from "./story/Story07";
+import { STORY08_FRAMES, Story08, Story08Cover } from "./story/Story08";
+import { STORY09_FRAMES, Story09, Story09Cover } from "./story/Story09";
+import { STORY10_FRAMES, Story10, Story10Cover } from "./story/Story10";
+import { STORY11_FRAMES, Story11, Story11Cover } from "./story/Story11";
+import { STORY12_FRAMES, Story12, Story12Cover } from "./story/Story12";
+import { STORY13_FRAMES, Story13, Story13Cover } from "./story/Story13";
 
 const fonts: [string, string, string][] = [
   ["Poppins", "Poppins-Regular.ttf", "400"],
@@ -43,6 +53,26 @@ export const Root: React.FC = () => (
     <Composition id="Story02Cover" component={Story02Cover} durationInFrames={1} {...V} />
     <Composition id="Story03" component={Story03} durationInFrames={STORY03_FRAMES} {...V} />
     <Composition id="Story03Cover" component={Story03Cover} durationInFrames={1} {...V} />
+    <Composition id="Story04" component={Story04} durationInFrames={STORY04_FRAMES} {...V} />
+    <Composition id="Story04Cover" component={Story04Cover} durationInFrames={1} {...V} />
+    <Composition id="Story05" component={Story05} durationInFrames={STORY05_FRAMES} {...V} />
+    <Composition id="Story05Cover" component={Story05Cover} durationInFrames={1} {...V} />
+    <Composition id="Story06" component={Story06} durationInFrames={STORY06_FRAMES} {...V} />
+    <Composition id="Story06Cover" component={Story06Cover} durationInFrames={1} {...V} />
+    <Composition id="Story07" component={Story07} durationInFrames={STORY07_FRAMES} {...V} />
+    <Composition id="Story07Cover" component={Story07Cover} durationInFrames={1} {...V} />
+    <Composition id="Story08" component={Story08} durationInFrames={STORY08_FRAMES} {...V} />
+    <Composition id="Story08Cover" component={Story08Cover} durationInFrames={1} {...V} />
+    <Composition id="Story09" component={Story09} durationInFrames={STORY09_FRAMES} {...V} />
+    <Composition id="Story09Cover" component={Story09Cover} durationInFrames={1} {...V} />
+    <Composition id="Story10" component={Story10} durationInFrames={STORY10_FRAMES} {...V} />
+    <Composition id="Story10Cover" component={Story10Cover} durationInFrames={1} {...V} />
+    <Composition id="Story11" component={Story11} durationInFrames={STORY11_FRAMES} {...V} />
+    <Composition id="Story11Cover" component={Story11Cover} durationInFrames={1} {...V} />
+    <Composition id="Story12" component={Story12} durationInFrames={STORY12_FRAMES} {...V} />
+    <Composition id="Story12Cover" component={Story12Cover} durationInFrames={1} {...V} />
+    <Composition id="Story13" component={Story13} durationInFrames={STORY13_FRAMES} {...V} />
+    <Composition id="Story13Cover" component={Story13Cover} durationInFrames={1} {...V} />
     {EPISODES.map(({ id, ep, timing }) => {
       const name = id.charAt(0).toUpperCase() + id.slice(1);
       return (

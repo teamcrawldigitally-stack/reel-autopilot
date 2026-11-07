@@ -1,0 +1,101 @@
+{
+ "id": "story04",
+ "ep": 9,
+ "title": "The atom bomb and the Gita",
+ "style": "story",
+ "voice": {
+  "speaker": "girish_hi_devotional",
+  "model": "bulbul:v4-flash",
+  "pace": 1.1,
+  "lang": "hi-IN",
+  "note": "Sanskrit at 0.95–1.0; लोकक्षयकृत् typed as लोकक्क्षयकृत् for the TTS so it is not heard as अक्षय"
+ },
+ "timing": {
+  "gap": 0.08,
+  "tail": 0.14,
+  "endHold": 0.6
+ },
+ "facts": "Trinity test: 16 July 1945, 5:29 AM, Jornada del Muerto desert, New Mexico, USA. J. Robert Oppenheimer directed the Los Alamos lab. In the 1965 NBC documentary 'The Decision to Drop the Bomb' he recalled 'Now I am become Death, the destroyer of worlds' from the Gita. 11.32 कालोऽस्मि लोकक्षयकृत्प्रवृद्धो (काल = time / death), spoken by Krishna in the cosmic form. 11.33 … निमित्तमात्रं भव सव्यसाचिन्. Oppenheimer is shown only as an unrecognisable silhouette.",
+ "scenes": [
+  {
+   "id": "s1",
+   "lines": [
+    {
+     "voice": "एटम बम के पहले धमाके के बाद, उसे बनाने वाले साइंटिस्ट को, गीता का एक श्लोक याद आया।"
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "lines": [
+    {
+     "voice": "अमेरिका के रेगिस्तान में, दुनिया का पहला एटम बम टेस्ट हुआ।"
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "lines": [
+    {
+     "voice": "लैब के हेड, रॉबर्ट ओपनहाइमर, आसमान में उठता आग का गोला देख रहे थे।"
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "lines": [
+    {
+     "voice": "बाद में उन्होंने बताया, उस पल गीता की ये लाइन याद आई।"
+    },
+    {
+     "voice": "अब मैं मृत्यु बन गया हूँ, दुनिया का नाश करने वाला।"
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "lines": [
+    {
+     "voice": "विराट रूप में कृष्ण कहते हैं,"
+    },
+    {
+     "voice": "कालोऽस्मि लोकक्षयकृत्प्रवृद्धो।"
+    },
+    {
+     "voice": "काल यानी मौत भी, और समय भी।"
+    },
+    {
+     "voice": "कृष्ण कह रहे थे, मैं समय हूँ।"
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "lines": [
+    {
+     "voice": "और अगले ही श्लोक में, निमित्तमात्रं भव सव्यसाचिन्।"
+    },
+    {
+     "voice": "जो होना है वो होगा, तुम बस निमित्त बनो।"
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "lines": [
+    {
+     "voice": "ये रील उसे भेजो, जिसे साइंस और इतिहास पसंद है।"
+    },
+    {
+     "voice": "और कमेंट में बताओ, क्या आपको ये पता था?"
+    },
+    {
+     "voice": "अगली कहानी में, कुछ न करना भी गलती क्यों है?"
+    },
+    {
+     "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।"
+    }
+   ]
+  }
+ ]
+}

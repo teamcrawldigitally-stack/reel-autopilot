@@ -9,7 +9,7 @@ type Cue = string | number;
 const C = (n: string) => `story01/clips/${n}.mp4`;
 
 /** One Veo clip, full screen, muted. `from` = seconds into the clip, `at`/`out` = cues in the scene. */
-export const Clip: React.FC<{ src: string; from?: number; rate?: number; at?: Cue; out?: Cue; dark?: number; zoom?: [number, number]; blur?: number }> = ({ src, from = 0, rate = 1, at, out, dark = 0, zoom = [1.06, 1.12], blur = 0 }) => {
+export const Clip: React.FC<{ src: string; from?: number; rate?: number; at?: Cue; out?: Cue; dark?: number; zoom?: [number, number]; blur?: number; sound?: number }> = ({ src, from = 0, rate = 1, at, out, dark = 0, zoom = [1.06, 1.12], blur = 0, sound = 0 }) => {
   const f = useCurrentFrame();
   const q = useQ();
   const a = at !== undefined ? q(at) : -LEAD;
@@ -19,7 +19,7 @@ export const Clip: React.FC<{ src: string; from?: number; rate?: number; at?: Cu
   return (
     <Sequence from={a} layout="none">
       <AbsoluteFill style={{ opacity: op, overflow: "hidden" }}>
-        <OffthreadVideo src={staticFile(src)} muted trimBefore={Math.round(from * 30)} playbackRate={rate} style={{ width: 1080, height: 1920, objectFit: "cover", transform: `scale(${s})`, filter: blur ? `blur(${blur}px)` : undefined }} />
+        <OffthreadVideo src={staticFile(src)} muted={!sound} volume={(vf) => sound * Math.min(1, vf / 10) * (o !== undefined ? 1 - ease(a + vf, o, o + 8) : 1)} trimBefore={Math.round(from * 30)} playbackRate={rate} style={{ width: 1080, height: 1920, objectFit: "cover", transform: `scale(${s})`, filter: blur ? `blur(${blur}px)` : undefined }} />
         {dark > 0 && <AbsoluteFill style={{ background: `rgba(10,8,6,${dark})` }} />}
       </AbsoluteFill>
     </Sequence>

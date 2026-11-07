@@ -1,0 +1,26 @@
+{
+ "id": "story08",
+ "ep": 13,
+ "title": "700 verses, who spoke how many",
+ "style": "story",
+ "voice": { "speaker": "girish_hi_devotional", "model": "bulbul:v4-flash", "pace": 1.1, "lang": "hi-IN" },
+ "timing": { "gap": 0.08, "tail": 0.14, "endHold": 0.6 },
+ "facts": "Common count: Dhritarashtra 1, Sanjaya 41, Arjuna 84, Krishna 574 = 700 (editions differ by a verse or two, so the voice says करीब and the label says आम गिनती). 574/700 ≈ 82%. No new Veo clips: reuses clips from Stories 01, 02, 03 and 05.",
+ "scenes": [
+  { "id": "s1", "lines": [{ "voice": "गीता के सात सौ श्लोक। एक धृतराष्ट्र का, चौरासी अर्जुन के, और कृष्ण के?" }] },
+  { "id": "s2", "lines": [{ "voice": "कुरुक्षेत्र में, दो सेनाओं के बीच, अठारह अध्याय, सात सौ श्लोक की बातचीत हुई।" }] },
+  { "id": "s3", "lines": [{ "voice": "धृतराष्ट्र ने सिर्फ़ एक श्लोक बोला, सबसे पहला।" }] },
+  { "id": "s4", "lines": [{ "voice": "संजय ने करीब इकतालीस।" }, { "voice": "अर्जुन ने चौरासी।" }] },
+  { "id": "s5", "lines": [{ "voice": "और कृष्ण ने, करीब पाँच सौ चौहत्तर। यानी हर दस में से आठ से ज़्यादा श्लोक, कृष्ण के।" }] },
+  { "id": "s6", "lines": [
+   { "voice": "पर अर्जुन के चौरासी श्लोक न होते, तो ये जवाब कभी आते ही नहीं।" },
+   { "voice": "अच्छे जवाब, अच्छे सवालों से आते हैं।" }
+  ] },
+  { "id": "s7", "lines": [
+   { "voice": "ये रील उसे भेजो, जिसे लगता है उसने पूरी गीता पढ़ी है।" },
+   { "voice": "और कमेंट में बताओ, क्या आपको ये गिनती पता थी?" },
+   { "voice": "अगली कहानी में, पास हो या फेल, एक जैसे कैसे रहें?" },
+   { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+  ] }
+ ]
+}
