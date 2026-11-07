@@ -2,7 +2,8 @@
 
 Akshay's rules (7 Nov 2026):
 - The script, voice and checking rules here apply to every reel in this account.
-- For the look, he is still testing what works. So D2C Founders runs two looks side by side: **hisaab** (sections 1–5) and the **2D cartoon** (section 6). Section 0b says which one to use.
+- **Look: character (2D cartoon) reels only from now on** (Akshay, 7 Nov: "going forward make character reel only, its good"). Use section 6 for every new reel. The hisaab look (sections 3 onward) stays only for reels already made: #15, #17, #18, #21, #22, #25, #26, #29, #30, #33.
+- **Every reel must give real value.** No one-sided negative claims. Example: the first CASE #20 said a 30% sale leaves zero profit. Akshay rejected it: in a sale, orders go up and AOV goes up too. Show how to do the thing well, with numbers that work, and end with fixes the viewer can use the same day.
 
 Hisaab references:
 - Template reel: D2C CASE #15 "ROAS 3, phir bhi loss?" (repo `d2c/src/reels/case15/`).
@@ -29,7 +30,9 @@ Hisaab references:
   - A reel counts as approved unless he asks for changes, so queue it without waiting.
   - Write to him in simple English or Hinglish.
 
-## 0b. Which look (D2C test)
+## 0b. Which look (D2C test) · ENDED 7 Nov
+
+The test below is over. Akshay picked the character (cartoon) look. Kept for history only.
 
 - **Pick by the CASE number.** If the number divided by 4 leaves 1 or 2 → hisaab. If it leaves 3 or 0 → cartoon.
   - This gives one reel of each look every day, and the two looks swap time slots every day.
@@ -50,7 +53,7 @@ Hisaab references:
   6. The rule.
   7. 3 fixes, then the CTA.
 - **One measured object for the whole reel**, e.g. a coin tower (1 coin = ₹100), a bar, a meter, a calendar strip or a parcel scale. Every scene adds to it, cuts it or measures it.
-- **Length:** 35–50 s. At pace 1.25 that is about 90–110 Roman words: 6–7 scenes, each with 2–4 short lines (10 words or fewer per line, one idea per line).
+- **Length:** 35–50 s. At pace 1.15 that is about 85–100 Roman words: 6–7 scenes, each with 2–4 short lines (10 words or fewer per line, one idea per line).
 - **Hook:**
   - It is the first spoken line, e.g. "ROAS 3 hai, phir bhi paisa doob raha hai?".
   - The claim is on screen from frame 0. There is no fade-in on the hook text.
@@ -68,12 +71,13 @@ Hisaab references:
 **Settings:** `mcp__remote-devices__sarvam__sarvam_tools_tts_speak`
 - model `bulbul:v4-flash`
 - speaker `aditya_hi_conversational`
-- **pace 1.25** (1.05 was too slow for Akshay)
+- **pace 1.15** (1.05 was too slow, 1.25 a little fast; 1.15 sounds natural)
 - target_language_code `hi-IN`
 - speech_sample_rate 44100
 
 **Rules for the voice text:**
-- Make one call per line. Calls can run in parallel batches of about 10.
+- **One clip per scene** (s1_0 … s5_0): the whole scene is read in one go, so it flows like natural speech. The CTA scene has 3 clips: s6_0 (comment + gift), s6_1 (teaser), s6_2 (the shared "फ़ॉलो करो।" clip `24ed4fa6`).
+- Calls can run in parallel batches of about 7.
 - Write the voice text all in Devanagari:
   - English words go in Hindi script (ऐड, सेल, कैलकुलेटर).
   - Acronyms are spelled letter by letter (आर ओ ए एस).
@@ -88,7 +92,7 @@ Hisaab references:
 3. Copy each one to `public/<id>/vo/lines/<scene>_<n>.wav`, where n starts at 0 (s1_0, s1_1, …).
 
 **Timing:**
-- Set `"timing": {"gap": 0.06, "tail": 0.12, "endHold": 0.8}` in `script.json`.
+- Set `"timing": {"gap": 0.1, "tail": 0.18, "endHold": 0.9}` in `script.json`.
 - Run `node scripts/timing.mjs <id>`. It prints each scene's length and the total.
 - If the total is over 50 s, cut words. Do not raise the pace above 1.3.
 
@@ -225,7 +229,7 @@ Do not add the free-report or WhatsApp lines. The posting step adds the English 
   2. ② "DM mein milega" + what arrives.
   3. The next-reel card, with `nextLabel` = the real slot.
   4. Follow.
-- Script length, voice (pace 1.25, no colons), checks, render, mix, encode and queue are exactly as in sections 1, 2, 4 and 5. Set manifest `look` = `"cartoon"`.
+- Script length, voice (pace 1.15, one clip per scene, no colons), checks, render, mix, encode and queue are exactly as in sections 1, 2, 4 and 5. Set manifest `look` = `"cartoon"`.
 
 ## Other pages
 
