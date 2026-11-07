@@ -1,5 +1,5 @@
 {
-  "id": "case20-sale",
+  "id": "case20-bigday",
   "tag": "CASE #20",
   "look": "cartoon",
   "voice": {
@@ -14,14 +14,14 @@
     "tail": 0.18,
     "endHold": 0.9
   },
-  "source": "Calendar Scripts tab, CASE #20 (6 Nov). Black Friday 2026 = Fri 27 Nov (US Thanksgiving is Thu 26 Nov). Example numbers (maan lo): price ₹1,000, product + packing + delivery ₹450, ad ₹250, left ₹300; at 30% off the price is ₹700 and the cost is still ₹700.",
+  "source": "Owner asked (7 Nov) for a reel saying Black Friday is a bigger sale than Diwali. Sources checked 7 Nov: GoKwik Wrapped 2025 (released 30 Dec 2025, via BW Retail World and MediaNews4U): on GoKwik's D2C network, Black Friday 28 Nov 2025 had the most orders of the whole year, above Diwali and Dussehra. Unicommerce (PTI, 1 Dec 2025): Black Friday week order volume up about 27% vs the 2024 sale window. Black Friday 2026 = Fri 27 Nov. Replaces the old CASE #20 SALE script (owner said it gave no value).",
   "scenes": [
     {
       "id": "s1",
       "lines": [
         {
-          "roman": "*27_Nov|sattaais_november ko *Black_Friday. *30%_off|tees_percent_off lagaya, toh *kitna bachega?",
-          "voice": "सत्ताईस नवंबर को ब्लैक फ़्राइडे। तीस परसेंट ऑफ़ लगाया, तो कितना बचेगा?"
+          "roman": "Saal ka *sabse_bada order wala din, *Diwali nahi. *Black_Friday.",
+          "voice": "साल का सबसे बड़ा ऑर्डर वाला दिन, दिवाली नहीं। ब्लैक फ़्राइडे।"
         }
       ]
     },
@@ -29,8 +29,8 @@
       "id": "s2",
       "lines": [
         {
-          "roman": "Maan lo product *₹1,000|ek_hazaar ka. Maal, packing, delivery, *₹450|chaar_sau_pachaas. Ad pe *₹250|do_sau_pachaas. Bacha *₹300|teen_sau.",
-          "voice": "मान लो प्रोडक्ट एक हज़ार का। माल, पैकिंग, डिलीवरी, चार सौ पचास। ऐड पे दो सौ पचास। बचा तीन सौ।"
+          "roman": "*GoKwik|go_kwik ke *D2C|dee_too_see brands pe, *2025|do_hazaar_pacchees mein sabse zyada order *28_Nov|atthaais_november ko aaye, *Black_Friday ke din. *Diwali se bhi zyada.",
+          "voice": "गोक्विक के डी टू सी ब्रांड्स पे, दो हज़ार पच्चीस में सबसे ज़्यादा ऑर्डर अट्ठाईस नवंबर को आए, ब्लैक फ़्राइडे के दिन। दिवाली से भी ज़्यादा।"
         }
       ]
     },
@@ -38,8 +38,8 @@
       "id": "s3",
       "lines": [
         {
-          "roman": "Ab *30%_off|tees_percent_off, price *₹700|saat_sau. Kharcha wahi *₹700|saat_sau. Bacha *zero.",
-          "voice": "अब तीस परसेंट ऑफ़, प्राइस सात सौ। ख़र्चा वही सात सौ। बचा ज़ीरो।"
+          "roman": "Aur *Unicommerce|unicommerce ke hisaab se, *Black_Friday week mein order pichhle saal se *27%|sattaais_percent zyada the.",
+          "voice": "और यूनिकॉमर्स के हिसाब से, ब्लैक फ़्राइडे वीक में ऑर्डर पिछले साल से सत्ताईस परसेंट ज़्यादा थे।"
         }
       ]
     },
@@ -47,8 +47,8 @@
       "id": "s4",
       "lines": [
         {
-          "roman": "Matlab sale mein *order double hue, aur *profit gayab.",
-          "voice": "मतलब सेल में ऑर्डर डबल हुए, और प्रॉफ़िट ग़ायब।"
+          "roman": "Matlab is saal *27_Nov|sattaais_november aapke brand ka *sabse_bada din ho sakta hai. *Taiyari abhi se.",
+          "voice": "मतलब इस साल सत्ताईस नवंबर आपके ब्रांड का सबसे बड़ा दिन हो सकता है। तैयारी अभी से।"
         }
       ]
     },
@@ -56,8 +56,8 @@
       "id": "s5",
       "lines": [
         {
-          "roman": "Toh discount se pehle *hisaab lagao. Discount ki jagah *free_gift do. Offer sirf *purane customers ko bhejo. Aur sale sirf *2_din|do_din, poora hafta nahi.",
-          "voice": "तो डिस्काउंट से पहले हिसाब लगाओ। डिस्काउंट की जगह फ़्री गिफ़्ट दो। ऑफ़र सिर्फ़ पुराने कस्टमर्स को भेजो। और सेल सिर्फ़ दो दिन, पूरा हफ़्ता नहीं।"
+          "roman": "Toh aaj hi apne *hero_product ka *stock check karo. Sale ka *offer aur *ad abhi se bana lo. Aur *27|sattaais se pehle *purane_customers ki list ready rakho.",
+          "voice": "तो आज ही अपने हीरो प्रोडक्ट का स्टॉक चेक करो। सेल का ऑफ़र और ऐड अभी से बना लो। और सत्ताईस से पहले पुराने कस्टमर्स की लिस्ट रेडी रखो।"
         }
       ]
     },
@@ -65,8 +65,8 @@
       "id": "s6",
       "lines": [
         {
-          "roman": "Comment karo *SALE|sale, Sale profit *calculator free *DM|dee_em mein.",
-          "voice": "कमेंट करो सेल, सेल प्रॉफ़िट कैलकुलेटर फ़्री डी एम में।"
+          "roman": "Comment karo *FRIDAY|friday, Black Friday *taiyari checklist free *DM|dee_em mein.",
+          "voice": "कमेंट करो फ़्राइडे, ब्लैक फ़्राइडे तैयारी चेकलिस्ट फ़्री डी एम में।"
         },
         {
           "roman": "*Aaj shaam, har mahine *₹5,000|paanch_hazaar kahan ja rahe hain?",

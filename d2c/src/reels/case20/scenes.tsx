@@ -1,13 +1,14 @@
 import React from "react";
 import { interpolate, useCurrentFrame } from "remotion";
-import { Jar, Parcel, Person, ROHIT } from "../../components/Cartoon";
+import { Person, ROHIT } from "../../components/Cartoon";
 import { Doctor, PoseKey } from "../../components/Doctor";
 import { Camera } from "../../components/fx";
 import { CtaFlow, HookTitle, LINE, Place, makeMouth } from "../../components/format";
-import { Card, Chip, Enter, SceneShell, Sfx, clamp, inr, useSpring } from "../../components/kit";
-import { Clinic, MoneyRoom, OfficeWall, Whiteboard } from "../../components/sets";
+import { Card, Chip, Enter, SceneShell, Sfx, clamp } from "../../components/kit";
+import { Clinic, MoneyRoom, Whiteboard } from "../../components/sets";
 import { Stamp } from "../../components/widgets";
 import { C, theme } from "../../theme";
+import { Diya } from "../case16/scenes";
 import { T, cue } from "./timeline";
 
 const sceneMouth = makeMouth(T);
@@ -15,200 +16,201 @@ const TAG = "CASE #20";
 const big = (size: number, color: string = LINE): React.CSSProperties => ({ fontFamily: theme.fonts.display, fontWeight: 700, fontSize: size, lineHeight: 1.05, color, whiteSpace: "nowrap" });
 const body = (size: number, color: string = LINE): React.CSSProperties => ({ fontFamily: theme.fonts.body, fontWeight: 800, fontSize: size, color, whiteSpace: "nowrap" });
 
-/** Black-friday price tag. */
-export const SaleTag: React.FC<{ off?: string; w?: number; rot?: number }> = ({ off = "30% OFF", w = 360, rot = -6 }) => (
-  <div style={{ width: w, background: "#121212", border: `6px solid ${LINE}`, borderRadius: 26, padding: "16px 20px 12px", boxSizing: "border-box", transform: `rotate(${rot}deg)`, boxShadow: `8px 8px 0 ${LINE}`, textAlign: "center" }}>
-    <div style={body(w * 0.075, "#FFD54A")}>BLACK FRIDAY · 27 NOV</div>
-    <div style={big(w * 0.22, C.white)}>{off}</div>
+/** Black Friday tag. */
+export const BfTag: React.FC<{ w?: number; rot?: number; date?: string }> = ({ w = 380, rot = -4, date = "27 NOV" }) => (
+  <div style={{ width: w, background: "#121212", border: `6px solid ${LINE}`, borderRadius: 26, padding: "18px 20px 12px", boxSizing: "border-box", transform: `rotate(${rot}deg)`, boxShadow: `8px 8px 0 ${LINE}`, textAlign: "center" }}>
+    <div style={body(w * 0.08, "#FFD54A")}>{date}</div>
+    <div style={big(w * 0.15, C.white)}>BLACK</div>
+    <div style={big(w * 0.15, C.white)}>FRIDAY</div>
   </div>
 );
 
-const useN = (to: number, from: number, at: number, len = 14) => {
-  const f = useCurrentFrame();
-  return interpolate(f, [at, at + len], [from, to], { ...clamp, easing: theme.ease.out });
-};
+/** Diwali card. */
+export const DiwaliCard: React.FC<{ w?: number; rot?: number; dim?: number }> = ({ w = 340, rot = 4, dim = 0 }) => (
+  <div style={{ width: w, background: "#FFF3DE", border: `6px solid ${LINE}`, borderRadius: 26, padding: "18px 20px 14px", boxSizing: "border-box", transform: `rotate(${rot}deg)`, boxShadow: `8px 8px 0 ${LINE}`, textAlign: "center", opacity: 1 - 0.45 * dim, filter: `saturate(${1 - 0.6 * dim})` }}>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <Diya w={w * 0.42} />
+    </div>
+    <div style={big(w * 0.16, "#C2410C")}>DIWALI</div>
+  </div>
+);
+
+/** Rank row card. */
+const Rank: React.FC<{ n: string; title: string; sub: string; win?: boolean; p?: number }> = ({ n, title, sub, win = false, p = 1 }) => (
+  <div style={{ opacity: p, transform: `translateX(${(1 - p) * 60}px)` }}>
+    <Card style={{ width: 820, padding: "16px 24px 12px", border: `6px solid ${LINE}`, boxShadow: `7px 7px 0 ${win ? C.green : LINE}`, display: "flex", alignItems: "center", gap: 22, boxSizing: "border-box", background: win ? "#E9FBEF" : C.white }}>
+      <div style={{ width: 92, height: 92, borderRadius: 22, background: win ? C.green : C.lavenderSoft, border: `5px solid ${LINE}`, display: "flex", alignItems: "center", justifyContent: "center", ...big(48, win ? C.white : LINE), paddingTop: 6, boxSizing: "border-box" }}>{n}</div>
+      <div>
+        <div style={big(52)}>{title}</div>
+        <div style={body(24, C.muted)}>{sub}</div>
+      </div>
+    </Card>
+  </div>
+);
 
 /* ===== S1: hook ===== */
 export const S1Hook: React.FC<{ dur: number }> = ({ dur }) => {
+  const frame = useCurrentFrame();
+  const diwali = cue("s1", "diwali");
   const bf = cue("s1", "black friday");
-  const kitna = cue("s1", "kitna");
+  const win = interpolate(frame, [bf - 6, bf + 6], [0, 1], { ...clamp, easing: theme.ease.out });
   return (
     <SceneShell dur={dur} noExit>
-      <Camera dur={dur} punches={[bf, kitna]} push={0.03}>
+      <Camera dur={dur} punches={[bf]} push={0.03}>
         <MoneyRoom />
         <HookTitle
           top={300}
           lines={[
-            { text: "Black Friday pe 30% off,", at: -8, kind: "plain", size: 80, rot: -1 },
-            { text: "kitna bachega?", at: -6, kind: "red", size: 100, rot: 2 },
+            { text: "Saal ka sabse bada din?", at: -8, kind: "plain", size: 76, rot: -1 },
+            { text: "Diwali nahi, Black Friday!", at: -6, kind: "violet", size: 70, rot: 2 },
           ]}
         />
-        <div style={{ position: "absolute", left: 600, top: 700, zIndex: 7 }}>
-          <Enter delay={2} from="right">
-            <SaleTag w={380} />
-          </Enter>
+        <div style={{ position: "absolute", left: 80, top: 720, zIndex: 6 }}>
+          <DiwaliCard w={360} dim={interpolate(frame, [diwali + 4, diwali + 16], [0, 1], clamp)} />
         </div>
-        <Place x={180} y={760} s={0.74} z={6}>
-          <Person look={ROHIT} seed="r201" track={[{ at: -100, pose: "megaphone", mood: "shout" }, { at: kitna - 4, pose: "shrug", mood: "shock" }]} />
-        </Place>
+        <div style={{ position: "absolute", right: 70, top: 690, zIndex: 7, transform: `scale(${1 + 0.12 * win})`, transformOrigin: "center" }}>
+          <BfTag w={400} />
+        </div>
+        <div style={{ position: "absolute", left: 830, top: 650, zIndex: 9 }}>
+          <Stamp at={bf + 2} text="#1" size={70} rotate={10} color={C.green} />
+        </div>
       </Camera>
       <Sfx at={1} name="whoosh" vol={0.4} />
-      <Sfx at={kitna - 2} name="pop" vol={0.45} />
+      <Sfx at={diwali - 2} name="swish" vol={0.35} />
+      <Sfx at={bf + 2} name="stamp" vol={0.45} />
     </SceneShell>
   );
 };
 
-/* ===== S2: ₹1,000 → 450 + 250 + 300 jars ===== */
-export const S2Split: React.FC<{ dur: number }> = ({ dur }) => {
+/* ===== S2: GoKwik Wrapped 2025 ===== */
+export const S2GoKwik: React.FC<{ dur: number }> = ({ dur }) => {
   const frame = useCurrentFrame();
-  const price = cue("s2", "ek hazaar");
-  const maal = cue("s2", "chaar sau pachaas");
-  const ad = cue("s2", "do sau pachaas");
-  const bacha = cue("s2", "teen sau");
-  const lv = (at: number, to: number) => interpolate(frame, [at - 4, at + 14], [0, to], { ...clamp, easing: theme.ease.out });
+  const brands = cue("s2", "brands");
+  const date = cue("s2", "atthaais november");
+  const diwali = cue("s2", "diwali");
   return (
     <SceneShell dur={dur} noExit>
-      <Camera dur={dur} punches={[bacha]} push={0.02}>
+      <Camera dur={dur} punches={[date]} push={0.02}>
         <MoneyRoom />
-        <Enter delay={0} from="none" cfg="snappy" style={{ position: "absolute", left: 0, right: 0, top: 292, display: "flex", justifyContent: "center", zIndex: 8 }}>
-          <Chip size={28} bg={C.violet} color={C.white} border={LINE}>
-            MAAN LO · EXAMPLE
+        <Enter delay={0} from="down" style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Card style={{ padding: "14px 28px 8px", border: `6px solid ${LINE}`, boxShadow: `6px 6px 0 ${LINE}`, ...big(46) }}>
+            2025 · sabse zyada <span style={{ color: C.violet }}>order</span> wala din
+          </Card>
+        </Enter>
+        <div style={{ position: "absolute", left: 130, top: 430, display: "flex", flexDirection: "column", gap: 22, zIndex: 6 }}>
+          <Rank n="#1" title="Black Friday · 28 Nov" sub="D2C brands pe saal ka top day" win p={interpolate(frame, [date - 8, date + 2], [0, 1], clamp)} />
+          <Rank n="↓" title="Diwali" sub="isse kam order" p={interpolate(frame, [diwali - 6, diwali + 4], [0, 1], clamp)} />
+        </div>
+        <div style={{ position: "absolute", left: 130, top: 800, zIndex: 6, opacity: interpolate(frame, [brands - 6, brands + 4], [0, 1], clamp) }}>
+          <Chip size={24} bg={C.white} color={C.muted} border={LINE}>
+            Source: GoKwik Wrapped 2025 · D2C brands
           </Chip>
-        </Enter>
-        <Enter delay={price - 8} from="down" style={{ position: "absolute", left: 0, right: 0, top: 370, display: "flex", justifyContent: "center", zIndex: 6 }}>
-          <Card style={{ padding: "14px 34px 8px", border: `6px solid ${LINE}`, boxShadow: `7px 7px 0 ${LINE}`, display: "flex", alignItems: "baseline", gap: 18 }}>
-            <span style={body(32, C.muted)}>PRODUCT PRICE</span>
-            <span style={big(84)}>₹1,000</span>
-          </Card>
-        </Enter>
-        <div style={{ position: "absolute", left: 40, right: 40, top: 560, display: "flex", justifyContent: "space-between", zIndex: 5 }}>
-          <div style={{ opacity: interpolate(frame, [maal - 8, maal], [0, 1], clamp) }}>
-            <Jar w={300} level={lv(maal, 0.45)} color={C.violet} label="Maal+packing+delivery" amount={`₹${inr(useN(450, 0, maal - 4))}`} />
-          </div>
-          <div style={{ opacity: interpolate(frame, [ad - 8, ad], [0, 1], clamp) }}>
-            <Jar w={300} level={lv(ad, 0.25)} color={C.red} label="Ad" amount={`₹${inr(useN(250, 0, ad - 4))}`} />
-          </div>
-          <div style={{ opacity: interpolate(frame, [bacha - 8, bacha], [0, 1], clamp) }}>
-            <Jar w={300} level={lv(bacha, 0.3)} color={C.green} label="Bacha" amount={`₹${inr(useN(300, 0, bacha - 4))}`} />
-          </div>
         </div>
-      </Camera>
-      <Sfx at={price - 8} name="pop" vol={0.45} />
-      <Sfx at={maal - 4} name="tick" vol={0.35} />
-      <Sfx at={ad - 4} name="tick" vol={0.35} />
-      <Sfx at={bacha - 4} name="ding" vol={0.4} />
-    </SceneShell>
-  );
-};
-
-/* ===== S3: 30% off → ₹700, cost still ₹700 → zero ===== */
-export const S3Zero: React.FC<{ dur: number }> = ({ dur }) => {
-  const frame = useCurrentFrame();
-  const off = cue("s3", "tees percent off");
-  const price = cue("s3", "saat sau");
-  const kharcha = cue("s3", "saat sau", 2);
-  const zero = cue("s3", "zero");
-  const strike = interpolate(frame, [price - 6, price + 4], [0, 1], clamp);
-  const drain = interpolate(frame, [zero - 10, zero + 4], [0.3, 0], { ...clamp, easing: theme.ease.in });
-  return (
-    <SceneShell dur={dur} noExit>
-      <Camera dur={dur} punches={[zero]} push={0.02}>
-        <MoneyRoom />
-        <div style={{ position: "absolute", left: 60, top: 320, zIndex: 7 }}>
-          <Enter delay={off - 8} from="left">
-            <SaleTag w={330} rot={-8} />
-          </Enter>
-        </div>
-        <Enter delay={price - 10} from="right" style={{ position: "absolute", left: 470, top: 330, zIndex: 6 }}>
-          <Card style={{ padding: "14px 26px 8px", border: `6px solid ${LINE}`, boxShadow: `7px 7px 0 ${LINE}`, display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <span style={body(28, C.muted)}>NAYA PRICE</span>
-            <div style={{ position: "relative" }}>
-              <span style={big(60, C.muted)}>₹1,000</span>
-              <div style={{ position: "absolute", left: -6, right: -6, top: "48%", height: 7, background: C.red, transform: `scaleX(${strike})`, transformOrigin: "left" }} />
-            </div>
-            <span style={big(96, C.violetDeep)}>₹700</span>
-          </Card>
-        </Enter>
-        <div style={{ position: "absolute", left: 40, right: 40, top: 700, display: "flex", justifyContent: "space-between", zIndex: 5 }}>
-          <div style={{ opacity: interpolate(frame, [kharcha - 8, kharcha], [0.35, 1], clamp) }}>
-            <Jar w={300} level={0.45} color={C.violet} label="Maal+packing+delivery" amount="₹450" />
-          </div>
-          <div style={{ opacity: interpolate(frame, [kharcha - 8, kharcha], [0.35, 1], clamp) }}>
-            <Jar w={300} level={0.25} color={C.red} label="Ad" amount="₹250" />
-          </div>
-          <div>
-            <Jar w={300} level={drain} color={C.green} label="Bacha" amount={frame >= zero ? "₹0" : "₹300"} />
-          </div>
-        </div>
-        <div style={{ position: "absolute", left: 760, top: 900, zIndex: 9 }}>
-          <Stamp at={zero} text="ZERO" size={80} rotate={-10} />
-        </div>
-      </Camera>
-      <Sfx at={off - 8} name="whoosh" vol={0.4} />
-      <Sfx at={price - 6} name="swish" vol={0.4} />
-      <Sfx at={zero} name="stamp" vol={0.55} />
-      <Sfx at={zero + 2} name="error" vol={0.4} />
-    </SceneShell>
-  );
-};
-
-/* ===== S4: orders double, profit gone ===== */
-export const S4Gone: React.FC<{ dur: number }> = ({ dur }) => {
-  const frame = useCurrentFrame();
-  const dbl = cue("s4", "double");
-  const profit = cue("s4", "profit");
-  const gayab = cue("s4", "gayab");
-  const n = frame >= dbl - 2 ? 8 : 4;
-  const pop = useSpring(dbl - 2, "bouncy");
-  return (
-    <SceneShell dur={dur} noExit>
-      <Camera dur={dur} punches={[dbl, gayab]} push={0.02}>
-        <OfficeWall />
-        <div style={{ position: "absolute", left: 80, right: 80, top: 320, display: "flex", justifyContent: "space-between", zIndex: 6 }}>
-          <Card style={{ padding: "14px 26px 8px", border: `6px solid ${LINE}`, boxShadow: `7px 7px 0 ${LINE}`, textAlign: "center" }}>
-            <div style={body(28, C.muted)}>ORDER</div>
-            <div style={{ ...big(96, C.green), transform: `scale(${frame >= dbl - 2 ? 0.8 + 0.2 * pop : 1})` }}>{frame >= dbl - 2 ? "×2 ↑" : "×1"}</div>
-          </Card>
-          <Card style={{ padding: "14px 26px 8px", border: `6px solid ${LINE}`, boxShadow: `7px 7px 0 ${LINE}`, textAlign: "center", opacity: interpolate(frame, [profit - 8, profit], [0, 1], clamp) }}>
-            <div style={body(28, C.muted)}>PROFIT</div>
-            <div style={big(96, C.red)}>₹0</div>
-          </Card>
-        </div>
-        <div style={{ position: "absolute", left: 470, top: 720, display: "flex", flexWrap: "wrap", gap: 14, width: 560, zIndex: 5 }}>
-          {Array.from({ length: n }).map((_, i) => (
-            <div key={i} style={{ transform: `scale(${i >= 4 ? pop : 1})` }}>
-              <Parcel w={122} />
-            </div>
-          ))}
-        </div>
-        <div style={{ position: "absolute", left: 560, top: 980, zIndex: 9 }}>
-          <Stamp at={gayab} text="PROFIT GAYAB" size={58} rotate={-6} />
-        </div>
-        <Place x={60} y={760} s={0.78} z={4}>
-          <Person look={ROHIT} seed="r204" track={[{ at: -100, pose: "idle", mood: "happy" }, { at: dbl, pose: "cheer", mood: "grin" }, { at: gayab - 2, pose: "sad", mood: "sad" }]} />
+        <Place x={640} y={870} s={0.68} z={5}>
+          <Person look={ROHIT} seed="r202" track={[{ at: -100, pose: "idle", mood: "neutral" }, { at: diwali, pose: "shrug", mood: "shock" }]} />
         </Place>
       </Camera>
-      <Sfx at={dbl - 2} name="pop" vol={0.45} />
-      <Sfx at={gayab} name="stamp" vol={0.5} />
+      <Sfx at={date - 6} name="pop" vol={0.45} />
+      <Sfx at={diwali - 4} name="pop" vol={0.35} />
     </SceneShell>
   );
 };
 
-/* ===== S5: hisaab first + 3 fixes ===== */
+/* ===== S3: Unicommerce +27% ===== */
+export const S3Growth: React.FC<{ dur: number }> = ({ dur }) => {
+  const frame = useCurrentFrame();
+  const uni = cue("s3", "unicommerce");
+  const pct = cue("s3", "sattaais percent");
+  const n = Math.round(interpolate(frame, [pct - 6, pct + 14], [0, 27], { ...clamp, easing: theme.ease.out }));
+  const bar = (h: number, label: string, col: string, at: number) => (
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+      <div style={{ width: 200, height: 420, display: "flex", alignItems: "flex-end" }}>
+        <div style={{ width: "100%", height: h * interpolate(frame, [at - 6, at + 12], [0, 1], { ...clamp, easing: theme.ease.out }), background: col, border: `6px solid ${LINE}`, borderRadius: 18, boxSizing: "border-box" }} />
+      </div>
+      <div style={big(40)}>{label}</div>
+    </div>
+  );
+  return (
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[pct]} push={0.02}>
+        <MoneyRoom />
+        <Enter delay={0} from="down" style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Card style={{ padding: "14px 28px 8px", border: `6px solid ${LINE}`, boxShadow: `6px 6px 0 ${LINE}`, ...big(46) }}>
+            Black Friday <span style={{ color: C.violet }}>week</span> ke order
+          </Card>
+        </Enter>
+        <div style={{ position: "absolute", left: 120, top: 430, display: "flex", gap: 60, alignItems: "flex-end", zIndex: 6 }}>
+          {bar(300, "2024", C.lavenderSoft, uni)}
+          {bar(381, "2025", C.green, pct)}
+        </div>
+        <div style={{ position: "absolute", left: 660, top: 520, zIndex: 7, opacity: interpolate(frame, [pct - 6, pct + 2], [0, 1], clamp) }}>
+          <div style={big(150, C.green)}>+{n}%</div>
+          <div style={body(30, C.muted)}>pichhle saal se zyada</div>
+        </div>
+        <div style={{ position: "absolute", left: 120, top: 1000, zIndex: 6, opacity: interpolate(frame, [uni - 6, uni + 4], [0, 1], clamp) }}>
+          <Chip size={24} bg={C.white} color={C.muted} border={LINE}>
+            Source: Unicommerce, Dec 2025
+          </Chip>
+        </div>
+      </Camera>
+      <Sfx at={uni - 4} name="pop" vol={0.35} />
+      <Sfx at={pct - 4} name="ding" vol={0.45} />
+    </SceneShell>
+  );
+};
+
+/* ===== S4: 27 Nov could be your biggest day ===== */
+export const S4YourDay: React.FC<{ dur: number }> = ({ dur }) => {
+  const frame = useCurrentFrame();
+  const date = cue("s4", "sattaais november");
+  const bada = cue("s4", "sabse bada");
+  const taiyari = cue("s4", "taiyari");
+  const ring = interpolate(frame, [bada - 4, bada + 14], [0, 1], { ...clamp, easing: theme.ease.out });
+  return (
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[bada]} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 90, top: 330, zIndex: 6, opacity: interpolate(frame, [date - 8, date], [0, 1], clamp), transform: `translateY(${interpolate(frame, [date - 8, date + 4], [40, 0], clamp)}px)` }}>
+          <Card style={{ width: 460, padding: 0, border: `6px solid ${LINE}`, boxShadow: `8px 8px 0 ${LINE}`, overflow: "hidden", textAlign: "center" }}>
+            <div style={{ background: C.red, borderBottom: `5px solid ${LINE}`, padding: "12px 0 6px", ...big(44, C.white) }}>NOVEMBER 2026</div>
+            <div style={{ position: "relative", padding: "20px 0 16px" }}>
+              <div style={big(190)}>27</div>
+              <div style={body(24, C.muted)}>SHUKRAVAAR · BLACK FRIDAY</div>
+              <svg width={300} height={230} viewBox="0 0 300 230" style={{ position: "absolute", left: 80, top: 0 }}>
+                <ellipse cx={150} cy={110} rx={130} ry={95} fill="none" stroke={C.green} strokeWidth={9} strokeDasharray={760} strokeDashoffset={760 * (1 - ring)} strokeLinecap="round" />
+              </svg>
+            </div>
+          </Card>
+        </div>
+        <Enter delay={taiyari - 6} from="none" cfg="snappy" style={{ position: "absolute", left: 90, top: 820, zIndex: 8 }}>
+          <Chip size={40} bg={C.violet} color={C.white} border={LINE}>
+            Taiyari abhi se
+          </Chip>
+        </Enter>
+        <Place x={600} y={740} s={0.74} z={5}>
+          <Person look={ROHIT} seed="r204" track={[{ at: -100, pose: "idle", mood: "happy" }, { at: bada, pose: "cheer", mood: "happy" }]} />
+        </Place>
+      </Camera>
+      <Sfx at={date - 6} name="pop" vol={0.4} />
+      <Sfx at={bada - 2} name="ding" vol={0.4} />
+      <Sfx at={taiyari - 6} name="pop" vol={0.4} />
+    </SceneShell>
+  );
+};
+
+/* ===== S5: three steps ===== */
 export const S5Fixes: React.FC<{ dur: number }> = ({ dur }) => {
   const frame = useCurrentFrame();
-  const hisaab = cue("s5", "hisaab");
-  const a = cue("s5", "free gift");
-  const b = cue("s5", "purane");
-  const c = cue("s5", "do din");
+  const a = cue("s5", "stock");
+  const b = cue("s5", "offer");
+  const c = cue("s5", "purane customers");
   const marks = [a, b, c];
   const poses: PoseKey[] = [
-    { at: -100, pose: "stop" },
-    { at: a - 6, pose: "one" },
+    { at: -100, pose: "one" },
     { at: b - 6, pose: "two" },
     { at: c - 6, pose: "three" },
   ];
-  const fixes = ["Discount ki jagah free gift", "Offer sirf purane customers ko", "Sale sirf 2 din, poora hafta nahi"];
+  const fixes = ["Hero product ka stock check", "Offer aur ad abhi bana lo", "27 se pehle purane customers ki list"];
   return (
     <SceneShell dur={dur} noExit>
       <Camera dur={dur} push={0.02}>
@@ -216,11 +218,11 @@ export const S5Fixes: React.FC<{ dur: number }> = ({ dur }) => {
         <Whiteboard style={{ left: 230, top: 300, width: 800, height: 640 }}>
           <div style={{ position: "absolute", left: 30, top: 24 }}>
             <Chip size={26} bg={C.green}>
-              ILAAJ
+              TAIYARI
             </Chip>
           </div>
-          <div style={{ position: "absolute", left: 30, right: 30, top: 96, display: "flex", justifyContent: "center", opacity: interpolate(frame, [hisaab - 8, hisaab], [0, 1], clamp) }}>
-            <div style={{ background: C.lavenderSoft, borderRadius: 14, padding: "10px 16px 6px", ...body(30, C.violetDeep) }}>Discount se pehle hisaab lagao</div>
+          <div style={{ position: "absolute", left: 30, right: 30, top: 96, display: "flex", justifyContent: "center" }}>
+            <div style={{ background: C.lavenderSoft, borderRadius: 14, padding: "10px 16px 6px", ...body(28, C.violetDeep) }}>Black Friday · 27 Nov ke liye</div>
           </div>
           <div style={{ position: "absolute", left: 40, right: 30, top: 190, display: "flex", flexDirection: "column", gap: 30 }}>
             {fixes.map((t, i) => {
@@ -235,11 +237,10 @@ export const S5Fixes: React.FC<{ dur: number }> = ({ dur }) => {
           </div>
         </Whiteboard>
         <Place x={-120} y={930} s={0.92} z={4}>
-          <Doctor poses={poses} mouth={sceneMouth("s5")} brows={[hisaab, ...marks]} caseTag={TAG} />
+          <Doctor poses={poses} mouth={sceneMouth("s5")} brows={marks} caseTag={TAG} />
         </Place>
       </Camera>
       <Sfx at={1} name="whoosh" vol={0.4} />
-      <Sfx at={hisaab - 6} name="pop" vol={0.4} />
       {marks.map((m, i) => (
         <Sfx key={i} at={m - 5} name="check" vol={0.4} />
       ))}
@@ -248,17 +249,21 @@ export const S5Fixes: React.FC<{ dur: number }> = ({ dur }) => {
 };
 
 /* ===== S6: CTA ===== */
-const CalcIcon: React.FC = () => (
-  <svg width={86} height={100} viewBox="0 0 86 100">
-    <rect x={3} y={3} width={80} height={94} rx={14} fill={C.violet} stroke={LINE} strokeWidth={5} />
-    <rect x={14} y={14} width={58} height={22} rx={5} fill={C.lavender} />
-    {[0, 1, 2].map((r) => [0, 1, 2].map((c) => <rect key={`${r}${c}`} x={14 + c * 21} y={46 + r * 16} width={15} height={10} rx={3} fill={r === 2 && c === 2 ? C.green : C.white} />))}
+const ListIcon: React.FC = () => (
+  <svg width={92} height={92} viewBox="0 0 92 92">
+    <rect x={8} y={8} width={76} height={76} rx={12} fill="#121212" stroke={LINE} strokeWidth={5} />
+    {[0, 1, 2].map((r) => (
+      <g key={r}>
+        <path d={`M20 ${30 + r * 18} l5 5 l9 -10`} stroke={C.green} strokeWidth={5} fill="none" strokeLinecap="round" />
+        <rect x={40} y={26 + r * 18} width={32 - r * 6} height={6} rx={3} fill={C.white} />
+      </g>
+    ))}
   </svg>
 );
 
 export const S6Cta: React.FC<{ dur: number }> = ({ dur }) => {
-  const kw = cue("s6", "sale");
-  const gift = cue("s6", "profit");
+  const kw = cue("s6", "friday");
+  const gift = cue("s6", "checklist");
   const aaj = cue("s6", "aaj");
   const follow = cue("s6", "follow");
   const poses: PoseKey[] = [
@@ -271,17 +276,17 @@ export const S6Cta: React.FC<{ dur: number }> = ({ dur }) => {
       <Camera dur={dur} punches={[kw + 4]} push={0.02}>
         <Clinic plus={false} />
         <CtaFlow
-          keyword="SALE"
+          keyword="FRIDAY"
           typeAt={kw - 8}
-          giftAt={gift - 10}
-          giftTitle="Sale Profit Calculator"
-          giftSub="free · discount se pehle hisaab"
-          giftIcon={<CalcIcon />}
+          giftAt={gift - 6}
+          giftTitle="Black Friday Taiyari Checklist"
+          giftSub="free · stock, offer, ad, list"
+          giftIcon={<ListIcon />}
           nextAt={aaj}
           nextNum="#21"
           nextLabel="AAJ SHAAM 7 BAJE · AGLA CASE"
           next={
-            <div style={{ fontFamily: theme.fonts.display, fontWeight: 700, fontSize: 54, lineHeight: 1.12, color: LINE, textAlign: "center" }}>
+            <div style={{ fontFamily: theme.fonts.display, fontWeight: 700, fontSize: 52, lineHeight: 1.12, color: LINE, textAlign: "center" }}>
               Har mahine <span style={{ color: C.red }}>₹5,000</span>
               <br />
               kahan ja rahe hain?
@@ -293,10 +298,10 @@ export const S6Cta: React.FC<{ dur: number }> = ({ dur }) => {
           <Doctor poses={poses} mouth={sceneMouth("s6")} brows={[kw, aaj]} caseTag={TAG} />
         </Place>
       </Camera>
-      {Array.from({ length: 4 }).map((_, i) => (
+      {Array.from({ length: 6 }).map((_, i) => (
         <Sfx key={i} at={kw - 8 + i * 2} name="key" vol={0.4} />
       ))}
-      <Sfx at={gift - 14} name="pop" vol={0.5} />
+      <Sfx at={gift - 10} name="pop" vol={0.5} />
       <Sfx at={aaj - 4} name="whoosh" vol={0.45} />
       <Sfx at={follow + 12} name="pop" vol={0.55} />
       <Sfx at={follow + 15} name="ding" vol={0.45} />

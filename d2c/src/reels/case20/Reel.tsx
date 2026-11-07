@@ -4,11 +4,11 @@ import { Swipes } from "../../components/fx";
 import { Grade, Grain, Vignette } from "../../components/kit";
 import { Captions, TopBar } from "../../components/overlay";
 import { C } from "../../theme";
-import { S1Hook, S2Split, S3Zero, S4Gone, S5Fixes, S6Cta } from "./scenes";
+import { S1Hook, S2GoKwik, S3Growth, S4YourDay, S5Fixes, S6Cta } from "./scenes";
 import script from "./script.json";
 import { sceneById, sceneFrames, scenes } from "./timeline";
 
-const MAP: Record<string, React.FC<{ dur: number }>> = { s1: S1Hook, s2: S2Split, s3: S3Zero, s4: S4Gone, s5: S5Fixes, s6: S6Cta };
+const MAP: Record<string, React.FC<{ dur: number }>> = { s1: S1Hook, s2: S2GoKwik, s3: S3Growth, s4: S4YourDay, s5: S5Fixes, s6: S6Cta };
 
 export const Case20Reel: React.FC = () => {
   const cuts = script.scenes.slice(1).map((s) => sceneFrames(s.id).from);

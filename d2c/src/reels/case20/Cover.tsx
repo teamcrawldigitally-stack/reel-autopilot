@@ -1,13 +1,13 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
-import { Jar, Person, ROHIT } from "../../components/Cartoon";
+import { Person, PRIYA, ROHIT } from "../../components/Cartoon";
 import { LINE } from "../../components/format";
 import { Grade, Grain, Logo, Vignette } from "../../components/kit";
 import { MoneyRoom } from "../../components/sets";
 import { C, theme } from "../../theme";
-import { SaleTag } from "./scenes";
-
+import { BfTag, DiwaliCard } from "./scenes";
 const T = (size: number, color: string = LINE): React.CSSProperties => ({ fontFamily: theme.fonts.display, fontWeight: 700, fontSize: size, lineHeight: 1, color, whiteSpace: "nowrap" });
+void PRIYA; void ROHIT; void Person;
 
 /** Cover: inside the 3:4 grid crop (y 240–1680). */
 export const Case20Cover: React.FC = () => (
@@ -23,18 +23,16 @@ export const Case20Cover: React.FC = () => (
       </div>
     </div>
     <div style={{ position: "absolute", top: 430, left: 40, right: 40, display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
-      <div style={{ ...T(84), background: C.white, border: `8px solid ${LINE}`, borderRadius: 30, padding: "22px 36px 4px", boxShadow: `10px 10px 0 ${LINE}`, transform: "rotate(-2deg)" }}>30% off ke baad</div>
-      <div style={{ ...T(104, C.white), background: C.red, border: `8px solid ${LINE}`, borderRadius: 30, padding: "22px 36px 4px", boxShadow: `10px 10px 0 ${LINE}`, transform: "rotate(2deg)" }}>bacha ₹0?</div>
+      <div style={{ ...T(86), background: C.white, border: `8px solid ${LINE}`, borderRadius: 30, padding: "22px 36px 4px", boxShadow: `10px 10px 0 ${LINE}`, transform: "rotate(-2deg)" }}>Diwali se bhi badi sale?</div>
+      <div style={{ ...T(96, C.white), background: C.violet, border: `8px solid ${LINE}`, borderRadius: 30, padding: "22px 36px 4px", boxShadow: `10px 10px 0 ${LINE}`, transform: "rotate(2deg)" }}>Black Friday!</div>
     </div>
-    <div style={{ position: "absolute", left: 80, top: 860 }}>
-      <SaleTag w={360} rot={-8} />
+    <div style={{ position: "absolute", left: 90, top: 900 }}>
+      <DiwaliCard w={360} dim={1} />
     </div>
-    <div style={{ position: "absolute", left: 640, top: 900 }}>
-      <Jar w={280} level={0.02} color={C.green} label="Bacha" amount="₹0" />
+    <div style={{ position: "absolute", right: 80, top: 860, transform: "scale(1.08)" }}>
+      <BfTag w={410} />
     </div>
-    <div style={{ position: "absolute", left: 130, top: 1100, transform: "scale(0.6)", transformOrigin: "0 0" }}>
-      <Person look={ROHIT} seed="cov20" track={[{ at: -100, pose: "shrug", mood: "shock" }]} />
-    </div>
+
     <Grade />
     <Grain />
     <Vignette />

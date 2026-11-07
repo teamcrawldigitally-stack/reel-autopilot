@@ -1,0 +1,82 @@
+{
+  "id": "case35-proof",
+  "tag": "CASE #35",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #35 (6 Nov). Story example, no statistic.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Ad mein aap bol rahe ho *best product. Koi *customer kyun nahi bol raha?",
+          "voice": "ऐड में आप बोल रहे हो बेस्ट प्रोडक्ट। कोई कस्टमर क्यों नहीं बोल रहा?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Rohit *camera pe, humara serum *best hai. Log *scroll karke aage.",
+          "voice": "रोहित कैमरा पे, हमारा सीरम बेस्ट है। लोग स्क्रॉल करके आगे।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Priya ka *review screen pe, *teen hafte mein farak dikha. Log *ruk gaye.",
+          "voice": "प्रिया का रिव्यू स्क्रीन पे, तीन हफ़्ते में फ़र्क दिखा। लोग रुक गए।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Kyunki *brand ki baat *ad lagti hai. *Customer ki baat *sach lagti hai.",
+          "voice": "क्योंकि ब्रांड की बात ऐड लगती है। कस्टमर की बात सच लगती है।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh pehle *3_second|teen_second mein *review ya customer video. Kitne *khush customers, *number dikhao. Aur achhe *comments ko ad bana do.",
+          "voice": "तो पहले तीन सेकंड में रिव्यू या कस्टमर वीडियो। कितने ख़ुश कस्टमर्स, नंबर दिखाओ। और अच्छे कमेंट्स को ऐड बना दो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *PROOF|proof, *5|paanch aise ad *formats free *DM|dee_em mein.",
+          "voice": "कमेंट करो प्रूफ़, पाँच ऐसे ऐड फ़ॉर्मैट्स फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Kal dopahar, ek customer ki *asli keemat kitni hai?",
+          "voice": "कल दोपहर, एक कस्टमर की असली क़ीमत कितनी है?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

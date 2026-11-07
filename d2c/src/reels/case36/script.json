@@ -1,0 +1,82 @@
+{
+  "id": "case36-value",
+  "tag": "CASE #36",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #36 (6 Nov). Example numbers (maan lo): first order ₹500, ₹300 ad cost to get her, 6 orders a year × ₹500 = ₹3,000.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Ek customer ki keemat *₹500|paanch_sau nahi. Asli number *₹3,000|teen_hazaar hai?",
+          "voice": "एक कस्टमर की क़ीमत पाँच सौ नहीं। असली नंबर तीन हज़ार है?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Priya ka *pehla order, *₹500|paanch_sau. Rohit sochta hai, iske liye ad pe *₹300|teen_sau? *Bahut zyada.",
+          "voice": "प्रिया का पहला ऑर्डर, पाँच सौ। रोहित सोचता है, इसके लिए ऐड पे तीन सौ? बहुत ज़्यादा।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Par maan lo Priya saal mein *6|chhe baar order karti hai. *6|chhe guna *₹500|paanch_sau, *₹3,000|teen_hazaar.",
+          "voice": "पर मान लो प्रिया साल में छह बार ऑर्डर करती है। छह गुना पाँच सौ, तीन हज़ार।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Matlab *₹300|teen_sau dekar *₹3,000|teen_hazaar ka customer mila. *Sasta sauda.",
+          "voice": "मतलब तीन सौ देकर तीन हज़ार का कस्टमर मिला। सस्ता सौदा।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh pichle saal ke customers ka *saal bhar ka bill nikaalo. Ad ka budget *usi hisaab se socho. Aur *dusra order *30|tees din ke andar laane pe zor do.",
+          "voice": "तो पिछले साल के कस्टमर्स का साल भर का बिल निकालो। ऐड का बजट उसी हिसाब से सोचो। और दूसरा ऑर्डर तीस दिन के अंदर लाने पे ज़ोर दो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *VALUE|value, Customer value *calculator free *DM|dee_em mein.",
+          "voice": "कमेंट करो वैल्यू, कस्टमर वैल्यू कैलकुलेटर फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, *Black_Friday ki sale, *saat din pehle kaise jeetein?",
+          "voice": "आज शाम, ब्लैक फ़्राइडे की सेल, सात दिन पहले कैसे जीतें?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

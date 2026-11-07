@@ -1,0 +1,82 @@
+{
+  "id": "case38-dobara",
+  "tag": "CASE #38",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Owner picked this Black Friday script on 7 Nov (option 4, after-sale repeat). Story example, numbers are 'maan lo'. Keyword DOBARA (REPEAT is already CASE #04's keyword). Posts Sun 22 Nov 12:57 PM.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "*Black_Friday pe *100|sau naye customer aaye. *Asli kamaai, unke *doosre order mein hai.",
+          "voice": "ब्लैक फ़्राइडे पे सौ नए कस्टमर आए। असली कमाई, उनके दूसरे ऑर्डर में है।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Priya ne *Black_Friday pe *pehli_baar Rohit ka serum liya.",
+          "voice": "प्रिया ने ब्लैक फ़्राइडे पे पहली बार रोहित का सीरम लिया।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Parcel mein ek *card tha. Agle *30|tees din mein doosra order, *10%_off|das_percent_off.",
+          "voice": "पार्सल में एक कार्ड था। अगले तीस दिन में दूसरा ऑर्डर, दस परसेंट ऑफ़।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Maan lo *100|sau mein se *25|pacchees ne dobara khareeda. *Bina naye ad ke, *25|pacchees order extra.",
+          "voice": "मान लो सौ में से पच्चीस ने दोबारा ख़रीदा। बिना नए ऐड के, पच्चीस ऑर्डर एक्स्ट्रा।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh sale ke parcel mein *30|tees din ka *coupon daalo. *7|Saat din baad *WhatsApp pe poocho, kaisa laga. Aur *25th|pacchisve din *yaad dilao, coupon khatam hone wala hai.",
+          "voice": "तो सेल के पार्सल में तीस दिन का कूपन डालो। सात दिन बाद व्हाट्सऐप पे पूछो, कैसा लगा। और पच्चीसवें दिन याद दिलाओ, कूपन ख़त्म होने वाला है।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *DOBARA|dobara, Sale ke baad ka *30|tees din ka plan free *DM|dee_em mein.",
+          "voice": "कमेंट करो दोबारा, सेल के बाद का तीस दिन का प्लान फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, *December ka plan, aapke paas hai?",
+          "voice": "आज शाम, दिसंबर का प्लान, आपके पास है?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

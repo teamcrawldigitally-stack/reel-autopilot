@@ -303,9 +303,9 @@ export const S6Cta: React.FC<{ dur: number }> = ({ dur }) => {
           nextLabel="KAL DOPAHAR 1 BAJE · AGLA CASE"
           next={
             <div style={{ fontFamily: theme.fonts.display, fontWeight: 700, fontSize: 52, lineHeight: 1.12, color: LINE, textAlign: "center" }}>
-              Black Friday pe <span style={{ color: C.red }}>30% off</span>,
+              Saal ka <span style={{ color: C.violet }}>sabse bada</span> order din.
               <br />
-              haath mein kitna bachega?
+              Diwali nahi, toh kaunsa?
             </div>
           }
           followAt={follow}

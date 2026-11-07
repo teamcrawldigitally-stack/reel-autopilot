@@ -1,0 +1,82 @@
+{
+  "id": "case33-google",
+  "tag": "CASE #33",
+  "look": "hisaab",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #33 (6 Nov). No statistic; 'aadha bekaar' is the hook's warning, not a measured number.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "*₹10,000|das_hazaar *Meta pe ya *Google pe? Galat jagah lagaya toh *aadha bekaar.",
+          "voice": "दस हज़ार मेटा पे या गूगल पे? ग़लत जगह लगाया तो आधा बेकार।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "*Google pe log *pehle se dhoondh rahe hote hain, *baal girne ka serum.",
+          "voice": "गूगल पे लोग पहले से ढूँढ रहे होते हैं, बाल गिरने का सीरम।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "*Meta pe log *scroll kar rahe hote hain. Unhe abhi *pata bhi nahi ki unhe zaroorat hai.",
+          "voice": "मेटा पे लोग स्क्रॉल कर रहे होते हैं। उन्हें अभी पता भी नहीं कि उन्हें ज़रूरत है।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Toh sawaal yeh nahi ki *kaun better hai. Sawaal yeh hai, log aapka product *dhoondhte hain ya nahi.",
+          "voice": "तो सवाल ये नहीं कि कौन बेटर है। सवाल ये है, लोग आपका प्रोडक्ट ढूँढते हैं या नहीं।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Log aapka product type *search karte hain? *Google se shuru karo. *Naya product ya nayi problem? *Meta se. Aur apne *brand ke naam pe Google ad *hamesha rakho.",
+          "voice": "लोग आपका प्रोडक्ट टाइप सर्च करते हैं? गूगल से शुरू करो। नया प्रोडक्ट या नई प्रॉब्लम? मेटा से। और अपने ब्रांड के नाम पे गूगल ऐड हमेशा रखो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *GOOGLE|google, Kahan lagayein *checklist free *DM|dee_em mein.",
+          "voice": "कमेंट करो गूगल, कहाँ लगाएँ चेकलिस्ट फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Kal dopahar, aapke naam pe *competitor ka ad kyun?",
+          "voice": "कल दोपहर, आपके नाम पे कॉम्पिटिटर का ऐड क्यों?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

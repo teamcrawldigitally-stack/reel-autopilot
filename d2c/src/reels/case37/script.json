@@ -1,0 +1,82 @@
+{
+  "id": "case37-list",
+  "tag": "CASE #37",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Owner picked this Black Friday script on 7 Nov (option 3, early access list). Story example, numbers are 'maan lo'. Posts Sat 21 Nov 6:57 PM, six days before Black Friday (Fri 27 Nov 2026). Replaces the planned DEC slot; DEC moves to #39.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "*Black_Friday ki sale, us din nahi, *7|saat din pehle *jeeti jaati hai.",
+          "voice": "ब्लैक फ़्राइडे की सेल, उस दिन नहीं, सात दिन पहले जीती जाती है।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Sale se *saat din pehle, Rohit ne *WhatsApp pe likha, *early_access chahiye? Reply karo *YES|yes.",
+          "voice": "सेल से सात दिन पहले, रोहित ने व्हाट्सऐप पे लिखा, अर्ली एक्सेस चाहिए? रिप्लाई करो यस।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Maan lo *300|teen_sau logon ne *YES|yes bola. Unhe sale ka link *ek din pehle mila.",
+          "voice": "मान लो तीन सौ लोगों ने यस बोला। उन्हें सेल का लिंक एक दिन पहले मिला।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Pehle din hi *60|saath order, *bina_ad ke. Ad ka paisa sirf *naye logon pe laga.",
+          "voice": "पहले दिन ही साठ ऑर्डर, बिना ऐड के। ऐड का पैसा सिर्फ़ नए लोगों पे लगा।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh sale se pehle *early_access list banao. *Purane_customers ko sabse pehle bhejo. Aur list walon ke liye sale *24|chaubees ghante pehle kholo.",
+          "voice": "तो सेल से पहले अर्ली एक्सेस लिस्ट बनाओ। पुराने कस्टमर्स को सबसे पहले भेजो। और लिस्ट वालों के लिए सेल चौबीस घंटे पहले खोलो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *LIST|list, Early access *message templates free *DM|dee_em mein.",
+          "voice": "कमेंट करो लिस्ट, अर्ली एक्सेस मैसेज टेम्पलेट्स फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Kal dopahar, *Black_Friday ke customer ko *dobara kaise bechein?",
+          "voice": "कल दोपहर, ब्लैक फ़्राइडे के कस्टमर को दोबारा कैसे बेचें?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

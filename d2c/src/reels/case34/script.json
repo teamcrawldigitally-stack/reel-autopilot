@@ -1,0 +1,82 @@
+{
+  "id": "case34-naam",
+  "tag": "CASE #34",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #34 (6 Nov). Story example, no statistic. Made as a character (cartoon) reel: owner said on 7 Nov to make character reels only from now on.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Customer ne aapka *brand_naam Google kiya, aur upar *competitor ka ad aaya.",
+          "voice": "कस्टमर ने आपका ब्रांड नाम गूगल किया, और ऊपर कॉम्पिटिटर का ऐड आया।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Priya ne Rohit ka *brand dhoondha. Sabse upar *kisi aur ka ad.",
+          "voice": "प्रिया ने रोहित का ब्रांड ढूँढा। सबसे ऊपर किसी और का ऐड।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Woh *usi pe chali gayi. Rohit ka *customer, competitor ka *order.",
+          "voice": "वो उसी पे चली गई। रोहित का कस्टमर, कॉम्पिटिटर का ऑर्डर।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Competitor *aapke naam pe ad chala sakta hai. Aur apne hi naam pe aapka ad *sasta padta hai.",
+          "voice": "कॉम्पिटिटर आपके नाम पे ऐड चला सकता है। और अपने ही नाम पे आपका ऐड सस्ता पड़ता है।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh apne brand naam pe *chhota Google ad chalao. *Google_Business_Profile banao. Aur *har hafte apna naam khud *search karo.",
+          "voice": "तो अपने ब्रांड नाम पे छोटा गूगल ऐड चलाओ। गूगल बिज़नेस प्रोफ़ाइल बनाओ। और हर हफ़्ते अपना नाम ख़ुद सर्च करो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *NAAM|naam, Brand bachane ke *steps free *DM|dee_em mein.",
+          "voice": "कमेंट करो नाम, ब्रांड बचाने के स्टेप्स फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, ad mein aap nahi, *customer kyun bole?",
+          "voice": "आज शाम, ऐड में आप नहीं, कस्टमर क्यों बोले?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}
