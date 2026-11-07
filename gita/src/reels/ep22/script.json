@@ -1,0 +1,114 @@
+{
+  "id": "ep22",
+  "ep": 22,
+  "tag": "#22",
+  "style": "v2",
+  "backdrop": "img/bg/bg-room-night.jpg",
+  "mood": "gold",
+  "shlok": "3.27",
+  "title": "सब मैंने किया",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "facts": "3.27 प्रकृतेः क्रियमाणानि गुणैः कर्माणि सर्वशः। अहङ्कारविमूढात्मा कर्ताहमिति मन्यते॥ The promotion ring is a मान लो example; the thank-you tip is ours.",
+  "pictures": {
+    "trophy-alone": "Young man alone in a spotlight holding a golden trophy high; four colleagues in the shadows behind; black background, 9:16",
+    "trophy-team": "Same five people together in warm golden light, all holding the trophy; black background, 9:16"
+  },
+  "cover": {
+    "pic": { "src": "img/trophy-alone.jpg", "h": 1150, "bottom": 1760, "full": true },
+    "rows": ["“सब {r:मैंने} किया”", { "t": "{d:गीता इसे अहंकार कहती है}", "size": 66 }],
+    "pill": { "text": "गीता 3.27", "tone": "gold" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [{ "voice": "सब मैंने किया, यही सोच गीता में अहंकार कहलाती है।" }],
+      "pics": [{ "src": "img/trophy-alone.jpg", "h": 1180, "bottom": 1780, "full": true }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "“सब {r:मैंने} किया”", "size": 110 }] },
+        { "at": "यही-2", "rows": [{ "t": "यही सोच", "size": 84 }, { "t": "{g:गीता} में {R:अहंकार}", "size": 104, "at": "अहंकार" }] }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड बाईस।" }, { "voice": "अध्याय तीन, श्लोक सत्ताईस।" }],
+      "ep": 22,
+      "ref": "3.27",
+      "chapter": "3",
+      "verse": "27",
+      "speaker": "श्रीभगवानुवाच",
+      "shloka": ["प्रकृतेः क्रियमाणानि", "गुणैः कर्माणि सर्वशः।", "{अहङ्कारविमूढात्मा}", "{कर्ताहमिति} मन्यते॥"],
+      "note": "= अहंकार में इंसान सोचता है, “करने वाला मैं हूँ”",
+      "bg": { "src": "img/krishna-arjun-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "lines": [{ "voice": "कृष्ण कहते हैं, सारे काम, प्रकृति के गुणों से होते हैं।" }],
+      "pics": [{ "src": "img/krishna-face-cut.png", "h": 820, "bottom": 1700, "glow": "gold" }],
+      "beats": [
+        { "at": "start", "sa": "प्रकृतेः क्रियमाणानि", "saSize": 80, "rows": [{ "t": "{g:सारे काम}", "size": 112, "at": "सारे" }, { "t": "{g:प्रकृति के गुणों} से", "size": 88, "at": "प्रकृति" }] }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "mood": "red",
+      "lines": [{ "voice": "पर अहंकार में फँसा इंसान सोचता है, कर्ताहमिति, ये सब मैंने किया।" }],
+      "pics": [{ "src": "img/trophy-alone.jpg", "h": 1080, "bottom": 1780, "full": true, "fx": [{ "type": "zoom", "at": "कर्ताहमिति", "to": "किया" }] }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{R:अहंकार} में फँसा इंसान", "size": 88 }, { "t": "{d:सोचता है}", "size": 66, "at": "सोचता" }] },
+        { "at": "कर्ताहमिति-2", "sa": "कर्ताहमिति", "saSize": 120, "rows": [{ "t": "“ये सब {r:मैंने} किया”", "size": 96, "at": "ये" }] }
+      ]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "lines": [{ "voice": "मान लो आपको प्रमोशन मिला।" }, { "voice": "उसमें आपकी मेहनत, बॉस का भरोसा, टीम का काम, और सही वक्त, सब जुड़ा है।" }],
+      "widgets": [
+        {
+          "type": "pie", "top": 860, "r": 240, "at": "प्रमोशन", "center": "प्रमोशन",
+          "items": [
+            { "label": "आपकी मेहनत", "at": "प्रमोशन", "tone": "gold" },
+            { "label": "बॉस का भरोसा", "at": "बॉस", "tone": "blue" },
+            { "label": "टीम का काम", "at": "टीम", "tone": "green" },
+            { "label": "सही वक्त", "at": "सही", "tone": "saffron" }
+          ]
+        }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{d:मान लो}", "size": 66 }, { "t": "आपको {g:प्रमोशन} मिला", "size": 96, "at": "आपको" }] },
+        { "at": "सब-4", "rows": [{ "t": "{g:सब} जुड़ा है", "size": 110 }] }
+      ]
+    },
+    {
+      "id": "s6",
+      "kind": "beats",
+      "backdrop": "img/bg/bg-room-day.jpg",
+      "lines": [{ "voice": "अगली जीत पर, किसी एक इंसान को नाम लेकर थैंक यू बोलो।" }],
+      "pics": [{ "src": "img/trophy-team.jpg", "h": 1000, "bottom": 1800, "full": true }],
+      "widgets": [{ "type": "typeline", "top": 600, "at": "थैंक-4", "text": "थैंक यू, नेहा!", "size": 60, "label": "नाम लेकर" }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "अगली {g:जीत} पर", "size": 100 }, { "t": "{E:नाम लेकर} थैंक यू", "size": 92, "at": "नाम" }] }
+      ],
+      "sfx": [{ "at": "बोलो", "name": "ding", "vol": 0.5 }]
+    },
+    {
+      "id": "s7",
+      "kind": "cta",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जो हर बात का क्रेडिट खुद ले लेता है।" },
+        { "voice": "और कमेंट में बताओ, आपकी पिछली जीत में किसका हाथ था?" },
+        { "voice": "अगले एपिसोड में, हज़ारों में कोई एक, वो कौन है?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जो हर बात का क्रेडिट खुद ले लेता है", "pic": { "src": "img/trophy-alone.jpg", "h": 760, "bottom": 1560, "full": true } },
+      "comment": { "q": "आपकी पिछली जीत में किसका हाथ था?", "typed": "मम्मी पापा का" },
+      "next": { "ep": "#23", "rows": ["हज़ारों में कोई एक,", "वो कौन है?"], "pic": { "src": "img/crowd-gold.jpg", "h": 620, "bottom": 1240, "full": true } }
+    }
+  ]
+}

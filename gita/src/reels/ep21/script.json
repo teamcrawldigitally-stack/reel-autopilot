@@ -1,0 +1,469 @@
+{
+ "id": "ep21",
+ "ep": 21,
+ "tag": "#21",
+ "style": "v2",
+ "backdrop": "img/bg/bg-temple.jpg",
+ "mood": "saffron",
+ "shlok": "9.26",
+ "title": "पत्रं पुष्पं फलं तोयं",
+ "voice": {
+  "speaker": "aditya_hi_conversational",
+  "model": "bulbul:v4-flash",
+  "pace": 1.15,
+  "lang": "hi-IN"
+ },
+ "timing": {
+  "gap": 0.12,
+  "tail": 0.22,
+  "endHold": 0.8
+ },
+ "facts": "9.26 पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति। तदहं भक्त्युपहृतमश्नामि प्रयतात्मनः॥ The ₹0 tags and the phone tip are our framing, not Gita words.",
+ "pictures": {
+  "plate": "Simple round brass puja plate with one peepal leaf, one marigold, one mango and a small brass pot of water; pure black background, 9:16",
+  "plate-empty": "Same brass plate, empty; pure black background, 9:16"
+ },
+ "cover": {
+  "pic": {
+   "src": "img/plate4-cut.png",
+   "h": 600,
+   "bottom": 1560
+  },
+  "rows": [
+   "भगवान को {g:क्या चाहिए?}",
+   {
+    "t": "{d:गीता में 4 चीज़ें, चारों फ़्री}",
+    "size": 66
+   }
+  ],
+  "pill": {
+   "text": "गीता 9.26",
+   "tone": "gold"
+  }
+ },
+ "scenes": [
+  {
+   "id": "s1",
+   "kind": "beats",
+   "lines": [
+    {
+     "voice": "भगवान को क्या चाहिए?"
+    },
+    {
+     "voice": "गीता में चार चीज़ें, और चारों फ़्री।"
+    }
+   ],
+   "pics": [
+    {
+     "src": "img/plate0-cut.png",
+     "h": 600,
+     "bottom": 1600,
+     "glow": "saffron",
+     "drift": 0
+    },
+    {
+     "src": "img/plate4-cut.png",
+     "h": 600,
+     "bottom": 1600,
+     "glow": "none",
+     "halo": false,
+     "still": true,
+     "drift": 0,
+     "at": "चारों-2"
+    }
+   ],
+   "beats": [
+    {
+     "at": "start",
+     "rows": [
+      {
+       "t": "भगवान को",
+       "size": 100
+      },
+      {
+       "t": "{g:क्या चाहिए?}",
+       "size": 130
+      }
+     ]
+    },
+    {
+     "at": "गीता-2",
+     "rows": [
+      {
+       "t": "गीता में {n:4} चीज़ें",
+       "size": 100
+      },
+      {
+       "t": "चारों {G:फ़्री}",
+       "size": 116,
+       "at": "चारों"
+      }
+     ]
+    }
+   ],
+   "sfx": [
+    {
+     "at": "चारों",
+     "name": "ding",
+     "vol": 0.5
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "kind": "source",
+   "backdrop": "img/bg/bg-cosmos.jpg",
+   "mood": "gold",
+   "lines": [
+    {
+     "voice": "गीता श्लोक सीरीज़, एपिसोड इक्कीस।"
+    },
+    {
+     "voice": "अध्याय नौ, श्लोक छब्बीस।"
+    }
+   ],
+   "ep": 21,
+   "ref": "9.26",
+   "chapter": "9",
+   "verse": "26",
+   "speaker": "श्रीभगवानुवाच",
+   "shloka": [
+    "{पत्रं पुष्पं फलं तोयं}",
+    "यो मे {भक्त्या} प्रयच्छति।",
+    "तदहं भक्त्युपहृतम्",
+    "अश्नामि प्रयतात्मनः॥"
+   ],
+   "note": "= पत्ता, फूल, फल, पानी, बस प्यार से",
+   "bg": {
+    "src": "img/krishna-face-cut.png",
+    "h": 1100,
+    "bottom": 1660
+   }
+  },
+  {
+   "id": "s3",
+   "kind": "beats",
+   "lines": [
+    {
+     "voice": "पत्रं पुष्पं फलं तोयं।"
+    },
+    {
+     "voice": "एक पत्ता, एक फूल, एक फल, और थोड़ा पानी।"
+    }
+   ],
+   "pics": [
+    {
+     "src": "img/plate0-cut.png",
+     "h": 560,
+     "bottom": 1640,
+     "glow": "saffron",
+     "drift": 0
+    },
+    {
+     "src": "img/plate1-cut.png",
+     "h": 560,
+     "bottom": 1640,
+     "glow": "none",
+     "halo": false,
+     "still": true,
+     "drift": 0,
+     "at": "पत्ता-2"
+    },
+    {
+     "src": "img/plate2-cut.png",
+     "h": 560,
+     "bottom": 1640,
+     "glow": "none",
+     "halo": false,
+     "still": true,
+     "drift": 0,
+     "at": "फूल-2"
+    },
+    {
+     "src": "img/plate3-cut.png",
+     "h": 560,
+     "bottom": 1640,
+     "glow": "none",
+     "halo": false,
+     "still": true,
+     "drift": 0,
+     "at": "फल#2-2"
+    },
+    {
+     "src": "img/plate4-cut.png",
+     "h": 560,
+     "bottom": 1640,
+     "glow": "none",
+     "halo": false,
+     "still": true,
+     "drift": 0,
+     "at": "पानी-2"
+    }
+   ],
+   "beats": [
+    {
+     "at": "start",
+     "sa": "पत्रं पुष्पं फलं तोयं",
+     "saSize": 96,
+     "rows": [
+      {
+       "t": "{d:1/4} पत्ता {G:₹0}",
+       "size": 76,
+       "at": "पत्ता"
+      },
+      {
+       "t": "{d:2/4} फूल {G:₹0}",
+       "size": 76,
+       "at": "फूल"
+      },
+      {
+       "t": "{d:3/4} फल {G:₹0}",
+       "size": 76,
+       "at": "फल#2"
+      },
+      {
+       "t": "{d:4/4} पानी {G:₹0}",
+       "size": 76,
+       "at": "पानी"
+      }
+     ]
+    }
+   ],
+   "sfx": [
+    {
+     "at": "पत्ता",
+     "name": "pop",
+     "vol": 0.5
+    },
+    {
+     "at": "फूल",
+     "name": "pop",
+     "vol": 0.5
+    },
+    {
+     "at": "फल#2",
+     "name": "pop",
+     "vol": 0.5
+    },
+    {
+     "at": "पानी",
+     "name": "pop",
+     "vol": 0.5
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "kind": "beats",
+   "mood": "gold",
+   "lines": [
+    {
+     "voice": "यो मे भक्त्या प्रयच्छति।"
+    },
+    {
+     "voice": "जो भी मुझे प्यार से देता है, मैं उसे स्वीकार करता हूँ।"
+    }
+   ],
+   "pics": [
+    {
+     "src": "img/krishna-face-cut.png",
+     "h": 820,
+     "bottom": 1700,
+     "glow": "gold"
+    }
+   ],
+   "beats": [
+    {
+     "at": "start",
+     "sa": "यो मे भक्त्या प्रयच्छति",
+     "saSize": 92,
+     "rows": [
+      {
+       "t": "जो भी मुझे {g:प्यार से} देता है",
+       "size": 80,
+       "at": "जो"
+      },
+      {
+       "t": "मैं उसे {E:स्वीकार} करता हूँ",
+       "size": 86,
+       "at": "मैं"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "kind": "beats",
+   "backdrop": "img/bg/bg-cosmos.jpg",
+   "mood": "gold",
+   "lines": [
+    {
+     "voice": "यानी कीमत नहीं, भाव गिना जाता है।"
+    },
+    {
+     "voice": "शब्द है भक्त्या, प्यार से।"
+    }
+   ],
+   "widgets": [
+    {
+     "type": "imgcards",
+     "top": 760,
+     "size": 220,
+     "at": -20,
+     "out": "शब्द-4",
+     "items": [
+      {
+       "src": "img/card-leaf.jpg",
+       "label": "₹0",
+       "sub": "पत्ता",
+       "at": -20,
+       "tone": "green"
+      },
+      {
+       "src": "img/card-flower.jpg",
+       "label": "₹0",
+       "sub": "फूल",
+       "at": -20,
+       "tone": "green"
+      },
+      {
+       "src": "img/card-mango.jpg",
+       "label": "₹0",
+       "sub": "फल",
+       "at": -20,
+       "tone": "green"
+      },
+      {
+       "src": "img/card-pot.jpg",
+       "label": "₹0",
+       "sub": "पानी",
+       "at": -20,
+       "tone": "green"
+      }
+     ]
+    }
+   ],
+   "pics": [
+    {
+     "src": "img/plate4-cut.png",
+     "h": 600,
+     "bottom": 1660,
+     "glow": "gold",
+     "at": "शब्द-4"
+    }
+   ],
+   "beats": [
+    {
+     "at": "start",
+     "rows": [
+      {
+       "t": "{x:कीमत} नहीं",
+       "size": 110,
+       "strike": "नहीं"
+      },
+      {
+       "t": "{g:भाव} गिना जाता है",
+       "size": 100,
+       "at": "भाव"
+      }
+     ]
+    },
+    {
+     "at": "शब्द-2",
+     "sa": "भक्त्या",
+     "saSize": 150,
+     "rows": [
+      {
+       "t": "= {g:प्यार से}",
+       "size": 110,
+       "at": "प्यार"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "kind": "beats",
+   "lines": [
+    {
+     "voice": "आज पूजा में जो भी चढ़ाओ, बस उतनी देर मन वहीं रखो, फ़ोन पर नहीं।"
+    }
+   ],
+   "pics": [
+    {
+     "src": "img/plate4-cut.png",
+     "h": 560,
+     "bottom": 1660,
+     "glow": "saffron"
+    }
+   ],
+   "beats": [
+    {
+     "at": "start",
+     "rows": [
+      {
+       "t": "आज जो भी {g:चढ़ाओ}",
+       "size": 96
+      },
+      {
+       "t": "उतनी देर {E:मन वहीं}",
+       "size": 100,
+       "at": "उतनी"
+      },
+      {
+       "t": "{R:फ़ोन} पर नहीं",
+       "size": 96,
+       "at": "फ़ोन"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "kind": "cta",
+   "lines": [
+    {
+     "voice": "ये रील उसे भेजो, जो सोचता है पूजा में बहुत ख़र्चा होता है।"
+    },
+    {
+     "voice": "और कमेंट में बताओ, आप भगवान को सबसे पहले क्या चढ़ाते हो?"
+    },
+    {
+     "voice": "अगले एपिसोड में, सब मैंने किया, ये सोच गलत क्यों है?"
+    },
+    {
+     "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।"
+    }
+   ],
+   "share": {
+    "title": "उसे भेजो",
+    "sub": "जो सोचता है पूजा में बहुत ख़र्चा होता है",
+    "pic": {
+     "src": "img/plate4-cut.png",
+     "h": 440,
+     "bottom": 1480
+    }
+   },
+   "comment": {
+    "q": "आप भगवान को सबसे पहले क्या चढ़ाते हो?",
+    "typed": "रोज़ सुबह एक फूल"
+   },
+   "next": {
+    "ep": "#22",
+    "rows": [
+     "“सब मैंने किया”",
+     "ये सोच गलत क्यों?"
+    ],
+    "pic": {
+     "src": "img/trophy-alone.jpg",
+     "h": 600,
+     "bottom": 1240,
+     "full": true
+    }
+   }
+  }
+ ]
+}

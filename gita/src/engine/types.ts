@@ -32,6 +32,8 @@ export type Pic = {
   front?: boolean;
   fx?: { type: "shake" | "redflash" | "glitch" | "gray" | "zoom" | "flip" | "rotate"; at: Cue; to?: Cue; deg?: number }[];
   pivot?: [number, number]; // rotation centre (default: picture centre)
+  still?: boolean; // layer swap: no entrance move/scale/blur (stack same-size stages)
+  drift?: number; // slow zoom of the cut-out (default 0.04)
 };
 
 export type Beat = {

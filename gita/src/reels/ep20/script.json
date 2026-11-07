@@ -1,0 +1,123 @@
+{
+  "id": "ep20",
+  "ep": 20,
+  "tag": "#20",
+  "style": "v2",
+  "backdrop": "img/bg/bg-room-night.jpg",
+  "mood": "blue",
+  "shlok": "4.40",
+  "title": "हर बात पर शक",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "facts": "4.40 अज्ञश्चाश्रद्दधानश्च संशयात्मा विनश्यति। नायं लोकोऽस्ति न परो न सुखं संशयात्मनः॥ Arjuna asks Krishna many questions across the Gita (2.7, 2.54, 3.1, 3.36, 6.37, 10.17 …).",
+  "pictures": {
+    "man-crossroads": "Same young man confused at a crossroads, scratching his head, wooden signpost with blank boards, small glowing question marks; pure black background, 9:16",
+    "man-walk-path": "Same young man walking forward confidently on a glowing golden path; pure black background, 9:16"
+  },
+  "cover": {
+    "pic": { "src": "img/man-crossroads-cut.png", "h": 1000, "bottom": 1660 },
+    "rows": ["हर बात पर {g:शक}?", { "t": "{d:संशयात्मा विनश्यति}", "size": 72 }],
+    "pill": { "text": "गीता 4.40", "tone": "gold" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [{ "voice": "हर बात पर शक करते हो?" }, { "voice": "गीता कहती है, संशयात्मा विनश्यति।" }],
+      "pics": [{ "src": "img/man-crossroads-cut.png", "h": 1000, "bottom": 1700, "glow": "blue" }],
+      "widgets": [{ "type": "qmarks", "x": 380, "y": 880, "r": 250, "size": 78, "steps": [{ "at": "हर", "n": 1 }, { "at": "शक", "n": 4 }, { "at": "करते", "n": 16 }], "out": "गीता-4" }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "हर बात पर {r:शक}", "size": 110 }, { "t": "करते हो?", "size": 100, "at": "करते" }] },
+        { "at": "गीता-2", "rows": [{ "t": "{g:गीता} कहती है", "size": 84 }], "sa": "संशयात्मा विनश्यति", "saSize": 100 }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "mood": "gold",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड बीस।" }, { "voice": "अध्याय चार, श्लोक चालीस।" }],
+      "ep": 20,
+      "ref": "4.40",
+      "chapter": "4",
+      "verse": "40",
+      "speaker": "श्रीभगवानुवाच",
+      "shloka": ["{अज्ञश्चाश्रद्दधानश्च}", "{संशयात्मा विनश्यति}।", "नायं लोकोऽस्ति न परो", "न सुखं संशयात्मनः॥"],
+      "note": "= हर बात पर शक करने वाला खुद को खत्म कर लेता है",
+      "bg": { "src": "img/man-crossroads-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "mood": "red",
+      "lines": [{ "voice": "जो न जानता है, न भरोसा करता है, और हर चीज़ पर शक करता है, वो खुद को खत्म कर लेता है।" }],
+      "pics": [{ "src": "img/man-crossroads-cut.png", "h": 780, "bottom": 1700, "glow": "red", "fx": [{ "type": "gray", "at": "खत्म", "to": "खत्म+20" }, { "type": "shake", "at": "खत्म", "to": "खत्म+14" }] }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{s:अज्ञ} = न जानता", "size": 84, "at": "जानता" }, { "t": "{s:अश्रद्दधान} = न भरोसा", "size": 84, "at": "भरोसा" }, { "t": "{R:संशयात्मा} = हर चीज़ पर शक", "size": 76, "at": "हर" }] },
+        { "at": "वो-2", "rows": [{ "t": "वो {R:खुद को खत्म}", "size": 104 }, { "t": "कर लेता है", "size": 92, "at": "लेता" }] }
+      ],
+      "sfx": [{ "at": "खत्म", "name": "bass", "vol": 0.6 }]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "mood": "red",
+      "lines": [{ "voice": "शक करने वाले के लिए, न ये दुनिया, न अगली, और न सुख।" }],
+      "pics": [{ "src": "img/man-crossroads-cut.png", "h": 620, "bottom": 1720, "glow": "none", "dim": 0.25, "fx": [{ "type": "gray", "at": "start", "to": "start+20" }] }],
+      "beats": [
+        { "at": "start", "sa": "नायं लोकोऽस्ति न परो न सुखं", "saSize": 70, "rows": [{ "t": "{d:शक करने वाले के लिए}", "size": 66 }] },
+        { "at": "ये-4", "rows": [{ "t": "{x:ये दुनिया}", "size": 104, "strike": "ये+10" }, { "t": "{x:अगली दुनिया}", "size": 104, "at": "अगली", "strike": "अगली+10" }, { "t": "{x:सुख}", "size": 120, "at": "सुख", "strike": "सुख+8" }] }
+      ]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "backdrop": "img/bg/bg-kurukshetra.jpg",
+      "mood": "gold",
+      "lines": [{ "voice": "सवाल पूछना गलत नहीं, अर्जुन ने भी पूछे।" }, { "voice": "गलत है, जवाब मिलने के बाद भी शक में अटके रहना।" }],
+      "pics": [
+        { "src": "img/krishna-arjun-cut.png", "h": 900, "bottom": 1700, "glow": "gold", "out": "गलत#2-4" },
+        { "src": "img/man-crossroads-cut.png", "h": 820, "bottom": 1700, "glow": "red", "at": "गलत#2-6" }
+      ],
+      "widgets": [
+        { "type": "qmarks", "x": 735, "y": 1040, "size": 84, "steps": [{ "at": "सवाल", "n": 1 }], "tick": "अर्जुन+4", "out": "गलत#2-4" },
+        { "type": "qmarks", "at": "शक-6", "x": 400, "y": 1000, "r": 220, "size": 70, "tone": "red", "steps": [{ "at": "शक", "n": 16 }] }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "सवाल पूछना {E:गलत नहीं}", "size": 92 }, { "t": "{g:अर्जुन} ने भी पूछे", "size": 92, "at": "अर्जुन" }] },
+        { "at": "गलत#2-2", "rows": [{ "t": "{R:गलत} है", "size": 110 }, { "t": "जवाब के बाद भी", "size": 84, "at": "जवाब" }, { "t": "{R:शक में अटके} रहना", "size": 92, "at": "शक" }] }
+      ]
+    },
+    {
+      "id": "s6",
+      "kind": "beats",
+      "backdrop": "img/bg/bg-room-day.jpg",
+      "mood": "gold",
+      "lines": [{ "voice": "आज वो एक फ़ैसला, जिसे हफ़्तों से टाल रहे हो, जानकारी लो और ले लो।" }],
+      "pics": [
+        { "src": "img/man-crossroads-cut.png", "h": 760, "bottom": 1700, "glow": "blue", "out": "जानकारी-4" },
+        { "src": "img/man-walk-path-cut.png", "h": 860, "bottom": 1720, "glow": "gold", "at": "जानकारी-4", "from": "left" }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "आज {g:एक फ़ैसला}", "size": 110 }, { "t": "{d:जिसे हफ़्तों से टाल रहे हो}", "size": 66, "at": "जिसे" }] },
+        { "at": "जानकारी-2", "rows": [{ "t": "{E:जानकारी लो}", "size": 104 }, { "t": "और {E:ले लो}", "size": 116, "at": "और" }] }
+      ],
+      "sfx": [{ "at": "ले", "name": "check", "vol": 0.6 }]
+    },
+    {
+      "id": "s7",
+      "kind": "cta",
+      "backdrop": "img/bg/bg-temple.jpg",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जो हर बात पर शक करता है।" },
+        { "voice": "और कमेंट में बताओ, आप किस फ़ैसले पर अटके हो?" },
+        { "voice": "अगले एपिसोड में, भगवान को असल में क्या चाहिए?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जो हर बात पर शक करता है", "pic": { "src": "img/man-crossroads-cut.png", "h": 640, "bottom": 1500, "glow": "blue" } },
+      "comment": { "q": "आप किस फ़ैसले पर अटके हो?", "typed": "नौकरी बदलूँ या नहीं" },
+      "next": { "ep": "#21", "rows": ["भगवान को असल में", "क्या चाहिए?"], "pic": { "src": "img/plate-cut.png", "h": 480, "bottom": 1180, "glow": "gold" } }
+    }
+  ]
+}

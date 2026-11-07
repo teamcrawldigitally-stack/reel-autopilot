@@ -840,3 +840,165 @@ const ImgCards: React.FC<{ w: ImgCardsW }> = ({ w }) => {
   );
 };
 registerWidget("imgcards", ImgCards as React.FC<{ w: never }>);
+
+/* ---------- qmarks: question marks that multiply around a head, and can turn into one tick ---------- */
+type QMarksW = Widget & { x?: number; y?: number; r?: number; at?: Cue; out?: Cue; steps: { at: Cue; n: number }[]; tick?: Cue; tone?: Tone; size?: number };
+const QMarks: React.FC<{ w: QMarksW }> = ({ w }) => {
+  const c = useCue();
+  const { o, f } = useShow(w, -10);
+  const x0 = w.x ?? 540;
+  const y0 = w.y ?? 900;
+  const R = w.r ?? 260;
+  const size = w.size ?? 72;
+  const steps = w.steps.map((s) => ({ a: c(s.at), n: s.n }));
+  const N = Math.max(...steps.map((s) => s.n));
+  const tk = w.tick !== undefined ? c(w.tick) : 1e9;
+  const tq = ease(f, tk, tk + 14);
+  const col = toneColor(w.tone ?? "gold");
+  const green = toneColor("green");
+  const marks: React.ReactNode[] = [];
+  let prev = 0;
+  for (const st of steps) {
+    for (let i = prev; i < st.n; i++) {
+      const a = st.a + (i - prev) * 1.2;
+      const q = ease(f, a, a + 9);
+      const ang = i * 2.39996 - Math.PI / 2;
+      const rad = N <= 1 ? 0 : R * (0.32 + 0.68 * Math.sqrt((i + 0.5) / N));
+      let x = x0 + Math.cos(ang) * rad;
+      let y = y0 + Math.sin(ang) * rad * 0.8 + Math.sin(f / 18 + i * 1.7) * 7;
+      const rot = (((i * 37) % 30) - 15) * (1 - (i === 0 ? tq : 0));
+      let op = q;
+      let s = (0.6 + 0.4 * q) * (i === 0 ? 1 : 0.62 + 0.38 * (((i * 53) % 10) / 10));
+      if (i === 0) { x = x + (x0 - x) * tq; y = y + (y0 - y) * tq; s *= 1 + 0.35 * tq; } else op *= 1 - tq;
+      const isTick = i === 0 && tq > 0.5;
+      marks.push(
+        <div key={i} style={{ position: "absolute", left: x, top: y, transform: `translate(-50%,-50%) rotate(${rot}deg) scale(${s * (isTick ? 0.6 + 0.4 * ease(f, tk + 7, tk + 16) : 1)})`, opacity: op, ...num(size, isTick ? green : col), textShadow: `0 0 26px ${isTick ? toneGlow("green", 0.8) : toneGlow(w.tone ?? "gold", 0.7)}` }}>
+          {isTick ? "✓" : "?"}
+        </div>,
+      );
+    }
+    prev = st.n;
+  }
+  return (
+    <div style={{ position: "absolute", inset: 0, opacity: o }}>
+      {marks}
+      {steps.map((st, k) => <Sfx key={k} at={st.a} name="pop" vol={0.45} />)}
+      {w.tick !== undefined && <Sfx at={tk + 6} name="check" vol={0.6} />}
+    </div>
+  );
+};
+registerWidget("qmarks", QMarks as React.FC<{ w: never }>);
+
+/* ---------- pie: a credit ring whose first slice shrinks as more slices arrive ---------- */
+type PieW = Widget & { top?: number; r?: number; at?: Cue; out?: Cue; center?: string; items: { label: string; at: Cue; tone?: Tone }[] };
+const Pie: React.FC<{ w: PieW }> = ({ w }) => {
+  const c = useCue();
+  const { o, p, f, at } = useShow(w, -10);
+  const r = w.r ?? 230;
+  const cx = 540;
+  const cy = (w.top ?? 860) + r;
+  const th = r * 0.36;
+  const ws = w.items.map((it, i) => (i === 0 ? 1 : ease(f, c(it.at), c(it.at) + 14)));
+  const tot = ws.reduce((a, b) => a + b, 0);
+  let a0 = -Math.PI / 2;
+  const arcs: React.ReactNode[] = [];
+  const labels: React.ReactNode[] = [];
+  const pt = (ang: number, rad: number) => [cx + Math.cos(ang) * rad, cy + Math.sin(ang) * rad];
+  w.items.forEach((it, i) => {
+    const sweep = (ws[i] / tot) * Math.PI * 2 * p;
+    if (ws[i] <= 0.001) return;
+    const a1 = a0 + sweep;
+    const ro = r, ri = r - th;
+    const big = sweep > Math.PI ? 1 : 0;
+    const gap = 0.012;
+    const s0 = a0 + gap, s1 = Math.max(s0 + 0.001, a1 - gap);
+    const [x0, y0] = pt(s0, ro), [x1, y1] = pt(s1, ro), [x2, y2] = pt(s1, ri), [x3, y3] = pt(s0, ri);
+    const d = sweep >= Math.PI * 2 - 0.02
+      ? `M ${cx} ${cy - ro} A ${ro} ${ro} 0 1 1 ${cx - 0.01} ${cy - ro} L ${cx - 0.01} ${cy - ri} A ${ri} ${ri} 0 1 0 ${cx} ${cy - ri} Z`
+      : `M ${x0} ${y0} A ${ro} ${ro} 0 ${big} 1 ${x1} ${y1} L ${x2} ${y2} A ${ri} ${ri} 0 ${big} 0 ${x3} ${y3} Z`;
+    const col = toneColor(it.tone ?? "gold");
+    arcs.push(<path key={i} d={d} fill={col} opacity={0.92} style={{ filter: `drop-shadow(0 0 18px ${toneGlow(it.tone ?? "gold", 0.5)})` }} />);
+    const mid = (a0 + a1) / 2;
+    const [lx, ly] = pt(mid, r + 34);
+    const right = Math.cos(mid) >= 0;
+    labels.push(
+      <div key={i} style={{ position: "absolute", left: lx, top: ly, transform: `translate(${right ? "0" : "-100%"}, -50%)`, opacity: Math.min(1, ws[i] * 1.4) * p, textAlign: right ? "left" : "right", whiteSpace: "nowrap" }}>
+        <div style={deva(52, col, 800)}>{it.label}</div>
+      </div>,
+    );
+    a0 = a1;
+  });
+  return (
+    <div style={{ position: "absolute", inset: 0, opacity: o }}>
+      <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>{arcs}</svg>
+      {labels}
+      {w.center && <div style={{ position: "absolute", left: cx, top: cy, transform: "translate(-50%,-50%)", ...deva(46, G.cream, 800), opacity: p, textAlign: "center", width: (r - th) * 1.8 }}>{w.center}</div>}
+      {w.items.slice(1).map((it, i) => <Sfx key={i} at={c(it.at)} name="pop" vol={0.4} />)}
+      <Sfx at={at} name="whoosh" vol={0.3} />
+    </div>
+  );
+};
+registerWidget("pie", Pie as React.FC<{ w: never }>);
+
+/* ---------- gates: a row of check-gates that light up; a message can be stopped at one ---------- */
+type GatesW = Widget & { top?: number; at?: Cue; out?: Cue; counter?: boolean; items: { label: string; sub?: string; at: Cue }[]; msg?: { text: string; go: Cue; stopAt?: number } };
+const Gates: React.FC<{ w: GatesW }> = ({ w }) => {
+  const c = useCue();
+  const { p, o, f } = useShow(w, -20);
+  const n = w.items.length;
+  const gw = 200;
+  const gap = 34;
+  const total = n * gw + (n - 1) * gap;
+  const left = 540 - total / 2;
+  const top = w.top ?? 820;
+  const gh = 250;
+  const ats = w.items.map((it) => c(it.at));
+  const lit = ats.filter((a) => f >= a).length;
+  // message
+  let mx = 0, mq = 0, stopQ = 0, shake = 0;
+  const stop = w.msg?.stopAt;
+  if (w.msg) {
+    const go = c(w.msg.go);
+    mq = ease(f, go - 6, go + 4);
+    const x0 = -560;
+    const x1 = stop !== undefined ? left + stop * (gw + gap) - 6 : 1200;
+    const travel = ease(f, go, go + 22, "inOut");
+    mx = x0 + (x1 - x0) * travel;
+    stopQ = stop !== undefined ? ease(f, go + 20, go + 26) : 0;
+    if (stop !== undefined && f >= go + 20 && f < go + 40) shake = Math.sin((f - go) * 2.2) * (go + 40 - f) * 0.9;
+  }
+  return (
+    <div style={{ position: "absolute", inset: 0, opacity: p * o }}>
+      {w.counter !== false && lit > 0 && (
+        <div style={{ position: "absolute", left: 0, right: 0, top: top - 96, display: "flex", justifyContent: "center", alignItems: "baseline", gap: 8 }}>
+          <div style={num(72, G.green)}>{lit}</div>
+          <div style={num(44, G.dim)}>/ {n}</div>
+        </div>
+      )}
+      {w.items.map((it, i) => {
+        const q = ease(f, ats[i] - 3, ats[i] + 10);
+        const blocked = stop === i ? stopQ : 0;
+        const col = blocked > 0.5 ? G.red : q > 0.5 ? G.green : "rgba(255,244,223,0.28)";
+        const glow = blocked > 0.5 ? toneGlow("red", 0.7) : toneGlow("green", 0.6 * q);
+        const x = left + i * (gw + gap);
+        return (
+          <div key={i} style={{ position: "absolute", left: x, top, width: gw, display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ width: gw, height: gh, borderRadius: `${gw / 2}px ${gw / 2}px 18px 18px`, border: `7px solid ${col}`, boxShadow: q > 0.2 || blocked ? `0 0 ${30 + 30 * q}px ${glow}, inset 0 0 40px ${glow}` : undefined, background: "rgba(10,12,30,0.55)", display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${1 + 0.06 * Math.sin(Math.PI * q)})` }}>
+              <div style={num(blocked > 0.5 || q > 0.5 ? 110 : 80, col)}>{blocked > 0.5 ? "✕" : q > 0.5 ? "✓" : i + 1}</div>
+            </div>
+            <div style={{ ...sanskrit(36, q > 0.5 ? G.gold : G.dim), marginTop: 14, whiteSpace: "nowrap", opacity: 0.35 + 0.65 * q }}>{it.label}</div>
+            {it.sub && <div style={{ ...deva(34, G.cream, 700), opacity: q, textAlign: "center", width: gw + gap }}>{it.sub}</div>}
+            <Sfx at={ats[i] - 2} name="check" vol={0.45} />
+          </div>
+        );
+      })}
+      {w.msg && mq > 0 && (
+        <div style={{ position: "absolute", left: mx + shake, top: top - 120, opacity: mq, background: stopQ > 0.5 ? "rgba(120,20,30,0.92)" : "rgba(255,244,223,0.95)", color: stopQ > 0.5 ? "#fff" : "#1a1a2e", borderRadius: 26, padding: "14px 26px", ...deva(36, stopQ > 0.5 ? "#fff" : "#1a1a2e", 800), whiteSpace: "nowrap", boxShadow: stopQ > 0.5 ? `0 0 40px ${toneGlow("red", 0.7)}` : "0 10px 30px rgba(0,0,0,0.5)" }}>
+          {w.msg.text}
+        </div>
+      )}
+      {w.msg && stop !== undefined && <Sfx at={c(w.msg.go) + 20} name="error" vol={0.6} />}
+    </div>
+  );
+};
+registerWidget("gates", Gates as React.FC<{ w: never }>);

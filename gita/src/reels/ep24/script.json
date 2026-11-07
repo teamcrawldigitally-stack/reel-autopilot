@@ -1,0 +1,108 @@
+{
+  "id": "ep24",
+  "ep": 24,
+  "tag": "#24",
+  "style": "v2",
+  "backdrop": "img/bg/bg-room-night.jpg",
+  "mood": "gold",
+  "shlok": "17.15",
+  "title": "बोलने से पहले 4 चेक",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "facts": "17.15 अनुद्वेगकरं वाक्यं सत्यं प्रियहितं च यत्। स्वाध्यायाभ्यसनं चैव वाङ्मयं तप उच्यते॥ The angry-message count is our tip.",
+  "pictures": {
+    "man-angry-phone": "Same young man on a wooden stool angrily typing on his phone, red glow; black background, 9:16",
+    "man-calm-phone": "Same man, same stool, phone face down on his knee, eyes closed, calm, warm light; black background, 9:16"
+  },
+  "cover": {
+    "pic": { "src": "img/man-angry-phone-cut.png", "h": 900, "bottom": 1660 },
+    "rows": ["बोलने से पहले {g:4 चेक}", { "t": "{d:गीता का फ़िल्टर}", "size": 70 }],
+    "pill": { "text": "गीता 17.15", "tone": "gold" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [{ "voice": "बोलने से पहले चार चीज़ें चेक करो।" }, { "voice": "ये गीता का फ़िल्टर है।" }],
+      "widgets": [{ "type": "gates", "top": 860, "counter": false, "items": [{ "label": "अनुद्वेगकरं", "at": 99999 }, { "label": "सत्यं", "at": 99999 }, { "label": "प्रियं", "at": 99999 }, { "label": "हितं", "at": 99999 }] }],
+      "pics": [{ "src": "img/man-angry-phone-cut.png", "h": 560, "bottom": 1820, "glow": "red" }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "बोलने से पहले", "size": 96 }, { "t": "{n:4} चीज़ें {g:चेक} करो", "size": 104, "at": "चार" }] },
+        { "at": "ये-2", "rows": [{ "t": "ये गीता का {g:फ़िल्टर}", "size": 104 }] }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड चौबीस।" }, { "voice": "अध्याय सत्रह, श्लोक पंद्रह।" }],
+      "ep": 24,
+      "ref": "17.15",
+      "chapter": "17",
+      "verse": "15",
+      "speaker": "श्रीभगवानुवाच",
+      "shloka": ["{अनुद्वेगकरं वाक्यं}", "{सत्यं प्रियहितं} च यत्।", "स्वाध्यायाभ्यसनं चैव", "{वाङ्मयं तप} उच्यते॥"],
+      "note": "= ऐसी बात बोलना, वाणी का तप है",
+      "bg": { "src": "img/krishna-face-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "lines": [{ "voice": "अनुद्वेगकरं वाक्यं।" }, { "voice": "पहला, आपकी बात किसी को बेवजह परेशान न करे।" }],
+      "widgets": [{ "type": "gates", "top": 980, "items": [{ "label": "अनुद्वेगकरं", "sub": "परेशान न करे", "at": "पहला" }, { "label": "सत्यं", "sub": "सच हो", "at": 99999 }, { "label": "प्रियं", "sub": "अच्छी लगे", "at": 99999 }, { "label": "हितं", "sub": "भले की हो", "at": 99999 }] }],
+      "beats": [
+        { "at": "start", "sa": "अनुद्वेगकरं वाक्यं", "saSize": 90, "rows": [{ "t": "किसी को {R:बेवजह परेशान}", "size": 84, "at": "किसी" }, { "t": "{E:न करे}", "size": 110, "at": "न" }] }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "swipe": false,
+      "lines": [{ "voice": "दूसरा, सत्यं, बात सच हो।" }, { "voice": "तीसरा, प्रियं, सुनने में अच्छी हो।" }, { "voice": "चौथा, हितं, सामने वाले के भले की हो।" }],
+      "widgets": [{ "type": "gates", "top": 980, "items": [{ "label": "अनुद्वेगकरं", "sub": "परेशान न करे", "at": -30 }, { "label": "सत्यं", "sub": "सच हो", "at": "सत्यं" }, { "label": "प्रियं", "sub": "अच्छी लगे", "at": "प्रियं" }, { "label": "हितं", "sub": "भले की हो", "at": "हितं" }] }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{n:2} {g:सत्यं}", "size": 104 }, { "t": "बात {E:सच} हो", "size": 92, "at": "बात" }] },
+        { "at": "तीसरा-2", "rows": [{ "t": "{n:3} {g:प्रियं}", "size": 104 }, { "t": "सुनने में {E:अच्छी}", "size": 92, "at": "सुनने" }] },
+        { "at": "चौथा-2", "rows": [{ "t": "{n:4} {g:हितं}", "size": 104 }, { "t": "सामने वाले का {E:भला}", "size": 88, "at": "सामने" }] }
+      ]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "lines": [{ "voice": "कृष्ण इसे वाणी का तप कहते हैं।" }],
+      "pics": [{ "src": "img/krishna-face-cut.png", "h": 840, "bottom": 1700, "glow": "gold" }],
+      "beats": [
+        { "at": "start", "sa": "वाङ्मयं तप उच्यते", "saSize": 90, "rows": [{ "t": "{g:वाणी का तप}", "size": 124, "at": "वाणी" }] }
+      ]
+    },
+    {
+      "id": "s6",
+      "kind": "beats",
+      "mood": "red",
+      "lines": [{ "voice": "अगला गुस्से वाला मैसेज भेजने से पहले, गिनो, इन चार में से कितने पास होते हैं।" }],
+      "widgets": [{ "type": "gates", "top": 880, "counter": false, "items": [{ "label": "अनुद्वेगकरं", "at": -30 }, { "label": "सत्यं", "at": -30 }, { "label": "प्रियं", "at": -30 }, { "label": "हितं", "at": -30 }], "msg": { "text": "“तुम हमेशा ऐसा ही करते हो!”", "go": "मैसेज", "stopAt": 0 } }],
+      "pics": [
+        { "src": "img/man-angry-phone-cut.png", "h": 560, "bottom": 1820, "glow": "red", "out": "गिनो-4" },
+        { "src": "img/man-calm-phone-cut.png", "h": 560, "bottom": 1820, "glow": "gold", "at": "गिनो-4", "from": "none" }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "अगला {R:गुस्से वाला} मैसेज", "size": 88 }] },
+        { "at": "गिनो-2", "rows": [{ "t": "{g:गिनो}", "size": 110 }, { "t": "चार में से {E:कितने पास}?", "size": 88, "at": "चार" }] }
+      ]
+    },
+    {
+      "id": "s7",
+      "kind": "cta",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जो बिना सोचे बोल देता है।" },
+        { "voice": "और कमेंट में बताओ, चारों में से आपके लिए सबसे मुश्किल कौन सा है?" },
+        { "voice": "अगले एपिसोड में, इंसान का असली दुश्मन कौन है?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जो बिना सोचे बोल देता है", "pic": { "src": "img/man-angry-phone-cut.png", "h": 600, "bottom": 1500, "glow": "red" } },
+      "comment": { "q": "चारों में से आपके लिए सबसे मुश्किल कौन सा है?", "typed": "सच बोलूँ तो, प्रियं" },
+      "next": { "ep": "#25", "rows": ["इंसान का", "असली दुश्मन कौन?"], "pic": { "src": "img/man-shadow.jpg", "h": 620, "bottom": 1240, "full": true } }
+    }
+  ]
+}
