@@ -26,6 +26,8 @@ import { STORY16_FRAMES, Story16, Story16Cover } from "./story/Story16";
 import { STORY17_FRAMES, Story17, Story17Cover } from "./story/Story17";
 import { STORY18_FRAMES, Story18, Story18Cover } from "./story/Story18";
 import { STORY19_FRAMES, Story19, Story19Cover } from "./story/Story19";
+import { STORY20_FRAMES, Story20, Story20Cover } from "./story/Story20";
+import { STORY21_FRAMES, Story21, Story21Cover } from "./story/Story21";
 
 const fonts: [string, string, string][] = [
   ["Poppins", "Poppins-Regular.ttf", "400"],
@@ -91,6 +93,10 @@ export const Root: React.FC = () => (
     <Composition id="Story18Cover" component={Story18Cover} durationInFrames={1} {...V} />
     <Composition id="Story19" component={Story19} durationInFrames={STORY19_FRAMES} {...V} />
     <Composition id="Story19Cover" component={Story19Cover} durationInFrames={1} {...V} />
+    <Composition id="Story20" component={Story20} durationInFrames={STORY20_FRAMES} {...V} />
+    <Composition id="Story20Cover" component={Story20Cover} durationInFrames={1} {...V} />
+    <Composition id="Story21" component={Story21} durationInFrames={STORY21_FRAMES} {...V} />
+    <Composition id="Story21Cover" component={Story21Cover} durationInFrames={1} {...V} />
     {EPISODES.map(({ id, ep, timing }) => {
       const name = id.charAt(0).toUpperCase() + id.slice(1);
       return (

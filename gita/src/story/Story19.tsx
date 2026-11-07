@@ -13,6 +13,7 @@ const TL = createTimeline(timing);
 const DUCK = buildDuck(timing as never);
 const V = (n: string) => `story19/clips/${n}.mp4`;
 /** Clip sound levels (0 = muted). Set after checking each clip has no speech or music. */
+// phone: the sound check found music (14/15 chord windows), so it stays muted.
 const SND: Record<string, number> = { phone: 0 };
 type Cue = string | number;
 
