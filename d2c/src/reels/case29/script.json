@@ -1,7 +1,7 @@
 {
   "id": "case29-ugc",
   "tag": "CASE #29",
-  "look": "hisaab",
+  "look": "cartoon",
   "voice": {
     "speaker": "aditya_hi_conversational",
     "model": "bulbul:v4-flash",

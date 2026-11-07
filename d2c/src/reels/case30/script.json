@@ -1,7 +1,7 @@
 {
   "id": "case30-words",
   "tag": "CASE #30",
-  "look": "hisaab",
+  "look": "cartoon",
   "voice": {
     "speaker": "aditya_hi_conversational",
     "model": "bulbul:v4-flash",

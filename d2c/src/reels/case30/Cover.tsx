@@ -1,35 +1,25 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
-import { BP, BlueprintBg, DarkFinish, big, label } from "../../components/hisaab";
-import { Logo } from "../../components/kit";
-import { C } from "../../theme";
-import { Pill } from "../../components/hisaabArt";
-import { SayCard } from "./scenes";
-/** Cover: inside the 3:4 grid crop (y 240–1680). */
-export const Case30Cover: React.FC = () => (
-  <AbsoluteFill style={{ background: C.navy }}>
-    <BlueprintBg sheet="#30" />
-    <div style={{ position: "absolute", top: 290, left: 84, right: 84, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 14, background: "rgba(13,2,56,0.7)", border: `2.5px solid ${BP.line}`, borderRadius: 999, padding: "12px 26px 12px 20px", ...label(30, BP.text), letterSpacing: "0.1em" }}>
-        <div style={{ width: 18, height: 18, borderRadius: "50%", background: BP.red }} />
-        CASE #30
-      </div>
-      <div style={{ background: C.white, borderRadius: 16, padding: "6px 12px" }}>
-        <Logo width={160} />
-      </div>
-    </div>
-    <div style={{ position: "absolute", left: 84, top: 430 }}>
-      <SayCard who="AAPKA AD" text={<>"Premium quality"</>} w={620} dim />
-    </div>
-    <div style={{ position: "absolute", right: 84, top: 720 }}>
-      <SayCard who="CUSTOMER" text={<>"Baal girna <span style={{ color: BP.green }}>band hua</span>"</>} w={660} />
-    </div>
-    <div style={{ position: "absolute", left: 0, right: 0, top: 1150, display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
-      <div style={big(84)}>Kiske shabd</div>
-      <Pill size={104}>bechte hain?</Pill>
-    </div>
-    <div style={{ display: "none", ...label(10) }} />
+import { Person, PRIYA, ROHIT } from "../../components/Cartoon";
+import { Place } from "../../components/format";
+import { MoneyRoom } from "../../components/sets";
+import { ToonCover } from "../../components/toon";
+import { Say } from "./scenes";
 
-    <DarkFinish />
-  </AbsoluteFill>
+export const Case30Cover: React.FC = () => (
+  <ToonCover tag="CASE #30" line1="Aap vs customer ke shabd," line2="kaun bechega?" color="#6D4AFD" size1={64} size2={100} set={<MoneyRoom />}>
+    <div style={{ position: "absolute", left: 60, top: 820 }}>
+      <Say w={400}>"Premium quality"</Say>
+    </div>
+    <div style={{ position: "absolute", left: 560, top: 820 }}>
+      <Say w={440} tail="right" bg="#E3F6EA">
+        "Baal girna band hua!"
+      </Say>
+    </div>
+    <Place x={60} y={1010} s={0.62} z={5}>
+      <Person look={ROHIT} seed="r30c" track={[{ at: -100, pose: "megaphone", mood: "happy" }]} />
+    </Place>
+    <Place x={680} y={1010} s={0.62} z={5}>
+      <Person look={PRIYA} seed="p30c" track={[{ at: -100, pose: "cheer", mood: "grin" }]} />
+    </Place>
+  </ToonCover>
 );

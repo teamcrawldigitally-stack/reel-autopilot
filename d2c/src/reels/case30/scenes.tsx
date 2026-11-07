@@ -1,178 +1,204 @@
+// CASE #30 WORDS — cartoon look (remade 7 Nov 2026 from the dark-blue version; same script and voice).
 import React from "react";
 import { useCurrentFrame } from "remotion";
-import { BP, FigLabel, FixCard, HisaabCta, Hl, big, ease, glass, label } from "../../components/hisaab";
-import { Pill, SerumBottle, Stamp } from "../../components/hisaabArt";
-import { SceneShell, Sfx } from "../../components/kit";
+import { Person, PRIYA, ROHIT } from "../../components/Cartoon";
+import { Camera } from "../../components/fx";
+import { HookTitle, LINE, Place, makeMouth } from "../../components/format";
+import { Chip, SceneShell, Sfx } from "../../components/kit";
+import { QMarks, Stars } from "../../components/props";
+import { MoneyRoom } from "../../components/sets";
+import { CtaScene, FixBoard, Panel, Pop, Verdict, big, body, ramp } from "../../components/toon";
+import { Stamp } from "../../components/widgets";
 import { C } from "../../theme";
-import { cue } from "./timeline";
+import { T, cue } from "./timeline";
 
-type SP = { dur: number };
+const sceneMouth = makeMouth(T);
+const TAG = "CASE #30";
 
-/** Speech card: who + what they say. */
-export const SayCard: React.FC<{ who: string; text: React.ReactNode; color?: string; w?: number; dim?: boolean }> = ({ who, text, color = BP.text, w = 440, dim = false }) => (
-  <div style={{ width: w, ...glass, borderRadius: 28, padding: "24px 28px 20px", boxSizing: "border-box", border: `3px solid ${dim ? BP.lineSoft : color}`, opacity: dim ? 0.55 : 1 }}>
-    <div style={label(26, BP.dim)}>{who}</div>
-    <div style={{ fontFamily: big(10).fontFamily, fontWeight: 700, fontSize: 54, lineHeight: 1.12, color, marginTop: 10 }}>{text}</div>
+/** Speech bubble with a tail pointing down-left or down-right. */
+export const Say: React.FC<{ children: React.ReactNode; tail?: "left" | "right"; bg?: string; w?: number }> = ({ children, tail = "left", bg = C.white, w }) => (
+  <div style={{ position: "relative", width: w, background: bg, border: `6px solid ${LINE}`, borderRadius: 28, padding: "18px 26px 12px", boxShadow: `6px 6px 0 ${LINE}`, ...big(46), whiteSpace: "normal", lineHeight: 1.1 }}>
+    {children}
+    <svg width={60} height={50} viewBox="0 0 60 50" style={{ position: "absolute", bottom: -44, [tail]: 40, overflow: "visible" }}>
+      <path d={tail === "left" ? "M4 0 L14 44 L40 0" : "M56 0 L46 44 L20 0"} fill={bg} stroke={LINE} strokeWidth={6} strokeLinejoin="round" />
+      <rect x={tail === "left" ? 8 : 22} y={-10} width={30} height={14} fill={bg} />
+    </svg>
   </div>
 );
 
-/** Five stars. */
-const Stars: React.FC<{ s?: number }> = ({ s = 40 }) => (
-  <div style={{ display: "flex", gap: 6 }}>
-    {Array.from({ length: 5 }).map((_, i) => (
-      <svg key={i} width={s} height={s} viewBox="0 0 24 24">
-        <path d="M12 2 L15 9 L22 9.5 L16.5 14 L18.5 21 L12 17 L5.5 21 L7.5 14 L2 9.5 L9 9 Z" fill="#FFC94A" />
-      </svg>
-    ))}
-  </div>
-);
-
-/** Dark search bar with typed text. */
-const Search: React.FC<{ text: string; n: number; w?: number; color?: string; mark?: "x" | "ok" | null }> = ({ text, n, w = 912, color = BP.text, mark = null }) => {
+/* ===== S1: hook ===== */
+export const S1Hook: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
-  const shown = text.slice(0, Math.max(0, Math.min(text.length, Math.floor(n))));
-  const caret = Math.floor(f / 8) % 2 === 0 && n < text.length + 2;
-  return (
-    <div style={{ width: w, ...glass, borderRadius: 999, padding: "22px 34px 16px", display: "flex", alignItems: "center", gap: 20, boxSizing: "border-box", border: `3px solid ${mark === "x" ? BP.red : mark === "ok" ? BP.green : BP.lineSoft}` }}>
-      <svg width={44} height={44} viewBox="0 0 24 24">
-        <circle cx={10} cy={10} r={6.5} stroke={BP.dim} strokeWidth={2.5} fill="none" />
-        <line x1={15} y1={15} x2={21} y2={21} stroke={BP.dim} strokeWidth={2.5} strokeLinecap="round" />
-      </svg>
-      <div style={{ ...big(50, color), flex: 1 }}>
-        {shown}
-        <span style={{ opacity: caret ? 1 : 0, color: C.lavender }}>|</span>
-      </div>
-      {mark && <div style={big(54, mark === "x" ? BP.red : BP.green)}>{mark === "x" ? "✕" : "✓"}</div>}
-    </div>
-  );
-};
-
-/* s1 · hook (on screen from frame 0) */
-export const S1Hook: React.FC<SP> = ({ dur }) => {
-  const f = useCurrentFrame();
-  const cust = cue("s1", "customer");
+  const prem = cue("s1", "premium quality");
+  const baal = cue("s1", "baal");
   const kaun = cue("s1", "kaun");
   return (
-    <SceneShell dur={dur}>
-      <div style={{ position: "absolute", left: 84, top: 330 }}>
-        <SayCard who="AAPKA AD" text={<>"Premium quality"</>} w={600} dim={f >= cust} />
-      </div>
-      <div style={{ position: "absolute", right: 84, top: 600, opacity: 0.6 + 0.4 * ease(f, cust - 8, cust + 2), transform: `scale(${0.96 + 0.04 * ease(f, cust - 8, cust + 4)})`, transformOrigin: "right center" }}>
-        <SayCard who="CUSTOMER" text={<>"Baal girna <span style={{ color: BP.green }}>band hua</span>"</>} w={640} color={BP.text} />
-      </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 1060, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
-        <div style={big(74)}>Aap vs customer ke shabd,</div>
-        <Pill size={96}>kaun bechega?</Pill>
-      </div>
-      <Sfx at={cust - 6} name="pop" vol={0.4} />
-      <Sfx at={kaun - 4} name="swish" vol={0.35} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[kaun]} push={0.03}>
+        <MoneyRoom />
+        <HookTitle
+          top={300}
+          lines={[
+            { text: "Aap vs customer ke shabd,", at: -8, kind: "plain", size: 64, rot: -1 },
+            { text: "kaun bechega?", at: -6, kind: "violet", size: 100, rot: 2 },
+          ]}
+        />
+        <Pop at={prem - 2} style={{ position: "absolute", left: 60, top: 600, zIndex: 8 }}>
+          <Say w={420}>"Premium quality"</Say>
+        </Pop>
+        <Pop at={baal - 2} style={{ position: "absolute", left: 560, top: 600, zIndex: 8 }}>
+          <Say w={440} tail="right" bg="#E3F6EA">
+            "Baal girna band hua!"
+          </Say>
+        </Pop>
+        <Place x={60} y={800} s={0.7} z={5}>
+          <Person look={ROHIT} seed="r301" track={[{ at: -100, pose: "megaphone", mood: "happy" }, { at: kaun, pose: "shrug", mood: "neutral" }]} />
+        </Place>
+        <Place x={650} y={800} s={0.7} z={5}>
+          <Person look={PRIYA} seed="p301" track={[{ at: -100, pose: "idle", mood: "neutral" }, { at: baal, pose: "cheer", mood: "grin" }]} />
+        </Place>
+        <div style={{ position: "absolute", left: 470, top: 960, zIndex: 9, ...big(80, C.violet), opacity: ramp(f, kaun - 6, kaun + 2) }}>VS</div>
+        <div style={{ position: "absolute", left: 500, top: 820, zIndex: 9 }}>
+          <QMarks at={kaun} />
+        </div>
+      </Camera>
+      <Sfx at={1} name="whoosh" vol={0.4} />
+      <Sfx at={prem - 4} name="pop" vol={0.35} />
+      <Sfx at={baal - 4} name="pop" vol={0.35} />
+      <Sfx at={kaun - 2} name="ding" vol={0.35} />
     </SceneShell>
   );
 };
 
-/* s2 · Rohit's ad words: premium, natural, best quality */
-export const S2Ad: React.FC<SP> = ({ dur }) => {
-  const f = useCurrentFrame();
-  const words: [string, number][] = [
-    ["PREMIUM", cue("s2", "premium")],
-    ["NATURAL", cue("s2", "natural")],
-    ["BEST QUALITY", cue("s2", "best")],
+/* ===== S2: Rohit's ad words ===== */
+export const S2AdWords: React.FC<{ dur: number }> = ({ dur }) => {
+  const words = [
+    { t: "PREMIUM", at: cue("s2", "premium"), rot: -6, c: C.violet },
+    { t: "NATURAL", at: cue("s2", "natural"), rot: 4, c: C.green },
+    { t: "BEST QUALITY", at: cue("s2", "best"), rot: -3, c: "#F5A25D" },
   ];
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={1} text="ROHIT KA AD" />
-      <div style={{ position: "absolute", left: 84, top: 420, width: 400, height: 640, ...glass, borderRadius: 30, display: "flex", alignItems: "center", justifyContent: "center", opacity: ease(f, 0, 12) }}>
-        <SerumBottle h={420} />
-      </div>
-      <div style={{ position: "absolute", left: 530, top: 460, display: "flex", flexDirection: "column", gap: 34 }}>
-        {words.map(([w, at]) => (
-          <div key={w} style={{ opacity: ease(f, at - 6, at + 2), transform: `translateX(${(1 - ease(f, at - 6, at + 4)) * 50}px) rotate(-2deg)` }}>
-            <Pill size={64} bg={C.violet} rot={-2}>
-              {w}
-            </Pill>
-          </div>
-        ))}
-      </div>
-      <div style={{ position: "absolute", left: 530, top: 900, ...label(28, BP.dim), opacity: ease(f, words[2][1] + 6, words[2][1] + 16) }}>SAB BRAND YAHI BOLTE HAIN</div>
-      {words.map(([w, at]) => (
-        <Sfx key={w} at={at - 4} name="pop" vol={0.4} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={30} bg={C.white} color={LINE} border={LINE}>
+            ROHIT KE AD MEIN
+          </Chip>
+        </div>
+        <div style={{ position: "absolute", left: 80, top: 420, display: "flex", flexDirection: "column", gap: 34, zIndex: 6 }}>
+          {words.map((w) => (
+            <Pop key={w.t} at={w.at}>
+              <div style={{ ...big(76, C.white), background: w.c, border: `6px solid ${LINE}`, borderRadius: 20, padding: "12px 30px 2px", boxShadow: `7px 7px 0 ${LINE}`, transform: `rotate(${w.rot}deg)`, display: "inline-block" }}>{w.t}</div>
+            </Pop>
+          ))}
+        </div>
+        <Place x={620} y={720} s={0.8} z={5}>
+          <Person look={ROHIT} seed="r302" track={[{ at: -100, pose: "megaphone", mood: "shout" }]} />
+        </Place>
+      </Camera>
+      {words.map((w, i) => (
+        <Sfx key={i} at={w.at - 4} name="pop" vol={0.35} />
       ))}
     </SceneShell>
   );
 };
 
-/* s3 · Priya's review: hair fall reduced in 3 weeks */
-export const S3Review: React.FC<SP> = ({ dur }) => {
+/* ===== S3: Priya's review ===== */
+export const S3Review: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
-  const rev = cue("s3", "review");
-  const baal = cue("s3", "baal");
-  const hl = ease(f, baal - 4, baal + 10);
+  const review = cue("s3", "review");
+  const teen = cue("s3", "teen");
+  const kam = cue("s3", "baal");
+  const hl = (a: number) => ({ background: `linear-gradient(transparent 55%, rgba(255,214,0,${0.85 * ramp(f, a - 2, a + 8)}) 55%)` });
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={2} text="PRIYA KA REVIEW" />
-      <div style={{ position: "absolute", left: 84, right: 84, top: 440, ...glass, borderRadius: 30, padding: "34px 40px 30px", opacity: ease(f, rev - 8, rev + 2), transform: `translateY(${(1 - ease(f, rev - 8, rev + 4)) * 50}px)` }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div style={{ width: 80, height: 80, borderRadius: "50%", background: "#C98A60", display: "flex", alignItems: "center", justifyContent: "center", ...big(40, C.white) }}>P</div>
-          <div>
-            <div style={big(44)}>Priya S.</div>
-            <Stars s={36} />
-          </div>
-          <div style={{ marginLeft: "auto", ...label(24, BP.green) }}>VERIFIED BUYER</div>
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={30} bg={C.green} border={LINE}>
+            PRIYA KA REVIEW
+          </Chip>
         </div>
-        <div style={{ fontFamily: big(10).fontFamily, fontWeight: 700, fontSize: 62, lineHeight: 1.18, color: BP.text, marginTop: 30 }}>
-          "3 hafte mein{" "}
-          <span style={{ background: `rgba(43,212,107,${0.9 * hl})`, color: hl > 0.5 ? C.navy : BP.text, borderRadius: 12, padding: "0 10px" }}>baal girna kam hua</span>
-          "
-        </div>
-      </div>
-      <div style={{ position: "absolute", left: 84, top: 1000, ...label(28, BP.dim), opacity: ease(f, baal + 10, baal + 20) }}>YEH HAI ASLI AD COPY</div>
-      <Sfx at={rev - 6} name="pop" vol={0.4} />
-      <Sfx at={baal - 2} name="ding" vol={0.4} />
+        <Pop at={review} style={{ position: "absolute", left: 90, top: 410, zIndex: 6 }}>
+          <Panel style={{ width: 900, padding: "26px 34px" }}>
+            <Stars size={56} at={review} />
+            <div style={{ ...big(62), whiteSpace: "normal", lineHeight: 1.2, marginTop: 14 }}>
+              "<span style={hl(teen)}>Teen hafte mein</span> <span style={hl(kam)}>baal girna kam hua.</span>"
+            </div>
+            <div style={{ ...body(28, C.muted), marginTop: 12 }}>— Priya, verified buyer</div>
+          </Panel>
+        </Pop>
+        <Place x={330} y={820} s={0.7} z={5}>
+          <Person look={PRIYA} seed="p303" track={[{ at: -100, pose: "hold", mood: "happy" }, { at: kam, pose: "cheer", mood: "grin" }]} />
+        </Place>
+      </Camera>
+      <Sfx at={review - 4} name="pop" vol={0.35} />
+      <Sfx at={kam} name="ding" vol={0.35} />
     </SceneShell>
   );
 };
 
-/* s4 · customers search their problem, not your words */
-export const S4Search: React.FC<SP> = ({ dur }) => {
+/* ===== S4: customers search their problem, not your words ===== */
+export const S4Search: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
-  const shabd = cue("s4", "shabd");
-  const apni = cue("s4", "apni");
-  const a = "premium quality serum";
-  const b = "baal girna kaise roke";
+  const aapke = cue("s4", "aapke");
+  const nahi = cue("s4", "nahi");
+  const problem = cue("s4", "problem");
+  const q1 = "premium serum";
+  const q2 = "baal girna kaise roke";
+  const n1 = Math.round(q1.length * ramp(f, aapke - 4, aapke + 14));
+  const n2 = Math.round(q2.length * ramp(f, problem - 8, problem + 14));
+  const Bar: React.FC<{ text: string; ok: boolean; show: number }> = ({ text, ok, show }) => (
+    <Panel style={{ width: 760, padding: "18px 26px", display: "flex", alignItems: "center", gap: 18 }}>
+      <svg width={46} height={46} viewBox="0 0 46 46">
+        <circle cx={19} cy={19} r={14} fill="none" stroke={LINE} strokeWidth={6} />
+        <path d="M30 30 L42 42" stroke={LINE} strokeWidth={7} strokeLinecap="round" />
+      </svg>
+      <div style={{ ...big(50), flex: 1, textDecoration: !ok && show > 0.5 ? "line-through" : "none", textDecorationColor: C.red, textDecorationThickness: 6 }}>{text}</div>
+      <div style={{ opacity: show }}>
+        <Verdict ok={ok} text={ok ? "SEARCH" : "KOI NAHI"} size={24} />
+      </div>
+    </Panel>
+  );
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={3} text="CUSTOMER KYA SEARCH KARTA HAI?" />
-      <div style={{ position: "absolute", left: 84, top: 420, opacity: ease(f, shabd - 10, shabd - 2) }}>
-        <div style={{ ...label(26, BP.dim), marginBottom: 14 }}>AAPKE SHABD</div>
-        <Search text={a} n={(f - (shabd - 10)) * 1.4} color={BP.dim} mark={f > shabd + 20 ? "x" : null} />
-      </div>
-      <div style={{ position: "absolute", left: 84, top: 720, opacity: ease(f, apni - 8, apni) }}>
-        <div style={{ ...label(26, BP.dim), marginBottom: 14 }}>CUSTOMER KE SHABD</div>
-        <Search text={b} n={(f - (apni - 4)) * 1.2} mark={f > apni + 30 ? "ok" : null} />
-      </div>
-      <Stamp text="APNI PROBLEM" at={apni + 18} color={BP.green} size={70} rot={-6} style={{ left: 540, top: 1080 }} />
-      <Sfx at={shabd - 8} name="key" vol={0.3} />
-      <Sfx at={apni - 4} name="key" vol={0.3} />
-      <Sfx at={apni + 18} name="stamp" vol={0.4} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[problem]} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 160, top: 360, zIndex: 6 }}>
+          <Bar text={q1.slice(0, n1) || " "} ok={false} show={ramp(f, nahi - 4, nahi + 4)} />
+        </div>
+        <Pop at={problem - 8} style={{ position: "absolute", left: 160, top: 560, zIndex: 6 }}>
+          <Bar text={q2.slice(0, n2) || " "} ok show={ramp(f, problem + 10, problem + 18)} />
+        </Pop>
+        <Place x={20} y={760} s={0.78} z={5}>
+          <Person look={PRIYA} seed="p304" track={[{ at: -100, pose: "hold", mood: "neutral" }, { at: problem, pose: "hold", mood: "happy" }]} />
+        </Place>
+        <div style={{ position: "absolute", left: 600, top: 840, zIndex: 9 }}>
+          <Stamp at={problem + 22} text="APNI PROBLEM" size={54} rotate={-6} color={C.green} />
+        </div>
+      </Camera>
+      <Sfx at={aapke - 4} name="key" vol={0.3} />
+      <Sfx at={nahi} name="error" vol={0.3} />
+      <Sfx at={problem - 8} name="key" vol={0.3} />
+      <Sfx at={problem + 22} name="stamp" vol={0.4} />
     </SceneShell>
   );
 };
 
-/* s5 · fixes */
-export const S5Fixes: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur}>
-    <FigLabel n={4} text="CUSTOMER KE SHABD USE KARO" />
-    <div style={{ position: "absolute", left: 84, top: 390, display: "flex", flexDirection: "column", gap: 30 }}>
-      <FixCard n={1} at={cue("s5", "reviews") - 8} title={<>Reviews aur DMs se <Hl>exact lines</Hl> copy</>} sub="unke shabd, unki bhasha" />
-      <FixCard n={2} at={cue("s5", "pehli") - 10} title={<>Ad ki pehli line mein <Hl c={BP.green}>result</Hl></>} sub="'3 hafte mein baal girna kam'" />
-      <FixCard n={3} at={cue("s5", "wahi") - 10} title={<>Wahi shabd <Hl>product page</Hl> pe bhi</>} sub="ad aur page ek jaisa bole" />
-    </div>
-    <Sfx at={cue("s5", "reviews") - 8} name="pop" vol={0.5} />
-    <Sfx at={cue("s5", "pehli") - 10} name="pop" vol={0.5} />
-    <Sfx at={cue("s5", "wahi") - 10} name="pop" vol={0.5} />
-  </SceneShell>
+/* ===== S5: fixes ===== */
+export const S5Fixes: React.FC<{ dur: number }> = ({ dur }) => (
+  <FixBoard
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s5")}
+    marks={[cue("s5", "reviews"), cue("s5", "pehli"), cue("s5", "wahi")]}
+    sub="customer ke shabd use karo"
+    fixes={["Reviews aur DMs se lines copy karo", "Ad ki pehli line mein result", "Wahi shabd product page pe"]}
+  />
 );
 
+/* ===== S6: CTA ===== */
 const SheetIcon: React.FC = () => (
   <svg width={86} height={100} viewBox="0 0 86 100">
     <rect x={3} y={3} width={80} height={94} rx={12} fill={C.violet} stroke={C.navy} strokeWidth={5} />
@@ -181,28 +207,29 @@ const SheetIcon: React.FC = () => (
   </svg>
 );
 
-/* s6 · CTA */
-export const S6Cta: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur} noExit>
-    <HisaabCta
-      keyword="WORDS"
-      typeAt={cue("s6", "words") - 8}
-      giftAt={cue("s6", "sheet") - 8}
-      giftTitle="Review se Ad Sheet"
-      giftSub="free · review ki line → ad ki line"
-      giftIcon={<SheetIcon />}
-      nextAt={cue("s6", "aaj")}
-      nextLabel="AAJ SHAAM 7 BAJE · AGLA CASE"
-      next={
-        <>
-          <div style={big(54, C.navy)}>Competitor ke saare ads,</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={{ ...big(60, C.white), background: C.violet, borderRadius: 16, padding: "8px 20px 0" }}>free mein</div>
-            <div style={big(54, C.navy)}>kaise dekhein?</div>
-          </div>
-        </>
-      }
-      followAt={cue("s6", "follow")}
-    />
-  </SceneShell>
+export const S6Cta: React.FC<{ dur: number }> = ({ dur }) => (
+  <CtaScene
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s6")}
+    keyword="WORDS"
+    typeAt={cue("s6", "words") - 8}
+    giftAt={cue("s6", "sheet") - 8}
+    giftTitle="Review se Ad Sheet"
+    giftSub="free · review ki line → ad ki line"
+    giftIcon={<SheetIcon />}
+    nextAt={cue("s6", "aaj")}
+    nextNum="#31"
+    nextLabel="AAJ SHAAM 7 BAJE · AGLA CASE"
+    next={
+      <>
+        <div style={big(52)}>Competitor ke saare ads,</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{ ...big(58, C.white), background: C.violet, borderRadius: 16, padding: "8px 20px 0" }}>free mein</div>
+          <div style={big(52)}>kaise dekhein?</div>
+        </div>
+      </>
+    }
+    followAt={cue("s6", "follow")}
+  />
 );

@@ -1,202 +1,211 @@
+// CASE #33 GOOGLE — cartoon look (remade 7 Nov 2026 from the dark-blue version; same script and voice).
 import React from "react";
 import { useCurrentFrame } from "remotion";
-import { BP, FigLabel, FixCard, HisaabCta, Hl, big, ease, glass, label } from "../../components/hisaab";
-import { PhoneShell, Pill, SerumBottle } from "../../components/hisaabArt";
-import { SceneShell, Sfx } from "../../components/kit";
+import { Person, PRIYA, ROHIT } from "../../components/Cartoon";
+import { Camera } from "../../components/fx";
+import { HookTitle, LINE, Place, makeMouth } from "../../components/format";
+import { Chip, SceneShell, Sfx } from "../../components/kit";
+import { QMarks } from "../../components/props";
+import { MoneyRoom } from "../../components/sets";
+import { CtaScene, FixBoard, Panel, Pop, ToonPhone, Verdict, big, body, ramp } from "../../components/toon";
+import { Stamp } from "../../components/widgets";
 import { C } from "../../theme";
-import { cue } from "./timeline";
+import { T, cue } from "./timeline";
 
-type SP = { dur: number };
+const sceneMouth = makeMouth(T);
+const TAG = "CASE #33";
+const META = "#1877F2";
+const GOOG = "#16A34A";
 
-const META = "#4F7BFF";
-const GOOG = "#2BD46B";
-
-/** Platform tile. */
-export const Tile: React.FC<{ name: string; color: string; w?: number; sub?: string; p?: number }> = ({ name, color, w = 360, sub, p = 1 }) => (
-  <div style={{ width: w, ...glass, borderRadius: 30, border: `3px solid ${color}`, padding: "26px 20px 20px", boxSizing: "border-box", textAlign: "center", opacity: p, transform: `scale(${0.9 + 0.1 * p})`, boxShadow: `0 0 50px ${color}33` }}>
-    <div style={big(w * 0.2, color)}>{name}</div>
-    {sub && <div style={{ ...label(w * 0.07, BP.dim), marginTop: 10 }}>{sub}</div>}
-  </div>
+/** Channel tile: plain name on a colour block (no logos). */
+export const Channel: React.FC<{ name: string; color: string; w?: number; sub?: string }> = ({ name, color, w = 330, sub }) => (
+  <Panel style={{ width: w, padding: "22px 20px", display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }} bg={color}>
+    <div style={big(w * 0.2, C.white)}>{name}</div>
+    {sub && <div style={body(w * 0.075, C.white)}>{sub}</div>}
+  </Panel>
 );
 
-/** Coin stack labelled ₹10,000. */
-const Stack: React.FC<{ s?: number }> = ({ s = 1 }) => (
-  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", transform: `scale(${s})` }}>
-    {Array.from({ length: 6 }).map((_, i) => (
-      <div key={i} style={{ width: 170, height: 34, borderRadius: "50%", background: "linear-gradient(180deg,#FFD978,#E0A93A)", border: "3px solid #8E6420", marginTop: i ? -18 : 0 }} />
-    ))}
-    <div style={{ ...big(76, "#FFD978"), marginTop: 16 }}>₹10,000</div>
-  </div>
-);
-
-/** Typed search bar. */
-const Search: React.FC<{ text: string; n: number; w?: number }> = ({ text, n, w = 912 }) => {
-  const f = useCurrentFrame();
-  const shown = text.slice(0, Math.max(0, Math.min(text.length, Math.floor(n))));
-  return (
-    <div style={{ width: w, ...glass, borderRadius: 999, padding: "22px 34px 16px", display: "flex", alignItems: "center", gap: 20, boxSizing: "border-box" }}>
-      <svg width={44} height={44} viewBox="0 0 24 24">
-        <circle cx={10} cy={10} r={6.5} stroke={BP.dim} strokeWidth={2.5} fill="none" />
-        <line x1={15} y1={15} x2={21} y2={21} stroke={BP.dim} strokeWidth={2.5} strokeLinecap="round" />
-      </svg>
-      <div style={big(50)}>
-        {shown}
-        <span style={{ opacity: Math.floor(f / 8) % 2 === 0 ? 1 : 0, color: C.lavender }}>|</span>
-      </div>
-    </div>
-  );
-};
-
-/** One search result row. */
-const Result: React.FC<{ ad?: boolean; title: string; url: string; p?: number; hl?: boolean }> = ({ ad = false, title, url, p = 1, hl = false }) => (
-  <div style={{ ...glass, borderRadius: 22, padding: "20px 28px 16px", border: `3px solid ${hl ? GOOG : BP.lineSoft}`, opacity: p, transform: `translateY(${(1 - p) * 30}px)` }}>
-    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-      {ad && <div style={{ ...label(22, C.navy), background: "#FFD978", borderRadius: 8, padding: "4px 10px 1px" }}>AD</div>}
-      <div style={label(24, BP.dim)}>{url}</div>
-    </div>
-    <div style={{ ...big(46, hl ? GOOG : BP.text), marginTop: 8 }}>{title}</div>
-  </div>
-);
-
-/* s1 · hook (on screen from frame 0) */
-export const S1Hook: React.FC<SP> = ({ dur }) => {
+/* ===== S1: hook ===== */
+export const S1Hook: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const meta = cue("s1", "meta");
   const google = cue("s1", "google");
   const galat = cue("s1", "galat");
+  const aadha = cue("s1", "aadha");
   return (
-    <SceneShell dur={dur}>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 330, display: "flex", justifyContent: "center" }}>
-        <Stack s={0.9} />
-      </div>
-      <svg width={1080} height={200} style={{ position: "absolute", left: 0, top: 590 }}>
-        <path d="M540 10 Q400 60 270 170" stroke={META} strokeWidth={6} fill="none" strokeDasharray="14 12" opacity={0.5 + 0.5 * ease(f, meta - 6, meta + 2)} />
-        <path d="M540 10 Q680 60 810 170" stroke={GOOG} strokeWidth={6} fill="none" strokeDasharray="14 12" opacity={0.5 + 0.5 * ease(f, google - 6, google + 2)} />
-      </svg>
-      <div style={{ position: "absolute", left: 84, top: 790 }}>
-        <Tile name="Meta" color={META} w={400} p={0.6 + 0.4 * ease(f, meta - 6, meta + 2)} />
-      </div>
-      <div style={{ position: "absolute", right: 84, top: 790 }}>
-        <Tile name="Google" color={GOOG} w={400} p={0.6 + 0.4 * ease(f, google - 6, google + 2)} />
-      </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 1070, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
-        <div style={big(74)}>Galat jagah lagaya toh</div>
-        <Pill size={96}>aadha bekaar</Pill>
-      </div>
-      <Sfx at={meta - 4} name="pop" vol={0.35} />
-      <Sfx at={google - 4} name="pop" vol={0.35} />
-      <Sfx at={galat - 4} name="swish" vol={0.35} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[aadha]} push={0.03}>
+        <MoneyRoom />
+        <HookTitle
+          top={300}
+          lines={[
+            { text: "₹10,000: Meta ya Google?", at: -8, kind: "plain", size: 76, rot: -1 },
+            { text: "galat jagah = aadha bekaar", at: -6, kind: "red", size: 62, rot: 2 },
+          ]}
+        />
+        <div style={{ position: "absolute", left: 70, top: 650, zIndex: 6, transform: `scale(${1 + 0.06 * Math.sin(Math.PI * ramp(f, meta - 2, meta + 8))})` }}>
+          <Channel name="Meta" color={META} w={300} />
+        </div>
+        <div style={{ position: "absolute", left: 710, top: 650, zIndex: 6, transform: `scale(${1 + 0.06 * Math.sin(Math.PI * ramp(f, google - 2, google + 8))})` }}>
+          <Channel name="Google" color={GOOG} w={300} />
+        </div>
+        <Place x={330} y={700} s={0.78} z={5}>
+          <Person
+            look={ROHIT}
+            seed="r331"
+            track={[
+              { at: -100, pose: "hold", mood: "neutral" },
+              { at: galat, pose: "shrug", mood: "shock" },
+            ]}
+          />
+        </Place>
+        <div style={{ position: "absolute", left: 360, top: 620, zIndex: 9 }}>
+          <QMarks at={meta} />
+        </div>
+        <div style={{ position: "absolute", left: 600, top: 1080, zIndex: 9 }}>
+          <Stamp at={aadha} text="₹5,000 BEKAAR" size={38} rotate={-6} color={C.red} />
+        </div>
+      </Camera>
+      <Sfx at={1} name="whoosh" vol={0.4} />
+      <Sfx at={meta - 2} name="pop" vol={0.3} />
+      <Sfx at={google - 2} name="pop" vol={0.3} />
+      <Sfx at={aadha} name="stamp" vol={0.45} />
     </SceneShell>
   );
 };
 
-/* s2 · Google: people are already searching */
-export const S2Google: React.FC<SP> = ({ dur }) => {
+/* ===== S2: on Google, people are already searching ===== */
+export const S2Google: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const dh = cue("s2", "dhoondh");
   const baal = cue("s2", "baal");
   const q = "baal girne ka serum";
+  const n = Math.round(q.length * ramp(f, baal - 6, baal + 24));
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={1} text="GOOGLE · LOG DHOONDH RAHE HAIN" />
-      <div style={{ position: "absolute", left: 84, top: 400, opacity: ease(f, 0, 10) }}>
-        <Search text={q} n={(f - (baal - 6)) * 1.3} />
-      </div>
-      <div style={{ position: "absolute", left: 84, right: 84, top: 560, display: "flex", flexDirection: "column", gap: 20 }}>
-        <Result ad title="Hair fall serum · Rohit's Skin" url="rohitskin.in" p={ease(f, baal + 14, baal + 24)} hl />
-        <Result title="Baal girna kaise roke · 7 tips" url="blog.example.com" p={ease(f, baal + 18, baal + 28)} />
-        <Result title="Best hair serum 2026" url="shop.example.com" p={ease(f, baal + 22, baal + 32)} />
-      </div>
-      <div style={{ position: "absolute", left: 84, top: 1150, ...label(30, GOOG), opacity: ease(f, dh - 4, dh + 6) }}>ZAROORAT PATA HAI → SEARCH KAR RAHE HAIN</div>
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={30} bg={GOOG} border={LINE}>
+            GOOGLE · LOG DHOONDH RAHE HAIN
+          </Chip>
+        </div>
+        <Pop at={dh - 6} style={{ position: "absolute", left: 120, top: 430, zIndex: 6 }}>
+          <Panel style={{ width: 840, padding: "20px 28px", display: "flex", alignItems: "center", gap: 20 }}>
+            <svg width={50} height={50} viewBox="0 0 46 46">
+              <circle cx={19} cy={19} r={14} fill="none" stroke={LINE} strokeWidth={6} />
+              <path d="M30 30 L42 42" stroke={LINE} strokeWidth={7} strokeLinecap="round" />
+            </svg>
+            <div style={big(56)}>
+              {q.slice(0, n)}
+              <span style={{ opacity: Math.floor(f / 8) % 2 ? 1 : 0, color: C.violet }}>|</span>
+            </div>
+          </Panel>
+        </Pop>
+        <Pop at={baal + 26} style={{ position: "absolute", left: 120, top: 600, zIndex: 6 }}>
+          <Panel style={{ width: 840, padding: "16px 28px" }}>
+            <div style={body(24, GOOG)}>Ad · rohitskin.in</div>
+            <div style={big(44, META)}>Hair fall serum · COD available</div>
+          </Panel>
+        </Pop>
+        <Place x={330} y={800} s={0.72} z={5}>
+          <Person look={PRIYA} seed="p332" track={[{ at: -100, pose: "hold", mood: "neutral" }, { at: baal + 26, pose: "hold", mood: "happy" }]} />
+        </Place>
+      </Camera>
       <Sfx at={baal - 6} name="key" vol={0.3} />
-      <Sfx at={baal + 14} name="pop" vol={0.4} />
+      <Sfx at={baal + 26} name="ding" vol={0.35} />
     </SceneShell>
   );
 };
 
-/* s3 · Meta: people are scrolling, they don't know yet */
-export const S3Meta: React.FC<SP> = ({ dur }) => {
+/* ===== S3: on Meta, people are scrolling and don't know they need it yet ===== */
+export const S3Meta: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const scroll = cue("s3", "scroll");
   const pata = cue("s3", "pata");
-  const y = -((f * 7) % 340);
-  const feed = Array.from({ length: 6 });
+  const y = (f * 9) % 300;
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={2} text="META · LOG SCROLL KAR RAHE HAIN" />
-      <div style={{ position: "absolute", left: 84, top: 390, opacity: ease(f, 0, 10) }}>
-        <PhoneShell w={400}>
-          <div style={{ position: "absolute", left: 18, right: 18, top: 50 + y, display: "flex", flexDirection: "column", gap: 20 }}>
-            {feed.map((_, i) => (
-              <div key={i} style={{ height: 320, borderRadius: 22, background: i % 3 === 1 ? "#2A1C55" : "rgba(223,200,253,0.10)", border: `2px solid ${i % 3 === 1 ? META : BP.lineSoft}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                {i % 3 === 1 ? <SerumBottle h={220} /> : <div style={label(20, BP.dim)}>{["REEL", "MEME", "DOST KI PHOTO", "REEL", "NEWS", "MEME"][i]}</div>}
-              </div>
-            ))}
-          </div>
-        </PhoneShell>
-      </div>
-      <div style={{ position: "absolute", left: 560, top: 470, display: "flex", flexDirection: "column", gap: 34 }}>
-        <div style={{ opacity: ease(f, scroll - 6, scroll + 2) }}>
-          <div style={label(28, BP.dim)}>KAR KYA RAHE HAIN</div>
-          <div style={big(72, META)}>Scroll</div>
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={30} bg={META} border={LINE}>
+            META · LOG SCROLL KAR RAHE HAIN
+          </Chip>
         </div>
-        <div style={{ opacity: ease(f, pata - 6, pata + 2) }}>
-          <div style={label(28, BP.dim)}>ZAROORAT PATA HAI?</div>
-          <div style={big(72, BP.red)}>Abhi nahi</div>
+        <div style={{ position: "absolute", left: 570, top: 400, zIndex: 6 }}>
+          <ToonPhone w={410} h={740}>
+            <div style={{ position: "absolute", left: 14, right: 14, top: 60 - y, display: "flex", flexDirection: "column", gap: 14 }}>
+              {Array.from({ length: 7 }).map((_, i) => (
+                <div key={i} style={{ height: 286, borderRadius: 18, background: ["#FFE1CC", "#E3F6EA", "#EFE5FF", "#FDE2EC"][i % 4], border: `4px solid ${LINE}` }} />
+              ))}
+            </div>
+          </ToonPhone>
         </div>
-      </div>
+        <Place x={60} y={720} s={0.82} z={5}>
+          <Person look={PRIYA} seed="p333" track={[{ at: -100, pose: "hold", mood: "neutral" }, { at: scroll, pose: "hold", mood: "happy" }]} />
+        </Place>
+        <div style={{ position: "absolute", left: 340, top: 640, zIndex: 9 }}>
+          <QMarks at={pata} />
+        </div>
+        <Pop at={pata} style={{ position: "absolute", left: 60, top: 420, zIndex: 9 }}>
+          <Panel style={{ padding: "14px 22px", width: 440 }}>
+            <div style={{ ...big(40), whiteSpace: "normal" }}>Abhi zaroorat ka pata bhi nahi</div>
+          </Panel>
+        </Pop>
+      </Camera>
       <Sfx at={scroll - 4} name="swish" vol={0.35} />
-      <Sfx at={pata - 4} name="pop" vol={0.35} />
+      <Sfx at={pata} name="pop" vol={0.3} />
     </SceneShell>
   );
 };
 
-/* s4 · the real question */
-export const S4Question: React.FC<SP> = ({ dur }) => {
+/* ===== S4: the real question — do people search for your product? ===== */
+export const S4Question: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
-  const sawaal2 = cue("s4", "sawaal", 2);
+  const kaun = cue("s4", "kaun");
   const dh = cue("s4", "dhoondhte");
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={3} text="ASLI SAWAAL" />
-      <div style={{ position: "absolute", left: 84, top: 420, ...label(30, BP.dim), opacity: ease(f, 0, 10) }}>KAUN BETTER HAI? ✕</div>
-      <div style={{ position: "absolute", left: 84, right: 84, top: 500, ...glass, borderRadius: 30, padding: "30px 36px 24px", opacity: ease(f, sawaal2 - 8, sawaal2 + 2) }}>
-        <div style={{ fontFamily: big(10).fontFamily, fontWeight: 700, fontSize: 66, lineHeight: 1.12, color: BP.text }}>
-          Log aapka product <Hl>dhoondhte</Hl> hain?
-        </div>
-      </div>
-      <div style={{ position: "absolute", left: 84, right: 84, top: 800, display: "flex", justifyContent: "space-between" }}>
-        <div style={{ opacity: ease(f, dh + 6, dh + 16) }}>
-          <div style={{ ...label(30, BP.dim), marginBottom: 14 }}>HAAN →</div>
-          <Tile name="Google" color={GOOG} w={420} sub="DHOONDHNE WAALE" />
-        </div>
-        <div style={{ opacity: ease(f, dh + 14, dh + 24) }}>
-          <div style={{ ...label(30, BP.dim), marginBottom: 14 }}>NAHI →</div>
-          <Tile name="Meta" color={META} w={420} sub="NAYE LOG" />
-        </div>
-      </div>
-      <Sfx at={sawaal2 - 6} name="pop" vol={0.4} />
-      <Sfx at={dh + 6} name="pop" vol={0.35} />
-      <Sfx at={dh + 14} name="pop" vol={0.35} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[dh]} push={0.02}>
+        <MoneyRoom />
+        <Pop at={kaun} style={{ position: "absolute", left: 120, top: 360, zIndex: 6 }}>
+          <Panel style={{ width: 840, padding: "24px 30px", display: "flex", alignItems: "center", justifyContent: "space-between", opacity: 1 - 0.4 * ramp(f, dh - 20, dh) }}>
+            <div style={{ ...big(58), textDecoration: f >= kaun + 16 ? "line-through" : "none", textDecorationColor: C.red, textDecorationThickness: 7 }}>Kaun better hai?</div>
+            <Verdict ok={false} text="GALAT SAWAAL" size={26} />
+          </Panel>
+        </Pop>
+        <Pop at={dh - 6} style={{ position: "absolute", left: 120, top: 560, zIndex: 6 }}>
+          <Panel style={{ width: 840, padding: "26px 30px" }} bg="#E3F6EA">
+            <div style={body(28, C.muted)}>ASLI SAWAAL</div>
+            <div style={{ ...big(58), whiteSpace: "normal", lineHeight: 1.15 }}>Log aapka product dhoondhte hain ya nahi?</div>
+          </Panel>
+        </Pop>
+        <Place x={330} y={860} s={0.68} z={5}>
+          <Person look={ROHIT} seed="r334" track={[{ at: -100, pose: "shrug", mood: "neutral" }, { at: dh, pose: "cheer", mood: "happy" }]} />
+        </Place>
+      </Camera>
+      <Sfx at={kaun - 4} name="pop" vol={0.3} />
+      <Sfx at={kaun + 16} name="error" vol={0.3} />
+      <Sfx at={dh - 6} name="ding" vol={0.4} />
     </SceneShell>
   );
 };
 
-/* s5 · fixes */
-export const S5Fixes: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur}>
-    <FigLabel n={4} text="AISE BAANTO" />
-    <div style={{ position: "absolute", left: 84, top: 390, display: "flex", flexDirection: "column", gap: 30 }}>
-      <FixCard n={1} at={cue("s5", "search") - 8} title={<>Product type search hota hai? <Hl c={GOOG}>Google</Hl></>} sub="jaise 'hair fall serum'" />
-      <FixCard n={2} at={cue("s5", "naya") - 8} title={<>Naya product, nayi problem? <Hl c={META}>Meta</Hl></>} sub="log abhi jaante nahi" />
-      <FixCard n={3} at={cue("s5", "brand") - 8} title={<>Brand ke naam pe Google ad <Hl>hamesha</Hl></>} sub="sasta, aur naam bacha rehta hai" />
-    </div>
-    <Sfx at={cue("s5", "search") - 8} name="pop" vol={0.5} />
-    <Sfx at={cue("s5", "naya") - 8} name="pop" vol={0.5} />
-    <Sfx at={cue("s5", "brand") - 8} name="pop" vol={0.5} />
-  </SceneShell>
+/* ===== S5: fixes ===== */
+export const S5Fixes: React.FC<{ dur: number }> = ({ dur }) => (
+  <FixBoard
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s5")}
+    marks={[cue("s5", "google"), cue("s5", "naya"), cue("s5", "brand")]}
+    sub="kahan lagayein"
+    fontSize={38}
+    fixes={["Product search hota hai? Google", "Naya product ya problem? Meta", "Brand naam pe Google ad hamesha"]}
+  />
 );
 
+/* ===== S6: CTA ===== */
 const SplitIcon: React.FC = () => (
   <svg width={86} height={100} viewBox="0 0 86 100">
     <rect x={3} y={3} width={80} height={94} rx={12} fill={C.violet} stroke={C.navy} strokeWidth={5} />
@@ -206,28 +215,29 @@ const SplitIcon: React.FC = () => (
   </svg>
 );
 
-/* s6 · CTA */
-export const S6Cta: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur} noExit>
-    <HisaabCta
-      keyword="GOOGLE"
-      typeAt={cue("s6", "google") - 8}
-      giftAt={cue("s6", "checklist") - 8}
-      giftTitle="Kahan Lagayein Checklist"
-      giftSub="free · Meta ya Google, 5 sawaal"
-      giftIcon={<SplitIcon />}
-      nextAt={cue("s6", "kal")}
-      nextLabel="KAL DOPAHAR 1 BAJE · AGLA CASE"
-      next={
-        <>
-          <div style={big(54, C.navy)}>Aapke naam pe</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={{ ...big(60, C.white), background: C.red, borderRadius: 16, padding: "8px 20px 0" }}>competitor</div>
-            <div style={big(54, C.navy)}>ka ad kyun?</div>
-          </div>
-        </>
-      }
-      followAt={cue("s6", "follow")}
-    />
-  </SceneShell>
+export const S6Cta: React.FC<{ dur: number }> = ({ dur }) => (
+  <CtaScene
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s6")}
+    keyword="GOOGLE"
+    typeAt={cue("s6", "google") - 8}
+    giftAt={cue("s6", "checklist") - 8}
+    giftTitle="Kahan Lagayein Checklist"
+    giftSub="free · Meta ya Google, 5 sawaal"
+    giftIcon={<SplitIcon />}
+    nextAt={cue("s6", "kal")}
+    nextNum="#34"
+    nextLabel="KAL DOPAHAR 1 BAJE · AGLA CASE"
+    next={
+      <>
+        <div style={big(52)}>Aapke naam pe</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{ ...big(58, C.white), background: C.red, borderRadius: 16, padding: "8px 20px 0" }}>competitor</div>
+          <div style={big(52)}>ka ad kyun?</div>
+        </div>
+      </>
+    }
+    followAt={cue("s6", "follow")}
+  />
 );
