@@ -2,7 +2,8 @@
 
 Akshay's rules (7 Nov 2026):
 - The script, voice and checking rules here apply to every reel in this account.
-- **Look: character (2D cartoon) reels only from now on** (Akshay, 7 Nov: "going forward make character reel only, its good"). Use section 6 for every new reel. The hisaab look (sections 3 onward) stays only for reels already made: #15, #17, #18, #21, #22, #25, #26, #29, #30, #33.
+- **Look: character (2D cartoon) reels only** (Akshay, 7 Nov: "going forward make character reel only, its good"). Use section 6 for every reel. **The dark blue hisaab look is retired** (Akshay, 7 Nov: "the dark blue theme is not good"). All 10 hisaab reels (#15, #17, #18, #21, #22, #25, #26, #29, #30, #33) were remade in the cartoon look with the same script and voice before they posted. Sections 3 onward are kept only for the script, voice and number rules.
+- **No other look for now.** On 7 Nov four new styles were tested on CASE #26 (phone screen, notebook doodle, bold yellow pop, comic book). Akshay liked none: "the previous was good". Stay with the light cartoon look.
 - **Every reel must give real value.** No one-sided negative claims. Example: the first CASE #20 said a 30% sale leaves zero profit. Akshay rejected it: in a sale, orders go up and AOV goes up too. Show how to do the thing well, with numbers that work, and end with fixes the viewer can use the same day.
 
 Hisaab references:
@@ -199,10 +200,11 @@ Do not add the free-report or WhatsApp lines. The posting step adds the English 
 - Send Akshay the mp4 and the cover (SendUserFile) and the hook.
 - Posting reels or changing the posting workflows needs his explicit OK. Queueing a finished reel does not.
 
-## 6. Cartoon look (the other half of the D2C test)
+## 6. Cartoon look (the only look)
 
 **References:**
-- Template reels: `d2c/src/reels/case14/` (newest) or `case04/`.
+- Template reels: `d2c/src/reels/case37/`, `case38/`, or any remake (`case15/`, `case26/`).
+- `d2c/src/components/toon.tsx` (added 7 Nov) saves most of the work: `CartoonReel` (whole reel wrapper), `FixBoard` (Doctor + whiteboard fixes scene), `CtaScene` (Doctor + CtaFlow), `ToonCover`, `Panel`, `Pop`, `StackBar`, `Gauge`, `ToonPhone`, `Verdict`, `Folk`, `ToonSpinner`, `Stopwatch`.
 - Kit in `d2c/src/components/`:
   - `Cartoon.tsx`: Rohit and Priya, plus props.
   - `Doctor.tsx`: the D2C Doctor.
