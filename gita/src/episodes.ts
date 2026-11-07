@@ -19,6 +19,14 @@ import ep14s from "./reels/ep14/script.json";
 import ep14t from "./reels/ep14/timing.json";
 import ep15s from "./reels/ep15/script.json";
 import ep15t from "./reels/ep15/timing.json";
+import ep16s from "./reels/ep16/script.json";
+import ep16t from "./reels/ep16/timing.json";
+import ep17s from "./reels/ep17/script.json";
+import ep17t from "./reels/ep17/timing.json";
+import ep18s from "./reels/ep18/script.json";
+import ep18t from "./reels/ep18/timing.json";
+import ep19s from "./reels/ep19/script.json";
+import ep19t from "./reels/ep19/timing.json";
 
 export const EPISODES: { id: string; ep: Episode; timing: Timing }[] = [
   { id: "ep07", ep: ep07s as unknown as Episode, timing: ep07t as unknown as Timing },
@@ -30,4 +38,8 @@ export const EPISODES: { id: string; ep: Episode; timing: Timing }[] = [
   { id: "ep13", ep: ep13s as unknown as Episode, timing: ep13t as unknown as Timing },
   { id: "ep14", ep: ep14s as unknown as Episode, timing: ep14t as unknown as Timing },
   { id: "ep15", ep: ep15s as unknown as Episode, timing: ep15t as unknown as Timing },
+  { id: "ep16", ep: ep16s as unknown as Episode, timing: ep16t as unknown as Timing },
+  { id: "ep17", ep: ep17s as unknown as Episode, timing: ep17t as unknown as Timing },
+  { id: "ep18", ep: ep18s as unknown as Episode, timing: ep18t as unknown as Timing },
+  { id: "ep19", ep: ep19s as unknown as Episode, timing: ep19t as unknown as Timing },
 ];

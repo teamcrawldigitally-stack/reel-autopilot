@@ -1,0 +1,123 @@
+{
+  "id": "ep19",
+  "ep": 19,
+  "tag": "#19",
+  "style": "v2",
+  "backdrop": "img/bg/bg-kurukshetra.jpg",
+  "mood": "gold",
+  "shlok": "10.17–41",
+  "title": "कृष्ण को कहाँ ढूँढें?",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "facts": "10.17 Arjuna asks; 10.25 स्थावराणां हिमालयः; 10.31 रामः शस्त्रभृतामहम्, स्रोतसामस्मि जाह्नवी; 10.37 पाण्डवानां धनञ्जयः; 10.41 तेजोंऽशसम्भवम्",
+  "cover": {
+    "pic": { "src": "img/krishna-arjun-cut.png", "h": 1000, "bottom": 1660 },
+    "rows": ["कृष्ण को {g:कहाँ} ढूँढें?", { "t": "{d:लिस्ट में एक नाम अर्जुन का भी}", "size": 64 }],
+    "pill": { "text": "गीता अध्याय 10", "tone": "gold" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [{ "voice": "अर्जुन ने पूछा, मैं आपको कहाँ ढूँढूँ?" }, { "voice": "कृष्ण ने लंबी लिस्ट दी, और उसमें एक नाम खुद अर्जुन का था।" }],
+      "pics": [{ "src": "img/krishna-arjun-cut.png", "h": 1000, "bottom": 1660, "glow": "gold" }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{d:अर्जुन ने पूछा}", "size": 66 }, { "t": "“मैं आपको", "size": 104 }, { "t": "{g:कहाँ ढूँढूँ?}”", "size": 116 }] },
+        { "at": "कृष्ण-2", "rows": [{ "t": "कृष्ण ने {g:लंबी लिस्ट} दी", "size": 92 }, { "t": "उसमें एक नाम", "size": 88, "at": "उसमें" }, { "t": "{E:खुद अर्जुन} का था", "size": 104, "at": "खुद" }] }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड उन्नीस।" }, { "voice": "अध्याय दस।" }],
+      "ep": 19,
+      "ref": "10.17",
+      "chapter": "10",
+      "verse": "17",
+      "cardAt": "अध्याय",
+      "secondAt": "अध्याय+14",
+      "speaker": "अर्जुन उवाच",
+      "shloka": ["कथं विद्यामहं योगिंस्", "त्वां सदा परिचिन्तयन्।", "{केषु केषु च भावेषु}", "चिन्त्योऽसि भगवन्मया॥"],
+      "note": "= किन किन रूपों में आपको याद करूँ?",
+      "bg": { "src": "img/krishna-arjun-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "lines": [{ "voice": "अर्जुन पूछते हैं, किन किन रूपों में मैं आपको याद करूँ?" }],
+      "pics": [{ "src": "img/arjun-sad-cut.png", "h": 860, "bottom": 1640, "glow": "gold" }],
+      "beats": [{ "at": "start", "sa": "केषु केषु च भावेषु", "saSize": 96, "rows": [{ "t": "{g:किन किन रूपों} में", "size": 96, "at": "किन" }, { "t": "आपको याद करूँ?", "size": 92, "at": "याद" }] }]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "lines": [{ "voice": "कृष्ण गिनाते हैं, पहाड़ों में हिमालय, नदियों में गंगा, शस्त्र उठाने वालों में राम।" }],
+      "widgets": [
+        {
+          "type": "imgcards", "top": 640, "size": 220,
+          "items": [
+            { "src": "img/card-himalaya.jpg", "label": "हिमालय", "sub": "पहाड़ों में", "sa": "स्थावराणां हिमालयः", "at": "हिमालय" },
+            { "src": "img/card-ganga.jpg", "label": "गंगा", "sub": "नदियों में", "sa": "स्रोतसामस्मि जाह्नवी", "at": "गंगा" },
+            { "src": "img/card-ram.jpg", "label": "राम", "sub": "शस्त्रधारियों में", "sa": "रामः शस्त्रभृतामहम्", "at": "राम" },
+            { "src": "img/face-arjun.png", "label": "अर्जुन", "sub": "पांडवों में", "at": 99999, "tone": "green" }
+          ]
+        }
+      ],
+      "pics": [{ "src": "img/krishna-face-cut.png", "h": 520, "bottom": 1720 }],
+      "beats": [{ "at": "start", "rows": [{ "t": "{d:कृष्ण गिनाते हैं}", "size": 66 }, { "t": "“ये सब {g:मैं} हूँ”", "size": 100, "at": "पहाड़ों" }] }]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "swipe": false,
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "lines": [{ "voice": "और फिर, पाण्डवानां धनञ्जयः।" }, { "voice": "पांडवों में मैं अर्जुन हूँ।" }, { "voice": "जिसे वो बाहर ढूँढ रहा था, वो उसके अंदर भी था।" }],
+      "widgets": [
+        {
+          "type": "imgcards", "top": 640, "size": 220, "out": "जिसे-4",
+          "items": [
+            { "src": "img/card-himalaya.jpg", "label": "हिमालय", "sub": "पहाड़ों में", "at": -30 },
+            { "src": "img/card-ganga.jpg", "label": "गंगा", "sub": "नदियों में", "at": -30 },
+            { "src": "img/card-ram.jpg", "label": "राम", "sub": "शस्त्रधारियों में", "at": -30 },
+            { "src": "img/face-arjun.png", "label": "अर्जुन", "sub": "पांडवों में", "sa": "पाण्डवानां धनञ्जयः", "at": "पाण्डवानां", "tone": "green", "hi": "पांडवों" }
+          ]
+        }
+      ],
+      "pics": [{ "src": "img/krishna-face-cut.png", "h": 520, "bottom": 1720, "out": "जिसे-4" }, { "src": "img/krishna-arjun-cut.png", "h": 900, "bottom": 1660, "at": "जिसे-6", "glow": "gold" }],
+      "beats": [
+        { "at": "start", "sa": "पाण्डवानां धनञ्जयः", "saSize": 96, "rows": [{ "t": "पांडवों में मैं {E:अर्जुन} हूँ", "size": 84, "at": "पांडवों" }] },
+        { "at": "जिसे-2", "rows": [{ "t": "जिसे {s:बाहर} ढूँढ रहा था", "size": 88 }, { "t": "वो उसके {g:अंदर} भी था", "size": 100, "at": "उसके" }] }
+      ]
+    },
+    {
+      "id": "s6",
+      "kind": "beats",
+      "backdrop": "img/bg/bg-himalaya.jpg",
+      "lines": [{ "voice": "कृष्ण कहते हैं, जहाँ भी कुछ खास दिखे, वो मेरे तेज का एक अंश है।" }, { "voice": "वो अंश आप में भी है।" }],
+      "pics": [
+        { "src": "img/vishwaroop-cut.png", "h": 1000, "bottom": 1660, "glow": "gold", "out": "वो#2-4" },
+        { "src": "img/man-sun-cut.png", "h": 820, "bottom": 1640, "glow": "gold", "at": "वो#2-6", "from": "none" }
+      ],
+      "beats": [
+        { "at": "start", "pill": { "text": "गीता 10.41" }, "rows": [{ "t": "जहाँ भी {g:कुछ खास} दिखे", "size": 88, "at": "जहाँ" }, { "t": "वो मेरे {g:तेज का अंश}", "size": 92, "at": "मेरे" }] },
+        { "at": "वो#2-2", "rows": [{ "t": "वो अंश", "size": 100 }, { "t": "{E:आप में भी} है", "size": 120, "at": "आप" }] }
+      ]
+    },
+    {
+      "id": "s7",
+      "kind": "cta",
+      "backdrop": "img/bg/bg-temple.jpg",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जो भगवान को सिर्फ़ बाहर ढूँढता है।" },
+        { "voice": "और कमेंट में बताओ, आपको भगवान सबसे ज़्यादा कहाँ दिखते हैं?" },
+        { "voice": "अगले एपिसोड में, हर बात पर शक करना कितना खतरनाक है?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जो भगवान को सिर्फ़ बाहर ढूँढता है", "pic": { "src": "img/krishna-face-cut.png", "h": 640, "bottom": 1500 } },
+      "comment": { "q": "आपको भगवान सबसे ज़्यादा कहाँ दिखते हैं?", "typed": "माँ की मुस्कान में" },
+      "next": { "ep": "#20", "rows": ["हर बात पर शक", "कितना खतरनाक है?"], "pic": { "src": "img/man-crossroads-cut.png", "h": 520, "bottom": 1180, "glow": "saffron" } }
+    }
+  ]
+}

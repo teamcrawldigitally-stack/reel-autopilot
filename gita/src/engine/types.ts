@@ -30,7 +30,8 @@ export type Pic = {
   flip?: boolean;
   full?: boolean; // a picture with its own background (no cut-out): shown with soft faded edges
   front?: boolean;
-  fx?: { type: "shake" | "redflash" | "glitch" | "gray" | "zoom"; at: Cue; to?: Cue }[];
+  fx?: { type: "shake" | "redflash" | "glitch" | "gray" | "zoom" | "flip" | "rotate"; at: Cue; to?: Cue; deg?: number }[];
+  pivot?: [number, number]; // rotation centre (default: picture centre)
 };
 
 export type Beat = {
@@ -53,19 +54,22 @@ export type Widget = { type: string; [k: string]: unknown };
 
 export type BeatsScene = {
   id: string;
+  backdrop?: string;
   kind: "beats";
   lines: { voice: string }[];
   pics?: Pic[];
   beats: Beat[];
   widgets?: Widget[];
   dust?: Tone | "none";
-  mood?: "gold" | "red" | "green" | "blue";
+  mood?: "gold" | "red" | "green" | "blue" | "saffron";
   sfx?: { at: Cue; name: string; vol?: number }[];
   swipe?: boolean; // swipe into this scene (default true)
 };
 
 export type SourceScene = {
   id: string;
+  backdrop?: string;
+  mood?: "gold" | "red" | "green" | "blue" | "saffron";
   kind: "source";
   lines: { voice: string }[];
   ep: number;
@@ -84,6 +88,8 @@ export type SourceScene = {
 
 export type CtaScene = {
   id: string;
+  backdrop?: string;
+  mood?: "gold" | "red" | "green" | "blue" | "saffron";
   kind: "cta";
   lines: { voice: string }[];
   share: { title: string; sub: string; pic?: Pic };
@@ -95,6 +101,9 @@ export type CtaScene = {
 export type Scene = BeatsScene | SourceScene | CtaScene;
 
 export type Episode = {
+  style?: "v2";
+  backdrop?: string; // v2: default scene background
+  mood?: "gold" | "red" | "green" | "blue" | "saffron";
   id: string;
   ep: number;
   tag: string; // "#07"
@@ -103,7 +112,7 @@ export type Episode = {
   voice: Record<string, unknown>;
   timing: Record<string, number>;
   music?: { file: string; start?: number; vol?: number };
-  cover: { pic: Pic; rows: Row[]; pill?: { text: string; tone?: Tone }; mood?: "gold" | "red" | "green" | "blue" };
+  cover: { pic: Pic; rows: Row[]; pill?: { text: string; tone?: Tone }; mood?: "gold" | "red" | "green" | "blue" | "saffron"; backdrop?: string };
   pictures?: Record<string, string>; // the Gemini prompts used
   scenes: Scene[];
 };

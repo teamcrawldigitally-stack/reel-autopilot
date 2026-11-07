@@ -1,0 +1,111 @@
+{
+  "id": "ep18",
+  "ep": 18,
+  "tag": "#18",
+  "style": "v2",
+  "backdrop": "img/bg/bg-temple.jpg",
+  "mood": "saffron",
+  "shlok": "2.20",
+  "title": "जो चला गया",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "pictures": {
+    "woman-diya": "Young Indian woman in a cotton saree on the floor at night holding an old family photo to her chest, moist eyes, soft smile, a lit diya in front; pure black background, 9:16",
+    "kurtas": "An old torn grey kurta and a new shining white kurta on wooden hangers side by side; pure black background, 9:16"
+  },
+  "cover": {
+    "pic": { "src": "img/woman-diya-cut.png", "h": 940, "bottom": 1660 },
+    "rows": ["जो {g:चला गया}", { "t": "{d:क्या सच में खत्म हुआ?}", "size": 80 }],
+    "pill": { "text": "गीता 2.20", "tone": "gold" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [{ "voice": "जो चला गया, क्या वो सच में खत्म हो गया?" }, { "voice": "गीता कहती है, नहीं।" }],
+      "pics": [{ "src": "img/woman-diya-cut.png", "h": 880, "bottom": 1640, "glow": "saffron" }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "जो {g:चला गया}", "size": 116 }, { "t": "क्या सच में {R:खत्म} हुआ?", "size": 92, "at": "सच" }] },
+        { "at": "गीता-2", "rows": [{ "t": "{g:गीता} कहती है", "size": 96 }, { "t": "{E:नहीं}", "size": 170, "at": "नहीं" }] }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड अठारह।" }, { "voice": "अध्याय दो, श्लोक बीस।" }],
+      "ep": 18,
+      "ref": "2.20",
+      "chapter": "2",
+      "verse": "20",
+      "speaker": "श्रीभगवानुवाच",
+      "shloka": ["{न जायते म्रियते} वा कदाचिन्", "नायं भूत्वा भविता वा न भूयः।", "{अजो नित्यः शाश्वतो}ऽयं पुराणो", "न हन्यते हन्यमाने शरीरे॥"],
+      "note": "= आत्मा न जन्मती है, न मरती है",
+      "bg": { "src": "img/krishna-face-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "mood": "gold",
+      "lines": [{ "voice": "न जायते म्रियते वा कदाचित्।" }, { "voice": "आत्मा न कभी जन्म लेती है, न कभी मरती है।" }],
+      "widgets": [{ "type": "lamps", "top": 1080, "size": 420 }],
+      "beats": [{ "at": "start", "sa": "न जायते म्रियते वा कदाचित्", "saSize": 82, "rows": [{ "t": "आत्मा {E:न जन्म लेती है}", "size": 88, "at": "आत्मा" }, { "t": "{E:न मरती है}", "size": 100, "at": "मरती" }] }]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "swipe": false,
+      "backdrop": "img/bg/bg-cosmos.jpg",
+      "mood": "gold",
+      "lines": [{ "voice": "अजो नित्यः शाश्वतोऽयं पुराणः।" }, { "voice": "वो अजन्मी है, हमेशा की है।" }, { "voice": "शरीर खत्म होता है, आत्मा नहीं।" }],
+      "widgets": [{ "type": "lamps", "top": 1080, "size": 420 }],
+      "beats": [
+        { "at": "start", "sa": "अजो नित्यः शाश्वतोऽयं पुराणः", "saSize": 82, "rows": [{ "t": "{g:अजन्मी} · {g:हमेशा की}", "size": 96, "at": "अजन्मी" }] },
+        { "at": "शरीर-2", "rows": [{ "t": "शरीर {R:खत्म} होता है", "size": 96 }, { "t": "{E:आत्मा नहीं}", "size": 120, "at": "आत्मा" }] }
+      ]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "lines": [{ "voice": "और दो श्लोक बाद कृष्ण कहते हैं," }, { "voice": "जैसे इंसान पुराने कपड़े उतारकर नए पहनता है, वैसे ही आत्मा शरीर बदलती है।" }],
+      "pics": [
+        { "src": "img/krishna-face-cut.png", "h": 860, "bottom": 1620, "out": "जैसे-4" },
+        { "src": "img/kurtas-cut.png", "h": 700, "bottom": 1560, "at": "जैसे-4", "out": "वैसे-4", "glow": "gold" }
+      ],
+      "widgets": [{ "type": "lamps", "two": true, "at": "वैसे-4", "top": 1180, "size": 280, "move": "आत्मा" }],
+      "beats": [
+        { "at": "start", "pill": { "text": "गीता 2.22" }, "rows": [{ "t": "{d:दो श्लोक बाद कृष्ण कहते हैं}", "size": 64 }] },
+        { "at": "जैसे-2", "rows": [{ "t": "{s:पुराने} कपड़े उतारो", "size": 96 }, { "t": "{E:नए} पहनो", "size": 110, "at": "नए" }] },
+        { "at": "वैसे-2", "rows": [{ "t": "वैसे ही {g:आत्मा}", "size": 100 }, { "t": "{g:शरीर} बदलती है", "size": 100, "at": "शरीर" }] }
+      ]
+    },
+    {
+      "id": "s6",
+      "kind": "beats",
+      "backdrop": "img/bg/bg-ghat.jpg",
+      "mood": "gold",
+      "lines": [{ "voice": "जिन्हें खोया है, उनकी एक अच्छी आदत आज अपना लो।" }, { "voice": "वो आपके अंदर ज़िंदा रहेंगे।" }],
+      "pics": [{ "src": "img/woman-diya-cut.png", "h": 760, "bottom": 1640, "glow": "gold" }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{d:जिन्हें खोया है}", "size": 70 }, { "t": "उनकी {g:एक अच्छी आदत}", "size": 92, "at": "उनकी" }, { "t": "आज {E:अपना लो}", "size": 100, "at": "अपना" }] },
+        { "at": "वो-2", "rows": [{ "t": "वो आपके अंदर", "size": 96 }, { "t": "{g:ज़िंदा} रहेंगे", "size": 120, "at": "ज़िंदा" }] }
+      ]
+    },
+    {
+      "id": "s7",
+      "kind": "cta",
+      "backdrop": "img/bg/bg-ghat.jpg",
+      "mood": "gold",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जिसने हाल ही में किसी अपने को खोया है।" },
+        { "voice": "और कमेंट में उनका नाम लिखो, जिन्हें आप याद करते हो।" },
+        { "voice": "अगले एपिसोड में, कृष्ण को कहाँ ढूँढें?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जिसने हाल ही में किसी अपने को खोया है", "pic": { "src": "img/woman-diya-cut.png", "h": 620, "bottom": 1500 } },
+      "comment": { "q": "उनका नाम लिखो, जिन्हें आप याद करते हो", "typed": "मेरी दादी माँ" },
+      "next": { "ep": "#19", "rows": ["कृष्ण को", "कहाँ ढूँढें?"], "pic": { "src": "img/krishna-arjun-cut.png", "h": 520, "bottom": 1180 } }
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { Img, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { Sfx, clamp, deva, ease, glass, num, sanskrit, useSpring } from "../components/kit";
 import { G } from "../theme";
 import { RichLine, graphemes, toneColor, toneGlow, useCue } from "./core";
+import { useV2 } from "./cine";
 import type { Cue, Tone, Widget } from "./types";
 
 /* Every widget: { type, top?, at?, out? } plus its own fields. "at"/"out" = when the whole thing shows. */
@@ -197,12 +198,13 @@ const Count: React.FC<{ w: CountW }> = ({ w }) => {
 type BarsW = Widget & { top?: number; max?: number; items: { at: Cue; label: string; value: number; show?: string; tone?: Tone }[]; width?: number };
 const Bars: React.FC<{ w: BarsW }> = ({ w }) => {
   const c = useCue();
+  const v2 = useV2();
   const ats = w.items.map((it) => c(it.at));
   const { o, f } = useShow(w, ats[0]);
   const max = w.max ?? Math.max(...w.items.map((i) => i.value));
   const width = w.width ?? 900;
   return (
-    <div style={{ position: "absolute", left: 540 - width / 2, top: w.top ?? 1000, width, display: "flex", flexDirection: "column", gap: 22, opacity: o }}>
+    <div style={{ position: "absolute", left: 540 - width / 2, top: w.top ?? 1000, width, display: "flex", flexDirection: "column", gap: 22, opacity: o, ...(v2 ? { background: "rgba(7,8,24,0.62)", border: `2.5px solid ${G.lineSoft}`, borderRadius: 30, padding: "26px 34px", boxSizing: "border-box" as const, boxShadow: "0 30px 60px -30px rgba(0,0,0,0.8)" } : {}) }}>
       {w.items.map((it, i) => {
         const p = ease(f, ats[i] - 2, ats[i] + 18);
         const col = toneColor(it.tone);
@@ -731,3 +733,110 @@ const Doors: React.FC<{ w: DoorsW }> = ({ w }) => {
   );
 };
 registerWidget("doors", Doors as React.FC<{ w: never }>);
+
+/* ---------- lamps: brass diya(s) with a living flame; with two lamps the flame can move across ---------- */
+const Diya: React.FC<{ x: number; y: number; w: number; old?: boolean }> = ({ x, y, w, old }) => {
+  const h = w * 0.42;
+  const id = `dg${Math.round(x)}${old ? "o" : "n"}`;
+  return (
+    <svg width={w * 1.3} height={h * 1.6} style={{ position: "absolute", left: x - w * 0.65, top: y - h * 0.3, overflow: "visible", filter: old ? "grayscale(0.7) brightness(0.55)" : undefined }}>
+      <defs>
+        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#FFE29A" />
+          <stop offset="0.45" stopColor="#D9982C" />
+          <stop offset="1" stopColor="#6E4210" />
+        </linearGradient>
+      </defs>
+      <path d={`M ${w * 0.05} ${h * 0.35} Q ${w * 0.65} ${h * 1.45} ${w * 1.18} ${h * 0.35} Q ${w * 1.27} ${h * 0.22} ${w * 1.25} ${h * 0.08} Q ${w * 1.05} ${h * 0.3} ${w * 0.9} ${h * 0.32} Z`} fill={`url(#${id})`} />
+      <ellipse cx={w * 0.55} cy={h * 0.36} rx={w * 0.5} ry={h * 0.13} fill="#3A2208" />
+      <ellipse cx={w * 0.55} cy={h * 0.34} rx={w * 0.5} ry={h * 0.11} fill="none" stroke="#FFE7A8" strokeWidth={3} opacity={0.8} />
+    </svg>
+  );
+};
+const Flame: React.FC<{ x: number; y: number; s: number; f: number; o?: number }> = ({ x, y, s, f, o = 1 }) => {
+  const fl = 1 + 0.08 * Math.sin(f / 2.1) + 0.05 * Math.sin(f / 3.7 + 1);
+  const sway = Math.sin(f / 5) * 3;
+  return (
+    <div style={{ position: "absolute", left: x - s, top: y - s * 2.2, width: s * 2, height: s * 2.6, opacity: o }}>
+      <div style={{ position: "absolute", left: -s * 2.5, top: -s * 1.6, width: s * 7, height: s * 7, borderRadius: "50%", background: "radial-gradient(circle, rgba(255,200,90,0.55), rgba(255,140,40,0.18) 40%, transparent 70%)" }} />
+      <svg width={s * 2} height={s * 2.6} viewBox="0 0 40 52" style={{ position: "absolute", left: 0, top: 0, transformOrigin: "50% 100%", transform: `scaleY(${fl}) skewX(${sway}deg)`, filter: "drop-shadow(0 0 12px rgba(255,170,60,0.95))" }}>
+        <defs>
+          <radialGradient id="flm" cx="0.5" cy="0.75" r="0.6">
+            <stop offset="0" stopColor="#FFFFFF" />
+            <stop offset="0.35" stopColor="#FFE680" />
+            <stop offset="0.7" stopColor="#FF9A2E" />
+            <stop offset="1" stopColor="#E2471A" stopOpacity="0.2" />
+          </radialGradient>
+        </defs>
+        <path d="M20 2 C 30 18, 36 30, 33 40 C 30 49, 10 49, 7 40 C 4 30, 12 18, 20 2 Z" fill="url(#flm)" />
+      </svg>
+    </div>
+  );
+};
+type LampsW = Widget & { top?: number; at?: Cue; out?: Cue; two?: boolean; move?: Cue; size?: number };
+const Lamps: React.FC<{ w: LampsW }> = ({ w }) => {
+  const c = useCue();
+  const { p, o, f } = useShow(w, -20);
+  const top = w.top ?? 1150;
+  const size = w.size ?? 260;
+  if (!w.two) {
+    return (
+      <div style={{ position: "absolute", inset: 0, opacity: p * o }}>
+        <Diya x={540} y={top} w={size} />
+        <Flame x={540 + size * 0.02} y={top + 6} s={size * 0.13} f={f} />
+      </div>
+    );
+  }
+  const mv = w.move !== undefined ? c(w.move) : 1e9;
+  const t = ease(f, mv, mv + 26, "inOut");
+  const xL = 300, xR = 780;
+  const fx = xL + (xR - xL) * t;
+  const fy = top + 6 - Math.sin(Math.PI * t) * 180;
+  return (
+    <div style={{ position: "absolute", inset: 0, opacity: p * o }}>
+      <Diya x={xL} y={top} w={size * 0.85} old />
+      <Diya x={xR} y={top} w={size} />
+      <Flame x={fx} y={fy} s={size * 0.13} f={f} />
+      <Sfx at={mv} name="riser" vol={0.35} />
+      <Sfx at={mv + 26} name="ding" vol={0.4} />
+    </div>
+  );
+};
+registerWidget("lamps", Lamps as React.FC<{ w: never }>);
+
+/* ---------- imgcards: a row of picture cards that come in one by one ---------- */
+type ImgCardsW = Widget & { top?: number; at?: Cue; out?: Cue; size?: number; items: { src: string; label: string; sub?: string; sa?: string; at: Cue; tone?: Tone; hi?: Cue; cover?: boolean }[] };
+const ImgCards: React.FC<{ w: ImgCardsW }> = ({ w }) => {
+  const c = useCue();
+  const { o, f } = useShow(w, -20);
+  const size = w.size ?? 220;
+  const gap = 22;
+  const n = w.items.length;
+  const total = n * size + (n - 1) * gap;
+  return (
+    <div style={{ position: "absolute", left: 540 - total / 2, top: w.top ?? 760, width: total, display: "flex", gap, opacity: o }}>
+      {w.items.map((it, i) => {
+        const a = c(it.at);
+        const q = ease(f, a - 4, a + 12);
+        const hi = it.hi !== undefined ? ease(f, c(it.hi) - 4, c(it.hi) + 12) : 0;
+        const col = toneColor(it.tone ?? "gold");
+        return (
+          <div key={i} style={{ width: size, display: "flex", flexDirection: "column", alignItems: "center", opacity: 0.25 + 0.75 * q, transform: `translateY(${(1 - q) * 50}px) scale(${(0.9 + 0.1 * q) * (1 + 0.12 * hi)})` }}>
+            <div style={{ width: size, height: size * 1.3, borderRadius: 24, overflow: "hidden", border: `4px solid ${q > 0.5 ? col : "rgba(255,244,223,0.2)"}`, background: "#141833", boxShadow: q > 0.5 ? `0 0 ${30 + 40 * hi}px ${toneGlow(it.tone, 0.55 + 0.3 * hi)}` : undefined, position: "relative" }}>
+              {q > 0 ? (
+                <Img src={staticFile(it.src)} style={{ width: "100%", height: "100%", objectFit: it.cover === false ? "contain" : "cover", filter: q < 1 ? `blur(${(1 - q) * 8}px)` : undefined }} />
+              ) : (
+                <div style={{ ...num(110, "rgba(255,244,223,0.2)"), position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>?</div>
+              )}
+            </div>
+            <div style={{ ...deva(46, q > 0.5 ? col : G.dim, 800), marginTop: 10 }}>{q > 0.5 ? it.label : "?"}</div>
+            {it.sub && <div style={{ ...deva(30, G.dim, 700), opacity: q }}>{it.sub}</div>}
+            {it.sa && <div style={{ ...sanskrit(30, G.gold), opacity: q, width: size + gap, textAlign: "center", lineHeight: 1.3, marginTop: 4 }}>{it.sa}</div>}
+            <Sfx at={a - 3} name="pop" vol={0.45} />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+registerWidget("imgcards", ImgCards as React.FC<{ w: never }>);

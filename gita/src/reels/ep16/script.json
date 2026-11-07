@@ -1,0 +1,394 @@
+{
+ "id": "ep16",
+ "ep": 16,
+ "tag": "#16",
+ "style": "v2",
+ "backdrop": "img/bg/bg-room-night.jpg",
+ "mood": "saffron",
+ "shlok": "3.21",
+ "title": "बच्चे कॉपी करते हैं",
+ "voice": {
+  "speaker": "aditya_hi_conversational",
+  "model": "bulbul:v4-flash",
+  "pace": 1.15,
+  "lang": "hi-IN"
+ },
+ "timing": {
+  "gap": 0.12,
+  "tail": 0.22,
+  "endHold": 0.8
+ },
+ "pictures": {
+  "father-son-phone": "Father on a sofa glued to his phone, pointing at his son and scolding him; the son copies him with a phone; pure black background, 9:16",
+  "father-son-play": "Same father and son on the floor building a block tower and laughing, phones face down behind them; pure black background, 9:16"
+ },
+ "cover": {
+  "pic": {
+   "src": "img/father-son-phone-cut.png",
+   "h": 860,
+   "bottom": 1640
+  },
+  "mood": "saffron",
+  "rows": [
+   "बच्चे {g:कॉपी} करते हैं",
+   {
+    "t": "{d:आपकी बात नहीं, आपको}",
+    "size": 80
+   }
+  ],
+  "pill": {
+   "text": "“फ़ोन रखो!”",
+   "tone": "red"
+  }
+ },
+ "scenes": [
+  {
+   "id": "s1",
+   "kind": "beats",
+   "lines": [
+    {
+     "voice": "बच्चे को फ़ोन छोड़ने बोलते हो, खुद फ़ोन चलाते हुए?"
+    },
+    {
+     "voice": "गीता के हिसाब से, ये कभी काम नहीं करेगा।"
+    }
+   ],
+   "pics": [
+    {
+     "src": "img/father-son-phone-cut.png",
+     "h": 860,
+     "bottom": 1600,
+     "glow": "saffron"
+    }
+   ],
+   "beats": [
+    {
+     "at": "start",
+     "rows": [
+      {
+       "t": "बच्चे को {r:“फ़ोन रखो!”}",
+       "size": 96
+      },
+      {
+       "t": "{d:खुद फ़ोन चलाते हुए?}",
+       "size": 70,
+       "at": "खुद"
+      }
+     ]
+    },
+    {
+     "at": "गीता-2",
+     "rows": [
+      {
+       "t": "{g:गीता} के हिसाब से",
+       "size": 92
+      },
+      {
+       "t": "ये {R:कभी काम नहीं} करेगा",
+       "size": 92,
+       "at": "कभी"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "kind": "source",
+   "lines": [
+    {
+     "voice": "गीता श्लोक सीरीज़, एपिसोड सोलह।"
+    },
+    {
+     "voice": "अध्याय तीन, श्लोक इक्कीस।"
+    }
+   ],
+   "ep": 16,
+   "ref": "3.21",
+   "chapter": "3",
+   "verse": "21",
+   "speaker": "श्रीभगवानुवाच",
+   "shloka": [
+    "{यद्यदाचरति श्रेष्ठ}स्",
+    "तत्तदेवेतरो जनः।",
+    "स {यत्प्रमाणं} कुरुते",
+    "{लोकस्तदनुवर्तते}॥"
+   ],
+   "note": "= बड़े जो करते हैं, बाकी वही करते हैं",
+   "bg": {
+    "src": "img/krishna-arjun-cut.png",
+    "h": 1100,
+    "bottom": 1660
+   },
+   "backdrop": "img/bg/bg-cosmos.jpg",
+   "mood": "gold"
+  },
+  {
+   "id": "s3",
+   "kind": "beats",
+   "lines": [
+    {
+     "voice": "यद्यदाचरति श्रेष्ठः, बड़ा जो करता है,"
+    },
+    {
+     "voice": "तत्तदेवेतरो जनः, बाकी लोग वही करते हैं।"
+    }
+   ],
+   "pics": [
+    {
+     "src": "img/father-son-phone-cut.png",
+     "h": 760,
+     "bottom": 1600,
+     "glow": "saffron"
+    }
+   ],
+   "beats": [
+    {
+     "at": "start",
+     "sa": "यद्यदाचरति श्रेष्ठः",
+     "saSize": 92,
+     "rows": [
+      {
+       "t": "{g:बड़ा} जो करता है",
+       "size": 92,
+       "at": "बड़ा"
+      }
+     ]
+    },
+    {
+     "at": "तत्तदेवेतरो-2",
+     "sa": "तत्तदेवेतरो जनः",
+     "saSize": 92,
+     "rows": [
+      {
+       "t": "बाकी लोग {g:वही} करते हैं",
+       "size": 92,
+       "at": "बाकी"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "kind": "beats",
+   "lines": [
+    {
+     "voice": "स यत्प्रमाणं कुरुते, वो जो मिसाल बनाता है,"
+    },
+    {
+     "voice": "लोकस्तदनुवर्तते, दुनिया उसी के पीछे चलती है।"
+    }
+   ],
+   "pics": [
+    {
+     "src": "img/krishna-face-cut.png",
+     "h": 900,
+     "bottom": 1600
+    }
+   ],
+   "beats": [
+    {
+     "at": "start",
+     "sa": "स यत्प्रमाणं कुरुते",
+     "saSize": 92,
+     "rows": [
+      {
+       "t": "जो {g:मिसाल} बनाता है",
+       "size": 92,
+       "at": "वो"
+      }
+     ]
+    },
+    {
+     "at": "लोकस्तदनुवर्तते-2",
+     "sa": "लोकस्तदनुवर्तते",
+     "saSize": 92,
+     "rows": [
+      {
+       "t": "दुनिया {g:उसी के पीछे} चलती है",
+       "size": 84,
+       "at": "दुनिया"
+      }
+     ]
+    }
+   ],
+   "backdrop": "img/bg/bg-cosmos.jpg",
+   "mood": "gold"
+  },
+  {
+   "id": "s5",
+   "kind": "beats",
+   "lines": [
+    {
+     "voice": "मान लो आप दिन में दस बार कहते हो, फ़ोन रखो।"
+    },
+    {
+     "voice": "पर बच्चा आपको सौ बार फ़ोन देखते हुए देखता है।"
+    },
+    {
+     "voice": "जीत किसकी होगी?"
+    }
+   ],
+   "widgets": [
+    {
+     "type": "bars",
+     "top": 700,
+     "max": 100,
+     "width": 900,
+     "items": [
+      {
+       "at": "दस",
+       "label": "आप कहते हो, “फ़ोन रखो”",
+       "value": 10,
+       "show": "10 बार",
+       "tone": "green"
+      },
+      {
+       "at": "सौ",
+       "label": "बच्चा आपको फ़ोन पर देखता है",
+       "value": 100,
+       "show": "100 बार",
+       "tone": "red"
+      }
+     ],
+     "at": -20
+    }
+   ],
+   "pics": [
+    {
+     "src": "img/father-son-phone-cut.png",
+     "h": 560,
+     "bottom": 1600,
+     "glow": "red"
+    }
+   ],
+   "beats": [
+    {
+     "at": "start",
+     "rows": [
+      {
+       "t": "{d:मान लो, एक दिन में}",
+       "size": 70
+      }
+     ]
+    },
+    {
+     "at": "जीत-2",
+     "top": 1000,
+     "rows": [
+      {
+       "t": "{g:जीत किसकी} होगी?",
+       "size": 110
+      }
+     ]
+    }
+   ],
+   "mood": "red"
+  },
+  {
+   "id": "s6",
+   "kind": "beats",
+   "lines": [
+    {
+     "voice": "आज बच्चों के सामने आधा घंटा फ़ोन मत छुओ।"
+    },
+    {
+     "voice": "बोलने से ज़्यादा असर दिखेगा।"
+    }
+   ],
+   "widgets": [
+    {
+     "type": "timer",
+     "top": 560,
+     "r": 180,
+     "minutes": 30,
+     "go": "आधा",
+     "label": "फ़ोन दूर",
+     "tone": "green",
+     "out": "बोलने-4"
+    }
+   ],
+   "pics": [
+    {
+     "src": "img/father-son-play-cut.png",
+     "h": 700,
+     "bottom": 1600,
+     "glow": "gold",
+     "at": "बोलने-6"
+    }
+   ],
+   "beats": [
+    {
+     "at": "start",
+     "rows": [
+      {
+       "t": "{n:30} मिनट, {E:फ़ोन दूर}",
+       "size": 96
+      }
+     ]
+    },
+    {
+     "at": "बोलने-2",
+     "rows": [
+      {
+       "t": "बोलने से ज़्यादा",
+       "size": 96
+      },
+      {
+       "t": "{g:असर} दिखेगा",
+       "size": 110,
+       "at": "असर"
+      }
+     ]
+    }
+   ],
+   "backdrop": "img/bg/bg-room-day.jpg",
+   "mood": "gold"
+  },
+  {
+   "id": "s7",
+   "kind": "cta",
+   "lines": [
+    {
+     "voice": "ये रील उन मम्मी पापा को भेजो, जो बच्चों के फ़ोन से परेशान हैं।"
+    },
+    {
+     "voice": "और कमेंट में बताओ, आपके घर में सबसे ज़्यादा फ़ोन कौन चलाता है?"
+    },
+    {
+     "voice": "अगले एपिसोड में, कृष्ण एक पेड़ को काटने क्यों कहते हैं?"
+    },
+    {
+     "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।"
+    }
+   ],
+   "share": {
+    "title": "मम्मी पापा को भेजो",
+    "sub": "जो बच्चों के फ़ोन से परेशान हैं",
+    "pic": {
+     "src": "img/father-son-phone-cut.png",
+     "h": 560,
+     "bottom": 1500,
+     "glow": "saffron"
+    }
+   },
+   "comment": {
+    "q": "आपके घर में सबसे ज़्यादा फ़ोन कौन चलाता है?",
+    "typed": "सच बोलूँ? पापा!"
+   },
+   "next": {
+    "ep": "#17",
+    "rows": [
+     "कृष्ण एक पेड़ को",
+     "काटने क्यों कहते हैं?"
+    ],
+    "pic": {
+     "src": "img/tree-upside-cut.png",
+     "h": 520,
+     "bottom": 1180
+    }
+   }
+  }
+ ]
+}

@@ -1,6 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { interpolate, useCurrentFrame } from "remotion";
-import { clamp, deva, num, sanskrit, useSpring } from "../components/kit";
+import { clamp, deva, ease, num, sanskrit, useSpring } from "../components/kit";
+import { useV2 } from "./cine";
 import { G, theme } from "../theme";
 import { createTimeline } from "../lib/timeline";
 import type { Cue, Row, Tone } from "./types";
@@ -59,7 +60,7 @@ export const parseRich = (s: string): Seg[] => {
 export const rowObj = (r: Row) => (typeof r === "string" ? { t: r } : r);
 
 /** One line of rich text. `strike` 0..1 draws the red line over {x:..} parts. */
-export const RichLine: React.FC<{ text: string; size: number; color?: string; weight?: number; strike?: number; align?: "center" | "left"; shadow?: boolean }> = ({
+export const RichLine: React.FC<{ text: string; size: number; color?: string; weight?: number; strike?: number; align?: "center" | "left"; shadow?: boolean; anim?: number }> = ({
   text,
   size,
   color = G.cream,
@@ -67,12 +68,39 @@ export const RichLine: React.FC<{ text: string; size: number; color?: string; we
   strike = 0,
   align = "center",
   shadow = true,
+  anim,
 }) => {
-  const segs = parseRich(text);
+  const f = useCurrentFrame();
+  const segs0 = parseRich(text);
   const base: React.CSSProperties = { ...deva(size, color, weight), display: "inline" };
+  // v2: words come in one by one (each word = its own unit; pills / numbers are one unit)
+  let k = 0;
+  const wrap = (node: React.ReactNode, key: string | number) => {
+    if (anim === undefined) return node;
+    const a = anim + k++ * 2.5;
+    const q = ease(f, a, a + 9);
+    return (
+      <span key={key} style={{ display: "inline-block", opacity: q, transform: `translateY(${(1 - q) * 26}px) scale(${0.85 + 0.15 * q})`, filter: q < 1 ? `blur(${(1 - q) * 6}px)` : undefined }}>
+        {node}
+      </span>
+    );
+  };
+  const segs: Seg[] = [];
+  for (const sg of segs0) {
+    if (anim !== undefined && "pgscdRbE".includes(sg.k)) {
+      sg.t.split(/(\s+)/).forEach((w) => w && segs.push({ k: /^\s+$/.test(w) ? "sp" : sg.k, t: w }));
+    } else segs.push(sg);
+  }
   return (
     <div style={{ textAlign: align, whiteSpace: "nowrap", textShadow: shadow ? "0 6px 30px rgba(0,0,0,0.85)" : undefined, lineHeight: 1.22 }}>
       {segs.map((s, i) => {
+        if (s.k === "sp") return <span key={i} style={base}>{s.t}</span>;
+        return wrap(segNode(s, i), i);
+      })}
+    </div>
+  );
+  function segNode(s: Seg, i: number): React.ReactNode {
+      {
         if (s.k === "p") return <span key={i} style={base}>{s.t}</span>;
         if (s.k === "g") return <span key={i} style={{ ...base, color: G.gold }}>{s.t}</span>;
         if (s.k === "s") return <span key={i} style={{ ...base, color: G.saffron }}>{s.t}</span>;
@@ -114,23 +142,25 @@ export const RichLine: React.FC<{ text: string; size: number; color?: string; we
             </span>
           );
         return null;
-      })}
-    </div>
-  );
+      }
+  }
 };
 
 /** A row that may come in late (`at`) and be struck out later (`strike`). */
-export const RowView: React.FC<{ row: Row; size: number; align?: "center" | "left" }> = ({ row, size, align }) => {
+export const RowView: React.FC<{ row: Row; size: number; align?: "center" | "left"; baseAt?: number }> = ({ row, size, align, baseAt }) => {
   const f = useCurrentFrame();
   const c = useCue();
+  const v2 = useV2();
   const r = rowObj(row);
   const at = r.at !== undefined ? c(r.at) : -100;
+  const appear = r.at !== undefined ? at : baseAt ?? -100;
+  const anim = v2 && appear > 0 ? appear - 2 : undefined;
   const p = useSpring(at - 3, "snappy");
   const st = r.strike !== undefined ? c(r.strike) : 1e9;
   const strike = interpolate(f, [st, st + 10], [0, 1], clamp);
   return (
     <div style={{ opacity: interpolate(p, [0, 0.4], [0, 1], clamp), transform: `translateY(${(1 - p) * 30}px) scale(${0.92 + 0.08 * p})` }}>
-      <RichLine text={r.t} size={r.size ?? size} color={r.color} weight={r.weight} strike={strike} align={align} />
+      <RichLine text={r.t} size={r.size ?? size} color={r.color} weight={r.weight} strike={strike} align={align} anim={anim} />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { G, theme } from "../theme";
 import { Pill, RowView, SaLine, graphemes, parseRich, rowObj, toneColor, toneGlow, useCue, useScene } from "./core";
 import { PicView } from "./pics";
 import { WidgetView } from "./widgets";
+import { Camera, useV2 } from "./cine";
 import type { Beat, BeatsScene, CtaScene, Pic, SourceScene } from "./types";
 
 const moodColor = (m?: string) => (m === "red" ? G.red : m === "green" ? G.green : m === "blue" ? "#8FB4FF" : G.gold);
@@ -59,7 +60,7 @@ const BeatView: React.FC<{ b: Beat; at: number; out: number; top: number }> = ({
         )}
         {saFirst && b.sa && <SaLine text={b.sa} size={b.saSize ?? 70} />}
         {(b.rows ?? []).map((r, i) => (
-          <RowView key={i} row={r} size={96} align={b.align} />
+          <RowView key={i} row={r} size={96} align={b.align} baseAt={at} />
         ))}
         {!saFirst && b.sa && <SaLine text={b.sa} size={b.saSize ?? 70} />}
         {b.sub && <div style={{ ...deva(48, G.cream, 700), textAlign: "center", textShadow: "0 4px 24px rgba(0,0,0,0.9)" }}>{b.sub}</div>}
@@ -110,13 +111,20 @@ export const BeatsSceneView: React.FC<{ s: BeatsScene }> = ({ s }) => {
     else if (b.stack && i > 0) tops.push(tops[i - 1] + beatHeight(s.beats[i - 1]));
     else tops.push(290);
   });
-  const dust = s.dust === "none" ? null : <GoldDust n={30} seed={s.id} color={s.dust ? toneColor(s.dust) : moodColor(s.mood)} />;
+  const v2 = useV2();
+  const dust = s.dust === "none" || v2 ? null : <GoldDust n={30} seed={s.id} color={s.dust ? toneColor(s.dust) : moodColor(s.mood)} />;
   return (
     <SceneShell dur={dur}>
       {dust}
-      {(s.pics ?? []).filter((p) => !p.front).map((p, i) => (
-        <PicView key={i} pic={p} />
-      ))}
+      {v2 ? (
+        <Camera dur={dur} punches={ats}>
+          {(s.pics ?? []).filter((p) => !p.front).map((p, i) => (
+            <PicView key={i} pic={p} />
+          ))}
+        </Camera>
+      ) : (
+        (s.pics ?? []).filter((p) => !p.front).map((p, i) => <PicView key={i} pic={p} />)
+      )}
       {(s.pics ?? []).map((p, i) => {
         const a = p.at !== undefined ? c(p.at) : -30;
         return a > 2 ? <Sfx key={`ps${i}`} at={a - 4} name="whoosh" vol={0.35} /> : null;
@@ -190,7 +198,7 @@ export const SourceSceneView: React.FC<{ s: SourceScene }> = ({ s }) => {
           <PicView pic={{ ...s.bg, halo: false }} />
         </div>
       )}
-      <GoldDust n={24} seed="src" />
+      {!useV2() && <GoldDust n={24} seed="src" />}
 
       <Enter delay={series - 6} cfg="snappy" style={{ position: "absolute", left: 0, right: 0, top: 296, display: "flex", justifyContent: "center" }}>
         <div style={{ background: G.gold, borderRadius: 999, padding: "6px 34px 2px", boxShadow: "0 0 60px rgba(242,184,75,0.4)" }}>
@@ -296,7 +304,7 @@ export const CtaSceneView: React.FC<{ s: CtaScene }> = ({ s }) => {
       <Sfx at={typeAt} name="key" vol={0.4} />
       <Sfx at={ep - 2} name="swish" vol={0.5} />
       <Sfx at={follow + 12} name="ding" vol={0.5} />
-      <GoldDust n={30} seed="cta" />
+      {!useV2() && <GoldDust n={30} seed="cta" />}
 
       {f < ep + 2 && (
         <div style={{ position: "absolute", inset: 0, opacity: 1 - out, transform: `translateY(${-70 * out}px)` }}>

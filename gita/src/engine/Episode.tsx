@@ -7,6 +7,7 @@ import { G } from "../theme";
 import { RowView, SceneCtx, toneColor, toneGlow } from "./core";
 import { BeatsSceneView, CtaSceneView, SourceSceneView } from "./scenes";
 import type { Episode, Scene } from "./types";
+import { Atmos, Backdrop, CineFinish, Leaks, LightRays, Mood, StyleCtx } from "./cine";
 
 const SceneView: React.FC<{ s: Scene }> = ({ s }) => {
   if (s.kind === "source") return <SourceSceneView s={s} />;
@@ -14,31 +15,72 @@ const SceneView: React.FC<{ s: Scene }> = ({ s }) => {
   return <BeatsSceneView s={s} />;
 };
 
+const LEAD = 10; // v2: next scene's backdrop fades in over the last frames of the previous one
+
 export const EpisodeReel: React.FC<{ ep: Episode; timing: Timing }> = ({ ep, timing }) => {
   const T = createTimeline(timing);
+  const v2 = ep.style === "v2";
   const cuts = ep.scenes
     .slice(1)
     .filter((s) => s.swipe !== false)
     .map((s) => T.sceneFrames(s.id).from);
+  if (!v2) {
+    return (
+      <AbsoluteFill style={{ background: G.ink }}>
+        <SheetBg tag={`GITA SHLOK SERIES · EP ${String(ep.ep).padStart(2, "0")} · BHAGAVAD GITA ${ep.shlok}`} />
+        {ep.scenes.map((s) => {
+          const { from, dur } = T.sceneFrames(s.id);
+          const t = T.sceneById(s.id);
+          return (
+            <Sequence key={s.id} from={from} durationInFrames={dur} name={s.id}>
+              <SceneCtx.Provider value={{ id: s.id, T, dur }}>
+                <SceneView s={s} />
+              </SceneCtx.Provider>
+              {t.audio && <Audio src={staticFile(t.audio)} />}
+            </Sequence>
+          );
+        })}
+        <Swipes at={cuts} />
+        <SeriesBar ep={ep.tag} />
+        <Finish />
+      </AbsoluteFill>
+    );
+  }
   return (
-    <AbsoluteFill style={{ background: G.ink }}>
-      <SheetBg tag={`GITA SHLOK SERIES · EP ${String(ep.ep).padStart(2, "0")} · BHAGAVAD GITA ${ep.shlok}`} />
-      {ep.scenes.map((s) => {
-        const { from, dur } = T.sceneFrames(s.id);
-        const t = T.sceneById(s.id);
-        return (
-          <Sequence key={s.id} from={from} durationInFrames={dur} name={s.id}>
-            <SceneCtx.Provider value={{ id: s.id, T, dur }}>
-              <SceneView s={s} />
-            </SceneCtx.Provider>
-            {t.audio && <Audio src={staticFile(t.audio)} />}
-          </Sequence>
-        );
-      })}
-      <Swipes at={cuts} />
-      <SeriesBar ep={ep.tag} />
-      <Finish />
-    </AbsoluteFill>
+    <StyleCtx.Provider value={{ v2: true }}>
+      <AbsoluteFill style={{ background: G.ink }}>
+        {ep.scenes.map((s, i) => {
+          const { from, dur } = T.sceneFrames(s.id);
+          const lead = i === 0 ? 0 : LEAD;
+          const backdrop = (s as { backdrop?: string }).backdrop ?? ep.backdrop;
+          const mood = (s as { mood?: Mood }).mood ?? ep.mood;
+          return (
+            <Sequence key={s.id} from={from - lead} durationInFrames={dur + lead} name={s.id}>
+              {backdrop && <Backdrop src={backdrop} dur={dur} lead={lead} mood={mood} seed={s.id} />}
+              <LightRays mood={mood} />
+              <Atmos mood={mood} seed={s.id} embers={mood === "red" ? 40 : 22} />
+              <Sequence from={lead} durationInFrames={dur} layout="none">
+                <SceneCtx.Provider value={{ id: s.id, T, dur }}>
+                  <SceneView s={s} />
+                </SceneCtx.Provider>
+              </Sequence>
+            </Sequence>
+          );
+        })}
+        {ep.scenes.map((s) => {
+          const { from, dur } = T.sceneFrames(s.id);
+          const t = T.sceneById(s.id);
+          return t.audio ? (
+            <Sequence key={`a${s.id}`} from={from} durationInFrames={dur} layout="none">
+              <Audio src={staticFile(t.audio)} />
+            </Sequence>
+          ) : null;
+        })}
+        <Leaks at={cuts} />
+        <SeriesBar ep={ep.tag} />
+        <CineFinish />
+      </AbsoluteFill>
+    </StyleCtx.Provider>
   );
 };
 
@@ -51,7 +93,14 @@ export const EpisodeCover: React.FC<{ ep: Episode; timing: Timing }> = ({ ep, ti
   return (
     <AbsoluteFill style={{ background: G.ink }}>
       <SceneCtx.Provider value={{ id: ep.scenes[0].id, T, dur: 300 }}>
-        <SheetBg />
+        {ep.style === "v2" && (cv.backdrop ?? ep.backdrop) ? (
+          <>
+            <Backdrop src={(cv.backdrop ?? ep.backdrop) as string} dur={300} lead={0} mood={(cv.mood ?? ep.mood) as Mood} seed="cover" />
+            <LightRays mood={(cv.mood ?? ep.mood) as Mood} />
+          </>
+        ) : (
+          <SheetBg />
+        )}
         <div style={{ position: "absolute", left: 540 - 500, top: 1580 - pic.h * 0.62 - 500, width: 1000, height: 1000, borderRadius: "50%", background: `radial-gradient(circle, ${toneGlow(mood, 0.42)}, transparent 66%)` }} />
         <div style={{ position: "absolute", left: pic.x ?? 540, top: (pic.bottom ?? 1640) - pic.h, height: pic.h, transform: `translateX(-50%)${pic.flip ? " scaleX(-1)" : ""}` }}>
           <Img
@@ -89,7 +138,7 @@ export const EpisodeCover: React.FC<{ ep: Episode; timing: Timing }> = ({ ep, ti
           </div>
         )}
         <div style={{ position: "absolute", left: 0, right: 0, top: 1560, textAlign: "center", fontFamily: "Inter", fontWeight: 800, fontSize: 26, letterSpacing: "0.12em", color: G.dim }}>{HANDLE.toUpperCase()}</div>
-        <Finish />
+        {ep.style === "v2" ? <CineFinish /> : <Finish />}
       </SceneCtx.Provider>
     </AbsoluteFill>
   );
