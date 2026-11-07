@@ -275,6 +275,32 @@
       "pinnedComment": "Aapka hero product kaunsa hai? 👇"
     },
     {
+      "id": "22-case25-ad3",
+      "title": "CASE #25 · Pehle 3 second",
+      "video": "22-case25-ad3.mp4",
+      "caption": "CASE #25 · Aapka ad pehle 3 second mein skip ho raha hai. Kyun? ⏱️\nRohit ka ad shuru hota hai logo se. Phir music, phir product. Tab tak Priya aage nikal gayi.\nFeed mein log ruk ke nahi dekhte. Faisla pehle 3 second mein hota hai.\nWahi ad, nayi shuruaat: \"Baal itne girte hain?\" Priya ruk gayi.\n✅ Ad problem ya result se shuru karo\n✅ Pehle frame mein haath ya chehra\n✅ Main baat screen pe likho, kai log aawaz band karke dekhte hain\n👇 Comment karo AD3, ads ki 20 opening lines free DM mein.\n\n#D2CIndia #D2CFounders #MetaAds #AdCreative #ShopifyIndia",
+      "audioName": "D2C Founders · CASE #25 · Pehle 3 second",
+      "thumbOffsetMs": 1500,
+      "look": "hisaab",
+      "type": "case",
+      "hook": "Pehle 3 second mein SKIP. (hook on screen from frame 0)",
+      "keyword": "AD3",
+      "pinnedComment": "Aapke ad ka pehla frame kya hai? 👇"
+    },
+    {
+      "id": "23-case26-speed",
+      "title": "CASE #26 · 3 second late website",
+      "video": "23-case26-speed.mp4",
+      "caption": "CASE #26 · Website 3 second late khuli, aadhe log chale gaye? 🐢\nPriya ne ad pe tap kiya. Spinner ghoom raha hai. Ek, do, teen. Back.\nAd ka paisa kat gaya, order nahi aaya.\nGoogle/DoubleClick ki research (\"The Need for Mobile Speed\", 2016): mobile pe page 3 second se zyada le, toh 53% visits chhod ke chale jaate hain.\n✅ Product photos chhoti karo (compress, WebP)\n✅ Faltu apps aur popups hatao\n✅ Apni website mobile data pe khud kholke dekho\n👇 Comment karo SPEED, website speed checklist free DM mein.\n\n#D2CIndia #D2CFounders #WebsiteSpeed #ShopifyIndia #Ecommerce",
+      "audioName": "D2C Founders · CASE #26 · 3 second late website",
+      "thumbOffsetMs": 1500,
+      "look": "hisaab",
+      "type": "case",
+      "hook": "Website 3 second late, aadhe log gaye? (hook on screen from frame 0)",
+      "keyword": "SPEED",
+      "pinnedComment": "Aapki website kitne second mein khulti hai? 👇"
+    },
+    {
       "id": "24-case27-retarget",
       "title": "CASE #27 · Baaki 990 ko wapas bulao",
       "video": "24-case27-retarget.mp4",
@@ -299,6 +325,58 @@
       "hook": "Ad click → homepage? Aadha paisa doob gaya. (hook on screen from frame 0)",
       "keyword": "PAGE",
       "pinnedComment": "Aapka ad homepage pe bhejta hai ya product page pe? 👇"
+    },
+    {
+      "id": "26-case29-ugc",
+      "title": "CASE #29 · Studio shoot vs phone video",
+      "video": "26-case29-ugc.mp4",
+      "caption": "CASE #29 · ₹50,000 ka studio shoot haar gaya ₹0 ke phone video se? 📱\nRohit ne studio mein ad shoot kiya: lights, model, ₹50,000.\nPriya ne apne phone se 15 second ka video bheja.\nDono ads, ek hi budget. Maan lo studio ad se 8 order, phone video se 20. (Example numbers)\nFeed mein phone video dost ki salah jaisa lagta hai.\n✅ 5 khush customers se 15 sec ka video maango\n✅ Pehli line mein problem\n✅ Dono ads ek hi budget pe test karo\n👇 Comment karo UGC, customer video brief free DM mein.\n\n#D2CIndia #D2CFounders #UGC #MetaAds #ShopifyIndia",
+      "audioName": "D2C Founders · CASE #29 · Studio shoot vs phone video",
+      "thumbOffsetMs": 1500,
+      "look": "hisaab",
+      "type": "case",
+      "hook": "₹50,000 ka shoot haara, ₹0 ke phone video se? (hook on screen from frame 0)",
+      "keyword": "UGC",
+      "pinnedComment": "Aapka best ad studio wala hai ya phone wala? 👇"
+    },
+    {
+      "id": "27-case30-words",
+      "title": "CASE #30 · Customer ke shabd bechte hain",
+      "video": "27-case30-words.mp4",
+      "caption": "CASE #30 · Aapka ad bolta hai \"premium quality\". Customer kehta hai \"baal girna band hua\". Kaun bechega? ✍️\nRohit ke ad mein: premium, natural, best quality.\nPriya ke review mein: \"3 hafte mein baal girna kam hua.\"\nCustomer aapke shabd search nahi karta. Woh apni problem search karta hai.\n✅ Reviews aur DMs se exact lines copy karo\n✅ Ad ki pehli line mein result likho\n✅ Wahi shabd product page pe bhi\n👇 Comment karo WORDS, review se ad likhne ki sheet free DM mein.\n\n#D2CIndia #D2CFounders #AdCopy #Copywriting #ShopifyIndia",
+      "audioName": "D2C Founders · CASE #30 · Customer ke shabd bechte hain",
+      "thumbOffsetMs": 1500,
+      "look": "hisaab",
+      "type": "case",
+      "hook": "Aap vs customer ke shabd, kaun bechega? (hook on screen from frame 0)",
+      "keyword": "WORDS",
+      "pinnedComment": "Aapke best review ki ek line yahan likho 👇"
+    },
+    {
+      "id": "28-case31-spy",
+      "title": "CASE #31 · Competitor ke ads free mein dekho",
+      "video": "28-case31-spy.mp4",
+      "caption": "CASE #31 · Competitor kaunse ad chala raha hai? Free mein, 2 minute mein dekho. 🔍\nMeta Ad Library (facebook.com/ads/library) free hai. Competitor ka naam likho, uske saare chalu ads saamne.\nJo ad mahino se chal raha hai, woh kaam kar raha hai. Warna kab ka band ho jaata.\n✅ Ad Library mein competitor ka page dhoondho\n✅ Sabse purane chalu ads note karo\n✅ Unka angle samjho, ad kabhi copy mat karo\n👇 Comment karo SPY, Ad Library guide free DM mein.\n\n#D2CIndia #D2CFounders #MetaAdLibrary #MetaAds #ShopifyIndia",
+      "audioName": "D2C Founders · CASE #31 · Competitor ke ads free mein dekho",
+      "thumbOffsetMs": 1500,
+      "look": "cartoon",
+      "type": "case",
+      "hook": "Competitor ke ads? Free, 2 minute mein (hook on screen from frame 0)",
+      "keyword": "SPY",
+      "pinnedComment": "Aapne kabhi Meta Ad Library kholi hai? Haan ya nahi 👇"
+    },
+    {
+      "id": "29-case32-fresh",
+      "title": "CASE #32 · Ad thak gaya",
+      "video": "29-case32-fresh.mp4",
+      "caption": "CASE #32 · Jo ad ₹200 mein order laata tha, ab ₹600 mein. Ad thak gaya? 😴\nMaan lo Rohit ka best ad: pehle mahine har order ₹200. Is mahine wahi ad, wahi budget: har order ₹600. (Example numbers)\nWahi log usse baar baar dekh chuke hain. Unke liye ad purana ho gaya.\n✅ Dekho ek insaan ne ad kitni baar dekha (frequency)\n✅ Wahi idea, nayi shuruaat banao\n✅ Har 2 hafte 2-3 naye ad ready rakho\n👇 Comment karo FRESH, naye ad ki checklist free DM mein.\n\n#D2CIndia #D2CFounders #AdFatigue #MetaAds #ShopifyIndia",
+      "audioName": "D2C Founders · CASE #32 · Ad thak gaya",
+      "thumbOffsetMs": 1500,
+      "look": "cartoon",
+      "type": "case",
+      "hook": "₹200 se ₹600 per order, ad thak gaya? (hook on screen from frame 0)",
+      "keyword": "FRESH",
+      "pinnedComment": "Aap kitne din mein naya ad banate ho? 👇"
     }
   ]
 }

@@ -1,0 +1,82 @@
+{
+  "id": "case30-words",
+  "tag": "CASE #30",
+  "look": "hisaab",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #30 (6 Nov). Story example, no statistic.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Aapka ad bolta hai *premium_quality. Customer kehta hai *baal girna band hua. *Kaun bechega?",
+          "voice": "आपका ऐड बोलता है प्रीमियम क्वालिटी। कस्टमर कहता है बाल गिरना बंद हुआ। कौन बेचेगा?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Rohit ke ad mein, *premium, *natural, *best quality.",
+          "voice": "रोहित के ऐड में, प्रीमियम, नैचुरल, बेस्ट क्वालिटी।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Priya ke review mein, *teen hafte mein *baal girna kam hua.",
+          "voice": "प्रिया के रिव्यू में, तीन हफ़्ते में बाल गिरना कम हुआ।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Customer *aapke shabd search nahi karta. Woh *apni problem search karta hai.",
+          "voice": "कस्टमर आपके शब्द सर्च नहीं करता। वो अपनी प्रॉब्लम सर्च करता है।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh *reviews aur *DMs|dee_ems se exact lines *copy karo. Ad ki *pehli line mein result likho. Aur *wahi shabd product page pe bhi.",
+          "voice": "तो रिव्यूज़ और डी एम्स से एग्ज़ैक्ट लाइन्स कॉपी करो। ऐड की पहली लाइन में रिज़ल्ट लिखो। और वही शब्द प्रोडक्ट पेज पे भी।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *WORDS|words, Review se ad likhne ki *sheet free *DM|dee_em mein.",
+          "voice": "कमेंट करो वर्ड्स, रिव्यू से ऐड लिखने की शीट फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, competitor ke *saare ads free mein kaise dekhein?",
+          "voice": "आज शाम, कॉम्पिटिटर के सारे ऐड्स फ़्री में कैसे देखें?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

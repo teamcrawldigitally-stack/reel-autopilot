@@ -1,0 +1,82 @@
+{
+  "id": "case32-fresh",
+  "tag": "CASE #32",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #32 (6 Nov). Example numbers (maan lo): cost per order ₹200 last month, ₹600 this month with the same ad and budget.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Jo ad pichle mahine *₹200|do_sau mein order laata tha, ab *₹600|chhe_sau mein. Ad *thak gaya?",
+          "voice": "जो ऐड पिछले महीने दो सौ में ऑर्डर लाता था, अब छह सौ में। ऐड थक गया?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Maan lo Rohit ka *best ad. Pehle mahine har order *₹200|do_sau mein.",
+          "voice": "मान लो रोहित का बेस्ट ऐड। पहले महीने हर ऑर्डर दो सौ में।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Is mahine *wahi ad, *wahi budget. Har order *₹600|chhe_sau mein.",
+          "voice": "इस महीने वही ऐड, वही बजट। हर ऑर्डर छह सौ में।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Kyunki wahi log usse *baar baar dekh chuke hain. Unke liye ad *purana ho gaya.",
+          "voice": "क्योंकि वही लोग उसे बार बार देख चुके हैं। उनके लिए ऐड पुराना हो गया।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh dekho ek insaan ne ad *kitni baar dekha. Wahi idea, *nayi shuruaat banao. Aur har *2|do hafte *2-3|do_teen naye ad ready rakho.",
+          "voice": "तो देखो एक इंसान ने ऐड कितनी बार देखा। वही आइडिया, नई शुरुआत बनाओ। और हर दो हफ़्ते दो तीन नए ऐड रेडी रखो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *FRESH|fresh, Naye ad ki *checklist free *DM|dee_em mein.",
+          "voice": "कमेंट करो फ़्रेश, नए ऐड की चेकलिस्ट फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, *₹10,000|das_hazaar *Meta pe lagayein ya *Google pe?",
+          "voice": "आज शाम, दस हज़ार मेटा पे लगाएँ या गूगल पे?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

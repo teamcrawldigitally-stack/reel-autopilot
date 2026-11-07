@@ -1,0 +1,82 @@
+{
+  "id": "case26-speed",
+  "tag": "CASE #26",
+  "look": "hisaab",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #26 (6 Nov). Statistic re-checked 7 Nov: Google/DoubleClick research 'The Need for Mobile Speed' (Sept 2016) found 53% of mobile site visits are abandoned if a page takes longer than 3 seconds to load (reported by Marketing Dive, 12 Sep 2016).",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Website *3_second|teen_second mein nahi khuli, *aadhe log chale gaye?",
+          "voice": "वेबसाइट तीन सेकंड में नहीं खुली, आधे लोग चले गए?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Priya ne ad pe *tap kiya. *Spinner ghoom raha hai. *Ek, *do, *teen.",
+          "voice": "प्रिया ने ऐड पे टैप किया। स्पिनर घूम रहा है। एक, दो, तीन।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Usne *back dabaya. Ad ka *paisa kat gaya, *order nahi aaya.",
+          "voice": "उसने बैक दबाया। ऐड का पैसा कट गया, ऑर्डर नहीं आया।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "*Google ke mobile data ke hisaab se, Page *3_second|teen_second se zyada le, toh *aadhe se zyada log chale jaate hain.",
+          "voice": "गूगल के मोबाइल डेटा के हिसाब से, पेज तीन सेकंड से ज़्यादा ले, तो आधे से ज़्यादा लोग चले जाते हैं।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh *product photos chhoti karo. Jo *apps aur *popups use nahi hote, hatao. Aur apni website *mobile data pe khud kholke dekho.",
+          "voice": "तो प्रोडक्ट फ़ोटोज़ छोटी करो। जो ऐप्स और पॉपअप्स यूज़ नहीं होते, हटाओ। और अपनी वेबसाइट मोबाइल डेटा पे ख़ुद खोलके देखो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *SPEED|speed, Website speed *checklist free *DM|dee_em mein.",
+          "voice": "कमेंट करो स्पीड, वेबसाइट स्पीड चेकलिस्ट फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, *990|nau_sau_nabbe log jo bina khareede chale gaye, unhe *wapas kaise laayein?",
+          "voice": "आज शाम, नौ सौ नब्बे लोग जो बिना ख़रीदे चले गए, उन्हें वापस कैसे लाएँ?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

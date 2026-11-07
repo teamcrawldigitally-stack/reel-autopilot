@@ -1,0 +1,82 @@
+{
+  "id": "case31-spy",
+  "tag": "CASE #31",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #31 (6 Nov). Meta Ad Library (facebook.com/ads/library) is free and shows a page's active ads; checked 7 Nov.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Competitor *kaunse ad chala raha hai? *Free mein, *2_minute|do_minute mein dekho.",
+          "voice": "कॉम्पिटिटर कौनसे ऐड चला रहा है? फ़्री में, दो मिनट में देखो।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Rohit jaanna chahta tha, uske *competitor ke kaunse ads chal rahe hain.",
+          "voice": "रोहित जानना चाहता था, उसके कॉम्पिटिटर के कौनसे ऐड्स चल रहे हैं।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "*Meta_Ad_Library kholi, competitor ka *naam likha. *Saare chalu ads saamne.",
+          "voice": "मेटा ऐड लाइब्रेरी खोली, कॉम्पिटिटर का नाम लिखा। सारे चालू ऐड्स सामने।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Jo ad *mahino se chal raha hai, woh *kaam kar raha hai. Warna kab ka *band ho jaata.",
+          "voice": "जो ऐड महीनों से चल रहा है, वो काम कर रहा है। वरना कब का बंद हो जाता।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh *Ad_Library mein competitor ka page dhoondho. Sabse *purane chalu ads note karo. Aur unka *angle samjho, ad kabhi *copy mat karo.",
+          "voice": "तो ऐड लाइब्रेरी में कॉम्पिटिटर का पेज ढूँढो। सबसे पुराने चालू ऐड्स नोट करो। और उनका एंगल समझो, ऐड कभी कॉपी मत करो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *SPY|spy, *Ad_Library guide free *DM|dee_em mein.",
+          "voice": "कमेंट करो स्पाई, ऐड लाइब्रेरी गाइड फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Kal dopahar, jo ad chal raha tha, *achanak mehenga kyun?",
+          "voice": "कल दोपहर, जो ऐड चल रहा था, अचानक महँगा क्यों?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

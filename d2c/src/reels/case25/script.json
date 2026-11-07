@@ -1,0 +1,82 @@
+{
+  "id": "case25-ad3",
+  "tag": "CASE #25",
+  "look": "hisaab",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #25 (6 Nov). No statistic quoted; the 3-second hook idea is shown as an example.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Aapka ad pehle *3_second|teen_second mein *skip ho raha hai. *Kyun?",
+          "voice": "आपका ऐड पहले तीन सेकंड में स्किप हो रहा है। क्यों?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Rohit ka ad shuru hota hai *logo se. Phir *music, phir *product. Tab tak Priya *aage nikal gayi.",
+          "voice": "रोहित का ऐड शुरू होता है लोगो से। फिर म्यूज़िक, फिर प्रोडक्ट। तब तक प्रिया आगे निकल गई।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Feed mein log *ruk ke nahi dekhte. *Faisla pehle *3_second|teen_second mein hota hai.",
+          "voice": "फ़ीड में लोग रुक के नहीं देखते। फ़ैसला पहले तीन सेकंड में होता है।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Wahi ad, *nayi shuruaat. *Baal itne girte hain? Priya *ruk gayi.",
+          "voice": "वही ऐड, नई शुरुआत। बाल इतने गिरते हैं? प्रिया रुक गई।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh ad *problem ya *result se shuru karo. Pehle frame mein *haath ya chehra. Aur *main baat screen pe likh do, kyunki kai log *aawaz band karke dekhte hain.",
+          "voice": "तो ऐड प्रॉब्लम या रिज़ल्ट से शुरू करो। पहले फ़्रेम में हाथ या चेहरा। और मेन बात स्क्रीन पे लिख दो, क्योंकि कई लोग आवाज़ बंद करके देखते हैं।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *AD3|ad_three, Ads ki *20|bees opening lines free *DM|dee_em mein.",
+          "voice": "कमेंट करो ऐड थ्री, ऐड्स की बीस ओपनिंग लाइन्स फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Kal dopahar, website *3_second|teen_second late khuli, *kitne log gaye?",
+          "voice": "कल दोपहर, वेबसाइट तीन सेकंड लेट खुली, कितने लोग गए?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

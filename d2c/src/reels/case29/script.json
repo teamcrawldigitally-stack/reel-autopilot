@@ -1,0 +1,82 @@
+{
+  "id": "case29-ugc",
+  "tag": "CASE #29",
+  "look": "hisaab",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #29 (6 Nov). Example numbers (maan lo): same budget, studio ad 8 orders vs phone video 20.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "*₹50,000|pachaas_hazaar ka studio shoot *haar gaya *zero rupaye ke phone video se?",
+          "voice": "पचास हज़ार का स्टूडियो शूट हार गया ज़ीरो रुपये के फ़ोन वीडियो से?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Rohit ne *studio mein ad shoot kiya. *Lights, *model, *₹50,000|pachaas_hazaar.",
+          "voice": "रोहित ने स्टूडियो में ऐड शूट किया। लाइट्स, मॉडल, पचास हज़ार।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Priya ne apne *phone se *15|pandrah second ka video bheja. *Do hafte mein farak dekho.",
+          "voice": "प्रिया ने अपने फ़ोन से पंद्रह सेकंड का वीडियो भेजा। दो हफ़्ते में फ़र्क देखो।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Dono ads, *ek hi budget. Maan lo studio ad se *8|aath order, phone video se *20|bees.",
+          "voice": "दोनों ऐड्स, एक ही बजट। मान लो स्टूडियो ऐड से आठ ऑर्डर, फ़ोन वीडियो से बीस।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Kyunki feed mein phone video *dost ki salah jaisa lagta hai. Toh *5|paanch khush customers se *15|pandrah second ka video maango. *Pehli line mein problem. Aur dono ads *ek hi budget pe test karo.",
+          "voice": "क्योंकि फ़ीड में फ़ोन वीडियो दोस्त की सलाह जैसा लगता है। तो पाँच ख़ुश कस्टमर्स से पंद्रह सेकंड का वीडियो माँगो। पहली लाइन में प्रॉब्लम। और दोनों ऐड्स एक ही बजट पे टेस्ट करो।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *UGC|u_g_c, Customer video *brief free *DM|dee_em mein.",
+          "voice": "कमेंट करो यू जी सी, कस्टमर वीडियो ब्रीफ़ फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Kal dopahar, *premium quality kyun nahi bikta?",
+          "voice": "कल दोपहर, प्रीमियम क्वालिटी क्यों नहीं बिकता?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}
