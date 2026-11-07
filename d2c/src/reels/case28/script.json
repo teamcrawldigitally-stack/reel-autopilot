@@ -1,0 +1,82 @@
+{
+  "id": "case28-page",
+  "tag": "CASE #28",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #28 (6 Nov). Story example: the ad sends Priya to a 40-product homepage.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Ad pe *click kiya, aur pahunche *homepage pe? Yahin *aadha paisa doob gaya.",
+          "voice": "ऐड पे क्लिक किया, और पहुँचे होमपेज पे? यहीं आधा पैसा डूब गया।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Priya ne *serum ka ad dekha, *tap kiya. Saamne *40|chaalees product ka homepage.",
+          "voice": "प्रिया ने सीरम का ऐड देखा, टैप किया। सामने चालीस प्रोडक्ट का होमपेज।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Serum *dhoondha, *nahi mila. *Back.",
+          "voice": "सीरम ढूँढा, नहीं मिला। बैक।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Ad ne jo dikhaya, page pe *wahi milna chahiye. Warna click ka paisa *bekaar.",
+          "voice": "ऐड ने जो दिखाया, पेज पे वही मिलना चाहिए। वरना क्लिक का पैसा बेकार।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh har ad *seedha usi product ke page pe bhejo. Page ke upar *wahi photo aur *wahi offer jo ad mein tha. Aur *Add_to_Cart bina scroll kiye dikhe.",
+          "voice": "तो हर ऐड सीधा उसी प्रोडक्ट के पेज पे भेजो। पेज के ऊपर वही फ़ोटो और वही ऑफ़र जो ऐड में था। और ऐड टू कार्ट बिना स्क्रॉल किए दिखे।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *PAGE|page, Ad se page *checklist free *DM|dee_em mein.",
+          "voice": "कमेंट करो पेज, ऐड से पेज चेकलिस्ट फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, *₹50,000|pachaas_hazaar ka shoot ya *zero ka phone video, *kaun jeeta?",
+          "voice": "आज शाम, पचास हज़ार का शूट या ज़ीरो का फ़ोन वीडियो, कौन जीता?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

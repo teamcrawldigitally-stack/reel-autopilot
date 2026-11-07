@@ -1,0 +1,82 @@
+{
+  "id": "case27-retarget",
+  "tag": "CASE #27",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #27 (6 Nov). Example numbers (maan lo): ₹10,000 of ads brought 1,000 visitors, 10 ordered, 990 left.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "*1,000|hazaar log website pe aaye, *10|das ne khareeda. Baaki *990|nau_sau_nabbe ko *bhool gaye?",
+          "voice": "हज़ार लोग वेबसाइट पे आए, दस ने ख़रीदा। बाक़ी नौ सौ नब्बे को भूल गए?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Maan lo Rohit ne *₹10,000|das_hazaar ke ad se *1,000|hazaar log bulaye. *10|das ne order kiya.",
+          "voice": "मान लो रोहित ने दस हज़ार के ऐड से हज़ार लोग बुलाए। दस ने ऑर्डर किया।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Baaki *990|nau_sau_nabbe ne product dekha, *pasand kiya, par *ruk gaye.",
+          "voice": "बाक़ी नौ सौ नब्बे ने प्रोडक्ट देखा, पसंद किया, पर रुक गए।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Inhe *dobara bulana sabse *sasta hai. Yeh aapko *pehle se jaante hain.",
+          "voice": "इन्हें दोबारा बुलाना सबसे सस्ता है। ये आपको पहले से जानते हैं।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh pichle *14|chaudah din ke visitors ke liye *alag ad chalao. Usme *review ya *offer dikhao, wahi purana ad nahi. Aur jo *khareed chuke, unhe is ad se *hatao.",
+          "voice": "तो पिछले चौदह दिन के विज़िटर्स के लिए अलग ऐड चलाओ। उसमें रिव्यू या ऑफ़र दिखाओ, वही पुराना ऐड नहीं। और जो ख़रीद चुके, उन्हें इस ऐड से हटाओ।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *RETARGET|retarget, Setup ka *step-by-step|step_by_step free *DM|dee_em mein.",
+          "voice": "कमेंट करो रीटारगेट, सेटअप का स्टेप बाय स्टेप फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Kal dopahar, ad ka click *homepage pe kyun nahi bhejna?",
+          "voice": "कल दोपहर, ऐड का क्लिक होमपेज पे क्यों नहीं भेजना?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

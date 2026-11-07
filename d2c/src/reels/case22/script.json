@@ -1,0 +1,82 @@
+{
+  "id": "case22-sample",
+  "tag": "CASE #22",
+  "look": "hisaab",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #22 (6 Nov). Example numbers (maan lo): ₹5 sachet in 100 parcels = ₹500; if 5 people buy the ₹500 bottle = ₹2,500 sale.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Parcel mein *₹5|paanch_rupaye ka sample, aur agla order *₹500|paanch_sau ka.",
+          "voice": "पार्सल में पाँच रुपये का सैंपल, और अगला ऑर्डर पाँच सौ का।"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Priya ne Rohit se *face_wash mangaya. Parcel mein ek *chhota sachet bhi tha, *naya serum.",
+          "voice": "प्रिया ने रोहित से फ़ेस वॉश मँगाया। पार्सल में एक छोटा सैशे भी था, नया सीरम।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Usne *try kiya. Mahine baad, *poori bottle order ki, *₹500|paanch_sau.",
+          "voice": "उसने ट्राई किया। महीने बाद, पूरी बोतल ऑर्डर की, पाँच सौ।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Maan lo *100|sau parcel mein sample, kharcha *₹500|paanch_sau. Agar *5|paanch log bhi bottle lein, toh *₹2,500|do_hazaar_paanch_sau ki sale.",
+          "voice": "मान लो सौ पार्सल में सैंपल, ख़र्चा पाँच सौ। अगर पाँच लोग भी बोतल लें, तो दो हज़ार पाँच सौ की सेल।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh sample woh do jo customer ne *nahi khareeda. Sachet pe *QR|kyu_aar ya *link do. Aur *7|saat din baad *WhatsApp pe poocho, kaisa laga.",
+          "voice": "तो सैंपल वो दो जो कस्टमर ने नहीं ख़रीदा। सैशे पे क्यू आर या लिंक दो। और सात दिन बाद व्हाट्सऐप पे पूछो, कैसा लगा।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *SAMPLE|sample, *Sample plan free *DM|dee_em mein.",
+          "voice": "कमेंट करो सैंपल, सैंपल प्लान फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, *zero ad budget mein pehle *100|sau order kaise?",
+          "voice": "आज शाम, ज़ीरो ऐड बजट में पहले सौ ऑर्डर कैसे?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

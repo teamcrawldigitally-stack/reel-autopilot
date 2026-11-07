@@ -1,0 +1,82 @@
+{
+  "id": "case24-hero",
+  "tag": "CASE #24",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #24 (6 Nov). Example numbers (maan lo): 20 products, 70% of sales from one serum; ₹20,000 ad budget split ₹1,000 per product.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "*20|bees product launch kiye. Bik raha *sirf ek?",
+          "voice": "बीस प्रोडक्ट लॉन्च किए। बिक रहा सिर्फ़ एक?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Rohit ki *shelf pe *20|bees product. Par *70%|sattar_percent sale *ek hi serum se.",
+          "voice": "रोहित की शेल्फ़ पे बीस प्रोडक्ट। पर सत्तर परसेंट सेल एक ही सीरम से।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Baaki *19|unnees godown mein pade hain, aur *ad ka paisa bhi baant rahe hain.",
+          "voice": "बाक़ी उन्नीस गोदाम में पड़े हैं, और ऐड का पैसा भी बाँट रहे हैं।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Maan lo ad budget *₹20,000|bees_hazaar. Har product ko *₹1,000|ek_hazaar. Jo *bikta hai, usko bhi *sirf ₹1,000|ek_hazaar.",
+          "voice": "मान लो ऐड बजट बीस हज़ार। हर प्रोडक्ट को एक हज़ार। जो बिकता है, उसको भी सिर्फ़ एक हज़ार।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh pichle *3|teen mahine ke order dekho, *hero product pakdo. *Zyada ad paisa usi pe. *Homepage pe sabse upar wahi. Aur naye product usi ke saath *combo mein.",
+          "voice": "तो पिछले तीन महीने के ऑर्डर देखो, हीरो प्रोडक्ट पकड़ो। ज़्यादा ऐड पैसा उसी पे। होमपेज पे सबसे ऊपर वही। और नए प्रोडक्ट उसी के साथ कॉम्बो में।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *HERO|hero, *Hero product finder sheet free *DM|dee_em mein.",
+          "voice": "कमेंट करो हीरो, हीरो प्रोडक्ट फ़ाइंडर शीट फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Aaj shaam, aapka ad pehle *3_second|teen_second mein *skip kyun hota hai?",
+          "voice": "आज शाम, आपका ऐड पहले तीन सेकंड में स्किप क्यों होता है?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}

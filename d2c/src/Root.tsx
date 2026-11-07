@@ -76,6 +76,21 @@ import { totalFrames as case27Frames } from "./reels/case27/timeline";
 import { Case28Reel } from "./reels/case28/Reel";
 import { Case28Cover } from "./reels/case28/Cover";
 import { totalFrames as case28Frames } from "./reels/case28/timeline";
+import { Case29Reel } from "./reels/case29/Reel";
+import { Case29Cover } from "./reels/case29/Cover";
+import { totalFrames as case29Frames } from "./reels/case29/timeline";
+import { Case30Reel } from "./reels/case30/Reel";
+import { Case30Cover } from "./reels/case30/Cover";
+import { totalFrames as case30Frames } from "./reels/case30/timeline";
+import { Case31Reel } from "./reels/case31/Reel";
+import { Case31Cover } from "./reels/case31/Cover";
+import { totalFrames as case31Frames } from "./reels/case31/timeline";
+import { Case32Reel } from "./reels/case32/Reel";
+import { Case32Cover } from "./reels/case32/Cover";
+import { totalFrames as case32Frames } from "./reels/case32/timeline";
+import { Case33Reel } from "./reels/case33/Reel";
+import { Case33Cover } from "./reels/case33/Cover";
+import { totalFrames as case33Frames } from "./reels/case33/timeline";
 import { News01Reel } from "./reels/news01/Reel";
 import { totalFrames as news01Frames } from "./reels/news01/timeline";
 
@@ -147,6 +162,16 @@ export const Root: React.FC = () => (
     <Composition id="Case27Cover" component={Case27Cover} durationInFrames={1} {...V} />
     <Composition id="Case28" component={Case28Reel} durationInFrames={case28Frames} {...V} />
     <Composition id="Case28Cover" component={Case28Cover} durationInFrames={1} {...V} />
+    <Composition id="Case29" component={Case29Reel} durationInFrames={case29Frames} {...V} />
+    <Composition id="Case29Cover" component={Case29Cover} durationInFrames={1} {...V} />
+    <Composition id="Case30" component={Case30Reel} durationInFrames={case30Frames} {...V} />
+    <Composition id="Case30Cover" component={Case30Cover} durationInFrames={1} {...V} />
+    <Composition id="Case31" component={Case31Reel} durationInFrames={case31Frames} {...V} />
+    <Composition id="Case31Cover" component={Case31Cover} durationInFrames={1} {...V} />
+    <Composition id="Case32" component={Case32Reel} durationInFrames={case32Frames} {...V} />
+    <Composition id="Case32Cover" component={Case32Cover} durationInFrames={1} {...V} />
+    <Composition id="Case33" component={Case33Reel} durationInFrames={case33Frames} {...V} />
+    <Composition id="Case33Cover" component={Case33Cover} durationInFrames={1} {...V} />
     <Composition id="CastTest" component={CastTest} durationInFrames={300} {...V} />
     <Composition id="DoctorTest" component={DoctorTest} durationInFrames={300} {...V} />
   </>

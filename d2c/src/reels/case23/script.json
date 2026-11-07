@@ -1,0 +1,82 @@
+{
+  "id": "case23-start",
+  "tag": "CASE #23",
+  "look": "cartoon",
+  "voice": {
+    "speaker": "aditya_hi_conversational",
+    "model": "bulbul:v4-flash",
+    "pace": 1.15,
+    "lang": "hi-IN",
+    "script": "all Devanagari"
+  },
+  "timing": {
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
+  },
+  "source": "Calendar Scripts tab, CASE #23 (6 Nov). Example numbers (maan lo): 30 orders from own contacts and WhatsApp status + 40 from 5 small creators (product, no fee) + 30 from one marketplace listing = 100.",
+  "scenes": [
+    {
+      "id": "s1",
+      "lines": [
+        {
+          "roman": "Ad ke liye *zero rupaye. Phir bhi pehle *100|sau order *kaise aaye?",
+          "voice": "ऐड के लिए ज़ीरो रुपये। फिर भी पहले सौ ऑर्डर कैसे आए?"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "lines": [
+        {
+          "roman": "Rohit ka *naya brand. Ad ka budget *zero, order counter *zero.",
+          "voice": "रोहित का नया ब्रांड। ऐड का बजट ज़ीरो, ऑर्डर काउंटर ज़ीरो।"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "lines": [
+        {
+          "roman": "Maan lo pehle *30|tees order aaye apne *contacts aur *WhatsApp status se.",
+          "voice": "मान लो पहले तीस ऑर्डर आए अपने कॉन्टैक्ट्स और व्हाट्सऐप स्टेटस से।"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "lines": [
+        {
+          "roman": "Agle *40|chaalees, *paanch chhote creators ko product bheja, paise nahi. Aakhri *30|tees, ek *marketplace listing se.",
+          "voice": "अगले चालीस, पाँच छोटे क्रिएटर्स को प्रोडक्ट भेजा, पैसे नहीं। आख़िरी तीस, एक मार्केटप्लेस लिस्टिंग से।"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "lines": [
+        {
+          "roman": "Toh pehle unse becho jo *aapko jaante hain. Ek bade influencer ki jagah *paanch chhote. Aur ek *marketplace pe listing, *bharose ke liye.",
+          "voice": "तो पहले उनसे बेचो जो आपको जानते हैं। एक बड़े इन्फ़्लुएंसर की जगह पाँच छोटे। और एक मार्केटप्लेस पे लिस्टिंग, भरोसे के लिए।"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "lines": [
+        {
+          "roman": "Comment karo *START|start, Pehle *100|sau order ki *checklist free *DM|dee_em mein.",
+          "voice": "कमेंट करो स्टार्ट, पहले सौ ऑर्डर की चेकलिस्ट फ़्री डी एम में।"
+        },
+        {
+          "roman": "*Kal dopahar, *20|bees product, bik raha *sirf ek. Kyun?",
+          "voice": "कल दोपहर, बीस प्रोडक्ट, बिक रहा सिर्फ़ एक। क्यों?"
+        },
+        {
+          "roman": "*Follow karo.",
+          "voice": "फ़ॉलो करो।"
+        }
+      ]
+    }
+  ]
+}
