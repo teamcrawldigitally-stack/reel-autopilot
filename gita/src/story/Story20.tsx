@@ -55,8 +55,8 @@ const S3: React.FC = () => (
     <BottomShade />
     <Label title={"काम एष क्रोध एष,\nरजोगुणसमुद्भवः।"} refx="भगवद् गीता 3.37" at={2} out="कृष्ण-6" x={50} y={1400} rot={-1.5} size={92} seed="b" />
     <Title lines={[{ t: "DESIRE.", c: GOLD }, { t: "ANGER.", c: RED }]} at="कृष्ण-2" size={190} />
-    <Label title="काम" sub="इच्छा" at="इच्छा" x={70} y={1380} rot={-2} size={96} seed="c" />
-    <Label title="क्रोध" sub="गुस्सा" at="गुस्सा" x={600} y={1400} rot={2} size={96} seed="d" />
+    <Label title="काम" sub="इच्छा" at="इच्छा" x={70} y={1060} rot={-2} size={96} seed="c" />
+    <Label title="क्रोध" sub="गुस्सा" at="गुस्सा" x={680} y={1100} rot={2} size={96} seed="d" />
     <Label mono="रजोगुण से पैदा" at="रजोगुण#2" x={250} y={1640} rot={-1} seed="e" />
   </>
 );
@@ -64,7 +64,7 @@ const S3: React.FC = () => (
 const S4: React.FC = () => (
   <>
     <KenBurns src="img/story20/hunger.jpg" dur={TL.sceneFrames("s4").dur + 10} s={[1.08, 1.2]} y={[60, -60]} origin="50% 60%" />
-    <TopShade h={900} a={0.62} />
+    <TopShade h={1000} a={0.8} />
     <BottomShade />
     <Label title={"महाशनो महापाप्मा,\nविद्ध्येनमिह वैरिणम्।"} refx="भगवद् गीता 3.37" at={2} out="ये-6" x={50} y={1400} rot={-1.5} size={92} seed="f" />
     <Title lines={[{ t: "IT NEVER" }, { t: "GETS FULL.", c: RED }]} at="ये-2" out="इसी-4" size={170} />
