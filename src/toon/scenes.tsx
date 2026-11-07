@@ -759,10 +759,10 @@ export const AskScene: React.FC<TP> = (p) => {
       ))}
       {/* गुरुजी (answers, left) and नेहा (asks, right) */}
       <Abs x={-10} y={880}>
-        <Character width={440} pose={frame < answerAt ? "idle" : "explain"} poseAt={answerAt} prevPose="idle" mouth={m} brows={0.3} lookX={0.6} />
+        <Character width={440} pose={frame < answerAt ? "idle" : "explain"} poseAt={answerAt} prevPose="idle" mouth={frame < answerAt - 2 ? 0 : m} brows={0.3} lookX={0.6} />
       </Abs>
       <Abs x={610} y={880} style={{ transform: `translateY(${nod}px)` }}>
-        <Character width={420} look={FRIEND} pose={frame < answerAt ? "shrug" : "idle"} poseAt={frame < answerAt ? 0 : answerAt} prevPose="shrug" mood={frame < answerAt ? "o" : "smile"} brows={frame < answerAt ? 0.8 : 0.3} lookX={-0.6} seed={2} />
+        <Character width={420} look={FRIEND} pose={frame < answerAt ? "shrug" : "idle"} poseAt={frame < answerAt ? 0 : answerAt} prevPose="shrug" mouth={frame < answerAt - 2 ? m : 0} mood="smile" brows={frame < answerAt ? 0.8 : 0.3} lookX={-0.6} seed={2} />
       </Abs>
       <Abs x={70} y={1330}>
         <Pop at={-2} from={0.5}><NameTag text={sc.answerName ?? "गुरुजी"} color={C.orange} /></Pop>
