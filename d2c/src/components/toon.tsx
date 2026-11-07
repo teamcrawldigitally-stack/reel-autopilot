@@ -267,3 +267,40 @@ export const Verdict: React.FC<{ ok: boolean; text: string; size?: number }> = (
     {text} {ok ? "✓" : "✗"}
   </Chip>
 );
+
+/** Little person glyph with navy outline. */
+export const Folk: React.FC<{ s?: number; color?: string }> = ({ s = 60, color = C.lavender }) => (
+  <svg width={s} height={s * 1.25} viewBox="0 0 40 50" style={{ overflow: "visible" }}>
+    <circle cx={20} cy={12} r={9} fill={color} stroke={LINE} strokeWidth={3.5} />
+    <path d="M4 48 Q4 25 20 25 Q36 25 36 48 Z" fill={color} stroke={LINE} strokeWidth={3.5} strokeLinejoin="round" />
+  </svg>
+);
+
+/** Loading spinner (navy arc). */
+export const ToonSpinner: React.FC<{ s: number; color?: string }> = ({ s, color = LINE }) => {
+  const f = useCurrentFrame();
+  return (
+    <svg width={s} height={s} viewBox="0 0 100 100" style={{ transform: `rotate(${f * 12}deg)` }}>
+      <circle cx={50} cy={50} r={38} stroke={C.lavenderSoft} strokeWidth={14} fill="none" />
+      <circle cx={50} cy={50} r={38} stroke={color} strokeWidth={14} fill="none" strokeLinecap="round" strokeDasharray="70 200" />
+    </svg>
+  );
+};
+
+/** Stopwatch that fills over `p` (0..1). */
+export const Stopwatch: React.FC<{ p: number; s?: number; label?: string; color?: string }> = ({ p, s = 300, label, color = C.red }) => {
+  const r = 40;
+  const c = 2 * Math.PI * r;
+  return (
+    <svg width={s} height={s * 1.12} viewBox="0 0 100 112">
+      <rect x={42} y={2} width={16} height={10} rx={3} fill={LINE} />
+      <circle cx={50} cy={62} r={46} fill={C.white} stroke={LINE} strokeWidth={5} />
+      <circle cx={50} cy={62} r={r} fill="none" stroke={color} strokeWidth={10} strokeDasharray={`${c * p} ${c}`} transform="rotate(-90 50 62)" />
+      {label && (
+        <text x={50} y={72} textAnchor="middle" fontFamily="Poppins" fontWeight={700} fontSize={26} fill={LINE}>
+          {label}
+        </text>
+      )}
+    </svg>
+  );
+};

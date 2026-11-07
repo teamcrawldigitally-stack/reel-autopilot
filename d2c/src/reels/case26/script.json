@@ -1,7 +1,7 @@
 {
   "id": "case26-speed",
   "tag": "CASE #26",
-  "look": "hisaab",
+  "look": "cartoon",
   "voice": {
     "speaker": "aditya_hi_conversational",
     "model": "bulbul:v4-flash",

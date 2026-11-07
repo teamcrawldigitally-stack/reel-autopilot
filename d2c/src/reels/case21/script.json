@@ -1,7 +1,7 @@
 {
   "id": "case21-apps",
   "tag": "CASE #21",
-  "look": "hisaab",
+  "look": "cartoon",
   "voice": {
     "speaker": "aditya_hi_conversational",
     "model": "bulbul:v4-flash",

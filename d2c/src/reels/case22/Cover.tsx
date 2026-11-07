@@ -1,39 +1,28 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
-import { BP, BlueprintBg, DarkFinish, big, label } from "../../components/hisaab";
-import { Logo } from "../../components/kit";
+import { Person, PRIYA } from "../../components/Cartoon";
+import { LINE, Place } from "../../components/format";
+import { Bottle } from "../../components/props";
+import { MoneyRoom } from "../../components/sets";
+import { ToonCover, big } from "../../components/toon";
 import { C } from "../../theme";
-import { Pill, SerumBottle } from "../../components/hisaabArt";
 import { Sachet } from "./scenes";
-/** Cover: inside the 3:4 grid crop (y 240–1680). */
-export const Case22Cover: React.FC = () => (
-  <AbsoluteFill style={{ background: C.navy }}>
-    <BlueprintBg sheet="#22" />
-    <div style={{ position: "absolute", top: 290, left: 84, right: 84, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 14, background: "rgba(13,2,56,0.7)", border: `2.5px solid ${BP.line}`, borderRadius: 999, padding: "12px 26px 12px 20px", ...label(30, BP.text), letterSpacing: "0.1em" }}>
-        <div style={{ width: 18, height: 18, borderRadius: "50%", background: BP.red }} />
-        CASE #22
-      </div>
-      <div style={{ background: C.white, borderRadius: 16, padding: "6px 12px" }}>
-        <Logo width={160} />
-      </div>
-    </div>
-    <div style={{ position: "absolute", left: 0, right: 0, top: 440, display: "flex", justifyContent: "center", alignItems: "center", gap: 50 }}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
-        <Sachet w={210} />
-        <div style={big(130)}>₹5</div>
-      </div>
-      <div style={big(120, BP.dim)}>→</div>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
-        <SerumBottle h={280} />
-        <div style={{ ...big(130, BP.green), textShadow: "0 0 60px rgba(43,212,107,0.4)" }}>₹500</div>
-      </div>
-    </div>
-    <div style={{ position: "absolute", left: 0, right: 0, top: 1110, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
-      <div style={big(92)}>Sample se</div>
-      <Pill size={100} bg={BP.green} color={C.navy}>agla order</Pill>
-    </div>
 
-    <DarkFinish />
-  </AbsoluteFill>
+const Tag: React.FC<{ t: string; c: string }> = ({ t, c }) => <div style={{ ...big(60, C.white), background: c, border: `5px solid ${LINE}`, borderRadius: 16, padding: "8px 20px 0", boxShadow: `5px 5px 0 ${LINE}` }}>{t}</div>;
+
+export const Case22Cover: React.FC = () => (
+  <ToonCover tag="CASE #22" line1="₹5 ka sample," line2="₹500 ka agla order" color="#16A34A" size1={90} size2={84} set={<MoneyRoom />}>
+    <div style={{ position: "absolute", left: 380, top: 900, display: "flex", alignItems: "flex-end", gap: 50 }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+        <Sachet w={170} />
+        <Tag t="₹5" c={C.violet} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+        <Bottle level={0.85} w={170} label="SERUM" />
+        <Tag t="₹500" c={C.green} />
+      </div>
+    </div>
+    <Place x={20} y={820} s={0.86} z={5}>
+      <Person look={PRIYA} seed="p22c" track={[{ at: -100, pose: "cheer", mood: "grin" }]} />
+    </Place>
+  </ToonCover>
 );

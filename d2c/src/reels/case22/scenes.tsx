@@ -1,199 +1,249 @@
+// CASE #22 SAMPLE — cartoon look (remade 7 Nov 2026 from the dark-blue version; same script and voice).
 import React from "react";
-import { useCurrentFrame } from "remotion";
-import { BP, FigLabel, FixCard, HisaabCta, Hl, big, ease, glass, label, useCount } from "../../components/hisaab";
-import { Pill, SerumBottle, Stamp } from "../../components/hisaabArt";
-import { SceneShell, Sfx, inr } from "../../components/kit";
+import { interpolate, useCurrentFrame } from "remotion";
+import { Parcel, Person, PRIYA } from "../../components/Cartoon";
+import { Camera } from "../../components/fx";
+import { HookTitle, LINE, Place, makeMouth } from "../../components/format";
+import { Chip, Enter, SceneShell, Sfx, clamp } from "../../components/kit";
+import { Bottle } from "../../components/props";
+import { Doorstep, MoneyRoom } from "../../components/sets";
+import { CtaScene, FixBoard, Panel, Pop, big, body, ramp } from "../../components/toon";
+import { Stamp } from "../../components/widgets";
 import { C } from "../../theme";
-import { cue } from "./timeline";
+import { T, cue } from "./timeline";
 
-type SP = { dur: number };
+const sceneMouth = makeMouth(T);
+const TAG = "CASE #22";
 
-/** Small foil sachet ("try me"). */
-export const Sachet: React.FC<{ w?: number; rot?: number }> = ({ w = 160, rot = -8 }) => (
-  <div style={{ width: w, height: w * 1.25, borderRadius: w * 0.08, background: "linear-gradient(160deg,#F7EBD9,#E3C9A4)", border: `3px solid ${C.lavender}`, transform: `rotate(${rot}deg)`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: w * 0.04, boxShadow: "0 20px 40px -20px rgba(0,0,0,0.7)", position: "relative" }}>
-    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: w * 0.1, background: "repeating-linear-gradient(90deg,#CDB08A 0 6px,transparent 6px 12px)" }} />
-    <div style={{ width: w * 0.36, height: w * 0.36, borderRadius: "50%", background: "#C9781F" }} />
-    <div style={label(w * 0.1, C.navy)}>NAYA SERUM</div>
-    <div style={label(w * 0.085, C.violet)}>TRY ME</div>
-  </div>
-);
-
-/** Face-wash tube. */
-const Tube: React.FC<{ h?: number }> = ({ h = 280 }) => (
-  <svg width={h * 0.4} height={h} viewBox="0 0 80 200">
-    <rect x={22} y={170} width={36} height={28} rx={6} fill={C.violetDeep} />
-    <path d="M8 10 H72 L60 172 H20 Z" fill="#EAF6FF" stroke={C.lavender} strokeWidth={3} />
-    <rect x={8} y={4} width={64} height={10} rx={3} fill="#C9D6E6" />
-    <text x={40} y={90} textAnchor="middle" fontFamily="Inter" fontWeight={900} fontSize={11} fill={C.navy}>FACE</text>
-    <text x={40} y={104} textAnchor="middle" fontFamily="Inter" fontWeight={900} fontSize={11} fill={C.navy}>WASH</text>
+/** Small sample sachet. */
+export const Sachet: React.FC<{ w?: number; rot?: number }> = ({ w = 150, rot = -8 }) => (
+  <svg width={w} height={w * 1.3} viewBox="0 0 100 130" style={{ transform: `rotate(${rot}deg)`, overflow: "visible" }}>
+    <path d="M6 10 L14 2 L22 10 L30 2 L38 10 L46 2 L54 10 L62 2 L70 10 L78 2 L86 10 L94 2 L94 124 L6 124 Z" fill="#FDE2EC" stroke={LINE} strokeWidth={5} strokeLinejoin="round" />
+    <rect x={18} y={40} width={64} height={46} rx={8} fill={C.white} stroke={LINE} strokeWidth={4} />
+    <text x={50} y={60} textAnchor="middle" fontFamily="Inter" fontWeight={900} fontSize={13} fill={LINE}>
+      SERUM
+    </text>
+    <text x={50} y={78} textAnchor="middle" fontFamily="Inter" fontWeight={800} fontSize={11} fill={C.violet}>
+      SAMPLE
+    </text>
+    <rect x={30} y={98} width={40} height={14} rx={4} fill={LINE} />
   </svg>
 );
 
-/** Open parcel box with optional items. */
-const Box: React.FC<{ w?: number; children?: React.ReactNode }> = ({ w = 520, children }) => (
-  <div style={{ position: "relative", width: w, height: w * 0.62 }}>
-    <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: w * 0.42, background: "#C79A62", borderRadius: 12, border: `4px solid #8E6A3E` }} />
-    <div style={{ position: "absolute", left: -w * 0.06, bottom: w * 0.38, width: w * 0.5, height: w * 0.1, background: "#B58750", transform: "rotate(-14deg)", borderRadius: 8 }} />
-    <div style={{ position: "absolute", right: -w * 0.06, bottom: w * 0.38, width: w * 0.5, height: w * 0.1, background: "#B58750", transform: "rotate(14deg)", borderRadius: 8 }} />
-    <div style={{ position: "absolute", left: 0, right: 0, bottom: w * 0.2, display: "flex", justifyContent: "center", alignItems: "flex-end", gap: w * 0.06 }}>{children}</div>
-  </div>
-);
+const PriceTag: React.FC<{ text: string; color: string }> = ({ text, color }) => <div style={{ ...big(56, C.white), background: color, border: `5px solid ${LINE}`, borderRadius: 16, padding: "8px 20px 0", boxShadow: `5px 5px 0 ${LINE}` }}>{text}</div>;
 
-/** Little parcel glyph for the 100-parcel grid. */
-const MiniParcel: React.FC<{ s?: number; color?: string }> = ({ s = 44, color = "rgba(223,200,253,0.32)" }) => (
-  <svg width={s} height={s} viewBox="0 0 40 40">
-    <rect x={4} y={10} width={32} height={26} rx={4} fill={color} />
-    <rect x={18} y={10} width={4} height={26} fill="rgba(13,2,56,0.35)" />
-    <path d="M4 14 L12 4 H28 L36 14 Z" fill={color} opacity={0.8} />
-  </svg>
-);
-
-/* s1 · hook (on screen from frame 0) */
-export const S1Hook: React.FC<SP> = ({ dur }) => {
+/* ===== S1: hook ===== */
+export const S1Hook: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const order = cue("s1", "order");
   return (
-    <SceneShell dur={dur}>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 360, display: "flex", justifyContent: "center", alignItems: "center", gap: 50 }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
-          <Sachet w={190} />
-          <div style={big(110)}>₹5</div>
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[order]} push={0.03}>
+        <MoneyRoom />
+        <HookTitle
+          top={300}
+          lines={[
+            { text: "₹5 ka sample,", at: -8, kind: "plain", size: 90, rot: -1 },
+            { text: "₹500 ka agla order", at: -6, kind: "green", size: 86, rot: 2 },
+          ]}
+        />
+        <div style={{ position: "absolute", left: 80, top: 690, zIndex: 6, display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+          <Sachet w={170} />
+          <PriceTag text="₹5" color={C.violet} />
         </div>
-        <div style={{ ...big(110, BP.dim), opacity: 0.4 + 0.6 * ease(f, order - 10, order) }}>→</div>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 16, opacity: 0.35 + 0.65 * ease(f, order - 8, order + 4) }}>
-          <SerumBottle h={240} />
-          <div style={big(110, BP.green)}>₹500</div>
+        <svg width={220} height={80} viewBox="0 0 220 80" style={{ position: "absolute", left: 290, top: 820, zIndex: 6 }}>
+          <path d="M10 40 L180 40 M150 12 L190 40 L150 68" stroke={LINE} strokeWidth={12} fill="none" strokeLinecap="round" strokeLinejoin="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - ramp(f, 4, 30)} />
+        </svg>
+        <div style={{ position: "absolute", left: 520, top: 650, zIndex: 6, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, transform: `scale(${0.85 + 0.15 * ramp(f, order - 10, order + 4)})` }}>
+          <Bottle level={0.85} w={170} label="SERUM" />
+          <PriceTag text="₹500" color={C.green} />
         </div>
-      </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 960, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
-        <div style={big(78)}>₹5 ka sample,</div>
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <Pill size={84} bg={BP.green} color={C.navy}>₹500</Pill>
-          <div style={big(78)}>ka agla order</div>
-        </div>
-      </div>
-      <Sfx at={order - 6} name="ding" vol={0.4} />
+        <Place x={720} y={760} s={0.72} z={5}>
+          <Person
+            look={PRIYA}
+            seed="p221"
+            track={[
+              { at: -100, pose: "idle", mood: "happy" },
+              { at: order, pose: "cheer", mood: "grin" },
+            ]}
+          />
+        </Place>
+      </Camera>
+      <Sfx at={1} name="whoosh" vol={0.4} />
+      <Sfx at={order - 4} name="ding" vol={0.4} />
     </SceneShell>
   );
 };
 
-/* s2 · Priya's face-wash parcel had a sachet too */
-export const S2Parcel: React.FC<SP> = ({ dur }) => {
+/* ===== S2: Priya ordered face wash; a sachet of the new serum came inside ===== */
+export const S2Parcel: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const fw = cue("s2", "face wash");
   const sachet = cue("s2", "sachet");
-  const pop = ease(f, sachet - 8, sachet + 6);
+  const naya = cue("s2", "naya");
+  const up = ramp(f, sachet - 8, sachet + 8);
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={1} text="PRIYA KA PARCEL" />
-      <div style={{ position: "absolute", left: 0, right: 0, top: 520, display: "flex", justifyContent: "center", opacity: ease(f, 0, 12) }}>
-        <Box w={600}>
-          <div style={{ opacity: ease(f, fw - 6, fw + 4), transform: `translateY(${(1 - ease(f, fw - 6, fw + 4)) * 60}px)` }}>
-            <Tube h={300} />
-          </div>
-          <div style={{ opacity: pop, transform: `translateY(${(1 - pop) * 80}px) scale(${0.7 + 0.3 * pop})` }}>
-            <Sachet w={150} rot={10} />
-          </div>
-        </Box>
-      </div>
-      <div style={{ position: "absolute", left: 84, top: 400, display: "flex", gap: 16 }}>
-        <div style={{ ...glass, borderRadius: 16, padding: "10px 18px 6px", ...label(26, BP.text), opacity: ease(f, fw - 6, fw + 4) }}>ORDER · FACE WASH</div>
-        <div style={{ ...glass, borderRadius: 16, padding: "10px 18px 6px", ...label(26, BP.green), border: `2.5px solid ${BP.green}`, opacity: pop }}>+ FREE SACHET</div>
-      </div>
-      <Sfx at={fw - 6} name="whoosh" vol={0.35} />
-      <Sfx at={sachet - 8} name="pop" vol={0.45} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[sachet]} push={0.02}>
+        <Doorstep />
+        <Pop at={fw} style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={32} bg={C.white} color={LINE} border={LINE}>
+            ORDER · FACE WASH
+          </Chip>
+        </Pop>
+        <div style={{ position: "absolute", left: 560, top: 860, zIndex: 6 }}>
+          <Parcel w={320} tag="ORDER" />
+        </div>
+        <div style={{ position: "absolute", left: 640, top: 900 - up * 300, zIndex: 7, opacity: up, transform: `rotate(${(1 - up) * 30}deg)` }}>
+          <Sachet w={170} rot={8} />
+        </div>
+        <Pop at={naya} style={{ position: "absolute", left: 0, right: 0, top: 400, display: "flex", justifyContent: "center", zIndex: 9 }}>
+          <Chip size={30} bg={C.violet} border={LINE}>
+            NAYA SERUM · FREE SAMPLE
+          </Chip>
+        </Pop>
+        <Place x={90} y={760} s={0.8} z={5}>
+          <Person
+            look={PRIYA}
+            seed="p222"
+            track={[
+              { at: -100, pose: "idle", mood: "neutral" },
+              { at: fw, pose: "hold", mood: "happy" },
+              { at: sachet, pose: "shrug", mood: "shock" },
+              { at: naya + 6, pose: "hold", mood: "grin" },
+            ]}
+          />
+        </Place>
+      </Camera>
+      <Sfx at={fw - 4} name="pop" vol={0.35} />
+      <Sfx at={sachet - 6} name="swish" vol={0.4} />
+      <Sfx at={naya - 4} name="ding" vol={0.35} />
     </SceneShell>
   );
 };
 
-/* s3 · try → a month later → ₹500 bottle */
-export const S3Month: React.FC<SP> = ({ dur }) => {
+/* ===== S3: she tried it; a month later, a full bottle for ₹500 ===== */
+export const S3Order: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
-  const tr = cue("s3", "try");
-  const mah = cue("s3", "mahine");
-  const sau = cue("s3", "paanch sau");
-  const line = ease(f, mah - 4, mah + 30, "inOut");
+  const tryy = cue("s3", "try");
+  const mahine = cue("s3", "mahine");
+  const order = cue("s3", "order");
+  const p500 = cue("s3", "paanch sau");
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={2} text="EK MAHINE BAAD" />
-      <div style={{ position: "absolute", left: 120, right: 120, top: 760, height: 6, background: BP.lineSoft, borderRadius: 3 }}>
-        <div style={{ width: `${line * 100}%`, height: "100%", background: BP.green, borderRadius: 3 }} />
-      </div>
-      <div style={{ position: "absolute", left: 80, top: 420, display: "flex", flexDirection: "column", alignItems: "center", gap: 18, opacity: ease(f, tr - 8, tr + 2) }}>
-        <Sachet w={170} rot={-6} />
-        <div style={label(26, BP.dim)}>DIN 1 · TRY KIYA</div>
-      </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 790, display: "flex", justifyContent: "center", ...label(28, BP.dim), opacity: line }}>+ 30 DIN</div>
-      <div style={{ position: "absolute", right: 80, top: 380, display: "flex", flexDirection: "column", alignItems: "center", gap: 10, opacity: ease(f, sau - 14, sau - 2) }}>
-        <SerumBottle h={300} />
-        <div style={label(26, BP.dim)}>POORI BOTTLE · ORDER</div>
-        <div style={big(110, BP.green)}>₹500</div>
-      </div>
-      <Sfx at={tr - 6} name="pop" vol={0.4} />
-      <Sfx at={sau - 6} name="ding" vol={0.45} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[p500]} push={0.02}>
+        <MoneyRoom />
+        <Pop at={tryy} style={{ position: "absolute", left: 90, top: 330, zIndex: 8 }}>
+          <Chip size={30} bg={C.green} border={LINE}>
+            TRY KIYA ✓
+          </Chip>
+        </Pop>
+        <Pop at={mahine} style={{ position: "absolute", left: 520, top: 330, zIndex: 8 }}>
+          <Chip size={30} bg={LINE}>
+            1 MAHINA BAAD
+          </Chip>
+        </Pop>
+        <Pop at={order} style={{ position: "absolute", left: 470, top: 470, zIndex: 6 }}>
+          <Panel style={{ width: 500, padding: "22px 28px", display: "flex", alignItems: "center", gap: 24 }}>
+            <Bottle level={0.9} w={120} label="SERUM" />
+            <div>
+              <div style={body(28, C.muted)}>NAYA ORDER</div>
+              <div style={big(48)}>Poori bottle</div>
+              <div style={{ ...big(96, C.green), opacity: ramp(f, p500 - 6, p500 + 2) }}>₹500</div>
+            </div>
+          </Panel>
+        </Pop>
+        <Place x={60} y={720} s={0.82} z={5}>
+          <Person
+            look={PRIYA}
+            seed="p223"
+            track={[
+              { at: -100, pose: "hold", mood: "happy" },
+              { at: order, pose: "cheer", mood: "grin" },
+            ]}
+          />
+        </Place>
+        {f >= tryy && f < mahine + 10 && (
+          <div style={{ position: "absolute", left: 160, top: 760, zIndex: 9 }}>
+            {[0, 1, 2].map((i) => (
+              <div key={i} style={{ position: "absolute", left: i * 70, top: (i % 2) * 40, width: 34, height: 34, background: "#FFE27A", border: `4px solid ${LINE}`, borderRadius: 6, transform: `rotate(45deg) scale(${0.6 + 0.4 * Math.abs(Math.sin((f + i * 6) / 6))})` }} />
+            ))}
+          </div>
+        )}
+      </Camera>
+      <Sfx at={tryy - 4} name="pop" vol={0.35} />
+      <Sfx at={p500 - 4} name="ding" vol={0.45} />
     </SceneShell>
   );
 };
 
-/* s4 · 100 parcels × ₹5 = ₹500 cost → 5 buyers × ₹500 = ₹2,500 */
-export const S4Math: React.FC<SP> = ({ dur }) => {
+/* ===== S4: 100 samples cost ₹500; if 5 buy a bottle, ₹2,500 in sales ===== */
+export const S4Math: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const sau = cue("s4", "sau");
   const kharcha = cue("s4", "kharcha");
-  const five = cue("s4", "paanch");
+  const paanch = cue("s4", "paanch", 2);
   const sale = cue("s4", "do hazaar paanch sau");
-  const cost = useCount(500, kharcha - 2, kharcha + 14);
-  const rev = useCount(2500, sale - 6, sale + 12);
-  const lit = [12, 37, 55, 71, 94];
+  const lit = Math.round(interpolate(f, [paanch - 2, paanch + 14], [0, 5], clamp));
+  const greens = [12, 37, 58, 71, 94];
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={3} text="MAAN LO · 100 PARCEL" />
-      <div style={{ position: "absolute", left: 84, top: 380, display: "grid", gridTemplateColumns: "repeat(10, 64px)", gap: 8 }}>
-        {Array.from({ length: 100 }).map((_, i) => {
-          const p = ease(f, sau - 4 + i * 0.25, sau + 2 + i * 0.25);
-          const k = lit.indexOf(i);
-          const on = k >= 0 && f >= five + k * 5;
-          return (
-            <div key={i} style={{ opacity: p, transform: `scale(${(0.6 + 0.4 * p) * (on ? 1.15 : 1)})`, filter: on ? `drop-shadow(0 0 10px ${BP.green})` : undefined }}>
-              <MiniParcel s={64} color={on ? BP.green : undefined} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[sale]} push={0.02}>
+        <MoneyRoom />
+        <Enter delay={0} from="none" cfg="snappy" style={{ position: "absolute", left: 0, right: 0, top: 292, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={28} bg={C.violet} color={C.white} border={LINE}>
+            MAAN LO · EXAMPLE
+          </Chip>
+        </Enter>
+        <Pop at={sau} style={{ position: "absolute", left: 90, top: 390, zIndex: 6 }}>
+          <Panel style={{ padding: 22 }}>
+            <div style={{ ...body(26, C.muted), marginBottom: 12 }}>100 PARCEL · 100 SAMPLE</div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(10, 46px)", rowGap: 8 }}>
+              {Array.from({ length: 100 }).map((_, i) => {
+                const on = greens.indexOf(i) >= 0 && greens.indexOf(i) < lit;
+                return <div key={i} style={{ width: 34, height: 34, borderRadius: "50%", background: on ? C.green : C.lavenderSoft, border: `3px solid ${LINE}`, boxSizing: "border-box", transform: `scale(${on ? 1.2 : 1})` }} />;
+              })}
             </div>
-          );
-        })}
-      </div>
-      <div style={{ position: "absolute", left: 84, right: 84, top: 1130, display: "flex", justifyContent: "space-between" }}>
-        <div style={{ opacity: ease(f, kharcha - 6, kharcha + 2) }}>
-          <div style={label(26, BP.dim)}>100 × ₹5 · KHARCHA</div>
-          <div style={big(100, BP.red)}>₹{inr(cost)}</div>
+          </Panel>
+        </Pop>
+        <Pop at={kharcha} style={{ position: "absolute", left: 640, top: 400, zIndex: 7 }}>
+          <Panel style={{ width: 360, padding: "16px 22px" }}>
+            <div style={body(26, C.muted)}>KHARCHA</div>
+            <div style={big(80, C.red)}>₹500</div>
+          </Panel>
+        </Pop>
+        <Pop at={paanch} style={{ position: "absolute", left: 640, top: 620, zIndex: 7 }}>
+          <Panel style={{ width: 360, padding: "16px 22px" }}>
+            <div style={body(26, C.muted)}>5 LOG × ₹500</div>
+            <div style={{ ...big(80, C.green), opacity: ramp(f, sale - 6, sale + 2) }}>₹2,500</div>
+          </Panel>
+        </Pop>
+        <div style={{ position: "absolute", left: 650, top: 880, zIndex: 9 }}>
+          <Stamp at={sale + 10} text="5x WAPAS" size={64} rotate={-8} color={C.green} />
         </div>
-        <div style={{ textAlign: "right", opacity: ease(f, sale - 10, sale - 2) }}>
-          <div style={label(26, BP.dim)}>5 × ₹500 · SALE</div>
-          <div style={big(100, BP.green)}>₹{inr(rev)}</div>
-        </div>
-      </div>
-      <Sfx at={kharcha - 2} name="tick" vol={0.35} />
-      {lit.map((_, k) => (
-        <Sfx key={k} at={five + k * 5} name="pop" vol={0.3} />
-      ))}
-      <Sfx at={sale} name="ding" vol={0.45} />
+      </Camera>
+      <Sfx at={sau - 4} name="pop" vol={0.35} />
+      <Sfx at={kharcha - 4} name="tick" vol={0.3} />
+      <Sfx at={paanch} name="tick" vol={0.3} />
+      <Sfx at={sale - 4} name="ding" vol={0.45} />
+      <Sfx at={sale + 10} name="stamp" vol={0.4} />
     </SceneShell>
   );
 };
 
-/* s5 · fixes */
-export const S5Fixes: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur}>
-    <FigLabel n={4} text="SAMPLE AISE DO" />
-    <div style={{ position: "absolute", left: 84, top: 390, display: "flex", flexDirection: "column", gap: 30 }}>
-      <FixCard n={1} at={cue("s5", "sample") - 8} title={<>Woh do jo customer ne <Hl>nahi khareeda</Hl></>} sub="face wash ke saath serum" />
-      <FixCard n={2} at={cue("s5", "sachet") - 10} title={<>Sachet pe <Hl>QR ya link</Hl></>} sub="seedha product page pe" />
-      <FixCard n={3} at={cue("s5", "saat") - 10} title={<>7 din baad <Hl c={BP.green}>WhatsApp</Hl>: kaisa laga?</>} sub="jawab aaye toh offer bhejo" />
-    </div>
-    <Sfx at={cue("s5", "sample") - 8} name="pop" vol={0.5} />
-    <Sfx at={cue("s5", "sachet") - 10} name="pop" vol={0.5} />
-    <Sfx at={cue("s5", "saat") - 10} name="pop" vol={0.5} />
-  </SceneShell>
+/* ===== S5: fixes ===== */
+export const S5Fixes: React.FC<{ dur: number }> = ({ dur }) => (
+  <FixBoard
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s5")}
+    marks={[cue("s5", "sample"), cue("s5", "sachet"), cue("s5", "saat")]}
+    sub="sample ka simple plan"
+    fixes={["Woh sample do jo nahi khareeda", "Sachet pe QR ya link", "7 din baad WhatsApp: kaisa laga?"]}
+  />
 );
 
+/* ===== S6: CTA ===== */
 const PlanIcon: React.FC = () => (
   <svg width={86} height={100} viewBox="0 0 86 100">
     <rect x={3} y={3} width={80} height={94} rx={12} fill={C.violet} stroke={C.navy} strokeWidth={5} />
@@ -205,29 +255,30 @@ const PlanIcon: React.FC = () => (
   </svg>
 );
 
-/* s6 · CTA */
-export const S6Cta: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur} noExit>
-    <HisaabCta
-      keyword="SAMPLE"
-      typeAt={cue("s6", "sample") - 8}
-      giftAt={cue("s6", "plan") - 8}
-      giftTitle="Sample Plan"
-      giftSub="free · kya, kisko, kab bhejein"
-      giftIcon={<PlanIcon />}
-      nextAt={cue("s6", "aaj")}
-      nextLabel="AAJ SHAAM 7 BAJE · AGLA CASE"
-      next={
-        <>
-          <div style={big(54, C.navy)}>₹0 ad budget mein</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={big(54, C.navy)}>pehle</div>
-            <div style={{ ...big(60, C.white), background: C.violet, borderRadius: 16, padding: "8px 20px 0" }}>100 order</div>
-            <div style={big(54, C.navy)}>kaise?</div>
-          </div>
-        </>
-      }
-      followAt={cue("s6", "follow")}
-    />
-  </SceneShell>
+export const S6Cta: React.FC<{ dur: number }> = ({ dur }) => (
+  <CtaScene
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s6")}
+    keyword="SAMPLE"
+    typeAt={cue("s6", "sample") - 8}
+    giftAt={cue("s6", "plan") - 8}
+    giftTitle="Sample Plan"
+    giftSub="free · kya, kisko, kab bhejein"
+    giftIcon={<PlanIcon />}
+    nextAt={cue("s6", "aaj")}
+    nextNum="#23"
+    nextLabel="AAJ SHAAM 7 BAJE · AGLA CASE"
+    next={
+      <>
+        <div style={big(54)}>₹0 ad budget mein</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={big(54)}>pehle</div>
+          <div style={{ ...big(58, C.white), background: C.violet, borderRadius: 16, padding: "8px 20px 0" }}>100 order</div>
+          <div style={big(54)}>kaise?</div>
+        </div>
+      </>
+    }
+    followAt={cue("s6", "follow")}
+  />
 );

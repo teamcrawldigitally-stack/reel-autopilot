@@ -1,7 +1,7 @@
 {
   "id": "case22-sample",
   "tag": "CASE #22",
-  "look": "hisaab",
+  "look": "cartoon",
   "voice": {
     "speaker": "aditya_hi_conversational",
     "model": "bulbul:v4-flash",

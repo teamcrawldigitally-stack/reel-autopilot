@@ -1,180 +1,257 @@
+// CASE #21 APPS — cartoon look (remade 7 Nov 2026 from the dark-blue version; same script and voice).
 import React from "react";
-import { useCurrentFrame } from "remotion";
-import { BP, FigLabel, FixCard, HisaabCta, Hl, big, ease, glass, label, useCount } from "../../components/hisaab";
-import { Pill, Stamp } from "../../components/hisaabArt";
-import { SceneShell, Sfx, inr } from "../../components/kit";
+import { interpolate, useCurrentFrame } from "remotion";
+import { Person, ROHIT } from "../../components/Cartoon";
+import { Camera } from "../../components/fx";
+import { HookTitle, LINE, Place, makeMouth } from "../../components/format";
+import { Chip, Enter, SceneShell, Sfx, clamp, inr } from "../../components/kit";
+import { MoneyRoom } from "../../components/sets";
+import { CtaScene, FixBoard, Panel, Pop, ToonPhone, big, body, ramp } from "../../components/toon";
+import { Stamp } from "../../components/widgets";
 import { C } from "../../theme";
-import { cue } from "./timeline";
+import { T, cue } from "./timeline";
 
-type SP = { dur: number };
+const sceneMouth = makeMouth(T);
+const TAG = "CASE #21";
+const COLORS = ["#6D4AFD", "#F5A25D", "#20B2A0", "#E5484D", "#F5B400", "#3B82F6", "#EC4899"];
+const NAMES = ["Review", "Popup", "Design", "Chat", "Upsell", "Email", "Quiz"];
 
-const APPS: [string, string, string, boolean][] = [
-  ["★", "Review app", "#6D4AFD", false],
-  ["◱", "Popup app", "#8E6BFF", true],
-  ["✎", "Design tool", "#3618B4", false],
-  ["✉", "Email app", "#5B3BE0", true],
-  ["⌁", "Chat widget", "#7C5CF0", false],
-  ["▤", "Upsell app", "#4B2FD0", true],
-  ["◎", "Analytics", "#A98DFF", false],
-];
-
-/** App icon tile; `dead` greys it out with a red "0 BAAR" badge. */
-export const AppTile: React.FC<{ i: number; s?: number; dead?: number }> = ({ i, s = 120, dead = 0 }) => {
-  const [g, , col] = APPS[i];
-  return (
-    <div style={{ position: "relative", width: s, height: s, borderRadius: s * 0.24, background: col, display: "flex", alignItems: "center", justifyContent: "center", ...big(s * 0.5, C.white), filter: dead ? `grayscale(${dead}) brightness(${1 - 0.45 * dead})` : undefined, boxShadow: "0 18px 30px -16px rgba(0,0,0,0.7)" }}>
-      {g}
-      {dead > 0.5 && <div style={{ position: "absolute", right: -14, top: -14, ...label(s * 0.15, C.white), letterSpacing: "0.04em", background: BP.red, borderRadius: 10, padding: "6px 8px 4px" }}>0 BAAR</div>}
+/** App icon tile; `dead` = not opened in 30 days (grey + cobweb). */
+const App: React.FC<{ i: number; s?: number; dead?: number; price?: boolean }> = ({ i, s = 110, dead = 0, price }) => (
+  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
+    <div style={{ position: "relative", width: s, height: s, borderRadius: s * 0.26, background: COLORS[i % 7], border: `5px solid ${LINE}`, display: "flex", alignItems: "center", justifyContent: "center", ...big(s * 0.46, C.white), paddingTop: s * 0.06, boxSizing: "border-box", filter: `grayscale(${dead})`, opacity: 1 - 0.35 * dead }}>
+      {NAMES[i % 7][0]}
+      {dead > 0.5 && (
+        <svg width={s * 0.6} height={s * 0.6} viewBox="0 0 60 60" style={{ position: "absolute", right: -6, top: -6 }}>
+          <path d="M60 0 L0 0 M60 0 L60 60 M60 0 L18 42 M60 0 L34 52 M60 0 L8 26 M48 0 Q44 12 60 14 M36 0 Q30 24 60 26 M22 0 Q18 36 60 40" stroke={LINE} strokeWidth={2.5} fill="none" />
+        </svg>
+      )}
     </div>
-  );
-};
+    {price && <div style={body(s * 0.24)}>₹700</div>}
+  </div>
+);
 
-/* s1 · hook (on screen from frame 0) */
-export const S1Hook: React.FC<SP> = ({ dur }) => {
+/* ===== S1: hook ===== */
+export const S1Hook: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
-  const khol = cue("s1", "kholte");
+  const p5 = cue("s1", "paanch hazaar");
+  const nahi = cue("s1", "nahi");
   return (
-    <SceneShell dur={dur}>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 340, display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-        <div style={label(30, BP.dim)}>HAR MAHINE</div>
-        <div style={{ ...big(200, BP.red), textShadow: "0 0 60px rgba(255,90,95,0.35)" }}>₹5,000</div>
-        <div style={{ ...big(76), marginTop: 10 }}>un apps pe jo</div>
-        <Pill size={84}>khulte hi nahi?</Pill>
-      </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 860, display: "flex", justifyContent: "center", flexWrap: "wrap", gap: 26, padding: "0 120px" }}>
-        {APPS.map((a, i) => (
-          <AppTile key={i} i={i} s={130} dead={a[3] ? ease(f, khol - 4 + i, khol + 8 + i) : 0} />
-        ))}
-      </div>
-      <Sfx at={khol - 2} name="error" vol={0.4} />
-    </SceneShell>
-  );
-};
-
-/* s2 · Rohit's card statement */
-export const S2Statement: React.FC<SP> = ({ dur }) => {
-  const f = useCurrentFrame();
-  const rows: [number, number][] = [
-    [0, cue("s2", "review")],
-    [1, cue("s2", "popup")],
-    [2, cue("s2", "design")],
-  ];
-  const more = cue("s2", "chaar");
-  return (
-    <SceneShell dur={dur}>
-      <FigLabel n={1} text="ROHIT KA CARD STATEMENT" />
-      <div style={{ position: "absolute", left: 84, right: 84, top: 380, ...glass, padding: "28px 34px", display: "flex", flexDirection: "column", gap: 20 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", ...label(24, BP.dim) }}>
-          <span>OCTOBER · SUBSCRIPTIONS</span>
-          <span>AMOUNT</span>
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[p5, nahi]} push={0.03}>
+        <MoneyRoom />
+        <HookTitle
+          top={300}
+          lines={[
+            { text: "₹5,000 har mahine", at: -8, kind: "plain", size: 86, rot: -1 },
+            { text: "bina khule apps pe?", at: -6, kind: "red", size: 84, rot: 2 },
+          ]}
+        />
+        <div style={{ position: "absolute", left: 90, top: 640, zIndex: 6 }}>
+          <ToonPhone w={400} h={640}>
+            <div style={{ position: "absolute", left: 30, right: 30, top: 80, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", rowGap: 30, justifyItems: "center" }}>
+              {Array.from({ length: 9 }).map((_, i) => (
+                <App key={i} i={i} s={92} dead={[1, 4, 6, 7].includes(i) ? ramp(f, nahi - 6 + i, nahi + 4 + i) : 0} />
+              ))}
+            </div>
+          </ToonPhone>
         </div>
-        {rows.map(([i, at]) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", gap: 22, opacity: ease(f, at - 8, at + 2), transform: `translateX(${(1 - ease(f, at - 8, at + 2)) * 50}px)` }}>
-            <AppTile i={i} s={84} />
-            <div style={big(54)}>{APPS[i][1]}</div>
-            <div style={{ marginLeft: "auto", ...big(54, BP.red) }}>−₹700</div>
+        {f >= p5 - 4 && (
+          <div style={{ position: "absolute", left: 470, top: 760, zIndex: 7 }}>
+            {[0, 1, 2, 3].map((i) => {
+              const t = ((f - p5 + i * 7) % 28) / 28;
+              return <div key={i} style={{ position: "absolute", left: t * 160, top: -t * 120 + i * 30, opacity: 1 - t, ...big(56, C.green) }}>₹</div>;
+            })}
           </div>
-        ))}
-        <div style={{ display: "flex", alignItems: "center", gap: 14, opacity: ease(f, more - 8, more + 2) }}>
-          {[3, 4, 5, 6].map((i) => (
-            <AppTile key={i} i={i} s={70} />
-          ))}
-          <div style={{ marginLeft: 12, ...big(54) }}>+ 4 aur</div>
-          <div style={{ marginLeft: "auto", ...big(54, BP.red) }}>−₹2,800</div>
-        </div>
-      </div>
-      {rows.map(([i, at]) => (
-        <Sfx key={i} at={at - 6} name="tick" vol={0.35} />
-      ))}
-      <Sfx at={more - 6} name="tick" vol={0.35} />
+        )}
+        <Place x={600} y={700} s={0.8} z={5}>
+          <Person
+            look={ROHIT}
+            seed="r211"
+            track={[
+              { at: -100, pose: "idle", mood: "neutral" },
+              { at: p5, pose: "shrug", mood: "shock" },
+              { at: nahi, pose: "sad", mood: "sad" },
+            ]}
+          />
+        </Place>
+      </Camera>
+      <Sfx at={1} name="whoosh" vol={0.4} />
+      <Sfx at={p5 - 2} name="error" vol={0.3} />
+      <Sfx at={nahi} name="pop" vol={0.3} />
     </SceneShell>
   );
 };
 
-/* s3 · 7 × ₹700 = ₹4,900 a month → ₹58,800 a year */
-export const S3Math: React.FC<SP> = ({ dur }) => {
+/* ===== S2: Rohit's card statement ===== */
+export const S2Statement: React.FC<{ dur: number }> = ({ dur }) => {
+  const f = useCurrentFrame();
+  const card = cue("s2", "card statement");
+  const rows = [
+    { t: "Review app", at: cue("s2", "review") },
+    { t: "Popup app", at: cue("s2", "popup") },
+    { t: "Design tool", at: cue("s2", "design") },
+  ];
+  const chaar = cue("s2", "chaar");
+  return (
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} push={0.02}>
+        <MoneyRoom />
+        <Pop at={card} style={{ position: "absolute", left: 90, top: 330, zIndex: 6 }}>
+          <Panel style={{ width: 600, padding: "24px 30px 28px", transform: "rotate(-2deg)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: `4px dashed ${LINE}`, paddingBottom: 12, marginBottom: 14 }}>
+              <div style={big(40)}>Card Statement</div>
+              <div style={body(24, C.muted)}>OCT</div>
+            </div>
+            {rows.map((r) => {
+              const p = ramp(f, r.at - 6, r.at + 4);
+              return (
+                <div key={r.t} style={{ display: "flex", justifyContent: "space-between", opacity: p, transform: `translateX(${(1 - p) * 30}px)`, padding: "8px 0" }}>
+                  <div style={big(44)}>{r.t}</div>
+                  <div style={big(44, C.red)}>₹700</div>
+                </div>
+              );
+            })}
+            <div style={{ display: "flex", justifyContent: "space-between", opacity: ramp(f, chaar - 6, chaar + 4), padding: "8px 0" }}>
+              <div style={big(44, C.violet)}>+ 4 aur</div>
+              <div style={big(44, C.red)}>₹2,800</div>
+            </div>
+          </Panel>
+        </Pop>
+        <Place x={640} y={760} s={0.78} z={5}>
+          <Person
+            look={ROHIT}
+            seed="r212"
+            track={[
+              { at: -100, pose: "hold", mood: "neutral" },
+              { at: chaar, pose: "shrug", mood: "shock" },
+            ]}
+          />
+        </Place>
+      </Camera>
+      {rows.map((r, i) => (
+        <Sfx key={i} at={r.at - 4} name="tick" vol={0.3} />
+      ))}
+      <Sfx at={chaar - 4} name="pop" vol={0.35} />
+    </SceneShell>
+  );
+};
+
+/* ===== S3: 7 apps × ₹700 = ₹4,900 a month = ₹58,800 a year ===== */
+export const S3Math: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const saat = cue("s3", "saat");
   const month = cue("s3", "chaar hazaar nau sau");
   const year = cue("s3", "atthavan hazaar aath sau");
-  const m = useCount(4900, saat, month + 4);
-  const y = useCount(58800, year - 8, year + 12);
+  const yv = interpolate(f, [year - 6, year + 14], [4900, 58800], { ...clamp, easing: (t) => 1 - Math.pow(1 - t, 3) });
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={2} text="MAAN LO · HISAAB" />
-      <div style={{ position: "absolute", left: 84, top: 400, display: "flex", flexDirection: "column-reverse", gap: 8 }}>
-        {APPS.map((_, i) => {
-          const p = ease(f, saat + i * 4, saat + i * 4 + 8);
-          return (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: 14, opacity: p, transform: `translateY(${(1 - p) * -40}px)` }}>
-              <div style={{ width: 320, height: 64, borderRadius: 12, background: APPS[i][2], display: "flex", alignItems: "center", padding: "0 18px", boxSizing: "border-box", justifyContent: "space-between" }}>
-                <span style={label(22, C.white)}>{APPS[i][1]}</span>
-                <span style={big(34, C.white)}>₹700</span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <div style={{ position: "absolute", left: 480, top: 420, display: "flex", flexDirection: "column", gap: 40 }}>
-        <div style={{ opacity: ease(f, saat - 4, saat + 6) }}>
-          <div style={label(26, BP.dim)}>HAR MAHINE</div>
-          <div style={big(110, BP.red)}>₹{inr(m)}</div>
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[month, year]} push={0.02}>
+        <MoneyRoom />
+        <Enter delay={0} from="none" cfg="snappy" style={{ position: "absolute", left: 0, right: 0, top: 292, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={28} bg={C.violet} color={C.white} border={LINE}>
+            MAAN LO · EXAMPLE
+          </Chip>
+        </Enter>
+        <div style={{ position: "absolute", left: 60, right: 60, top: 400, display: "flex", justifyContent: "space-between", zIndex: 6 }}>
+          {Array.from({ length: 7 }).map((_, i) => (
+            <Pop key={i} at={saat + i * 3}>
+              <App i={i} s={118} price />
+            </Pop>
+          ))}
         </div>
-        <div style={{ opacity: ease(f, year - 10, year) }}>
-          <div style={label(26, BP.dim)}>× 12 = SAAL KA</div>
-          <div style={{ ...big(110, BP.red), textShadow: "0 0 50px rgba(255,90,95,0.4)" }}>₹{inr(y)}</div>
-        </div>
-      </div>
-      {[0, 4, 8, 12, 16, 20, 24].map((d) => (
-        <Sfx key={d} at={saat + d} name="tick" vol={0.3} />
-      ))}
-      <Sfx at={year - 6} name="bass" vol={0.45} />
+        <Pop at={month} style={{ position: "absolute", left: 90, top: 640, zIndex: 6 }}>
+          <Panel style={{ width: 420, padding: "18px 26px" }}>
+            <div style={body(28, C.muted)}>HAR MAHINE</div>
+            <div style={big(84, C.red)}>₹4,900</div>
+          </Panel>
+        </Pop>
+        <Pop at={year} style={{ position: "absolute", left: 90, top: 880, zIndex: 7 }}>
+          <Panel style={{ width: 560, padding: "18px 26px", transform: "rotate(-2deg)" }} bg="#FFF1F1">
+            <div style={body(30, C.muted)}>SAAL KA</div>
+            <div style={big(118, C.red)}>₹{inr(yv)}</div>
+          </Panel>
+        </Pop>
+        <Place x={690} y={760} s={0.72} z={5}>
+          <Person
+            look={ROHIT}
+            seed="r213"
+            track={[
+              { at: -100, pose: "idle", mood: "neutral" },
+              { at: month, pose: "shrug", mood: "sad" },
+              { at: year, pose: "shrug", mood: "shock" },
+            ]}
+          />
+        </Place>
+      </Camera>
+      <Sfx at={saat} name="tick" vol={0.3} />
+      <Sfx at={month - 4} name="pop" vol={0.4} />
+      <Sfx at={year - 4} name="error" vol={0.35} />
     </SceneShell>
   );
 };
 
-/* s4 · 3 of them not opened in 30 days */
-export const S4Dead: React.FC<SP> = ({ dur }) => {
+/* ===== S4: 3 of them not opened once in 30 days ===== */
+export const S4Dead: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const teen = cue("s4", "teen");
-  const ek = cue("s4", "ek");
-  const waste = useCount(2100, ek, ek + 16);
+  const tees = cue("s4", "tees");
+  const nahi = cue("s4", "nahi");
+  const dead = [1, 4, 6];
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={3} text="PICHLE 30 DIN MEIN KHULE?" />
-      <div style={{ position: "absolute", left: 0, right: 0, top: 420, display: "flex", justifyContent: "center", flexWrap: "wrap", gap: 30, padding: "0 110px" }}>
-        {APPS.map((a, i) => (
-          <AppTile key={i} i={i} s={150} dead={a[3] ? ease(f, teen - 4 + i * 2, teen + 8 + i * 2) : 0} />
-        ))}
-      </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 920, display: "flex", flexDirection: "column", alignItems: "center", opacity: ease(f, ek - 6, ek + 4) }}>
-        <div style={label(26, BP.dim)}>3 APPS × ₹700 · BEKAAR HAR MAHINE</div>
-        <div style={big(120, BP.red)}>₹{inr(waste)}</div>
-      </div>
-      <div style={{ position: "absolute", left: 540, top: 1230 }}>
-        <Stamp text="0 BAAR KHULE" at={ek + 8} size={72} rot={-5} />
-      </div>
-      <Sfx at={teen - 2} name="error" vol={0.4} />
-      <Sfx at={ek + 8} name="stamp" vol={0.5} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[nahi]} push={0.02}>
+        <MoneyRoom />
+        <Pop at={tees} style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={32} bg={LINE}>
+            PICHLE 30 DIN · KITNI BAAR KHULA?
+          </Chip>
+        </Pop>
+        <div style={{ position: "absolute", left: 60, right: 60, top: 430, display: "flex", justifyContent: "space-between", zIndex: 6 }}>
+          {Array.from({ length: 7 }).map((_, i) => {
+            const isDead = dead.includes(i);
+            const d = isDead ? ramp(f, teen - 4 + dead.indexOf(i) * 4, teen + 6 + dead.indexOf(i) * 4) : 0;
+            return (
+              <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10, transform: `translateY(${isDead ? d * 20 : 0}px)` }}>
+                <App i={i} s={118} dead={d} />
+                {isDead && <div style={{ ...big(44, C.red), opacity: ramp(f, nahi - 6, nahi + 2) }}>0x</div>}
+              </div>
+            );
+          })}
+        </div>
+        <div style={{ position: "absolute", left: 360, top: 700, zIndex: 9 }}>
+          <Stamp at={nahi + 4} text="₹2,100 BEKAAR" size={60} rotate={-8} color={C.red} />
+        </div>
+        <Place x={330} y={820} s={0.7} z={5}>
+          <Person
+            look={ROHIT}
+            seed="r214"
+            track={[
+              { at: -100, pose: "idle", mood: "neutral" },
+              { at: nahi, pose: "sad", mood: "sad" },
+            ]}
+          />
+        </Place>
+      </Camera>
+      <Sfx at={teen - 2} name="tick" vol={0.3} />
+      <Sfx at={nahi + 4} name="stamp" vol={0.45} />
     </SceneShell>
   );
 };
 
-/* s5 · fixes */
-export const S5Fixes: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur}>
-    <FigLabel n={4} text="AAJ HI KARO" />
-    <div style={{ position: "absolute", left: 84, top: 390, display: "flex", flexDirection: "column", gap: 30 }}>
-      <FixCard n={1} at={cue("s5", "card statement") - 8} title={<>Card statement kholo, <Hl>har subscription</Hl> likho</>} sub="naam · kitne ka · kab khula" />
-      <FixCard n={2} at={cue("s5", "band") - 10} title={<>30 din se nahi khula? <Hl c={BP.red}>Band</Hl></>} sub="trial wale bhi check karo" />
-      <FixCard n={3} at={cue("s5", "yearly") - 10} title={<>Roz wale 2-3 apps ka <Hl c={BP.green}>yearly plan</Hl></>} sub="aksar 2 mahine free milte hain" />
-    </div>
-    <Sfx at={cue("s5", "card statement") - 8} name="pop" vol={0.5} />
-    <Sfx at={cue("s5", "band") - 10} name="pop" vol={0.5} />
-    <Sfx at={cue("s5", "yearly") - 10} name="pop" vol={0.5} />
-  </SceneShell>
+/* ===== S5: fixes ===== */
+export const S5Fixes: React.FC<{ dur: number }> = ({ dur }) => (
+  <FixBoard
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s5")}
+    marks={[cue("s5", "card statement"), cue("s5", "tees"), cue("s5", "roz")]}
+    sub="card statement kholo"
+    fixes={["Har subscription likho", "30 din se nahi khula? Band", "Roz wale 2-3 apps: yearly plan"]}
+  />
 );
 
+/* ===== S6: CTA ===== */
 const SheetIcon: React.FC = () => (
   <svg width={86} height={100} viewBox="0 0 86 100">
     <rect x={3} y={3} width={80} height={94} rx={12} fill={C.violet} stroke={C.navy} strokeWidth={5} />
@@ -187,28 +264,29 @@ const SheetIcon: React.FC = () => (
   </svg>
 );
 
-/* s6 · CTA */
-export const S6Cta: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur} noExit>
-    <HisaabCta
-      keyword="APPS"
-      typeAt={cue("s6", "apps") - 8}
-      giftAt={cue("s6", "subscription") - 6}
-      giftTitle="Subscription Audit Sheet"
-      giftSub="free · 10 minute mein poora hisaab"
-      giftIcon={<SheetIcon />}
-      nextAt={cue("s6", "kal")}
-      nextLabel="KAL DOPAHAR 1 BAJE · AGLA CASE"
-      next={
-        <>
-          <div style={big(54, C.navy)}>₹5 ka sample, aur</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={{ ...big(60, C.white), background: "#16A34A", borderRadius: 16, padding: "8px 20px 0" }}>₹500</div>
-            <div style={big(54, C.navy)}>ka agla order?</div>
-          </div>
-        </>
-      }
-      followAt={cue("s6", "follow")}
-    />
-  </SceneShell>
+export const S6Cta: React.FC<{ dur: number }> = ({ dur }) => (
+  <CtaScene
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s6")}
+    keyword="APPS"
+    typeAt={cue("s6", "apps") - 8}
+    giftAt={cue("s6", "subscription") - 6}
+    giftTitle="Subscription Audit Sheet"
+    giftSub="free · 10 minute mein poora hisaab"
+    giftIcon={<SheetIcon />}
+    nextAt={cue("s6", "kal")}
+    nextNum="#22"
+    nextLabel="KAL DOPAHAR 1 BAJE · AGLA CASE"
+    next={
+      <>
+        <div style={big(54)}>₹5 ka sample, aur</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{ ...big(60, C.white), background: C.green, borderRadius: 16, padding: "8px 20px 0" }}>₹500</div>
+          <div style={big(54)}>ka agla order?</div>
+        </div>
+      </>
+    }
+    followAt={cue("s6", "follow")}
+  />
 );
