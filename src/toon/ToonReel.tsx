@@ -8,7 +8,7 @@ import { AstroCaptions } from "../astro/AstroCaptions";
 import { BrandBar, CutFlash, Sfx } from "../astro/AstroReel";
 import { AstroBg, AstroFinish, findWordFrame, W } from "../astro/parts";
 import { astro } from "../astro/theme";
-import { BudhScene, ElongationScene, EgoScene, ListenScene, PointUpScene, TalkScene, TipScene, ToonCta, ToonScene, TP } from "./scenes";
+import { AskScene, BudhScene, ElongationScene, EgoScene, ListenScene, PointUpScene, TalkScene, TipScene, ToonCta, ToonScene, TP } from "./scenes";
 
 const C = astro.colors;
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -41,6 +41,8 @@ const SceneSwitch: React.FC<TP> = (p) => {
       return <ListenScene {...p} />;
     case "tip":
       return <TipScene {...p} />;
+    case "ask":
+      return <AskScene {...p} />;
     default:
       return <ToonCta {...p} />;
   }

@@ -9,7 +9,7 @@ const C = astro.colors;
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
 export type ToonScene = {
-  visual: "talk" | "pointUp" | "budh" | "elongation" | "ego" | "listen" | "tip" | "cta";
+  visual: "talk" | "pointUp" | "budh" | "elongation" | "ego" | "listen" | "tip" | "ask" | "cta";
   voiceover: string;
   headline?: string;
   accent?: string;
@@ -50,6 +50,10 @@ export type ToonScene = {
   pose?: Pose;
   poseWord?: string;
   typed?: string;
+  // "ask" scene (Q&A format, 7 Nov): नेहा asks on screen (no voice), गुरुजी answers in the voice
+  question?: string;
+  askerName?: string;
+  answerName?: string;
   startMs: number;
   endMs: number;
 };
@@ -710,6 +714,63 @@ const HeroCard: React.FC<{ kind: NonNullable<ToonScene["emblem"]>; p: number; sc
         <Icon name={icon} />
       </div>
     </div>
+  );
+};
+
+// ---------- Q&A hook: नेहा's question on screen from frame 0, गुरुजी answers (only his voice) ----------
+
+const NameTag: React.FC<{ text: string; color: string }> = ({ text, color }) => (
+  <div style={{ display: "inline-flex", padding: "6px 26px 10px", borderRadius: 999, background: color, color: C.white, ...sticker(C.ink, 5), fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 44 }}>{text}</div>
+);
+
+export const AskScene: React.FC<TP> = (p) => {
+  const frame = useCurrentFrame();
+  const m = useMouth(p);
+  const sc = p.scene;
+  const chips = sc.chips ?? [];
+  const chipAt = chips.map((c, i) => useAt(p, c.word, 90 + i * 20)); // eslint-disable-line react-hooks/rules-of-hooks
+  const answerAt = chipAt[0] ?? 90;
+  const nod = frame < answerAt ? Math.sin(frame / 6) * 3 : 0;
+  return (
+    <>
+      {/* the question, as नेहा's speech bubble, fully on screen from frame 0 */}
+      <div style={{ position: "absolute", left: 46, right: 46, top: 240 }}>
+        <div style={{ position: "relative", padding: "26px 40px 36px", borderRadius: 40, background: C.white, ...sticker(C.ink, 7) }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 8 }}>
+            <div style={{ width: 56, height: 56, borderRadius: 28, background: "#1C7C7D", border: `5px solid ${C.ink}`, display: "flex", alignItems: "center", justifyContent: "center", color: C.white, fontFamily: astro.fonts.display, fontSize: 38, lineHeight: 1, paddingTop: 4, boxSizing: "border-box" }}>?</div>
+            <span style={{ fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 42, color: "#1C7C7D" }}>{sc.askerName ?? "नेहा"} का सवाल</span>
+          </div>
+          <div style={{ fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 70, lineHeight: 1.3, color: C.ink }}>{sc.question}</div>
+          <svg width="70" height="52" viewBox="0 0 70 52" style={{ position: "absolute", bottom: -46, right: 190 }} aria-hidden="true">
+            <path d="M 66 0 L 46 46 L 12 0" fill={C.white} stroke={C.ink} strokeWidth="6" strokeLinejoin="round" />
+            <rect x="0" y="-8" width="70" height="11" fill={C.white} />
+          </svg>
+        </div>
+      </div>
+      {chips.map((ch, i) => (
+        <div key={i} style={{ position: "absolute", left: 0, right: 0, top: 700 + i * 118, display: "flex", justifyContent: "center" }}>
+          <Pop at={chipAt[i]} from={0.3} rotate={i % 2 ? 2 : -2}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 16, padding: "10px 34px 14px", borderRadius: 999, background: i === 0 ? C.orange : C.white, color: i === 0 ? C.white : C.ink, ...sticker(C.ink, 6), fontFamily: astro.fonts.body, fontWeight: 800, fontSize: 60 }}>
+              {ch.icon ? <Icon name={ch.icon} /> : null}
+              {ch.text}
+            </div>
+          </Pop>
+        </div>
+      ))}
+      {/* गुरुजी (answers, left) and नेहा (asks, right) */}
+      <Abs x={-10} y={880}>
+        <Character width={440} pose={frame < answerAt ? "idle" : "explain"} poseAt={answerAt} prevPose="idle" mouth={m} brows={0.3} lookX={0.6} />
+      </Abs>
+      <Abs x={610} y={880} style={{ transform: `translateY(${nod}px)` }}>
+        <Character width={420} look={FRIEND} pose={frame < answerAt ? "shrug" : "idle"} poseAt={frame < answerAt ? 0 : answerAt} prevPose="shrug" mood={frame < answerAt ? "o" : "smile"} brows={frame < answerAt ? 0.8 : 0.3} lookX={-0.6} seed={2} />
+      </Abs>
+      <Abs x={70} y={1330}>
+        <Pop at={-2} from={0.5}><NameTag text={sc.answerName ?? "गुरुजी"} color={C.orange} /></Pop>
+      </Abs>
+      <Abs x={760} y={1330}>
+        <Pop at={-2} from={0.5}><NameTag text={sc.askerName ?? "नेहा"} color="#1C7C7D" /></Pop>
+      </Abs>
+    </>
   );
 };
 
