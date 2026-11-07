@@ -38,11 +38,13 @@ const done = (item, k) => posted.some((p) => p.id === item.id && kindOf(p) === k
 const label = kind === "trial" ? "trial copy of " : "";
 // An item with "notBefore": "YYYY-MM-DD" (IST) is never posted earlier than that date, e.g. a reel that says "आज रात".
 // "notAfter" (IST) skips a dated reel once its day has passed; "trialCopy": false means that reel never gets a trial copy.
+// "trialOnly": true means that reel is posted only as a trial reel (no normal feed post), on its dated day like a normal one.
+const inDate = (i) => (!i.notBefore || i.notBefore <= today) && (!i.notAfter || i.notAfter >= today);
 const nextItem = () =>
   manifest.items.find((i) =>
     kind === "trial"
-      ? done(i, "normal") && !done(i, "trial") && i.trialCopy !== false
-      : !done(i, "normal") && (!i.notBefore || i.notBefore <= today) && (!i.notAfter || i.notAfter >= today)
+      ? (done(i, "normal") || (i.trialOnly && inDate(i))) && !done(i, "trial") && i.trialCopy !== false
+      : !i.trialOnly && !done(i, "normal") && inDate(i)
   );
 
 const summary = (lines) => {

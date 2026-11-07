@@ -7,7 +7,7 @@
   "captionCta": "📩 फ़्री कुंडली रिपोर्ट के लिए हमें DM कीजिए।",
   "shareToFeed": true,
   "perDay": 8,
-  "schedule": "Normal posts 12:47 PM + 6:47 PM IST, trial copies 3:47 PM + 9:47 PM IST (see .github/workflows/post-queue.yml). Sat 7 Nov: Diwali money series, normal posts every 1.5 h from 11:17 AM (perDay 8 for that day only), no trial copies.",
+  "schedule": "Normal posts 12:47 PM + 6:47 PM IST, trial copies 3:47 PM + 9:47 PM IST (see .github/workflows/post-queue.yml). Sat 7 Nov: Diwali money series, normal posts every 1.5 h from 11:17 AM (perDay 8 for that day only), no trial copies. Sat 7 Nov 4:21 PM (Akshay): rest of the series as trial reels only, plus trial copies of the 5 already posted, 5 min apart.",
   "trialCopy": {
     "enabled": true,
     "graduation": "SS_PERFORMANCE",
@@ -70,8 +70,7 @@
       "type": "diwali-money",
       "hook": "आज शनिवार, पीपल का दीया",
       "notBefore": "2026-11-07",
-      "notAfter": "2026-11-07",
-      "trialCopy": false
+      "notAfter": "2026-11-07"
     },
     {
       "id": "33-dhan-murti",
@@ -84,8 +83,7 @@
       "type": "diwali-money",
       "hook": "बैठी या खड़ी?",
       "notBefore": "2026-11-07",
-      "notAfter": "2026-11-07",
-      "trialCopy": false
+      "notAfter": "2026-11-07"
     },
     {
       "id": "34-dhan-namak",
@@ -98,8 +96,7 @@
       "type": "diwali-money",
       "hook": "पैसा टिकता नहीं?",
       "notBefore": "2026-11-07",
-      "notAfter": "2026-11-07",
-      "trialCopy": false
+      "notAfter": "2026-11-07"
     },
     {
       "id": "35-dhan-salary",
@@ -112,8 +109,7 @@
       "type": "diwali-money",
       "hook": "सैलरी आते ही पैसा ख़त्म?",
       "notBefore": "2026-11-07",
-      "notAfter": "2026-11-07",
-      "trialCopy": false
+      "notAfter": "2026-11-07"
     },
     {
       "id": "37-dhan-kaudi",
@@ -126,8 +122,7 @@
       "type": "diwali-money",
       "hook": "11 कौड़ियाँ",
       "notBefore": "2026-11-07",
-      "notAfter": "2026-11-07",
-      "trialCopy": false
+      "notAfter": "2026-11-07"
     },
     {
       "id": "38-dhan-purse",
@@ -141,7 +136,7 @@
       "hook": "पर्स में 1 चीज़",
       "notBefore": "2026-11-07",
       "notAfter": "2026-11-07",
-      "trialCopy": false
+      "trialOnly": true
     },
     {
       "id": "39-dhan-tijori",
@@ -155,7 +150,7 @@
       "hook": "तिजोरी किस तरफ़?",
       "notBefore": "2026-11-07",
       "notAfter": "2026-11-07",
-      "trialCopy": false
+      "trialOnly": true
     },
     {
       "id": "40-dhan-karz",
@@ -169,7 +164,7 @@
       "hook": "कर्ज़ नहीं उतर रहा?",
       "notBefore": "2026-11-07",
       "notAfter": "2026-11-07",
-      "trialCopy": false
+      "trialOnly": true
     },
     {
       "id": "07-diwali",
@@ -192,7 +187,8 @@
       "thumbOffsetMs": 1200,
       "look": "devo",
       "type": "planet-series",
-      "hook": "3 पहचान"
+      "hook": "3 पहचान",
+      "notBefore": "2026-11-08"
     },
     {
       "id": "09-budh-vakri",
@@ -203,7 +199,8 @@
       "thumbOffsetMs": 1500,
       "look": "toon",
       "type": "gochar",
-      "hook": "3 things"
+      "hook": "3 things",
+      "notBefore": "2026-11-08"
     },
     {
       "id": "10-neech-bhang",
@@ -214,7 +211,8 @@
       "thumbOffsetMs": 1500,
       "look": "paper",
       "type": "evergreen",
-      "hook": "myth-bust"
+      "hook": "myth-bust",
+      "notBefore": "2026-11-08"
     },
     {
       "id": "11-shani",
@@ -225,7 +223,8 @@
       "thumbOffsetMs": 1200,
       "look": "devo",
       "type": "planet-series",
-      "hook": "3 पहचान"
+      "hook": "3 पहचान",
+      "notBefore": "2026-11-08"
     },
     {
       "id": "12-gun-milan",
@@ -236,7 +235,8 @@
       "thumbOffsetMs": 1500,
       "look": "toon",
       "type": "evergreen",
-      "hook": "myth-bust"
+      "hook": "myth-bust",
+      "notBefore": "2026-11-08"
     },
     {
       "id": "13-bhai-dooj",
@@ -259,7 +259,8 @@
       "thumbOffsetMs": 1500,
       "look": "paper",
       "type": "evergreen",
-      "hook": "myth-bust"
+      "hook": "myth-bust",
+      "notBefore": "2026-11-08"
     },
     {
       "id": "15-asli-rashi",
@@ -270,7 +271,8 @@
       "thumbOffsetMs": 1500,
       "look": "toon",
       "type": "evergreen",
-      "hook": "curiosity"
+      "hook": "curiosity",
+      "notBefore": "2026-11-08"
     },
     {
       "id": "16-shukra",
@@ -281,7 +283,8 @@
       "thumbOffsetMs": 1200,
       "look": "devo",
       "type": "planet-series",
-      "hook": "3 पहचान"
+      "hook": "3 पहचान",
+      "notBefore": "2026-11-08"
     },
     {
       "id": "17-budh-margi",
@@ -484,7 +487,8 @@
       "thumbOffsetMs": 1200,
       "look": "devo",
       "type": "evergreen",
-      "hook": "explainer"
+      "hook": "explainer",
+      "notBefore": "2026-11-08"
     },
     {
       "id": "05-rahu-3-pehchaan",
@@ -495,7 +499,8 @@
       "thumbOffsetMs": 1200,
       "look": "devo",
       "type": "planet-series",
-      "hook": "3 पहचान"
+      "hook": "3 पहचान",
+      "notBefore": "2026-11-08"
     }
   ]
 }
