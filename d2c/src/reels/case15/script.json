@@ -5,26 +5,22 @@
   "voice": {
     "speaker": "aditya_hi_conversational",
     "model": "bulbul:v4-flash",
-    "pace": 1.25,
+    "pace": 1.15,
     "lang": "hi-IN",
     "script": "all Devanagari"
   },
   "timing": {
-    "gap": 0.06,
-    "tail": 0.12,
-    "endHold": 0.8
+    "gap": 0.1,
+    "tail": 0.18,
+    "endHold": 0.9
   },
   "scenes": [
     {
       "id": "s1",
       "lines": [
         {
-          "roman": "*ROAS|aar_o_e_es teen hai, phir bhi paisa *doob raha hai?",
-          "voice": "आर ओ ए एस तीन है, फिर भी पैसा डूब रहा है?"
-        },
-        {
-          "roman": "Humne har rupaye ka *hisaab lagaya.",
-          "voice": "हमने हर रुपये का हिसाब लगाया।"
+          "roman": "*ROAS|aar_o_e_es teen hai, phir bhi paisa *doob raha hai? Humne har rupaye ka *hisaab lagaya.",
+          "voice": "आर ओ ए एस तीन है, फिर भी पैसा डूब रहा है? हमने हर रुपये का हिसाब लगाया।"
         }
       ]
     },
@@ -32,12 +28,8 @@
       "id": "s2",
       "lines": [
         {
-          "roman": "Maan lo ad pe *₹10,000|das_hazaar lagaye.",
-          "voice": "मान लो ऐड पे दस हज़ार लगाए।"
-        },
-        {
-          "roman": "Sale aayi *₹30,000|tees_hazaar ki.",
-          "voice": "सेल आई तीस हज़ार की।"
+          "roman": "Maan lo ad pe *₹10,000|das_hazaar lagaye. Sale aayi *₹30,000|tees_hazaar ki.",
+          "voice": "मान लो ऐड पे दस हज़ार लगाए। सेल आई तीस हज़ार की।"
         }
       ]
     },
@@ -45,20 +37,8 @@
       "id": "s3",
       "lines": [
         {
-          "roman": "Ab ₹30,000|tees_hazaar ko *todo.",
-          "voice": "अब तीस हज़ार को तोड़ो।"
-        },
-        {
-          "roman": "Maal *₹12,000|baarah_hazaar.",
-          "voice": "माल बारह हज़ार।"
-        },
-        {
-          "roman": "Packing aur delivery *₹5,400|paanch_hazaar_chaar_sau.",
-          "voice": "पैकिंग और डिलीवरी पाँच हज़ार चार सौ।"
-        },
-        {
-          "roman": "Returns aur payment charges *₹3,600|teen_hazaar_chhe_sau.",
-          "voice": "रिटर्न्स और पेमेंट चार्जेस तीन हज़ार छह सौ।"
+          "roman": "Ab ₹30,000|tees_hazaar ko *todo. Maal *₹12,000|baarah_hazaar. Packing aur delivery *₹5,400|paanch_hazaar_chaar_sau. Returns aur payment charges *₹3,600|teen_hazaar_chhe_sau.",
+          "voice": "अब तीस हज़ार को तोड़ो। माल बारह हज़ार। पैकिंग और डिलीवरी पाँच हज़ार चार सौ। रिटर्न्स और पेमेंट चार्जेस तीन हज़ार छह सौ।"
         }
       ]
     },
@@ -66,16 +46,8 @@
       "id": "s4",
       "lines": [
         {
-          "roman": "Yeh hue *₹21,000|ikkees_hazaar.",
-          "voice": "ये हुए इक्कीस हज़ार।"
-        },
-        {
-          "roman": "Upar se ad ka *₹10,000|das_hazaar.",
-          "voice": "ऊपर से ऐड का दस हज़ार।"
-        },
-        {
-          "roman": "Haath mein *−₹1,000|minus_ek_hazaar.",
-          "voice": "हाथ में माइनस एक हज़ार।"
+          "roman": "Yeh hue *₹21,000|ikkees_hazaar. Upar se ad ka *₹10,000|das_hazaar. Haath mein *−₹1,000|minus_ek_hazaar.",
+          "voice": "ये हुए इक्कीस हज़ार। ऊपर से ऐड का दस हज़ार। हाथ में माइनस एक हज़ार।"
         }
       ]
     },
@@ -83,12 +55,8 @@
       "id": "s5",
       "lines": [
         {
-          "roman": "ROAS|aar_o_e_es sirf *sale ginta hai, *kharcha nahi.",
-          "voice": "आर ओ ए एस सिर्फ़ सेल गिनता है, ख़र्चा नहीं।"
-        },
-        {
-          "roman": "Is product pe bina loss ke ROAS|aar_o_e_es chahiye *3.3|teen_point_teen.",
-          "voice": "इस प्रोडक्ट पे बिना लॉस के आर ओ ए एस चाहिए तीन पॉइंट तीन।"
+          "roman": "ROAS|aar_o_e_es sirf *sale ginta hai, *kharcha nahi. Is product pe bina loss ke ROAS|aar_o_e_es chahiye *3.3|teen_point_teen.",
+          "voice": "आर ओ ए एस सिर्फ़ सेल गिनता है, ख़र्चा नहीं। इस प्रोडक्ट पे बिना लॉस के आर ओ ए एस चाहिए तीन पॉइंट तीन।"
         }
       ]
     },
@@ -96,16 +64,8 @@
       "id": "s6",
       "lines": [
         {
-          "roman": "Toh har product ka *poora kharcha likho.",
-          "voice": "तो हर प्रोडक्ट का पूरा ख़र्चा लिखो।"
-        },
-        {
-          "roman": "Uska *break-even|break_even ROAS|aar_o_e_es nikaalo.",
-          "voice": "उसका ब्रेक ईवन आर ओ ए एस निकालो।"
-        },
-        {
-          "roman": "Aur ad sirf *usse upar badhao.",
-          "voice": "और ऐड सिर्फ़ उससे ऊपर बढ़ाओ।"
+          "roman": "Toh har product ka *poora kharcha likho. Uska *break-even|break_even ROAS|aar_o_e_es nikaalo. Aur ad sirf *usse upar badhao.",
+          "voice": "तो हर प्रोडक्ट का पूरा ख़र्चा लिखो। उसका ब्रेक ईवन आर ओ ए एस निकालो। और ऐड सिर्फ़ उससे ऊपर बढ़ाओ।"
         }
       ]
     },
@@ -113,12 +73,8 @@
       "id": "s7",
       "lines": [
         {
-          "roman": "Comment karo *ROAS|aar_o_e_es,",
-          "voice": "कमेंट करो आर ओ ए एस,"
-        },
-        {
-          "roman": "break-even|break_even *calculator free *DM|dee_em mein.",
-          "voice": "ब्रेक ईवन कैलकुलेटर फ़्री डी एम में।"
+          "roman": "Comment karo *ROAS|aar_o_e_es, break-even|break_even *calculator free *DM|dee_em mein.",
+          "voice": "कमेंट करो आर ओ ए एस, ब्रेक ईवन कैलकुलेटर फ़्री डी एम में।"
         },
         {
           "roman": "Kal dopahar, Diwali ke baad *sale kyun girti hai?",
