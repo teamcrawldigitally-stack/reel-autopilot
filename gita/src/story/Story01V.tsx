@@ -9,7 +9,7 @@ type Cue = string | number;
 const C = (n: string) => `story01/clips/${n}.mp4`;
 
 /** One Veo clip, full screen, muted. `from` = seconds into the clip, `at`/`out` = cues in the scene. */
-const Clip: React.FC<{ src: string; from?: number; rate?: number; at?: Cue; out?: Cue; dark?: number; zoom?: [number, number]; blur?: number }> = ({ src, from = 0, rate = 1, at, out, dark = 0, zoom = [1.06, 1.12], blur = 0 }) => {
+export const Clip: React.FC<{ src: string; from?: number; rate?: number; at?: Cue; out?: Cue; dark?: number; zoom?: [number, number]; blur?: number }> = ({ src, from = 0, rate = 1, at, out, dark = 0, zoom = [1.06, 1.12], blur = 0 }) => {
   const f = useCurrentFrame();
   const q = useQ();
   const a = at !== undefined ? q(at) : -LEAD;
@@ -31,7 +31,7 @@ const S1: React.FC = () => (
     <Clip src={C("c3-bowslip")} from={1.7} />
     <TopShade h={820} a={0.55} />
     <Title lines={[{ t: "HE DROPPED" }, { t: "HIS BOW.", c: GOLD }]} at={0} size={170} />
-    <Label mono="ARJUN · THE GREATEST ARCHER" at="धनुर्धर" x={90} y={1180} rot={-3} />
+    <Label mono="अर्जुन · सबसे बड़ा धनुर्धर" at="धनुर्धर" x={90} y={1180} rot={-3} />
   </>
 );
 
@@ -42,7 +42,7 @@ const S2: React.FC = () => (
     <Title lines={[{ t: "KURUKSHETRA" }]} at={0} out="अर्जुन-6" size={170} top={260} />
     <Label title="TWO ARMIES." sub="ONE FAMILY ON BOTH SIDES" at="सेनाएँ" out="अर्जुन-6" x={80} y={470} rot={-2} size={84} seed="a" />
     <Title lines={[{ t: "“TAKE ME TO" }, { t: "THE MIDDLE.”", c: GOLD }]} at="अर्जुन-2" size={140} top={260} />
-    <Label title="SENAYOR UBHAYOR MADHYE" sub="“PLACE MY CHARIOT BETWEEN BOTH ARMIES”" refx="BHAGAVAD GITA 1.21" at="बीच" x={60} y={1480} rot={1.5} size={64} seed="b" />
+    <Label title="सेनयोरुभयोर्मध्ये रथं स्थापय मेऽच्युत" sub="“मेरा रथ दोनों सेनाओं के बीच ले चलो”" refx="भगवद् गीता 1.21" at="बीच" x={50} y={1440} rot={1.5} size={70} seed="b" />
   </>
 );
 
@@ -52,9 +52,9 @@ const S3: React.FC = () => (
     <TopShade h={820} a={0.6} />
     <Title lines={[{ t: "AND ACROSS" }, { t: "THE FIELD…" }]} at={0} out="भाई-4" size={150} />
     <Title lines={[{ t: "HIS OWN" }, { t: "FAMILY.", c: RED }]} at="भाई-2" size={170} />
-    <Label mono="BHISHMA · GRANDFATHER" at="भीष्म" x={40} y={1420} rot={-3} seed="c" />
-    <Label mono="DRONA · HIS TEACHER" at="द्रोण" x={560} y={1500} rot={2.5} seed="d" />
-    <Label mono="BHAGAVAD GITA 1.26" at="दोस्त" x={330} y={1740} rot={-1} size={70} dark seed="e" />
+    <Label mono="दादा भीष्म" at="भीष्म" x={60} y={1420} rot={-3} seed="c" />
+    <Label mono="गुरु द्रोण" at="द्रोण" x={620} y={1500} rot={2.5} seed="d" />
+    <Label mono="भगवद् गीता 1.26" at="दोस्त" x={360} y={1740} rot={-1} size={70} dark seed="e" />
   </>
 );
 
@@ -66,13 +66,13 @@ const S4: React.FC = () => (
     <TopShade h={820} a={0.6} />
     <Title lines={[{ t: "HIS BODY" }, { t: "TREMBLED.", c: RED }]} at={0} out="गाण्डीव-6" size={170} />
     <Title lines={[{ t: "AND THE BOW" }, { t: "SLIPPED.", c: GOLD }]} at="गाण्डीव-2" size={160} />
-    <Label title="GANDIVA" sub="ARJUN'S DIVINE BOW" refx="BHAGAVAD GITA 1.29–30" at="गाण्डीव+2" x={70} y={1500} rot={-2.5} size={86} seed="f" />
+    <Label title="गाण्डीवं स्रंसते हस्तात्" sub="गाण्डीव हाथ से फिसलने लगता है" refx="भगवद् गीता 1.30" at="गाण्डीव+2" x={50} y={1480} rot={-2.5} size={80} seed="f" />
   </>
 );
 
 // Gemini's daily video limit ran out after 4 clips, so these scenes use the moving storybook pictures for now.
 const S5: React.FC = () => <P5 dur={TL.sceneFrames("s5").dur} />;
-const Appear: React.FC<{ at: Cue; children: React.ReactNode }> = ({ at, children }) => {
+export const Appear: React.FC<{ at: Cue; children: React.ReactNode }> = ({ at, children }) => {
   const f = useCurrentFrame();
   const q = useQ();
   const a = q(at);
@@ -97,7 +97,7 @@ const S9: React.FC = () => (
     <TopShade h={1100} a={0.6} />
     <Label title="SEND THIS" red="TO A FRIEND" sub="WHO IS LOSING HOPE TODAY" at={2} x={60} y={330} rot={-2} size={96} seed="m" />
     <Label title="COMMENT ·" red="DID YOU KNOW?" at="कमेंट" x={90} y={600} rot={1.5} size={78} seed="n" />
-    <Label title="NEXT STORY ·" red="VISHWAROOP" sub="KRISHNA'S COSMIC FORM" at="अगली" x={50} y={820} rot={-1.5} size={80} seed="o" />
+    <Label title="NEXT STORY ·" red="THE FIRST VERSE" sub="WHO SPOKE IT?" at="अगली" x={50} y={820} rot={-1.5} size={80} seed="o" />
     <Label title="FOLLOW" red="@GITA.SHLOK.SERIES" at="फॉलो" x={70} y={1070} rot={2} size={74} seed="p" />
   </>
 );

@@ -17,11 +17,15 @@ export const RED = "#d23a2c";
 const PAPER = "#efe3c8";
 const DISPLAY = "Anton, Oswald, sans-serif";
 const TYPE = "SpecialElite, 'Courier New', monospace";
+const DEV = /[\u0900-\u097F]/;
 
 type Cue = string | number;
 export const SceneId = React.createContext("s1");
+/** Which story's timeline the cues read from (Story01 by default; other stories provide their own). */
+export const TLCtx = React.createContext(TL);
 export const useQ = () => {
   const id = React.useContext(SceneId);
+  const TL = React.useContext(TLCtx);
   return (c: Cue | undefined, fb = 0): number => {
     if (c === undefined) return fb;
     if (typeof c === "number") return c;
@@ -144,14 +148,18 @@ export const Label: React.FC<{ title?: string; red?: string; sub?: string; refx?
   return (
     <div style={{ position: "absolute", left: x, top: y, opacity: op, transform: `rotate(${rot + (1 - p) * 6}deg) scale(${s})`, transformOrigin: "0% 50%", filter: "drop-shadow(0 10px 18px rgba(0,0,0,0.45))" }}>
       <div style={{ background: dark ? "#141210" : PAPER, clipPath: torn(seed + (title ?? mono ?? "")), padding: mono ? "16px 30px" : "26px 34px 22px", backgroundImage: dark ? undefined : "radial-gradient(rgba(120,90,40,0.10) 1px, transparent 1px)", backgroundSize: "6px 6px" }}>
-        {mono && <div style={{ fontFamily: TYPE, fontSize: size * 0.42, color: dark ? CREAM : INK, letterSpacing: 4, whiteSpace: "nowrap" }}>{mono}</div>}
-        {title && (
+        {mono && (DEV.test(mono) ? <div style={{ fontFamily: "Mukta", fontWeight: 700, fontSize: size * 0.5, color: dark ? CREAM : INK, whiteSpace: "nowrap", lineHeight: 1.25 }}>{mono}</div> : <div style={{ fontFamily: TYPE, fontSize: size * 0.42, color: dark ? CREAM : INK, letterSpacing: 4, whiteSpace: "nowrap" }}>{mono}</div>)}
+        {title && (DEV.test(title) ? (
+          <div style={{ fontFamily: "TiroSanskrit", fontSize: size * 0.82, color: "#5a1a10", lineHeight: 1.35, maxWidth: 900, whiteSpace: "pre-line" }}>
+            {title} {red && <span style={{ color: RED }}>{red}</span>}
+          </div>
+        ) : (
           <div style={{ fontFamily: DISPLAY, fontSize: size, color: INK, textTransform: "uppercase", lineHeight: 1, whiteSpace: "nowrap" }}>
             {title} {red && <span style={{ color: RED }}>{red}</span>}
           </div>
-        )}
-        {sub && <div style={{ fontFamily: TYPE, fontSize: size * 0.34, color: INK, letterSpacing: 2, marginTop: 10, textTransform: "uppercase", whiteSpace: "nowrap" }}>{sub}</div>}
-        {refx && <div style={{ fontFamily: TYPE, fontSize: size * 0.27, color: "#7a6a52", letterSpacing: 3, marginTop: 6, textTransform: "uppercase", whiteSpace: "nowrap" }}>{refx}</div>}
+        ))}
+        {sub && (DEV.test(sub) ? <div style={{ fontFamily: "Mukta", fontWeight: 700, fontSize: size * 0.56, color: INK, marginTop: 6, maxWidth: 900, lineHeight: 1.3 }}>{sub}</div> : <div style={{ fontFamily: TYPE, fontSize: size * 0.34, color: INK, letterSpacing: 2, marginTop: 10, textTransform: "uppercase", whiteSpace: "nowrap" }}>{sub}</div>)}
+        {refx && (DEV.test(refx) ? <div style={{ fontFamily: "Mukta", fontWeight: 500, fontSize: size * 0.4, color: "#7a6a52", marginTop: 4, whiteSpace: "nowrap" }}>{refx}</div> : <div style={{ fontFamily: TYPE, fontSize: size * 0.27, color: "#7a6a52", letterSpacing: 3, marginTop: 6, textTransform: "uppercase", whiteSpace: "nowrap" }}>{refx}</div>)}
       </div>
       <Sfx at={a} name="stamp" vol={0.35} />
     </div>
@@ -197,10 +205,10 @@ export const Finish: React.FC = () => {
 export const TopShade: React.FC<{ h?: number; a?: number }> = ({ h = 760, a = 0.55 }) => (
   <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: h, background: `linear-gradient(rgba(8,5,2,${a}), rgba(8,5,2,0))` }} />
 );
-export const SeriesTag: React.FC = () => (
+export const SeriesTag: React.FC<{ n?: string }> = ({ n = "01" }) => (
   <div style={{ position: "absolute", right: 46, top: 120, transform: "rotate(1.5deg)", filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.5))" }}>
     <div style={{ background: "#141210", clipPath: torn("series"), padding: "12px 26px", fontFamily: TYPE, fontSize: 30, color: CREAM, letterSpacing: 4, whiteSpace: "nowrap" }}>
-      GITA SHLOK SERIES · STORY <span style={{ color: RED }}>01</span>
+      GITA SHLOK SERIES · STORY <span style={{ color: RED }}>{n}</span>
     </div>
   </div>
 );
@@ -216,7 +224,7 @@ const S1: React.FC<{ dur: number }> = ({ dur }) => (
     <Dust />
     <Cut src={IMG("s-chariot")} x={560} bottom={1700} h={1000} from="none" zoom={0.06} />
     <Title lines={[{ t: "HE DROPPED" }, { t: "HIS BOW.", c: GOLD }]} at={0} size={170} />
-    <Label mono="ARJUN · THE GREATEST ARCHER" at="धनुर्धर" x={90} y={1090} rot={-3} />
+    <Label mono="अर्जुन · सबसे बड़ा धनुर्धर" at="धनुर्धर" x={90} y={1090} rot={-3} />
   </>
 );
 
@@ -228,7 +236,7 @@ const S2: React.FC<{ dur: number }> = ({ dur }) => (
     <Label title="TWO ARMIES." sub="ONE FAMILY ON BOTH SIDES" at="सेनाएँ" out="अर्जुन-6" x={80} y={470} rot={-2} size={84} seed="a" />
     <Title lines={[{ t: "“TAKE ME TO" }, { t: "THE MIDDLE.”", c: RED }]} at="अर्जुन-2" size={140} top={260} ink />
     <Cut src={IMG("s-chariot")} x={560} bottom={1330} h={420} at="अर्जुन-4" from="none" drive={{ from: -380, at: "अर्जुन", len: 70 }} zoom={0} />
-    <Label title="SENAYOR UBHAYOR MADHYE" sub="“PLACE MY CHARIOT BETWEEN BOTH ARMIES”" refx="BHAGAVAD GITA 1.21" at="बीच" x={60} y={1480} rot={1.5} size={64} seed="b" />
+    <Label title="सेनयोरुभयोर्मध्ये रथं स्थापय मेऽच्युत" sub="“मेरा रथ दोनों सेनाओं के बीच ले चलो”" refx="भगवद् गीता 1.21" at="बीच" x={50} y={1440} rot={1.5} size={70} seed="b" />
   </>
 );
 
@@ -240,9 +248,9 @@ const S3: React.FC<{ dur: number }> = ({ dur }) => (
     <Cut src={IMG("s-bhishma-drona")} x={540} bottom={1800} h={1180} from="up" />
     <Title lines={[{ t: "AND ACROSS" }, { t: "THE FIELD…" }]} at={0} out="भाई-4" size={150} />
     <Title lines={[{ t: "HIS OWN" }, { t: "FAMILY.", c: RED }]} at="भाई-2" size={170} />
-    <Label mono="BHISHMA · GRANDFATHER" at="भीष्म" x={60} y={1250} rot={-3} seed="c" />
-    <Label mono="DRONA · HIS TEACHER" at="द्रोण" x={560} y={1340} rot={2.5} seed="d" />
-    <Label mono="BHAGAVAD GITA 1.26" at="दोस्त" x={330} y={1730} rot={-1} size={70} dark seed="e" />
+    <Label mono="दादा भीष्म" at="भीष्म" x={60} y={1250} rot={-3} seed="c" />
+    <Label mono="गुरु द्रोण" at="द्रोण" x={600} y={1340} rot={2.5} seed="d" />
+    <Label mono="भगवद् गीता 1.26" at="दोस्त" x={360} y={1730} rot={-1} size={70} dark seed="e" />
   </>
 );
 
@@ -254,7 +262,7 @@ const S4: React.FC<{ dur: number }> = ({ dur }) => (
     <Title lines={[{ t: "HIS BODY" }, { t: "TREMBLED.", c: RED }]} at={0} out="गाण्डीव-6" size={170} />
     <Title lines={[{ t: "AND THE BOW" }, { t: "SLIPPED.", c: GOLD }]} at="गाण्डीव-2" size={160} />
     <Cut src={IMG("s-gandiva")} x={650} bottom={1460} h={780} at="गाण्डीव-4" from="right" fall={{ at: "फिसलने", len: 24, deg: 34, dy: 520 }} zoom={0} glow="rgba(255,200,90,0.7)" />
-    <Label title="GANDIVA" sub="ARJUN'S DIVINE BOW" refx="BHAGAVAD GITA 1.29–30" at="गाण्डीव+2" x={70} y={1480} rot={-2.5} size={86} seed="f" />
+    <Label title="गाण्डीवं स्रंसते हस्तात्" sub="गाण्डीव हाथ से फिसलने लगता है" refx="भगवद् गीता 1.30" at="गाण्डीव+2" x={50} y={1480} rot={-2.5} size={80} seed="f" />
     <Sfx at={-2} name="bass" vol={0.5} />
   </>
 );
@@ -264,7 +272,7 @@ export const S5: React.FC<{ dur: number }> = ({ dur }) => (
     <Paint src="img/story/s-arjun-sit.jpg" dur={dur} from={{ s: 1.08, y: 20 }} to={{ s: 1.18, y: -10 }} dark={0.12} />
     <TopShade h={900} a={0.7} />
     <Title lines={[{ t: "HE SAT" }, { t: "DOWN.", c: GOLD }]} at={0} size={180} />
-    <Label mono="BHAGAVAD GITA 1.47" at="बैठ" x={80} y={700} rot={-2} dark seed="g" />
+    <Label title="विसृज्य सशरं चापं" sub="धनुष छोड़कर, रथ में बैठ गए" refx="भगवद् गीता 1.47" at="बैठ" x={60} y={1480} rot={-2} size={78} seed="g" />
   </>
 );
 
@@ -276,7 +284,7 @@ export const S6: React.FC<{ dur: number }> = ({ dur }) => (
     <Dust color="255,214,140" n={34} />
     <Cut src={IMG("s-krishna-speak")} x={540} bottom={1960} h={1400} from="up" glow="rgba(255,206,120,0.35)" />
     <Title lines={[{ t: "THEN KRISHNA" }, { t: "SPOKE.", c: GOLD }]} at={0} out="ये-4" size={150} />
-    <Label title="KLAIBYAM MA SMA GAMAH" sub="“DON'T GIVE IN TO WEAKNESS”" refx="BHAGAVAD GITA 2.3" at="क्लैब्यं" x={50} y={1500} rot={-1.5} size={66} seed="h" />
+    <Label title="क्लैब्यं मा स्म गमः पार्थ" sub="ये कमज़ोरी छोड़ो, और उठो" refx="भगवद् गीता 2.3" at="क्लैब्यं" x={50} y={1480} rot={-1.5} size={82} seed="h" />
     <Title lines={[{ t: "“STAND UP," }, { t: "PARTH.”", c: GOLD }]} at="ये-2" size={180} />
   </>
 );
@@ -290,9 +298,9 @@ export const S7: React.FC<{ dur: number }> = ({ dur }) => (
     <Dust color="255,214,140" n={40} />
     <Cut src={IMG("s-krishna-smile")} x={540} bottom={1960} h={1400} at="तब-4" from="none" glow="rgba(255,206,120,0.45)" />
     <Title lines={[{ t: "“I WILL" }, { t: "NOT FIGHT.”", c: RED }]} at={0} out="तब-6" size={170} />
-    <Label mono="BHAGAVAD GITA 2.9" at="नहीं" out="तब-6" x={80} y={700} rot={-2} dark seed="i" />
+    <Label title="न योत्स्य इति" sub="मैं नहीं लड़ूँगा" refx="भगवद् गीता 2.9" at="नहीं" out="तब-6" x={60} y={1480} rot={-2} size={82} seed="i" />
     <Title lines={[{ t: "KRISHNA" }, { t: "SMILED.", c: GOLD }]} at="तब-2" out="यहीं-6" size={170} />
-    <Label title="PRAHASANN IVA" sub="“AS IF SMILING”" refx="BHAGAVAD GITA 2.10" at="मुस्कुराए" x={60} y={1520} rot={-2} size={76} seed="j" />
+    <Label title="प्रहसन्निव" sub="कृष्ण मुस्कुराए" refx="भगवद् गीता 2.10" at="मुस्कुराए" x={60} y={1500} rot={-2} size={86} seed="j" />
     <Title lines={[{ t: "AND THE GITA" }, { t: "BEGAN.", c: GOLD }]} at="यहीं-2" size={160} />
     <Sfx at={q7("तब") - 14} name="riser" vol={0.35} />
     <Sfx at={q7("यहीं")} name="ding" vol={0.45} />
@@ -309,7 +317,7 @@ export const S8: React.FC<{ dur: number }> = ({ dur }) => (
     <Cut src={IMG("s-arjun-rise")} x={540} bottom={1880} h={1350} from="up" glow="rgba(255,190,100,0.35)" />
     <Title lines={[{ t: "AT THE END" }, { t: "OF THE GITA…", c: GOLD }]} at={0} out="नष्टो-4" size={150} />
     <Title lines={[{ t: "“MY DOUBT" }, { t: "IS GONE.”", c: GOLD }]} at="नष्टो-2" size={170} />
-    <Label title="NASHTO MOHAH" sub="“MY DELUSION IS DESTROYED”" refx="BHAGAVAD GITA 18.73" at="नष्टो+4" x={60} y={1520} rot={-2} size={80} seed="k" />
+    <Label title="नष्टो मोहः" sub="मेरा भ्रम मिट गया" refx="भगवद् गीता 18.73" at="नष्टो" x={60} y={1500} rot={-2} size={92} seed="k" />
   </>
 );
 
@@ -321,7 +329,7 @@ const S9: React.FC<{ dur: number }> = ({ dur }) => (
     <Cut src={IMG("s-chariot")} x={560} bottom={1820} h={640} from="none" />
     <Label title="SEND THIS" red="TO A FRIEND" sub="WHO IS LOSING HOPE TODAY" at={2} x={60} y={330} rot={-2} size={96} seed="m" />
     <Label title="COMMENT ·" red="DID YOU KNOW?" at="कमेंट" x={90} y={600} rot={1.5} size={78} seed="n" />
-    <Label title="NEXT STORY ·" red="VISHWAROOP" sub="KRISHNA'S COSMIC FORM" at="अगली" x={50} y={820} rot={-1.5} size={80} seed="o" />
+    <Label title="NEXT STORY ·" red="THE FIRST VERSE" sub="WHO SPOKE IT?" at="अगली" x={50} y={820} rot={-1.5} size={80} seed="o" />
     <Label title="FOLLOW" red="@GITA.SHLOK.SERIES" at="फॉलो" x={70} y={1070} rot={2} size={74} seed="p" />
   </>
 );
