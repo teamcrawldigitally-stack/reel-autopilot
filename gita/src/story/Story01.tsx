@@ -124,7 +124,7 @@ export const Title: React.FC<{ lines: TLine[]; at: Cue; out?: Cue; top?: number;
           })}
         </div>
       ))}
-      <Sfx at={a} name="whoosh" vol={0.35} />
+      <Sfx at={a} name="whoosh" vol={0.14} />
     </div>
   );
 };
@@ -161,7 +161,7 @@ export const Label: React.FC<{ title?: string; red?: string; sub?: string; refx?
         {sub && (DEV.test(sub) ? <div style={{ fontFamily: "Mukta", fontWeight: 700, fontSize: size * 0.56, color: INK, marginTop: 6, maxWidth: 900, lineHeight: 1.3 }}>{sub}</div> : <div style={{ fontFamily: TYPE, fontSize: size * 0.34, color: INK, letterSpacing: 2, marginTop: 10, textTransform: "uppercase", whiteSpace: "nowrap" }}>{sub}</div>)}
         {refx && (DEV.test(refx) ? <div style={{ fontFamily: "Mukta", fontWeight: 500, fontSize: size * 0.4, color: "#7a6a52", marginTop: 4, whiteSpace: "nowrap" }}>{refx}</div> : <div style={{ fontFamily: TYPE, fontSize: size * 0.27, color: "#7a6a52", letterSpacing: 3, marginTop: 6, textTransform: "uppercase", whiteSpace: "nowrap" }}>{refx}</div>)}
       </div>
-      <Sfx at={a} name="stamp" vol={0.35} />
+      <Sfx at={a} name="stamp" vol={0.14} />
     </div>
   );
 };

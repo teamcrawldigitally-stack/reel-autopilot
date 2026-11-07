@@ -1,0 +1,101 @@
+{
+ "id": "story19",
+ "ep": 24,
+ "title": "Four checks before you speak",
+ "style": "story",
+ "voice": {
+  "speaker": "girish_hi_devotional",
+  "model": "bulbul:v4-flash",
+  "pace": 1.1,
+  "lang": "hi-IN",
+  "note": "TTS text for s3 line 1: अनुद्वेग करं, वाक्यं (split so it is said clearly); the label shows the correct text"
+ },
+ "timing": {
+  "gap": 0.08,
+  "tail": 0.14,
+  "endHold": 0.6
+ },
+ "facts": "Chapter 17 (श्रद्धात्रयविभागयोग); 17.14–16 describe तप of body, speech and mind. 17.15 अनुद्वेगकरं वाक्यं सत्यं प्रियहितं च यत्। स्वाध्यायाभ्यसनं चैव वाङ्मयं तप उच्यते॥ (the verse also adds regular study/recitation of scripture). The angry-message count is our tip, not Gita words.",
+ "scenes": [
+  {
+   "id": "s1",
+   "lines": [
+    {
+     "voice": "बोलने से पहले चार चीज़ें चेक करो।"
+    },
+    {
+     "voice": "ये गीता का फ़िल्टर है।"
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "lines": [
+    {
+     "voice": "अध्याय सत्रह में, कृष्ण वाणी के तप की बात करते हैं।"
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "lines": [
+    {
+     "voice": "अनुद्वेगकरं वाक्यं।"
+    },
+    {
+     "voice": "पहला, आपकी बात किसी को बेवजह परेशान न करे।"
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "lines": [
+    {
+     "voice": "दूसरा, सत्यं, बात सच हो।"
+    },
+    {
+     "voice": "तीसरा, प्रियं, सुनने में अच्छी हो।"
+    },
+    {
+     "voice": "चौथा, हितं, सामने वाले के भले की हो।"
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "lines": [
+    {
+     "voice": "वाङ्मयं तप उच्यते।"
+    },
+    {
+     "voice": "कृष्ण इसे वाणी का तप कहते हैं।"
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "lines": [
+    {
+     "voice": "अगला गुस्से वाला मैसेज भेजने से पहले, गिनो, इन चार में से कितने पास होते हैं।"
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "lines": [
+    {
+     "voice": "ये रील उसे भेजो, जो बिना सोचे बोल देता है।"
+    },
+    {
+     "voice": "और कमेंट में बताओ, चारों में से आपके लिए सबसे मुश्किल कौन सा है?"
+    },
+    {
+     "voice": "अगली कहानी में, इंसान का असली दुश्मन कौन है?"
+    },
+    {
+     "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।"
+    }
+   ]
+  }
+ ]
+}

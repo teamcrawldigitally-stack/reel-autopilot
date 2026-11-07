@@ -6,9 +6,11 @@ import { createTimeline, type Timing } from "../lib/timeline";
 import timingJson from "../reels/story15/timing.json";
 import { Dust, Finish, GOLD, Label, RED, SceneId, SeriesTag, TLCtx, Title, TopShade, useQ } from "./Story01";
 import { Clip } from "./Story01V";
+import { StorySound, buildDuck } from "./sound";
 
 const timing = timingJson as unknown as Timing;
 const TL = createTimeline(timing);
+const DUCK = buildDuck(timing as never);
 const V = (n: string) => `story15/clips/${n}.mp4`;
 /** Clip sound levels (0 = muted). cross: a soft melody (D-B-A-G) runs under the wind, so it stays muted. */
 const SND: Record<string, number> = { cross: 0 };
@@ -128,6 +130,8 @@ export const Story15: React.FC = () => (
           </Sequence>
         ) : null,
       )}
+      {/* A few sounds under a quiet music bed (render_mix.sh). */}
+      <StorySound TL={TL} duck={DUCK} beds={[{ src: "sfx/storm.mp3", scenes: ["s1"], vol: 0.2 }, { src: "sfx/battlefield.mp3", scenes: ["s2"], vol: 0.2 }, { src: "sfx/storm.mp3", scenes: ["s3", "s4"], vol: 0.2 }, { src: "sfx/fields.mp3", scenes: ["s6"], vol: 0.22 }]} hits={[{ src: "sfx/boom.mp3", at: 0, vol: 0.3 }]} />
       <SeriesTag n="15" />
       <Finish />
     </AbsoluteFill>

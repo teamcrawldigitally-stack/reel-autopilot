@@ -24,23 +24,18 @@ const at = (id: string) => TL.sceneFrames(id).from;
 /** Sound design: ambience beds (ducked under the voice) and one-shot hits. No music. */
 const Sound: React.FC = () => {
   const T = TL.totalFrames;
-  const cuts = ["s2", "s3", "s4", "s5", "s6", "s7"].map(at);
   return (
     <>
-      <Bed src="sfx/fire-gates.mp3" duck={DUCK} total={T} levels={[[0, 0.32], [at("s2") - 5, 0.32], [at("s2") + 8, 0], [at("s3") - 7, 0], [at("s3") + 6, 0.32], [at("s4"), 0.32], [at("s4") + 10, 0.26], [at("s5"), 0.26], [at("s5") + 50, 0.12], [at("s5") + 100, 0], [at("s7") - 6, 0], [at("s7") + 12, 0.16], [T - 60, 0.16], [T, 0]]} />
-      <Bed src="sfx/battlefield.mp3" duck={DUCK} total={T} levels={[[at("s2") - 7, 0], [at("s2") + 8, 0.42], [at("s3") - 7, 0.42], [at("s3") + 7, 0]]} />
-      <Bed src="sfx/fields.mp3" duck={DUCK} depth={0.3} total={T} levels={[[at("s5") + 28, 0], [at("s5") + 108, 0.7], [at("s6") - 2, 0.7], [at("s6") + 9, 0]]} />
-      <Bed src="sfx/storm.mp3" duck={DUCK} total={T} levels={[[at("s6") - 7, 0], [at("s6") + 6, 0.35], [at("s7") - 6, 0.35], [at("s7") + 6, 0]]} />
-      <Hit src="sfx/boom.mp3" at={0} vol={0.55} />
-      {cuts.map((c) => (
-        <Hit key={c} src="sfx/whoosh-air.mp3" at={c - 18} vol={0.28} dur={40} />
-      ))}
-      <Hit src="sfx/whoosh-air.mp3" at={G("s2", "दैवी", 1, -18)} vol={0.18} dur={40} />
-      <Hit src="sfx/boom.mp3" at={G("s3", "नरक", 2, -4)} vol={0.42} />
-      <Hit src="sfx/flare.mp3" at={G("s4", "काम", 2, -5)} vol={0.45} dur={60} />
-      <Hit src="sfx/flare.mp3" at={G("s4", "क्रोध", 2, -5)} vol={0.45} dur={60} />
-      <Hit src="sfx/flare.mp3" at={G("s4", "लोभ", 2, -5)} vol={0.45} dur={60} />
-      <Hit src="sfx/boom.mp3" at={G("s6", "आज", 2, -4)} vol={0.3} />
+      {/* Mixed with a quiet music bed (render_mix.sh): beds at ~70%, no whooshes on cuts, softer hits. */}
+      <Bed src="sfx/fire-gates.mp3" duck={DUCK} total={T} levels={[[0, 0.22], [at("s2") - 5, 0.22], [at("s2") + 8, 0], [at("s3") - 7, 0], [at("s3") + 6, 0.22], [at("s4"), 0.22], [at("s4") + 10, 0.18], [at("s5"), 0.18], [at("s5") + 50, 0.08], [at("s5") + 100, 0], [T, 0]]} />
+      <Bed src="sfx/battlefield.mp3" duck={DUCK} total={T} levels={[[at("s2") - 7, 0], [at("s2") + 8, 0.28], [at("s3") - 7, 0.28], [at("s3") + 7, 0]]} />
+      <Bed src="sfx/fields.mp3" duck={DUCK} depth={0.3} total={T} levels={[[at("s5") + 28, 0], [at("s5") + 108, 0.45], [at("s6") - 2, 0.45], [at("s6") + 9, 0]]} />
+      <Bed src="sfx/storm.mp3" duck={DUCK} total={T} levels={[[at("s6") - 7, 0], [at("s6") + 6, 0.24], [at("s7") - 6, 0.24], [at("s7") + 6, 0]]} />
+      <Hit src="sfx/boom.mp3" at={0} vol={0.38} />
+      <Hit src="sfx/boom.mp3" at={G("s3", "नरक", 2, -4)} vol={0.28} />
+      <Hit src="sfx/flare.mp3" at={G("s4", "काम", 2, -5)} vol={0.28} dur={60} />
+      <Hit src="sfx/flare.mp3" at={G("s4", "क्रोध", 2, -5)} vol={0.28} dur={60} />
+      <Hit src="sfx/flare.mp3" at={G("s4", "लोभ", 2, -5)} vol={0.28} dur={60} />
     </>
   );
 };

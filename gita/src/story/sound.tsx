@@ -56,3 +56,24 @@ export const Hit: React.FC<{ src: string; at: number; vol: number; dur?: number 
     <Audio src={staticFile(src)} volume={vol} />
   </Sequence>
 );
+
+/** "A few sounds" for a story reel (used together with a quiet music bed): soft ambience beds over chosen scenes + a couple of hits. */
+type TLLike = { sceneFrames: (id: string) => { from: number; dur: number }; totalFrames: number };
+export type BedSpan = { src: string; scenes: string[]; vol: number; depth?: number };
+export type HitSpec = { src: string; at: number; vol: number; dur?: number };
+export const StorySound: React.FC<{ TL: TLLike; duck: Float32Array; beds: BedSpan[]; hits?: HitSpec[] }> = ({ TL, duck, beds, hits = [] }) => {
+  const T = TL.totalFrames;
+  return (
+    <>
+      {beds.map((b, i) => {
+        const a = TL.sceneFrames(b.scenes[0]).from;
+        const last = TL.sceneFrames(b.scenes[b.scenes.length - 1]);
+        const e = last.from + last.dur;
+        return <Bed key={`b${i}`} src={b.src} duck={duck} depth={b.depth} total={T} levels={[[a - 8, 0], [a + 12, b.vol], [e - 10, b.vol], [e + 6, 0]]} />;
+      })}
+      {hits.map((h, i) => (
+        <Hit key={`h${i}`} src={h.src} at={h.at} vol={h.vol} dur={h.dur} />
+      ))}
+    </>
+  );
+};
