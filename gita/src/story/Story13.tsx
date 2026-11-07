@@ -10,8 +10,8 @@ import { Clip } from "./Story01V";
 const timing = timingJson as unknown as Timing;
 const TL = createTimeline(timing);
 const V = (n: string) => `story13/clips/${n}.mp4`;
-/** Clip sound levels (0 = muted). Set after checking each clip has no speech or music. */
-const SND: Record<string, number> = { diya: 0, clothes: 0 };
+/** Clip sound levels (0 = muted). diya: borderline tonal (4/15 note windows), kept muted to be safe. clothes: soft room tone and cloth rustle, no speech or music. */
+const SND: Record<string, number> = { diya: 0, clothes: 0.5 };
 
 /** A Flow picture with a slow camera move (scale and vertical drift over the scene). */
 const KenBurns: React.FC<{ src: string; dur: number; s: [number, number]; y: [number, number]; origin?: string }> = ({ src, dur, s, y, origin = "50% 50%" }) => {
