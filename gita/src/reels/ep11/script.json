@@ -1,0 +1,112 @@
+{
+  "id": "ep11",
+  "ep": 11,
+  "tag": "#11",
+  "shlok": "9.22",
+  "title": "एल आई सी का वाक्य",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "pictures": {
+    "family-shield": "Happy modern Indian family of four under huge glowing golden cupped hands like a shield; pure black background, 9:16 (no logo drawn, only the words on screen)"
+  },
+  "facts": "LIC's motto is योगक्षेमं वहाम्यहम् (Gita 9.22). योग = getting what you don't have, क्षेम = keeping what you have.",
+  "cover": {
+    "pic": { "src": "img/family-shield-cut.png", "h": 1000, "bottom": 1640 },
+    "rows": ["{g:एल आई सी} का वाक्य", { "t": "{d:गीता से है!}", "size": 84 }],
+    "pill": { "text": "योगक्षेमं वहाम्यहम्", "tone": "gold" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [{ "voice": "एल आई सी का लोगो याद है?" }, { "voice": "उस पर लिखा वाक्य, गीता से है।" }],
+      "pics": [{ "src": "img/family-shield-cut.png", "h": 620, "bottom": 1590 }],
+      "widgets": [{ "type": "typeline", "top": 640, "text": "योगक्षेमं वहाम्यहम्", "size": 92, "label": "लोगो पर लिखा है", "speed": 3 }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{g:एल आई सी} का लोगो", "size": 104 }, { "t": "{d:याद है?}", "size": 70 }] },
+        { "at": "उस-4", "rows": [{ "t": "उस पर लिखा वाक्य", "size": 92 }, { "t": "{G:गीता से} है", "size": 110, "at": "गीता" }] }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड ग्यारह।" }, { "voice": "अध्याय नौ, श्लोक बाईस।" }],
+      "ep": 11,
+      "ref": "9.22",
+      "chapter": "9",
+      "verse": "22",
+      "speaker": "श्रीभगवानुवाच",
+      "shloka": ["अनन्याश्चिन्तयन्तो मां", "ये जनाः पर्युपासते।", "तेषां नित्याभियुक्तानां", "{योगक्षेमं} {वहाम्यहम्}॥"],
+      "note": "= योग और क्षेम, मैं उठाता हूँ",
+      "bg": { "src": "img/krishna-face-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "lines": [{ "voice": "योगक्षेमं वहाम्यहम्।" }, { "voice": "योग का मतलब, जो आपके पास नहीं है, उसे पाना।" }, { "voice": "क्षेम का मतलब, जो है, उसकी रक्षा।" }],
+      "widgets": [
+        {
+          "type": "scale",
+          "top": 640,
+          "left": { "label": "योग", "sub": "जो नहीं है, उसे पाना", "at": "योग#2", "tone": "saffron" },
+          "right": { "label": "क्षेम", "sub": "जो है, उसकी रक्षा", "at": "क्षेम", "tone": "green" },
+          "level": "रक्षा"
+        }
+      ],
+      "beats": [{ "at": "start", "sa": "योगक्षेमं वहाम्यहम्", "saSize": 100 }]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "lines": [{ "voice": "कृष्ण कहते हैं, जो लोग मन लगाकर मुझे याद करते हैं, उनके योग और क्षेम का भार, मैं उठाता हूँ।" }],
+      "pics": [{ "src": "img/krishna-face-cut.png", "h": 900, "bottom": 1600 }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{d:कृष्ण कहते हैं}", "size": 62 }, { "t": "जो {g:मन लगाकर}", "size": 96, "at": "मन" }, { "t": "मुझे याद करते हैं", "size": 92, "at": "मन" }] },
+        { "at": "उनके-2", "rows": [{ "t": "उनका {s:योग} और {E:क्षेम}", "size": 92 }, { "t": "{g:मैं उठाता हूँ}", "size": 110, "at": "मैं" }] }
+      ]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "lines": [{ "voice": "और बीमा का काम भी यही है, जो है उसकी हिफ़ाज़त।" }],
+      "pics": [{ "src": "img/family-shield-cut.png", "h": 980, "bottom": 1610 }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{d:और} {g:बीमा} का काम भी", "size": 92 }, { "t": "यही है", "size": 92 }] },
+        { "at": "जो-2", "rows": [{ "t": "जो है, उसकी", "size": 92 }, { "t": "{E:हिफ़ाज़त}", "size": 130, "at": "हिफ़ाज़त" }] }
+      ]
+    },
+    {
+      "id": "s6",
+      "kind": "beats",
+      "lines": [{ "voice": "आज उन तीन चीज़ों के लिए शुक्रिया कहो, जो आपके पास पहले से हैं।" }],
+      "widgets": [
+        {
+          "type": "items",
+          "top": 760,
+          "size": 66,
+          "width": 760,
+          "items": [
+            { "at": "तीन", "text": "परिवार", "mark": "check", "tone": "green" },
+            { "at": "चीज़ों", "text": "सेहत", "mark": "check", "tone": "green" },
+            { "at": "शुक्रिया", "text": "सिर पर छत", "mark": "check", "tone": "green" }
+          ]
+        }
+      ],
+      "beats": [{ "at": "start", "rows": [{ "t": "आज {n:3} चीज़ों को", "size": 96 }, { "t": "{E:शुक्रिया} कहो", "size": 110, "at": "शुक्रिया" }, { "t": "{d:जो पहले से हैं}", "size": 62, "at": "पहले" }] }],
+      "sfx": [{ "at": "पहले", "name": "ding", "vol": 0.4 }]
+    },
+    {
+      "id": "s7",
+      "kind": "cta",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जिसके पास एल आई सी पॉलिसी है।" },
+        { "voice": "और कमेंट में बताओ, क्या आपको ये पता था?" },
+        { "voice": "अगले एपिसोड में, नींद का नियम गीता में कहाँ लिखा है?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जिसके पास एल आई सी पॉलिसी है", "pic": { "src": "img/family-shield-cut.png", "h": 620, "bottom": 1500 } },
+      "comment": { "q": "कमेंट में बताओ, क्या आपको ये पता था?", "typed": "आज पता चला!" },
+      "next": { "ep": "#12", "rows": ["नींद का नियम", "गीता में कहाँ लिखा है?"], "pic": { "src": "img/man-bed-phone-cut.png", "h": 520, "bottom": 1200, "glow": "blue" } }
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 import React from "react";
-import { interpolate, useCurrentFrame } from "remotion";
-import { Sfx, clamp, deva, ease, glass, num, useSpring } from "../components/kit";
+import { Img, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { Sfx, clamp, deva, ease, glass, num, sanskrit, useSpring } from "../components/kit";
 import { G } from "../theme";
-import { RichLine, toneColor, toneGlow, useCue } from "./core";
+import { RichLine, graphemes, toneColor, toneGlow, useCue } from "./core";
 import type { Cue, Tone, Widget } from "./types";
 
 /* Every widget: { type, top?, at?, out? } plus its own fields. "at"/"out" = when the whole thing shows. */
@@ -23,7 +23,7 @@ type DotsW = Widget & {
   cols: number;
   top?: number;
   size?: number;
-  groups: { n: number; at: Cue; tone?: Tone; label?: string }[];
+  groups: { n: number; at: Cue; tone?: Tone; label?: string; fill?: number; pulse?: Cue }[];
   counter?: { label: string; total?: string }; // "श्लोक" → "श्लोक 1 / 700"
 };
 const Dots: React.FC<{ w: DotsW }> = ({ w }) => {
@@ -44,7 +44,9 @@ const Dots: React.FC<{ w: DotsW }> = ({ w }) => {
   w.groups.forEach((g, gi) => {
     if (f >= groupAt[gi]) lit = gi + 1;
   });
-  const shown = w.groups.slice(0, lit).reduce((a, g) => a + g.n, 0);
+  const shown = w.groups.reduce((a, g, gi) => a + (f >= groupAt[gi] ? g.n : 0), 0);
+  const pulseAt = w.groups.map((g) => (g.pulse !== undefined ? c(g.pulse) : 1e9));
+  const anyPulse = pulseAt.some((a) => f >= a);
   return (
     <div style={{ position: "absolute", left: 540 - width / 2, top, width, opacity: p * o, transform: `translateY(${(1 - p) * 30}px)` }}>
       {w.counter && (
@@ -57,11 +59,15 @@ const Dots: React.FC<{ w: DotsW }> = ({ w }) => {
       <div style={{ position: "relative", height: rows * (size + gap) - gap }}>
         {Array.from({ length: w.total }).map((_, i) => {
           const gi = owner[i];
-          const on = gi !== undefined && gi < lit;
+          const g0 = gi !== undefined ? w.groups[gi] : undefined;
+          const k0 = gi !== undefined ? i - owner.indexOf(gi) : 0;
+          const on = gi !== undefined && f >= groupAt[gi] && (!g0?.fill || f >= groupAt[gi] + (k0 / g0.n) * g0.fill);
           const tone = gi !== undefined ? w.groups[gi].tone ?? "gold" : "gold";
           const pop = gi !== undefined ? Math.sin(Math.PI * ease(f, groupAt[gi] + Math.min(i - (owner.indexOf(gi)), 30) * 0.3, groupAt[gi] + 12 + Math.min(i - owner.indexOf(gi), 30) * 0.3)) : 0;
           const col = on ? toneColor(tone) : "rgba(255,244,223,0.2)";
-          const s = size * (1 + 0.8 * pop);
+          const pulsing = gi !== undefined && f >= pulseAt[gi];
+          const s = size * (1 + 0.8 * pop + (pulsing ? 0.25 + 0.2 * Math.sin((f - pulseAt[gi]) / 4 + i / 6) : 0));
+          const dimmed = anyPulse && !pulsing;
           return (
             <div
               key={i}
@@ -73,14 +79,15 @@ const Dots: React.FC<{ w: DotsW }> = ({ w }) => {
                 height: s,
                 borderRadius: "50%",
                 background: col,
-                boxShadow: on ? `0 0 ${size * (w.groups[gi].n === 1 ? 2.2 : 0.7)}px ${toneGlow(tone, 0.9)}` : undefined,
+                opacity: dimmed ? 0.3 : 1,
+                boxShadow: on ? `0 0 ${size * (w.groups[gi].n === 1 ? 2.2 : pulsing ? 1.4 : 0.7)}px ${toneGlow(tone, 0.9)}` : undefined,
               }}
             />
           );
         })}
       </div>
       {w.groups.map((g, gi) => {
-        if (g.n !== 1 || f < groupAt[gi]) return null;
+        if (g.n !== 1 || f < groupAt[gi] || groupAt[gi] < 0) return null;
         const i = owner.indexOf(gi);
         const k = ((f - groupAt[gi]) % 36) / 36;
         return (
@@ -222,7 +229,7 @@ const Vs: React.FC<{ w: VsW }> = ({ w }) => {
   const c = useCue();
   const la = c(w.left.at);
   const ra = c(w.right.at);
-  const { o, f } = useShow(w, la);
+  const { o, f, p: show } = useShow(w, la);
   const sp = w.split !== undefined ? c(w.split) : 1e9;
   const crack = ease(f, sp, sp + 14);
   const size = w.size ?? 80;
@@ -235,7 +242,7 @@ const Vs: React.FC<{ w: VsW }> = ({ w }) => {
     );
   };
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: w.top ?? 1000, display: "flex", justifyContent: "center", alignItems: "center", gap: 40, opacity: o }}>
+    <div style={{ position: "absolute", left: 0, right: 0, top: w.top ?? 1000, display: "flex", justifyContent: "center", alignItems: "center", gap: 40, opacity: o * show }}>
       {side(w.left, la, -1)}
       <div style={{ position: "relative", width: 8, height: 170 }}>
         <div style={{ position: "absolute", inset: 0, background: G.red, borderRadius: 4, opacity: crack, boxShadow: `0 0 30px ${G.red}`, transform: `scaleY(${crack})` }} />
@@ -412,3 +419,315 @@ const Rain: React.FC<{ w: RainW }> = ({ w }) => {
 registerWidget("wheel", Wheel as React.FC<{ w: never }>);
 registerWidget("diary", Diary as React.FC<{ w: never }>);
 registerWidget("rain", Rain as React.FC<{ w: never }>);
+
+/* ---------- date: a big date card (+ time and place lines that come in on cue) ---------- */
+type DateW = Widget & { top?: number; at?: Cue; out?: Cue; day: string; month: string; year: string; lines?: { at: Cue; text: string; icon?: string }[] };
+const DateCard: React.FC<{ w: DateW }> = ({ w }) => {
+  const c = useCue();
+  const { p, o, f, at } = useShow(w, -20);
+  const parts = [w.day, w.month, w.year];
+  return (
+    <div style={{ position: "absolute", left: 84, right: 84, top: w.top ?? 300, display: "flex", flexDirection: "column", alignItems: "center", gap: 18, opacity: p * o }}>
+      <div style={{ display: "flex", gap: 18 }}>
+        {parts.map((t, i) => {
+          const q = ease(f, at + i * 6, at + i * 6 + 12);
+          return (
+            <div key={i} style={{ background: "rgba(7,8,24,0.82)", border: `3px solid ${G.line}`, borderRadius: 22, padding: "10px 28px 4px", transform: `perspective(600px) rotateX(${(1 - q) * 80}deg)`, opacity: q, boxShadow: "0 20px 40px -20px rgba(0,0,0,0.8)" }}>
+              <div style={{ ...(i === 1 ? deva(110, G.cream, 800) : num(124, G.gold)), textShadow: i === 1 ? undefined : "0 0 40px rgba(242,184,75,0.5)" }}>{t}</div>
+            </div>
+          );
+        })}
+      </div>
+      {(w.lines ?? []).map((l, i) => {
+        const a = c(l.at);
+        const q = ease(f, a - 4, a + 8);
+        return (
+          <div key={i} style={{ ...deva(54, G.cream, 700), opacity: q, transform: `translateY(${(1 - q) * 20}px)`, textShadow: "0 4px 20px rgba(0,0,0,0.9)" }}>
+            {l.icon ? `${l.icon} ` : ""}
+            {l.text}
+          </div>
+        );
+      })}
+      {parts.map((_, i) => (
+        <Sfx key={i} at={at + i * 6} name="tick" vol={0.4} />
+      ))}
+    </div>
+  );
+};
+registerWidget("date", DateCard as React.FC<{ w: never }>);
+
+/* ---------- calendar: tear-off pages that keep saying the same word ("कल") ---------- */
+type CalW = Widget & { top?: number; at?: Cue; out?: Cue; word: string; sub?: string; start?: number; every?: number; size?: number };
+const Calendar: React.FC<{ w: CalW }> = ({ w }) => {
+  const { p, o, f, at } = useShow(w, -20);
+  const every = w.every ?? 14;
+  const n = Math.max(0, Math.floor((f - at) / every));
+  const size = w.size ?? 300;
+  const page = (k: number, flip: number) => (
+    <div style={{ position: "absolute", inset: 0, transformOrigin: "50% 0%", transform: `perspective(900px) rotateX(${flip * 100}deg)`, opacity: 1 - flip * 0.8, background: "#FFF6E3", borderRadius: 20, boxShadow: "0 30px 60px -30px rgba(0,0,0,0.9)", overflow: "hidden" }}>
+      <div style={{ height: size * 0.24, background: G.red, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div style={num(size * 0.14, G.white)}>{(w.start ?? 7) + k} NOV</div>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: size * 0.04 }}>
+        <div style={deva(size * 0.36, G.ink, 800)}>{w.word}</div>
+        {w.sub && <div style={deva(size * 0.12, "#7A5A2A", 700)}>{w.sub}</div>}
+      </div>
+    </div>
+  );
+  return (
+    <div style={{ position: "absolute", left: 540 - size / 2, top: w.top ?? 640, width: size, height: size * 1.05, opacity: p * o, transform: `scale(${0.8 + 0.2 * p}) rotate(-3deg)` }}>
+      {page(n + 1, 0)}
+      {f >= at && page(n, ease(f, at + n * every, at + n * every + every * 0.7))}
+      <div style={{ position: "absolute", left: size * 0.3, top: -14, width: 18, height: 30, borderRadius: 9, background: G.dim }} />
+      <div style={{ position: "absolute", right: size * 0.3, top: -14, width: 18, height: 30, borderRadius: 9, background: G.dim }} />
+      {Array.from({ length: (w.flips as number | undefined) ?? 6 }).map((_, k) => (
+        <Sfx key={k} at={at + k * every} name="swish" vol={0.22} />
+      ))}
+    </div>
+  );
+};
+
+/* ---------- timer: a ring with mm:ss that starts on cue ---------- */
+type TimerW = Widget & { top?: number; at?: Cue; out?: Cue; go?: Cue; minutes: number; r?: number; label?: string; tone?: Tone };
+const Timer: React.FC<{ w: TimerW }> = ({ w }) => {
+  const c = useCue();
+  const { p, o, f } = useShow(w, -20);
+  const go = w.go !== undefined ? c(w.go) : 0;
+  const r = w.r ?? 200;
+  const secs = Math.max(0, w.minutes * 60 - Math.max(0, Math.floor((f - go) / 30)));
+  const mm = String(Math.floor(secs / 60)).padStart(2, "0");
+  const ss = String(secs % 60).padStart(2, "0");
+  const prog = f >= go ? 0.02 + 0.06 * ease(f, go, go + 60) : 0;
+  const col = toneColor(w.tone ?? "green");
+  const C = 2 * Math.PI * (r - 16);
+  return (
+    <div style={{ position: "absolute", left: 540 - r, top: w.top ?? 640, width: 2 * r, height: 2 * r, opacity: p * o, transform: `scale(${0.85 + 0.15 * p})` }}>
+      <div style={{ position: "absolute", inset: -r * 0.3, borderRadius: "50%", background: `radial-gradient(circle, ${toneGlow(w.tone ?? "green", 0.3)}, transparent 65%)` }} />
+      <svg width={2 * r} height={2 * r} style={{ position: "absolute", left: 0, top: 0 }}>
+        <circle cx={r} cy={r} r={r - 16} fill="rgba(7,8,24,0.8)" stroke="rgba(255,244,223,0.12)" strokeWidth={22} />
+        <circle cx={r} cy={r} r={r - 16} fill="none" stroke={col} strokeWidth={22} strokeLinecap="round" strokeDasharray={C} strokeDashoffset={C * (1 - prog)} transform={`rotate(-90 ${r} ${r})`} style={{ filter: `drop-shadow(0 0 12px ${col})` }} />
+      </svg>
+      <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+        <div style={num(r * 0.62, G.cream)}>
+          {mm}:{ss}
+        </div>
+        {w.label && <div style={deva(r * 0.2, col, 800)}>{w.label}</div>}
+      </div>
+      <Sfx at={go - 2} name="ding" vol={0.45} />
+    </div>
+  );
+};
+registerWidget("calendar", Calendar as React.FC<{ w: never }>);
+registerWidget("timer", Timer as React.FC<{ w: never }>);
+
+/* ---------- scale: two pans; tilts as each side comes in, then levels ---------- */
+type ScaleSide = { label: string; sub?: string; at: Cue; tone?: Tone };
+type ScaleW = Widget & { top?: number; at?: Cue; out?: Cue; left: ScaleSide; right: ScaleSide; level?: Cue; size?: number };
+const Scale: React.FC<{ w: ScaleW }> = ({ w }) => {
+  const c = useCue();
+  const la = c(w.left.at);
+  const ra = c(w.right.at);
+  const lv = w.level !== undefined ? c(w.level) : 1e9;
+  const { p, o, f } = useShow(w, Math.min(la, ra) - 10);
+  const tilt = -10 * ease(f, la - 2, la + 12) + 20 * ease(f, ra - 2, ra + 12) - 10 * ease(f, lv - 2, lv + 16, "inOut");
+  const top = w.top ?? 860;
+  const arm = 330;
+  const size = w.size ?? 76;
+  const rad = (tilt * Math.PI) / 180;
+  const pan = (s: ScaleSide, dir: number, a: number) => {
+    const x = 540 + dir * arm * Math.cos(rad);
+    const y = top + 40 + dir * arm * Math.sin(rad);
+    const q = ease(f, a - 4, a + 8);
+    const col = toneColor(s.tone ?? "gold");
+    return (
+      <>
+        <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
+          <line x1={x} y1={y} x2={x - 120} y2={y + 170} stroke={G.goldDeep} strokeWidth={3} />
+          <line x1={x} y1={y} x2={x + 120} y2={y + 170} stroke={G.goldDeep} strokeWidth={3} />
+          <path d={`M ${x - 150} ${y + 170} Q ${x} ${y + 250} ${x + 150} ${y + 170} Z`} fill={G.gold} opacity={0.95} />
+        </svg>
+        <div style={{ position: "absolute", left: x - 200, top: y + 30, width: 400, display: "flex", flexDirection: "column", alignItems: "center", opacity: q, transform: `translateY(${(1 - q) * -30}px)` }}>
+          <div style={{ ...deva(size, col, 800), textShadow: `0 0 30px ${toneGlow(s.tone, 0.6)}` }}>{s.label}</div>
+        </div>
+        {s.sub && (
+          <div style={{ position: "absolute", left: x - 220, top: y + 270, width: 440, textAlign: "center", ...deva(42, G.cream, 700), whiteSpace: "normal", opacity: q }}>{s.sub}</div>
+        )}
+        <Sfx at={a - 2} name="pop" vol={0.45} />
+      </>
+    );
+  };
+  return (
+    <div style={{ position: "absolute", inset: 0, opacity: p * o }}>
+      <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
+        <path d={`M 540 ${top + 40} L 500 ${top + 470} L 580 ${top + 470} Z`} fill={G.goldDeep} />
+        <rect x={430} y={top + 466} width={220} height={22} rx={10} fill={G.goldDeep} />
+        <g transform={`rotate(${tilt} 540 ${top + 40})`}>
+          <rect x={540 - arm} y={top + 32} width={2 * arm} height={16} rx={8} fill={G.gold} style={{ filter: "drop-shadow(0 0 12px rgba(242,184,75,0.6))" }} />
+        </g>
+        <circle cx={540} cy={top + 40} r={22} fill={G.cream} />
+      </svg>
+      {pan(w.left, -1, la)}
+      {pan(w.right, 1, ra)}
+      {lv < 1e8 && <Sfx at={lv} name="check" vol={0.5} />}
+    </div>
+  );
+};
+
+/* ---------- typeline: a Sanskrit / Hindi line typed out letter by letter ---------- */
+type TypeW = Widget & { top?: number; at?: Cue; out?: Cue; text: string; size?: number; label?: string; speed?: number; sanskrit?: boolean };
+const TypeLine: React.FC<{ w: TypeW }> = ({ w }) => {
+  const { p, o, f, at } = useShow(w, -20);
+  const gs = graphemes(w.text);
+  const n = Math.min(gs.length, Math.max(0, Math.floor((f - at) / (w.speed ?? 2.5))));
+  const size = w.size ?? 96;
+  return (
+    <div style={{ position: "absolute", left: 60, right: 60, top: w.top ?? 760, display: "flex", flexDirection: "column", alignItems: "center", opacity: p * o }}>
+      {w.label && <div style={{ ...deva(44, G.dim, 700), marginBottom: 10 }}>{w.label}</div>}
+      <div style={{ position: "relative", padding: "18px 44px 10px", borderRadius: 28, border: `3px solid ${G.line}`, background: "rgba(7,8,24,0.72)", boxShadow: "0 0 70px rgba(242,184,75,0.25)" }}>
+        <div style={{ ...(w.sanskrit === false ? deva(size, G.gold, 800) : sanskrit(size, G.gold)), visibility: "hidden" }}>{w.text}</div>
+        <div style={{ ...(w.sanskrit === false ? deva(size, G.gold, 800) : sanskrit(size, G.gold)), position: "absolute", left: 44, top: 18, textShadow: "0 0 40px rgba(242,184,75,0.5)" }}>
+          {gs.slice(0, n).join("")}
+          {n < gs.length && Math.floor(f / 8) % 2 === 0 && <span style={{ display: "inline-block", width: 5, height: size * 0.9, background: G.gold, marginLeft: 6, verticalAlign: "middle" }} />}
+        </div>
+      </div>
+      <Sfx at={Math.max(at, 0)} name="key" vol={0.35} />
+    </div>
+  );
+};
+registerWidget("scale", Scale as React.FC<{ w: never }>);
+registerWidget("typeline", TypeLine as React.FC<{ w: never }>);
+
+/* ---------- dial: a half-circle gauge, red (too little) · green (balanced) · red (too much) ---------- */
+type DialW = Widget & { top?: number; at?: Cue; out?: Cue; r?: number; label?: string; lowText?: string; highText?: string; midText?: string; start?: number; moves: { at: Cue; v: number }[] };
+const Dial: React.FC<{ w: DialW }> = ({ w }) => {
+  const c = useCue();
+  const { p, o, f } = useShow(w, -20);
+  const r = w.r ?? 300;
+  const cx = 540;
+  const cy = (w.top ?? 700) + r;
+  let v = w.start ?? 0;
+  let swing = 0;
+  for (const m of w.moves) {
+    const a = c(m.at);
+    const k = ease(f, a - 4, a + 14, "inOut");
+    if (k > 0) {
+      swing = f >= a - 4 && f < a + 20 ? Math.sin((f - a) / 2) * 3 * (1 - k) : 0;
+      v = v + (m.v - v) * k;
+    }
+  }
+  const ang = -90 + v * 78 + swing; // -90 = straight up
+  const zone = Math.abs(v) < 0.33 ? "green" : "red";
+  const arc = (a0: number, a1: number) => {
+    const t0 = ((a0 - 90) * Math.PI) / 180, t1 = ((a1 - 90) * Math.PI) / 180;
+    const R = r, ri = r - 60;
+    return `M ${cx + R * Math.cos(t0)} ${cy + R * Math.sin(t0)} A ${R} ${R} 0 0 1 ${cx + R * Math.cos(t1)} ${cy + R * Math.sin(t1)} L ${cx + ri * Math.cos(t1)} ${cy + ri * Math.sin(t1)} A ${ri} ${ri} 0 0 0 ${cx + ri * Math.cos(t0)} ${cy + ri * Math.sin(t0)} Z`;
+  };
+  const rad = (ang * Math.PI) / 180;
+  return (
+    <div style={{ position: "absolute", inset: 0, opacity: p * o }}>
+      <div style={{ position: "absolute", left: cx - r * 1.3, top: cy - r * 1.3, width: r * 2.6, height: r * 2.6, borderRadius: "50%", background: `radial-gradient(circle, ${zone === "green" ? "rgba(43,212,107,0.25)" : "rgba(255,60,70,0.25)"}, transparent 60%)` }} />
+      <svg width={1080} height={1920} style={{ position: "absolute", left: 0, top: 0 }}>
+        <path d={arc(-90, -28)} fill={G.red} opacity={0.9} />
+        <path d={arc(-26, 26)} fill={G.green} opacity={0.95} />
+        <path d={arc(28, 90)} fill={G.red} opacity={0.9} />
+        <line x1={cx} y1={cy} x2={cx + (r - 20) * Math.cos(rad)} y2={cy + (r - 20) * Math.sin(rad)} stroke={G.cream} strokeWidth={12} strokeLinecap="round" style={{ filter: "drop-shadow(0 0 10px rgba(255,244,223,0.8))" }} />
+        <circle cx={cx} cy={cy} r={26} fill={G.cream} />
+      </svg>
+      <div style={{ position: "absolute", left: cx - r - 60, top: cy + 20, width: 240, textAlign: "center", ...deva(40, G.red, 800) }}>{w.lowText ?? "बहुत कम"}</div>
+      <div style={{ position: "absolute", left: cx + r - 180, top: cy + 20, width: 240, textAlign: "center", ...deva(40, G.red, 800) }}>{w.highText ?? "बहुत ज़्यादा"}</div>
+      <div style={{ position: "absolute", left: cx - 150, top: cy - r - 70, width: 300, textAlign: "center", ...deva(42, G.green, 800) }}>{w.midText ?? "संतुलन"}</div>
+      {w.label && <div style={{ position: "absolute", left: cx - 200, top: cy + 50, width: 400, textAlign: "center", ...deva(64, G.cream, 800) }}>{w.label}</div>}
+      {w.moves.map((m, i) => (
+        <Sfx key={i} at={c(m.at) - 3} name={Math.abs(m.v) < 0.33 ? "check" : "error"} vol={0.4} />
+      ))}
+    </div>
+  );
+};
+registerWidget("dial", Dial as React.FC<{ w: never }>);
+
+/* ---------- faces: round portraits with a label and a number ---------- */
+type FacesW = Widget & { top?: number; at?: Cue; out?: Cue; size?: number; note?: string; items: { src: string; label: string; count?: string; tone?: Tone; at: Cue; hi?: Cue }[] };
+const Faces: React.FC<{ w: FacesW }> = ({ w }) => {
+  const c = useCue();
+  const { o, f } = useShow(w, -20);
+  const size = w.size ?? 160;
+  return (
+    <div style={{ position: "absolute", left: 0, right: 0, top: w.top ?? 1290, display: "flex", flexDirection: "column", alignItems: "center", opacity: o }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 34 }}>
+        {w.items.map((it, i) => {
+          const a = c(it.at);
+          const on = ease(f, a - 4, a + 8);
+          const hi = it.hi !== undefined ? ease(f, c(it.hi) - 4, c(it.hi) + 10) : 0;
+          const col = toneColor(it.tone);
+          return (
+            <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center", transform: `scale(${1 + 0.18 * hi})`, opacity: 0.35 + 0.65 * on }}>
+              <div style={{ width: size, height: size, borderRadius: "50%", overflow: "hidden", border: `5px solid ${on > 0.5 ? col : "rgba(255,244,223,0.2)"}`, background: "#1B2150", boxShadow: on > 0.5 ? `0 0 ${30 + 30 * hi}px ${toneGlow(it.tone, 0.6)}` : undefined, filter: on > 0.5 ? undefined : "grayscale(1)" }}>
+                <Img src={staticFile(it.src)} style={{ width: size, height: size, objectFit: "cover" }} />
+              </div>
+              <div style={{ ...deva(36, G.cream, 700), marginTop: 6 }}>{it.label}</div>
+              {it.count && <div style={{ ...num(54, col), opacity: on }}>{it.count}</div>}
+            </div>
+          );
+        })}
+      </div>
+      {w.note && <div style={{ ...deva(30, G.dim, 700), marginTop: 34 }}>{w.note}</div>}
+    </div>
+  );
+};
+registerWidget("faces", Faces as React.FC<{ w: never }>);
+
+/* ---------- doors: three tall stone doors; each opens with red light on cue; all can close on cue ---------- */
+type DoorsW = Widget & { top?: number; at?: Cue; out?: Cue; h?: number; items: { label: string; sub?: string; at: Cue }[]; close?: Cue; counter?: boolean };
+const Doors: React.FC<{ w: DoorsW }> = ({ w }) => {
+  const c = useCue();
+  const { p, o, f } = useShow(w, -20);
+  const n = w.items.length;
+  const h = w.h ?? 460;
+  const dw = 250;
+  const gap = 40;
+  const total = n * dw + (n - 1) * gap;
+  const top = w.top ?? 700;
+  const close = w.close !== undefined ? c(w.close) : 1e9;
+  const shut = ease(f, close - 2, close + 14, "inOut");
+  const opened = w.items.filter((it) => f >= c(it.at)).length;
+  return (
+    <div style={{ position: "absolute", left: 540 - total / 2, top, width: total, opacity: p * o }}>
+      {w.counter !== false && opened > 0 && (
+        <div style={{ position: "absolute", left: 0, right: 0, top: -84, display: "flex", justifyContent: "center", alignItems: "baseline", gap: 8 }}>
+          <div style={num(70, shut > 0.5 ? G.green : G.red)}>{opened}</div>
+          <div style={num(44, G.dim)}>/ {n}</div>
+        </div>
+      )}
+      <div style={{ display: "flex", gap }}>
+        {w.items.map((it, i) => {
+          const a = c(it.at);
+          const op = ease(f, a - 2, a + 14) * (1 - shut);
+          const flick = 0.85 + 0.15 * Math.sin(f / 3 + i * 2);
+          return (
+            <div key={i} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <div style={{ position: "relative", width: dw, height: h, borderRadius: `${dw / 2}px ${dw / 2}px 10px 10px`, background: "linear-gradient(180deg, #2A2238, #120E1C)", border: `6px solid ${op > 0.3 ? G.red : "#3A3350"}`, boxShadow: op > 0 ? `0 0 ${60 * op}px rgba(255,60,70,${0.7 * op * flick}), inset 0 0 40px rgba(0,0,0,0.8)` : "inset 0 0 40px rgba(0,0,0,0.8)", overflow: "hidden" }}>
+                <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 70%, rgba(255,90,40,${0.95 * op * flick}), rgba(180,20,30,${0.7 * op}) 45%, transparent 80%)` }} />
+                {/* two door leaves swing open */}
+                <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: "50%", background: "linear-gradient(90deg, #3A3048, #241C30)", borderRight: "2px solid #120E1C", transformOrigin: "0% 50%", transform: `perspective(700px) rotateY(${-70 * op}deg)` }} />
+                <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: "50%", background: "linear-gradient(270deg, #3A3048, #241C30)", borderLeft: "2px solid #120E1C", transformOrigin: "100% 50%", transform: `perspective(700px) rotateY(${70 * op}deg)` }} />
+                <div style={{ position: "absolute", left: 0, right: 0, top: 26, textAlign: "center", ...num(54, op > 0.3 ? G.white : G.dim) }}>{i + 1}</div>
+                {shut > 0.5 && (
+                  <div style={{ position: "absolute", left: dw / 2 - 40, top: h / 2 - 40, width: 80, height: 80, borderRadius: "50%", background: G.green, display: "flex", alignItems: "center", justifyContent: "center", transform: `scale(${ease(f, close + 6, close + 16)})` }}>
+                    <svg width={50} height={50} viewBox="0 0 48 48">
+                      <path d="M12 24 L21 33 L37 15" fill="none" stroke={G.ink} strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                )}
+              </div>
+              <div style={{ ...deva(62, op > 0.3 ? G.red : shut > 0.5 ? G.cream : G.dim, 800), marginTop: 12, opacity: f >= a - 4 || shut > 0 ? 1 : 0.35 }}>{f >= a - 4 || shut > 0 ? it.label : "?"}</div>
+              {it.sub && <div style={{ ...deva(36, G.dim, 700), opacity: f >= a ? 1 : 0 }}>{it.sub}</div>}
+              <Sfx at={a - 2} name="bass" vol={0.45} />
+            </div>
+          );
+        })}
+      </div>
+      {close < 1e8 && <Sfx at={close} name="stamp" vol={0.6} />}
+    </div>
+  );
+};
+registerWidget("doors", Doors as React.FC<{ w: never }>);

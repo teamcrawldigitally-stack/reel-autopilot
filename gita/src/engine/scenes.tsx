@@ -33,6 +33,9 @@ const BeatView: React.FC<{ b: Beat; at: number; out: number; top: number }> = ({
   const pillAt = b.pill?.at !== undefined ? c(b.pill.at) : at;
   const pp = useSpring(pillAt - 4, "bouncy");
   if (f < at - 6 || o <= 0) return null;
+  // Sanskrit on top when the Hindi rows come in later (a translation); otherwise rows lead
+  const rowsList = (b.rows ?? []).map(rowObj);
+  const saFirst = b.saFirst ?? (rowsList.length > 0 && rowsList.every((r) => r.at !== undefined));
   return (
     <>
       <div
@@ -54,10 +57,11 @@ const BeatView: React.FC<{ b: Beat; at: number; out: number; top: number }> = ({
             <Pill text={b.pill.text} tone={b.pill.tone} />
           </div>
         )}
+        {saFirst && b.sa && <SaLine text={b.sa} size={b.saSize ?? 70} />}
         {(b.rows ?? []).map((r, i) => (
           <RowView key={i} row={r} size={96} align={b.align} />
         ))}
-        {b.sa && <SaLine text={b.sa} size={b.saSize ?? 70} />}
+        {!saFirst && b.sa && <SaLine text={b.sa} size={b.saSize ?? 70} />}
         {b.sub && <div style={{ ...deva(48, G.cream, 700), textAlign: "center", textShadow: "0 4px 24px rgba(0,0,0,0.9)" }}>{b.sub}</div>}
       </div>
       {card && (
@@ -149,8 +153,8 @@ export const SourceSceneView: React.FC<{ s: SourceScene }> = ({ s }) => {
   const c = useCue();
   const series = c("सीरीज़");
   const ep = c("एपिसोड");
-  const adh = c("अध्याय");
-  const shl = c("श्लोक#2");
+  const adh = c(s.cardAt ?? "अध्याय");
+  const shl = c(s.secondAt ?? "श्लोक#2");
   const epIn = useSpring(ep - 4, "bouncy");
   const epOut = ease(f, adh - 8, adh);
   const card = useSpring(adh - 4, "smooth");

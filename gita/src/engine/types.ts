@@ -41,6 +41,7 @@ export type Beat = {
   rows?: Row[];
   sa?: string; // Sanskrit line (gold, Tiro)
   saSize?: number;
+  saFirst?: boolean;
   sub?: string; // smaller cream line under the rows
   card?: { label?: string; text: string; at?: Cue; top?: number; tone?: Tone };
   pill?: { text: string; tone?: Tone; at?: Cue }; // small pill above the rows
@@ -74,6 +75,8 @@ export type SourceScene = {
   speaker?: string; // "धृतराष्ट्र उवाच"
   shloka: string[]; // half-verse lines; {..} = highlighted words
   note?: string; // pill under the card
+  cardAt?: Cue; // default "अध्याय"
+  secondAt?: Cue; // default "श्लोक#2"
   bg?: Pic; // dim picture behind the card
   fontSize?: number;
   swipe?: boolean;

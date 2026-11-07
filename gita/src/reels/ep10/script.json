@@ -1,0 +1,105 @@
+{
+  "id": "ep10",
+  "ep": 10,
+  "tag": "#10",
+  "shlok": "3.8",
+  "title": "“कल से पक्का”",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "pictures": {
+    "man-sofa": "Same young man lying lazily on a small sofa scrolling his phone, untouched books, files and a laptop on the floor; pure black background, 9:16",
+    "man-desk": "Same man upright at a wooden desk writing in a notebook, laptop open, warm desk lamp; pure black background, 9:16"
+  },
+  "facts": "10 min × 365 = 3,650 min ≈ 61 hours ≈ 2.5 days",
+  "cover": {
+    "pic": { "src": "img/man-sofa-cut.png", "h": 900, "bottom": 1600 },
+    "mood": "red",
+    "rows": ["{g:“कल से पक्का”}", { "t": "{d:कितनी बार बोला?}", "size": 80 }],
+    "pill": { "text": "ये भी गलती है", "tone": "red" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [{ "voice": "कल से पक्का, ये कितनी बार बोला है?" }, { "voice": "कृष्ण के हिसाब से, कुछ न करना भी एक गलती है।" }],
+      "pics": [{ "src": "img/man-sofa-cut.png", "h": 640, "bottom": 1580, "glow": "saffron" }],
+      "widgets": [{ "type": "calendar", "top": 600, "size": 300, "word": "कल", "sub": "से पक्का", "every": 12, "flips": 14, "out": "कृष्ण-4" }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{g:“कल से पक्का”}", "size": 120 }, { "t": "{d:कितनी बार बोला है?}", "size": 66 }] },
+        { "at": "कृष्ण-4", "rows": [{ "t": "{d:कृष्ण के हिसाब से}", "size": 62 }, { "t": "कुछ न करना भी", "size": 100 }, { "t": "एक {r:गलती} है", "size": 110, "at": "गलती" }] }
+      ],
+      "sfx": [{ "at": "गलती-3", "name": "error", "vol": 0.5 }]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड दस।" }, { "voice": "अध्याय तीन, श्लोक आठ।" }],
+      "ep": 10,
+      "ref": "3.8",
+      "chapter": "3",
+      "verse": "8",
+      "speaker": "श्रीभगवानुवाच",
+      "shloka": ["{नियतं} कुरु {कर्म} त्वं", "{कर्म ज्यायो} ह्यकर्मणः।", "{शरीरयात्रा}पि च ते", "न प्रसिद्ध्येदकर्मणः॥"],
+      "note": "= काम करना, न करने से बेहतर",
+      "bg": { "src": "img/krishna-arjun-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "lines": [{ "voice": "नियतं कुरु कर्म त्वं, जो तुम्हारा काम है वो करो।" }, { "voice": "कर्म ज्यायो ह्यकर्मणः, काम करना, कुछ न करने से बेहतर है।" }],
+      "pics": [
+        { "src": "img/man-sofa-cut.png", "h": 600, "bottom": 1580, "out": "कर्म#2-4", "glow": "red" },
+        { "src": "img/man-desk-cut.png", "h": 660, "bottom": 1580, "at": "कर्म#2-6", "glow": "green", "from": "none" }
+      ],
+      "widgets": [{ "type": "vs", "top": 700, "size": 84, "left": { "text": "कर्म", "tone": "green", "at": "काम#2" }, "right": { "text": "अकर्म", "tone": "red", "at": "कुछ" } }],
+      "beats": [
+        { "at": "start", "sa": "नियतं कुरु कर्म त्वं", "saSize": 88, "rows": [{ "t": "जो तुम्हारा काम है, {g:वो करो}", "size": 72, "at": "जो" }] },
+        { "at": "कर्म#2-2", "sa": "कर्म ज्यायो ह्यकर्मणः", "saSize": 88, "rows": [{ "t": "{E:करना} {d:बेहतर है,} {R:न करने} {d:से}", "size": 72, "at": "काम#2" }] }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "lines": [{ "voice": "और आगे कहते हैं, बिना काम के तो शरीर भी नहीं चल सकता।" }],
+      "pics": [{ "src": "img/krishna-face-cut.png", "h": 900, "bottom": 1600 }],
+      "beats": [{ "at": "start", "sa": "शरीरयात्रापि च ते", "saSize": 90, "rows": [{ "t": "{d:बिना काम के तो}", "size": 64, "at": "बिना" }, { "t": "{g:शरीर} भी नहीं चल सकता", "size": 86, "at": "शरीर" }] }]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "lines": [{ "voice": "मान लो रोज़ सिर्फ़ दस मिनट।" }, { "voice": "एक साल में करीब इकसठ घंटे।" }, { "voice": "यानी पूरे ढाई दिन का काम।" }],
+      "widgets": [
+        { "type": "dots", "at": -20, "top": 600, "total": 365, "cols": 25, "size": 22, "groups": [{ "n": 365, "at": "साल-4", "tone": "green", "fill": 36 }] },
+        { "type": "count", "top": 1120, "at": "इकसठ-4", "to": 61, "dur": 20, "label": "एक साल में", "suffix": "घंटे", "tone": "gold", "size": 190, "out": "यानी-4" }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{d:मान लो} रोज़ सिर्फ़ {n:10} मिनट", "size": 84 }], "sub": "हर दिन = एक बिंदु" },
+        { "at": "यानी-2", "top": 1150, "rows": [{ "t": "यानी पूरे {g:ढाई दिन}", "size": 110 }, { "t": "{d:का काम}", "size": 70 }] }
+      ]
+    },
+    {
+      "id": "s6",
+      "kind": "beats",
+      "lines": [{ "voice": "तो आज बस दस मिनट।" }, { "voice": "काम पूरा नहीं करना, सिर्फ़ शुरू करना है।" }],
+      "pics": [{ "src": "img/man-desk-cut.png", "h": 520, "bottom": 1590, "glow": "green" }],
+      "widgets": [{ "type": "timer", "top": 600, "r": 200, "minutes": 10, "go": "शुरू", "label": "शुरू!" }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "आज बस {n:10} मिनट", "size": 100 }] },
+        { "at": "काम-2", "rows": [{ "t": "{x:पूरा करना}", "size": 84, "strike": "नहीं" }, { "t": "सिर्फ़ {E:शुरू} करना है", "size": 96, "at": "सिर्फ़" }] }
+      ]
+    },
+    {
+      "id": "s7",
+      "kind": "cta",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जो हर काम कल पर टालता है।" },
+        { "voice": "और कमेंट में लिखो, आप कौन सा काम आज शुरू करोगे?" },
+        { "voice": "अगले एपिसोड में, एल आई सी के लोगो पर लिखा वाक्य कहाँ से आया?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जो हर काम कल पर टालता है", "pic": { "src": "img/man-sofa-cut.png", "h": 560, "bottom": 1500, "glow": "saffron" } },
+      "comment": { "q": "आप कौन सा काम आज शुरू करोगे?", "typed": "आज से रोज़ 10 मिनट पढ़ाई" },
+      "next": { "ep": "#11", "rows": ["एल आई सी के लोगो का", "वाक्य कहाँ से आया?"], "pic": { "src": "img/family-shield-cut.png", "h": 520, "bottom": 1170 } }
+    }
+  ]
+}

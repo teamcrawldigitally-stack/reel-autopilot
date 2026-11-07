@@ -54,7 +54,17 @@ export const EpisodeCover: React.FC<{ ep: Episode; timing: Timing }> = ({ ep, ti
         <SheetBg />
         <div style={{ position: "absolute", left: 540 - 500, top: 1580 - pic.h * 0.62 - 500, width: 1000, height: 1000, borderRadius: "50%", background: `radial-gradient(circle, ${toneGlow(mood, 0.42)}, transparent 66%)` }} />
         <div style={{ position: "absolute", left: pic.x ?? 540, top: (pic.bottom ?? 1640) - pic.h, height: pic.h, transform: `translateX(-50%)${pic.flip ? " scaleX(-1)" : ""}` }}>
-          <Img src={staticFile(pic.src)} style={{ height: pic.h, width: "auto", display: "block", filter: `drop-shadow(0 0 50px ${toneGlow(mood, 0.6)})` }} />
+          <Img
+            src={staticFile(pic.src)}
+            style={{
+              height: pic.h,
+              width: "auto",
+              display: "block",
+              filter: pic.full ? undefined : `drop-shadow(0 0 50px ${toneGlow(mood, 0.6)})`,
+              WebkitMaskImage: pic.full ? "radial-gradient(ellipse 50% 50% at 50% 50%, black 68%, transparent 100%)" : undefined,
+              maskImage: pic.full ? "radial-gradient(ellipse 50% 50% at 50% 50%, black 68%, transparent 100%)" : undefined,
+            }}
+          />
         </div>
         <div style={{ position: "absolute", left: 0, right: 0, top: 1330, height: 400, background: `linear-gradient(180deg, transparent, ${G.ink} 70%)` }} />
 

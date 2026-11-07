@@ -1,0 +1,174 @@
+{
+  "id": "ep13",
+  "ep": 13,
+  "tag": "#13",
+  "shlok": "1–18",
+  "title": "700 श्लोक का हिसाब",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "facts": "Common count: Dhritarashtra 1, Sanjaya 41, Arjuna 84, Krishna 574 = 700 (editions differ slightly; shown as आम गिनती).",
+  "cover": {
+    "pic": { "src": "img/krishna-arjun-cut.png", "h": 1000, "bottom": 1640 },
+    "rows": ["{n:700} श्लोक का हिसाब", { "t": "{d:किसने कितने बोले?}", "size": 84 }],
+    "pill": { "text": "कृष्ण: 574", "tone": "gold" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [{ "voice": "गीता के सात सौ श्लोक।" }, { "voice": "एक धृतराष्ट्र का, चौरासी अर्जुन के, और कृष्ण के?" }],
+      "widgets": [
+        {
+          "type": "dots", "at": -20, "top": 720, "total": 700, "cols": 35, "size": 15,
+          "groups": [
+            { "n": 1, "at": "एक", "tone": "saffron" },
+            { "n": 41, "at": 99999, "tone": "blue" },
+            { "n": 84, "at": "चौरासी", "tone": "green", "fill": 14 },
+            { "n": 574, "at": 99999, "tone": "gold" }
+          ]
+        },
+        {
+          "type": "faces", "top": 1230, "size": 150,
+          "items": [
+            { "src": "img/face-dhritarashtra.png", "label": "धृतराष्ट्र", "count": "1", "tone": "saffron", "at": "एक" },
+            { "src": "img/face-sanjaya.png", "label": "संजय", "count": "?", "tone": "blue", "at": 99999 },
+            { "src": "img/face-arjun.png", "label": "अर्जुन", "count": "84", "tone": "green", "at": "चौरासी" },
+            { "src": "img/face-krishna.png", "label": "कृष्ण", "count": "?", "tone": "gold", "at": "कृष्ण", "hi": "कृष्ण" }
+          ]
+        }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "गीता के {n:700} श्लोक", "size": 110 }, { "t": "{d:किसने कितने बोले?}", "size": 66 }] },
+        { "at": "कृष्ण-4", "rows": [{ "t": "और {g:कृष्ण} के?", "size": 120 }] }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड तेरह।" }, { "voice": "आज पूरी गीता का हिसाब।" }],
+      "ep": 13,
+      "ref": "1–18",
+      "chapter": "1–18",
+      "verse": "1–700",
+      "cardAt": "आज",
+      "secondAt": "हिसाब",
+      "shloka": ["{18} अध्याय", "{700} श्लोक"],
+      "fontSize": 96,
+      "note": "= आज पूरी गीता का हिसाब",
+      "bg": { "src": "img/krishna-arjun-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "lines": [{ "voice": "अठारह अध्याय, सात सौ श्लोक।" }, { "voice": "धृतराष्ट्र ने सिर्फ़ एक श्लोक बोला, सबसे पहला।" }],
+      "widgets": [
+        {
+          "type": "dots", "at": -20, "top": 720, "total": 700, "cols": 35, "size": 15,
+          "groups": [{ "n": 1, "at": "धृतराष्ट्र", "tone": "saffron" }, { "n": 41, "at": 99999, "tone": "blue" }, { "n": 84, "at": 99999, "tone": "green" }, { "n": 574, "at": 99999, "tone": "gold" }]
+        },
+        {
+          "type": "faces", "top": 1230, "size": 150, "note": "आम गिनती (एडिशन में थोड़ा फ़र्क हो सकता है)",
+          "items": [
+            { "src": "img/face-dhritarashtra.png", "label": "धृतराष्ट्र", "count": "1", "tone": "saffron", "at": "धृतराष्ट्र", "hi": "धृतराष्ट्र" },
+            { "src": "img/face-sanjaya.png", "label": "संजय", "tone": "blue", "at": 99999 },
+            { "src": "img/face-arjun.png", "label": "अर्जुन", "tone": "green", "at": 99999 },
+            { "src": "img/face-krishna.png", "label": "कृष्ण", "tone": "gold", "at": 99999 }
+          ]
+        }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{n:18} अध्याय · {n:700} श्लोक", "size": 84 }] },
+        { "at": "धृतराष्ट्र-2", "rows": [{ "t": "{s:धृतराष्ट्र}: सिर्फ़ {n:1}", "size": 100 }, { "t": "{d:सबसे पहला}", "size": 66, "at": "पहला" }] }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "swipe": false,
+      "lines": [{ "voice": "संजय ने करीब इकतालीस।" }, { "voice": "अर्जुन ने चौरासी।" }],
+      "widgets": [
+        {
+          "type": "dots", "at": -20, "top": 720, "total": 700, "cols": 35, "size": 15,
+          "groups": [{ "n": 1, "at": -30, "tone": "saffron" }, { "n": 41, "at": "संजय", "tone": "blue", "fill": 14 }, { "n": 84, "at": "अर्जुन", "tone": "green", "fill": 16 }, { "n": 574, "at": 99999, "tone": "gold" }]
+        },
+        {
+          "type": "faces", "top": 1230, "size": 150, "note": "आम गिनती (एडिशन में थोड़ा फ़र्क हो सकता है)",
+          "items": [
+            { "src": "img/face-dhritarashtra.png", "label": "धृतराष्ट्र", "count": "1", "tone": "saffron", "at": -30 },
+            { "src": "img/face-sanjaya.png", "label": "संजय", "count": "41", "tone": "blue", "at": "संजय", "hi": "संजय" },
+            { "src": "img/face-arjun.png", "label": "अर्जुन", "count": "84", "tone": "green", "at": "अर्जुन", "hi": "अर्जुन" },
+            { "src": "img/face-krishna.png", "label": "कृष्ण", "tone": "gold", "at": 99999 }
+          ]
+        }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{b:संजय}: करीब {n:41}", "size": 100 }] },
+        { "at": "अर्जुन-2", "stack": true, "rows": [{ "t": "{E:अर्जुन}: {n:84}", "size": 100 }] }
+      ]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "swipe": false,
+      "lines": [{ "voice": "और कृष्ण ने, करीब पाँच सौ चौहत्तर।" }, { "voice": "यानी हर दस में से आठ से ज़्यादा श्लोक कृष्ण के।" }],
+      "widgets": [
+        {
+          "type": "dots", "at": -20, "top": 720, "total": 700, "cols": 35, "size": 15,
+          "groups": [{ "n": 1, "at": -30, "tone": "saffron" }, { "n": 41, "at": -30, "tone": "blue" }, { "n": 84, "at": -30, "tone": "green" }, { "n": 574, "at": "कृष्ण", "tone": "gold", "fill": 40 }]
+        },
+        {
+          "type": "faces", "top": 1230, "size": 150, "note": "आम गिनती (एडिशन में थोड़ा फ़र्क हो सकता है)",
+          "items": [
+            { "src": "img/face-dhritarashtra.png", "label": "धृतराष्ट्र", "count": "1", "tone": "saffron", "at": -30 },
+            { "src": "img/face-sanjaya.png", "label": "संजय", "count": "41", "tone": "blue", "at": -30 },
+            { "src": "img/face-arjun.png", "label": "अर्जुन", "count": "84", "tone": "green", "at": -30 },
+            { "src": "img/face-krishna.png", "label": "कृष्ण", "count": "574", "tone": "gold", "at": "कृष्ण", "hi": "कृष्ण" }
+          ]
+        }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{g:कृष्ण}: करीब {n:574}", "size": 100, "at": "कृष्ण" }] },
+        { "at": "यानी-2", "rows": [{ "t": "हर {n:10} में से", "size": 88 }, { "t": "{n:8}+ श्लोक {g:कृष्ण} के", "size": 92 }] }
+      ],
+      "sfx": [{ "at": "कृष्ण", "name": "riser", "vol": 0.35 }]
+    },
+    {
+      "id": "s6",
+      "kind": "beats",
+      "swipe": false,
+      "lines": [{ "voice": "पर अर्जुन के चौरासी श्लोक न होते, तो ये जवाब कभी आते ही नहीं।" }, { "voice": "अच्छे जवाब, अच्छे सवालों से आते हैं।" }],
+      "widgets": [
+        {
+          "type": "dots", "at": -20, "top": 720, "total": 700, "cols": 35, "size": 15,
+          "groups": [{ "n": 1, "at": -30, "tone": "saffron" }, { "n": 41, "at": -30, "tone": "blue" }, { "n": 84, "at": -30, "tone": "green", "pulse": "अर्जुन" }, { "n": 574, "at": -30, "tone": "gold" }]
+        },
+        {
+          "type": "faces", "top": 1230, "size": 150,
+          "items": [
+            { "src": "img/face-dhritarashtra.png", "label": "धृतराष्ट्र", "count": "1", "tone": "saffron", "at": -30 },
+            { "src": "img/face-sanjaya.png", "label": "संजय", "count": "41", "tone": "blue", "at": -30 },
+            { "src": "img/face-arjun.png", "label": "अर्जुन", "count": "84", "tone": "green", "at": -30, "hi": "अर्जुन" },
+            { "src": "img/face-krishna.png", "label": "कृष्ण", "count": "574", "tone": "gold", "at": -30 }
+          ]
+        }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{E:अर्जुन} के {n:84} सवाल", "size": 92 }, { "t": "न होते, तो {g:ये जवाब} नहीं आते", "size": 76, "at": "तो" }] },
+        { "at": "अच्छे-2", "rows": [{ "t": "{g:अच्छे जवाब}", "size": 104 }, { "t": "{E:अच्छे सवालों} से आते हैं", "size": 88, "at": "सवालों" }] }
+      ]
+    },
+    {
+      "id": "s7",
+      "kind": "cta",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जिसे लगता है उसने पूरी गीता पढ़ी है।" },
+        { "voice": "और कमेंट में बताओ, क्या आपको ये गिनती पता थी?" },
+        { "voice": "अगले एपिसोड में, रिज़ल्ट से पहले दिल क्यों धड़कता है?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जिसे लगता है उसने पूरी गीता पढ़ी है", "pic": { "src": "img/krishna-arjun-cut.png", "h": 620, "bottom": 1500 } },
+      "comment": { "q": "क्या आपको ये गिनती पता थी?", "typed": "नहीं, आज पता चली!" },
+      "next": { "ep": "#14", "rows": ["रिज़ल्ट से पहले", "दिल क्यों धड़कता है?"], "pic": { "src": "img/man-think-cut.png", "h": 480, "bottom": 1170, "glow": "saffron" } }
+    }
+  ]
+}

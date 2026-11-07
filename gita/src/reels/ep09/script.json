@@ -1,0 +1,119 @@
+{
+  "id": "ep09",
+  "ep": 9,
+  "tag": "#09",
+  "shlok": "11.32",
+  "title": "एटम बम और गीता",
+  "voice": { "speaker": "aditya_hi_conversational", "model": "bulbul:v4-flash", "pace": 1.15, "lang": "hi-IN" },
+  "timing": { "gap": 0.12, "tail": 0.22, "endHold": 0.8 },
+  "pictures": {
+    "fireball": "Empty desert before dawn, giant fireball and mushroom cloud on the horizon, bunker and steel tower silhouettes, no people; 9:16",
+    "vishwaroop": "Krishna's cosmic form (Vishvarupa): many arms and heads, blazing halo, galaxies inside; pure black background, 9:16"
+  },
+  "facts": "Trinity test 16 July 1945, 5:29 AM, New Mexico; Oppenheimer led the Los Alamos lab; he recalled the line in a 1965 TV documentary.",
+  "cover": {
+    "pic": { "src": "img/vishwaroop-cut.png", "h": 1000, "bottom": 1640 },
+    "rows": ["{g:एटम बम} और गीता", { "t": "{d:कौन सा श्लोक याद आया?}", "size": 70 }],
+    "pill": { "text": "1945", "tone": "red" }
+  },
+  "scenes": [
+    {
+      "id": "s1",
+      "kind": "beats",
+      "lines": [{ "voice": "एटम बम बनाने वाले साइंटिस्ट को, धमाके के बाद गीता का कौन सा श्लोक याद आया था?" }],
+      "dust": "saffron",
+      "pics": [{ "src": "img/fireball.jpg", "full": true, "h": 1420, "bottom": 1680, "fx": [{ "type": "zoom", "at": "start", "to": "end" }, { "type": "shake", "at": "धमाके", "to": "धमाके+18" }] }],
+      "beats": [
+        {
+          "at": "start",
+          "rows": [{ "t": "{g:एटम बम} वाले", "size": 104 }, { "t": "साइंटिस्ट को", "size": 104 }, { "t": "गीता का {g:कौन सा} श्लोक", "size": 92, "at": "गीता" }, { "t": "याद आया?", "size": 92, "at": "गीता" }]
+        }
+      ],
+      "sfx": [{ "at": "धमाके-3", "name": "bass", "vol": 0.7 }]
+    },
+    {
+      "id": "s2",
+      "kind": "source",
+      "lines": [{ "voice": "गीता श्लोक सीरीज़, एपिसोड नौ।" }, { "voice": "अध्याय ग्यारह, श्लोक बत्तीस।" }],
+      "ep": 9,
+      "ref": "11.32",
+      "chapter": "11",
+      "verse": "32",
+      "speaker": "श्रीभगवानुवाच",
+      "shloka": ["{कालोऽस्मि} लोकक्षयकृत्प्रवृद्धो", "लोकान्समाहर्तुमिह प्रवृत्तः।", "ऋतेऽपि त्वां न भविष्यन्ति सर्वे", "येऽवस्थिताः प्रत्यनीकेषु योधाः॥"],
+      "note": "= मैं काल हूँ",
+      "bg": { "src": "img/vishwaroop-cut.png", "h": 1100, "bottom": 1660 }
+    },
+    {
+      "id": "s3",
+      "kind": "beats",
+      "lines": [{ "voice": "सोलह जुलाई, उन्नीस सौ पैंतालीस।" }, { "voice": "अमेरिका के रेगिस्तान में पहला एटम बम टेस्ट हुआ।" }, { "voice": "प्रोजेक्ट की लैब के हेड थे, रॉबर्ट ओपनहाइमर।" }],
+      "dust": "saffron",
+      "pics": [{ "src": "img/fireball.jpg", "full": true, "h": 1100, "bottom": 1660, "at": "टेस्ट-8", "fx": [{ "type": "redflash", "at": "टेस्ट" }, { "type": "shake", "at": "टेस्ट", "to": "टेस्ट+18" }] }],
+      "widgets": [
+        {
+          "type": "date",
+          "top": 300,
+          "out": "हेड-6",
+          "day": "16",
+          "month": "जुलाई",
+          "year": "1945",
+          "lines": [{ "at": "रेगिस्तान", "text": "न्यू मेक्सिको का रेगिस्तान" }, { "at": "टेस्ट", "text": "सुबह 5:29 · पहला एटम बम टेस्ट" }]
+        }
+      ],
+      "beats": [{ "at": "हेड-4", "rows": [{ "t": "{d:प्रोजेक्ट की लैब के हेड}", "size": 60 }, { "t": "{g:रॉबर्ट ओपनहाइमर}", "size": 100, "at": "रॉबर्ट" }] }],
+      "sfx": [{ "at": "टेस्ट-3", "name": "bass", "vol": 0.75 }]
+    },
+    {
+      "id": "s4",
+      "kind": "beats",
+      "lines": [{ "voice": "बाद में उन्होंने बताया, उस पल गीता की ये लाइन याद आई।" }, { "voice": "अब मैं मृत्यु बन गया हूँ, दुनिया का नाश करने वाला।" }],
+      "dust": "saffron",
+      "pics": [{ "src": "img/fireball.jpg", "full": true, "h": 1100, "bottom": 1660, "dim": 0.35 }],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{d:बाद में उन्होंने बताया}", "size": 60 }, { "t": "उस पल {g:गीता} याद आई", "size": 96, "at": "गीता" }] },
+        {
+          "at": "अब-2",
+          "rows": [{ "t": "अब मैं {R:मृत्यु} बन गया हूँ", "size": 88 }, { "t": "{d:दुनिया का नाश करने वाला}", "size": 62, "at": "दुनिया" }],
+          "card": { "label": "उनके अंग्रेज़ी शब्द (1965 का इंटरव्यू)", "text": "“Now I am become Death, the destroyer of worlds.”", "at": "अब+4", "tone": "red", "top": 1120 }
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "kind": "beats",
+      "lines": [{ "voice": "पर संस्कृत में शब्द है, काल।" }, { "voice": "काल का मतलब मौत भी, और समय भी।" }, { "voice": "विराट रूप में कृष्ण अर्जुन से कह रहे थे, मैं समय हूँ।" }],
+      "pics": [{ "src": "img/vishwaroop-cut.png", "h": 1060, "bottom": 1640, "at": "विराट-6", "glow": "gold" }],
+      "widgets": [
+        { "type": "vs", "top": 760, "size": 96, "out": "विराट-6", "left": { "text": "मौत", "tone": "red", "at": "मौत" }, "right": { "text": "समय", "tone": "blue", "at": "समय" } }
+      ],
+      "beats": [
+        { "at": "start", "rows": [{ "t": "{d:पर संस्कृत में शब्द है}", "size": 62 }, { "t": "{g:काल}", "size": 220, "at": "काल" }] },
+        { "at": "विराट-4", "rows": [{ "t": "{d:विराट रूप में कृष्ण}", "size": 62 }, { "t": "मैं {b:समय} हूँ", "size": 120, "at": "मैं" }] }
+      ]
+    },
+    {
+      "id": "s6",
+      "kind": "beats",
+      "lines": [{ "voice": "और अगले ही श्लोक में कहते हैं, निमित्तमात्रं भव।" }, { "voice": "जो होना है वो होगा, तुम बस निमित्त बनो।" }],
+      "pics": [{ "src": "img/krishna-arjun-cut.png", "h": 980, "bottom": 1600, "glow": "gold" }],
+      "beats": [
+        { "at": "start", "pill": { "text": "गीता 11.33" }, "rows": [{ "t": "{d:अगला ही श्लोक}", "size": 62 }], "sa": "निमित्तमात्रं भव", "saSize": 104 },
+        { "at": "जो-2", "rows": [{ "t": "जो होना है, {g:वो होगा}", "size": 92 }, { "t": "तुम बस {E:निमित्त} बनो", "size": 100, "at": "निमित्त#2" }] }
+      ]
+    },
+    {
+      "id": "s7",
+      "kind": "cta",
+      "lines": [
+        { "voice": "ये रील उसे भेजो, जिसे साइंस और इतिहास पसंद है।" },
+        { "voice": "और कमेंट में बताओ, क्या आपको ये पता था?" },
+        { "voice": "अगले एपिसोड में, कल से पक्का कहना गलती क्यों है?" },
+        { "voice": "गीता का अगला श्लोक मिस न हो, तो फॉलो करो।" }
+      ],
+      "share": { "title": "उसे भेजो", "sub": "जिसे साइंस और इतिहास पसंद है", "pic": { "src": "img/fireball.jpg", "full": true, "h": 820, "bottom": 1560 } },
+      "comment": { "q": "कमेंट में बताओ, क्या आपको ये पता था?", "typed": "बिल्कुल नहीं!" },
+      "next": { "ep": "#10", "rows": ["“कल से पक्का”", "कहना गलती क्यों है?"], "pic": { "src": "img/man-sofa-cut.png", "h": 460, "bottom": 1160 } }
+    }
+  ]
+}
