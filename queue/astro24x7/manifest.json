@@ -6,7 +6,7 @@
   "expectUsername": "astro_24x7",
   "captionCta": "📩 फ़्री कुंडली रिपोर्ट के लिए हमें DM कीजिए।",
   "shareToFeed": true,
-  "perDay": 8,
+  "perDay": 2,
   "schedule": "Normal posts 12:47 PM + 6:47 PM IST, trial copies 3:47 PM + 9:47 PM IST (see .github/workflows/post-queue.yml). Sat 7 Nov: Diwali money series, normal posts every 1.5 h from 11:17 AM (perDay 8 for that day only), no trial copies. Sat 7 Nov 4:21 PM (Akshay): rest of the series as trial reels only, plus trial copies of the 5 already posted, 5 min apart.",
   "trialCopy": {
     "enabled": true,
