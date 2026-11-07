@@ -6,21 +6,21 @@ import { Sfx, clamp, ease } from "../components/kit";
 import { createTimeline, type Timing } from "../lib/timeline";
 import timingJson from "../reels/story01/timing.json";
 
-const timing = timingJson as unknown as Timing;
-const TL = createTimeline(timing);
-const LEAD = 8;
+export const timing = timingJson as unknown as Timing;
+export const TL = createTimeline(timing);
+export const LEAD = 8;
 
-const INK = "#1c1712";
-const CREAM = "#f6ecd6";
-const GOLD = "#f2b84b";
-const RED = "#d23a2c";
+export const INK = "#1c1712";
+export const CREAM = "#f6ecd6";
+export const GOLD = "#f2b84b";
+export const RED = "#d23a2c";
 const PAPER = "#efe3c8";
 const DISPLAY = "Anton, Oswald, sans-serif";
 const TYPE = "SpecialElite, 'Courier New', monospace";
 
 type Cue = string | number;
-const SceneId = React.createContext("s1");
-const useQ = () => {
+export const SceneId = React.createContext("s1");
+export const useQ = () => {
   const id = React.useContext(SceneId);
   return (c: Cue | undefined, fb = 0): number => {
     if (c === undefined) return fb;
@@ -35,7 +35,7 @@ const vis = (f: number, at: number, out?: number, inLen = 8, outLen = 6) => ease
 
 /* ---------- painted background with a slow camera ---------- */
 type Cam = { s: number; x?: number; y?: number };
-const Paint: React.FC<{ src: string; dur: number; from: Cam; to: Cam; dark?: number; blur?: number; tint?: string; at?: Cue; out?: Cue }> = ({ src, dur, from, to, dark = 0, blur = 0, tint, at, out }) => {
+export const Paint: React.FC<{ src: string; dur: number; from: Cam; to: Cam; dark?: number; blur?: number; tint?: string; at?: Cue; out?: Cue }> = ({ src, dur, from, to, dark = 0, blur = 0, tint, at, out }) => {
   const f = useCurrentFrame();
   const q = useQ();
   const a = at !== undefined ? q(at) : -LEAD;
@@ -55,7 +55,7 @@ const Paint: React.FC<{ src: string; dur: number; from: Cam; to: Cam; dark?: num
 };
 
 /* ---------- cut-out character ---------- */
-const Cut: React.FC<{
+export const Cut: React.FC<{
   src: string; x?: number; bottom: number; h: number; at?: Cue; out?: Cue; from?: "left" | "right" | "up" | "none";
   shake?: [Cue, Cue]; tremble?: number; drive?: { from: number; at: Cue; len: number }; fall?: { at: Cue; len: number; deg: number; dy: number };
   glow?: string; zoom?: number; flip?: boolean;
@@ -97,7 +97,7 @@ const Cut: React.FC<{
 
 /* ---------- big condensed title, word by word ---------- */
 type TLine = { t: string; c?: string };
-const Title: React.FC<{ lines: TLine[]; at: Cue; out?: Cue; top?: number; size?: number; ink?: boolean }> = ({ lines, at, out, top = 250, size = 150, ink }) => {
+export const Title: React.FC<{ lines: TLine[]; at: Cue; out?: Cue; top?: number; size?: number; ink?: boolean }> = ({ lines, at, out, top = 250, size = 150, ink }) => {
   const f = useCurrentFrame();
   const q = useQ();
   const a = q(at);
@@ -133,7 +133,7 @@ const torn = (seed: string) => {
   for (let i = n; i >= 0; i--) pts.push(`${(i / n) * 100}% ${100 - random(seed + "b" + i) * 7}%`);
   return `polygon(${pts.join(",")})`;
 };
-const Label: React.FC<{ title?: string; red?: string; sub?: string; refx?: string; mono?: string; at: Cue; out?: Cue; x: number; y: number; rot?: number; size?: number; dark?: boolean; seed?: string }> = ({ title, red, sub, refx, mono, at, out, x, y, rot = -2, size = 92, dark, seed = "l" }) => {
+export const Label: React.FC<{ title?: string; red?: string; sub?: string; refx?: string; mono?: string; at: Cue; out?: Cue; x: number; y: number; rot?: number; size?: number; dark?: boolean; seed?: string }> = ({ title, red, sub, refx, mono, at, out, x, y, rot = -2, size = 92, dark, seed = "l" }) => {
   const f = useCurrentFrame();
   const q = useQ();
   const a = q(at);
@@ -159,7 +159,7 @@ const Label: React.FC<{ title?: string; red?: string; sub?: string; refx?: strin
 };
 
 /* ---------- light, dust, finish ---------- */
-const Rays: React.FC<{ at?: Cue; color?: string }> = ({ at, color = "255,206,120" }) => {
+export const Rays: React.FC<{ at?: Cue; color?: string }> = ({ at, color = "255,206,120" }) => {
   const f = useCurrentFrame();
   const q = useQ();
   const a = at !== undefined ? q(at) : -LEAD;
@@ -171,7 +171,7 @@ const Rays: React.FC<{ at?: Cue; color?: string }> = ({ at, color = "255,206,120
     </AbsoluteFill>
   );
 };
-const Dust: React.FC<{ n?: number; seed?: string; color?: string }> = ({ n = 26, seed = "d", color = "255,230,180" }) => {
+export const Dust: React.FC<{ n?: number; seed?: string; color?: string }> = ({ n = 26, seed = "d", color = "255,230,180" }) => {
   const f = useCurrentFrame();
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
@@ -185,7 +185,7 @@ const Dust: React.FC<{ n?: number; seed?: string; color?: string }> = ({ n = 26,
     </AbsoluteFill>
   );
 };
-const Finish: React.FC = () => {
+export const Finish: React.FC = () => {
   const f = useCurrentFrame();
   return (
     <AbsoluteFill style={{ pointerEvents: "none" }}>
@@ -194,10 +194,10 @@ const Finish: React.FC = () => {
     </AbsoluteFill>
   );
 };
-const TopShade: React.FC<{ h?: number; a?: number }> = ({ h = 760, a = 0.55 }) => (
+export const TopShade: React.FC<{ h?: number; a?: number }> = ({ h = 760, a = 0.55 }) => (
   <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: h, background: `linear-gradient(rgba(8,5,2,${a}), rgba(8,5,2,0))` }} />
 );
-const SeriesTag: React.FC = () => (
+export const SeriesTag: React.FC = () => (
   <div style={{ position: "absolute", right: 46, top: 120, transform: "rotate(1.5deg)", filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.5))" }}>
     <div style={{ background: "#141210", clipPath: torn("series"), padding: "12px 26px", fontFamily: TYPE, fontSize: 30, color: CREAM, letterSpacing: 4, whiteSpace: "nowrap" }}>
       GITA SHLOK SERIES · STORY <span style={{ color: RED }}>01</span>
@@ -259,7 +259,7 @@ const S4: React.FC<{ dur: number }> = ({ dur }) => (
   </>
 );
 
-const S5: React.FC<{ dur: number }> = ({ dur }) => (
+export const S5: React.FC<{ dur: number }> = ({ dur }) => (
   <>
     <Paint src="img/story/s-arjun-sit.jpg" dur={dur} from={{ s: 1.08, y: 20 }} to={{ s: 1.18, y: -10 }} dark={0.12} />
     <TopShade h={900} a={0.7} />
@@ -268,7 +268,7 @@ const S5: React.FC<{ dur: number }> = ({ dur }) => (
   </>
 );
 
-const S6: React.FC<{ dur: number }> = ({ dur }) => (
+export const S6: React.FC<{ dur: number }> = ({ dur }) => (
   <>
     <Paint src={BG} dur={dur} from={{ s: 2.2, y: 160 }} to={{ s: 2.35, y: 160 }} dark={0.3} blur={6} tint="rgba(255,214,150,1)" />
     <Rays />
@@ -281,7 +281,7 @@ const S6: React.FC<{ dur: number }> = ({ dur }) => (
   </>
 );
 
-const S7: React.FC<{ dur: number }> = ({ dur }) => (
+export const S7: React.FC<{ dur: number }> = ({ dur }) => (
   <>
     <Paint src="img/story/s-arjun-sit.jpg" dur={dur} from={{ s: 1.2, x: -30, y: -20 }} to={{ s: 1.3, x: -40, y: -30 }} dark={0.25} out="तब-4" />
     <Paint src={BG} dur={dur} from={{ s: 2.2, y: 160 }} to={{ s: 2.3, y: 160 }} dark={0.25} blur={6} tint="rgba(255,214,150,1)" at="तब-4" />
@@ -300,7 +300,7 @@ const S7: React.FC<{ dur: number }> = ({ dur }) => (
 );
 const q7 = (w: string) => TL.cue("s7", w);
 
-const S8: React.FC<{ dur: number }> = ({ dur }) => (
+export const S8: React.FC<{ dur: number }> = ({ dur }) => (
   <>
     <Paint src={BG} dur={dur} from={{ s: 1.5, y: -60 }} to={{ s: 1.62, y: -40 }} dark={0.1} blur={3} />
     <Rays color="255,190,110" />

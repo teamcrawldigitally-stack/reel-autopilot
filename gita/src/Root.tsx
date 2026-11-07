@@ -7,6 +7,7 @@ import { totalFrames as ep03Frames } from "./reels/ep03/timeline";
 import { EPISODES } from "./episodes";
 import { EpisodeCover, EpisodeReel } from "./engine/Episode";
 import { STORY01_FRAMES, Story01, Story01Cover } from "./story/Story01";
+import { STORY01V_FRAMES, Story01V } from "./story/Story01V";
 
 const fonts: [string, string, string][] = [
   ["Poppins", "Poppins-Regular.ttf", "400"],
@@ -35,6 +36,7 @@ export const Root: React.FC = () => (
     <Composition id="Ep03Cover" component={Ep03Cover} durationInFrames={1} {...V} />
     <Composition id="Story01" component={Story01} durationInFrames={STORY01_FRAMES} {...V} />
     <Composition id="Story01Cover" component={Story01Cover} durationInFrames={1} {...V} />
+    <Composition id="Story01V" component={Story01V} durationInFrames={STORY01V_FRAMES} {...V} />
     {EPISODES.map(({ id, ep, timing }) => {
       const name = id.charAt(0).toUpperCase() + id.slice(1);
       return (
