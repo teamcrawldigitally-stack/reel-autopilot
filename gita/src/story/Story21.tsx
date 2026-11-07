@@ -47,8 +47,8 @@ const S1: React.FC = () => (
   <>
     <Clip src={V("descent")} from={0} rate={0.9} zoom={[1.04, 1.1]} sound={SND.descent} />
     <TopShade h={1000} a={0.7} />
-    <Title lines={[{ t: "YADA YADA" }, { t: "HI DHARMASYA…", c: GOLD }]} at={0} out="पर-4" size={160} />
-    <Title lines={[{ t: "EVERYONE'S HEARD IT." }, { t: "BUT THE FULL" }, { t: "MEANING?", c: GOLD }]} at="पर-2" size={130} />
+    <Title lines={[{ t: "YADA YADA HI" }, { t: "DHARMASYA…", c: GOLD }]} at={0} out="पर-4" size={150} />
+    <Title lines={[{ t: "EVERYONE" }, { t: "KNOWS THIS." }, { t: "BUT THE FULL" }, { t: "MEANING?", c: GOLD }]} at="पर-2" size={135} />
   </>
 );
 
