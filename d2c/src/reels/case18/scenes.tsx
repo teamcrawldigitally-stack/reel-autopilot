@@ -1,236 +1,280 @@
+// CASE #18 FACE — cartoon look (remade 7 Nov 2026 from the dark-blue version; same script and voice).
 import React from "react";
-import { useCurrentFrame } from "remotion";
-import { CheckIcon, CrossIcon } from "../../components/icons";
-import { BP, FigLabel, FixCard, HisaabCta, Hl, big, ease, glass, label, useCount } from "../../components/hisaab";
-import { Face, Pill, SerumBottle, Stamp, useTalk } from "../../components/hisaabArt";
-import { SceneShell, Sfx } from "../../components/kit";
+import { interpolate, useCurrentFrame } from "remotion";
+import { Look, Person, PoseAt, ROHIT } from "../../components/Cartoon";
+import { Camera } from "../../components/fx";
+import { HookTitle, LINE, Place, makeMouth } from "../../components/format";
+import { SerumBottle } from "../../components/hisaabArt";
+import { Chip, SceneShell, Sfx } from "../../components/kit";
+import { QMarks } from "../../components/props";
+import { MoneyRoom, OfficeWall } from "../../components/sets";
+import { CtaScene, FixBoard, Panel, Pop, ToonPhone, Verdict, big, body, ramp } from "../../components/toon";
+import { Stamp } from "../../components/widgets";
 import { C } from "../../theme";
-import { cue } from "./timeline";
+import { T, cue } from "./timeline";
 
-type SP = { dur: number };
+const sceneMouth = makeMouth(T);
+const TAG = "CASE #18";
 
-/** Generic brand-logo tile. */
-const LogoTile: React.FC<{ w?: number }> = ({ w = 300 }) => (
-  <div style={{ width: w, height: w, borderRadius: w * 0.16, background: "linear-gradient(150deg,#FFFFFF,#E9E2FA)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: w * 0.03, boxShadow: "0 30px 60px -24px rgba(0,0,0,0.7)" }}>
-    <div style={{ width: w * 0.42, height: w * 0.42, borderRadius: "50%", background: C.violet, display: "flex", alignItems: "center", justifyContent: "center", ...big(w * 0.24, C.white), paddingTop: w * 0.03, boxSizing: "border-box" }}>R</div>
-    <div style={label(w * 0.075, C.navy)}>ROHIT'S SKIN</div>
+/** Brand logo tile. */
+export const LogoTile: React.FC<{ w?: number }> = ({ w = 300 }) => (
+  <Panel style={{ width: w, height: w, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: w * 0.04 }}>
+    <div style={{ width: w * 0.44, height: w * 0.44, borderRadius: "50%", background: C.violet, border: `5px solid ${LINE}`, display: "flex", alignItems: "center", justifyContent: "center", ...big(w * 0.24, C.white), paddingTop: w * 0.03, boxSizing: "border-box" }}>R</div>
+    <div style={body(w * 0.08)}>ROHIT'S SKIN</div>
+  </Panel>
+);
+
+/** Head-and-shoulders crop of a character in a rounded frame. */
+export const Head: React.FC<{ look: Look; track: PoseAt[]; seed: string; w?: number; bg?: string; round?: boolean }> = ({ look, track, seed, w = 300, bg = "#FFE7A8", round }) => (
+  <div style={{ width: w, height: w, borderRadius: round ? "50%" : w * 0.12, overflow: "hidden", background: bg, border: `6px solid ${LINE}`, position: "relative", boxSizing: "border-box" }}>
+    <div style={{ position: "absolute", left: w * 0.03, top: -w * 0.02, transform: `scale(${w / 450})`, transformOrigin: "0 0" }}>
+      <Person look={look} track={track} seed={seed} />
+    </div>
   </div>
 );
 
-const FaceTile: React.FC<{ w?: number; talk?: number }> = ({ w = 300, talk = 0 }) => (
-  <div style={{ width: w, height: w, borderRadius: w * 0.16, background: "linear-gradient(160deg,#FCE3D2,#E7B79B)", display: "flex", alignItems: "flex-end", justifyContent: "center", overflow: "hidden", boxShadow: "0 30px 60px -24px rgba(0,0,0,0.7)" }}>
-    <Face kind="founder" w={w * 0.82} talk={talk} />
-  </div>
-);
-
-/* s1 · hook (on screen from frame 0) */
-export const S1Hook: React.FC<SP> = ({ dur }) => {
+/* ===== S1: hook ===== */
+export const S1Hook: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
+  const logo = cue("s1", "logo");
   const insaan = cue("s1", "insaan");
   const chehra = cue("s1", "chehra");
   return (
-    <SceneShell dur={dur}>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 330, display: "flex", justifyContent: "center", gap: 60 }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
-          <LogoTile w={340} />
-          <CrossIcon size={64} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[insaan, chehra]} push={0.03}>
+        <MoneyRoom />
+        <HookTitle
+          top={300}
+          lines={[
+            { text: "Log logo se nahi,", at: -8, kind: "plain", size: 84, rot: -1 },
+            { text: "insaan se khareedte", at: -6, kind: "violet", size: 84, rot: 2 },
+          ]}
+        />
+        <div style={{ position: "absolute", left: 100, top: 690, zIndex: 6, transform: "rotate(-3deg)", opacity: 1 - 0.4 * ramp(f, insaan - 4, insaan + 8) }}>
+          <LogoTile w={330} />
         </div>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18, opacity: 0.35 + 0.65 * ease(f, insaan - 6, insaan + 4) }}>
-          <FaceTile w={340} talk={useTalk(insaan, insaan + 25)} />
-          <div style={{ opacity: ease(f, insaan - 2, insaan + 6) }}>
-            <CheckIcon size={64} draw={ease(f, insaan, insaan + 10)} />
-          </div>
+        <div style={{ position: "absolute", left: 150, top: 1060, zIndex: 8, opacity: ramp(f, logo - 4, logo + 4) }}>
+          <Verdict ok={false} text="LOGO" />
         </div>
-      </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 860, display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
-        <div style={big(80)}>Log logo se nahi,</div>
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <Pill size={86} bg={BP.green} color={C.navy}>INSAAN</Pill>
-          <div style={big(80)}>se khareedte</div>
+        <Place x={580} y={680} s={0.82} z={5}>
+          <Person
+            look={ROHIT}
+            seed="r181"
+            track={[
+              { at: -100, pose: "idle", mood: "neutral" },
+              { at: insaan - 2, pose: "wave", mood: "grin" },
+              { at: chehra, pose: "shrug", mood: "happy" },
+            ]}
+          />
+        </Place>
+        <div style={{ position: "absolute", left: 620, top: 640, zIndex: 8, opacity: ramp(f, insaan - 4, insaan + 4) }}>
+          <Verdict ok text="INSAAN" />
         </div>
-      </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 1150, display: "flex", justifyContent: "center", opacity: ease(f, chehra - 6, chehra + 4), transform: `scale(${0.8 + 0.2 * ease(f, chehra - 6, chehra + 4)})` }}>
-        <div style={{ ...glass, padding: "18px 34px 10px", ...big(64, BP.red) }}>Aapka chehra kahan hai?</div>
-      </div>
-      <Sfx at={insaan - 3} name="check" vol={0.45} />
-      <Sfx at={chehra - 4} name="pop" vol={0.45} />
+        <div style={{ position: "absolute", left: 870, top: 700, zIndex: 9 }}>
+          <QMarks at={chehra} />
+        </div>
+      </Camera>
+      <Sfx at={1} name="whoosh" vol={0.4} />
+      <Sfx at={logo - 2} name="error" vol={0.3} />
+      <Sfx at={insaan - 2} name="ding" vol={0.4} />
+      <Sfx at={chehra} name="pop" vol={0.35} />
     </SceneShell>
   );
 };
 
-/* s2 · Rohit's page: 60 posts, all product photos, 3 likes each */
-export const S2Page: React.FC<SP> = ({ dur }) => {
+/* ===== S2: 60 posts, all product photos, 3 likes each ===== */
+export const S2Page: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const saath = cue("s2", "saath");
+  const sab = cue("s2", "sab");
   const teen = cue("s2", "teen");
-  const posts = useCount(60, saath - 10, saath + 14);
+  const scroll = ramp(f, sab - 4, sab + 40) * 220;
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={1} text="ROHIT KA PAGE" />
-      <div style={{ position: "absolute", left: 84, top: 380, display: "grid", gridTemplateColumns: "repeat(10, 80px)", gap: 3 }}>
-        {Array.from({ length: 60 }).map((_, i) => {
-          const at = saath - 10 + i * 0.4;
-          const p = ease(f, at, at + 6);
-          const heart = f >= teen + (i % 10) * 0.6;
-          return (
-            <div key={i} style={{ position: "relative", width: 80, height: 80, background: "#FFFFFF", borderRadius: 6, display: "flex", justifyContent: "center", alignItems: "center", opacity: p, transform: `scale(${0.6 + 0.4 * p})` }}>
-              <SerumBottle h={62} label="" />
-              {heart && <div style={{ position: "absolute", right: 3, bottom: 2, ...label(14, BP.red), letterSpacing: 0 }}>♥3</div>}
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[teen]} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 540, top: 330, zIndex: 6 }}>
+          <ToonPhone w={440} h={820}>
+            <div style={{ position: "absolute", left: 0, right: 0, top: 46, padding: "10px 20px", display: "flex", alignItems: "center", gap: 14, background: C.white, zIndex: 2 }}>
+              <div style={{ width: 70, height: 70, borderRadius: "50%", background: C.violet, border: `4px solid ${LINE}`, display: "flex", alignItems: "center", justifyContent: "center", ...big(34, C.white), paddingTop: 4, boxSizing: "border-box" }}>R</div>
+              <div>
+                <div style={body(26)}>rohitskin</div>
+                <div style={{ ...body(24, C.muted), opacity: ramp(f, saath - 6, saath + 2) }}>60 posts</div>
+              </div>
             </div>
-          );
-        })}
-      </div>
-      <div style={{ position: "absolute", left: 84, right: 84, top: 940, display: "flex", justifyContent: "space-between" }}>
-        <div>
-          <div style={label(26, BP.dim)}>POSTS · SAB PRODUCT PHOTOS</div>
-          <div style={big(130)}>{Math.round(posts)}</div>
+            <div style={{ position: "absolute", left: 6, right: 6, top: 150 - scroll, display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 6 }}>
+              {Array.from({ length: 18 }).map((_, i) => (
+                <div key={i} style={{ position: "relative", height: 130, background: "#F6F3FC", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 6 }}>
+                  <SerumBottle h={96} />
+                  <div style={{ position: "absolute", right: 6, bottom: 6, background: C.white, border: `3px solid ${LINE}`, borderRadius: 999, padding: "2px 10px", ...body(20, C.red), opacity: ramp(f, teen - 6 + (i % 6), teen + 2 + (i % 6)) }}>♥ 3</div>
+                </div>
+              ))}
+            </div>
+          </ToonPhone>
         </div>
-        <div style={{ textAlign: "right", opacity: ease(f, teen - 6, teen + 4) }}>
-          <div style={label(26, BP.dim)}>LIKE HAR POST PE</div>
-          <div style={big(130, BP.red)}>♥ 3</div>
+        <Pop at={sab} style={{ position: "absolute", left: 70, top: 330, zIndex: 8 }}>
+          <Chip size={30} bg={C.white} color={LINE} border={LINE}>
+            SAB PRODUCT PHOTOS
+          </Chip>
+        </Pop>
+        <div style={{ position: "absolute", left: 120, top: 520, zIndex: 9 }}>
+          <Stamp at={teen + 6} text="3 LIKE" size={70} rotate={-8} color={C.red} />
         </div>
-      </div>
-      {[0, 5, 10, 15].map((d) => (
-        <Sfx key={d} at={saath - 10 + d} name="tick" vol={0.3} />
-      ))}
-      <Sfx at={teen - 2} name="error" vol={0.35} />
+        <Place x={40} y={720} s={0.8} z={5}>
+          <Person
+            look={ROHIT}
+            seed="r182"
+            track={[
+              { at: -100, pose: "hold", mood: "neutral" },
+              { at: teen, pose: "sad", mood: "sad" },
+            ]}
+          />
+        </Place>
+      </Camera>
+      <Sfx at={saath - 4} name="tick" vol={0.3} />
+      <Sfx at={teen + 6} name="stamp" vol={0.4} />
     </SceneShell>
   );
 };
 
-/* s3 · one 20-second founder video → 15 DMs */
-export const S3Video: React.FC<SP> = ({ dur }) => {
+/* ===== S3: a 20-second founder video → 15 DMs that night ===== */
+export const S3Video: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
-  const bees = cue("s3", "bees");
+  const video = cue("s3", "video");
   const maine = cue("s3", "maine");
-  const pandrah = cue("s3", "pandrah");
-  const dms = useCount(15, pandrah - 6, pandrah + 18);
-  const t = Math.min(20, Math.max(0, Math.floor((f - bees) / 4)));
+  const p15 = cue("s3", "pandrah");
+  const prog = ramp(f, video, video + 120);
+  const dms = Math.round(interpolate(f, [p15 - 8, p15 + 10], [1, 15], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={2} text="EK FOUNDER VIDEO" />
-      <div style={{ position: "absolute", left: 84, top: 380, width: 470, height: 760, borderRadius: 40, overflow: "hidden", background: "linear-gradient(160deg,#FCE3D2,#E7B79B)", border: `4px solid ${BP.lineSoft}`, opacity: ease(f, bees - 8, bees + 4) }}>
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, display: "flex", justifyContent: "center" }}>
-          <Face kind="founder" w={430} talk={useTalk(maine - 2, maine + 30)} />
-        </div>
-        <div style={{ position: "absolute", left: 20, top: 20, ...label(24, C.white), background: "rgba(0,0,0,0.55)", borderRadius: 10, padding: "8px 12px 6px" }}>▶ 0:{String(t).padStart(2, "0")} / 0:20</div>
-        <div style={{ position: "absolute", left: 20, right: 20, bottom: 30, ...big(34, C.navy), whiteSpace: "normal", textAlign: "center", background: "rgba(255,255,255,0.92)", borderRadius: 14, padding: "12px 14px 6px", opacity: ease(f, maine - 4, maine + 6) }}>
-          "Maine yeh serum kyun banaya"
-        </div>
-      </div>
-      <div style={{ position: "absolute", left: 600, top: 400, display: "flex", flexDirection: "column", gap: 12 }}>
-        {Array.from({ length: 6 }).map((_, i) => {
-          const p = ease(f, pandrah - 6 + i * 3, pandrah + i * 3);
-          return (
-            <div key={i} style={{ opacity: p, transform: `translateX(${(1 - p) * 60}px)`, ...glass, borderRadius: 18, padding: "12px 16px 8px", display: "flex", alignItems: "center", gap: 10 }}>
-              <div style={{ width: 34, height: 34, borderRadius: "50%", background: [C.violet, BP.green, C.lavender][i % 3] }} />
-              <div style={label(20, BP.text)}>{["Price kya hai?", "Kahan milega?", "Order karna hai", "Oily skin pe?", "COD hai?", "Link bhejo"][i]}</div>
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[p15]} push={0.02}>
+        <OfficeWall />
+        <div style={{ position: "absolute", left: 500, top: 330, zIndex: 6 }}>
+          <ToonPhone w={480} h={820} screen="#FFE7A8">
+            <div style={{ position: "absolute", left: 40, top: 90, transform: "scale(0.9)", transformOrigin: "0 0" }}>
+              <Person look={ROHIT} seed="r183v" track={[{ at: -100, pose: "wave", mood: "happy" }]} />
             </div>
-          );
-        })}
-      </div>
-      <div style={{ position: "absolute", left: 600, top: 1000, opacity: ease(f, pandrah - 6, pandrah + 4) }}>
-        <div style={label(26, BP.dim)}>USI RAAT</div>
-        <div style={big(120, BP.green)}>{Math.round(dms)} DM</div>
-      </div>
-      <Sfx at={bees - 6} name="whoosh" vol={0.4} />
-      {[0, 4, 8, 12].map((d) => (
-        <Sfx key={d} at={pandrah - 4 + d} name="pop" vol={0.35} />
+            <div style={{ position: "absolute", left: 20, right: 20, bottom: 30, height: 12, borderRadius: 6, background: "rgba(18,4,75,0.2)" }}>
+              <div style={{ width: `${prog * 100}%`, height: "100%", borderRadius: 6, background: C.red }} />
+            </div>
+            <div style={{ position: "absolute", left: 20, top: 70, ...body(26, C.white), background: LINE, borderRadius: 10, padding: "4px 12px" }}>0:20</div>
+          </ToonPhone>
+        </div>
+        <Pop at={maine} style={{ position: "absolute", left: 60, top: 330, zIndex: 9 }}>
+          <Panel style={{ padding: "18px 26px", maxWidth: 440 }}>
+            <div style={{ ...big(44), whiteSpace: "normal" }}>"Maine yeh serum kyun banaya"</div>
+          </Panel>
+        </Pop>
+        <Pop at={p15} style={{ position: "absolute", left: 80, top: 720, zIndex: 9 }}>
+          <Panel style={{ padding: "18px 28px", display: "flex", alignItems: "center", gap: 20 }}>
+            <svg width={80} height={80} viewBox="0 0 80 80">
+              <path d="M10 18 Q10 8 20 8 H60 Q70 8 70 18 V48 Q70 58 60 58 H32 L16 72 L18 58 Q10 58 10 48 Z" fill={C.violet} stroke={LINE} strokeWidth={5} strokeLinejoin="round" />
+            </svg>
+            <div>
+              <div style={big(96, C.green)}>{dms} DM</div>
+              <div style={body(26, C.muted)}>USI RAAT</div>
+            </div>
+          </Panel>
+        </Pop>
+        <Pop at={video} style={{ position: "absolute", left: 80, top: 1000, zIndex: 8 }}>
+          <Chip size={30} bg={C.red} border={LINE}>
+            ● 20 SEC FOUNDER VIDEO
+          </Chip>
+        </Pop>
+      </Camera>
+      <Sfx at={video - 4} name="pop" vol={0.35} />
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Sfx key={i} at={p15 + i * 4} name="ding" vol={0.3} />
       ))}
     </SceneShell>
   );
 };
 
-/* s4 · trust meter: logo vs a person */
-export const S4Trust: React.FC<SP> = ({ dur }) => {
+/* ===== S4: trust goes to a person, not a logo ===== */
+export const S4Trust: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const logo = cue("s4", "logo");
   const insaan = cue("s4", "insaan");
-  const bar = (name: string, v: number, word: string, color: string, at: number, top: number) => {
-    const p = ease(f, at, at + 18);
-    return (
-      <div style={{ position: "absolute", left: 84, right: 84, top, opacity: ease(f, at - 6, at + 2) }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-          <div style={big(64)}>{name}</div>
-          <div style={big(64, color)}>{word}</div>
-        </div>
-        <div style={{ marginTop: 14, height: 46, borderRadius: 23, background: "rgba(223,200,253,0.12)", overflow: "hidden" }}>
-          <div style={{ width: `${v * p}%`, height: "100%", borderRadius: 23, background: color }} />
-        </div>
-      </div>
-    );
-  };
+  const tilt = 9 * ramp(f, insaan - 6, insaan + 10) - 9 * (1 - ramp(f, logo - 6, logo + 6)) * 0;
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={3} text="BHAROSA METER" />
-      {bar("Logo pe", 14, "kam", BP.red, logo, 430)}
-      {bar("Insaan pe", 88, "zyada", BP.green, insaan, 700)}
-      <div style={{ position: "absolute", left: 540, top: 1180 }}>
-        <Stamp text="CHEHRA DIKHAO" at={insaan + 20} color={BP.green} size={70} rot={-5} />
-      </div>
-      <Sfx at={logo} name="error" vol={0.35} />
-      <Sfx at={insaan} name="ding" vol={0.4} />
-      <Sfx at={insaan + 18} name="stamp" vol={0.5} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[insaan]} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={34} bg={LINE}>
+            BHAROSA KISPE?
+          </Chip>
+        </div>
+        <div style={{ position: "absolute", left: 90, top: 470, display: "flex", gap: 60, zIndex: 6 }}>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, transform: `translateY(${-tilt * 6}px) scale(${1 - 0.1 * ramp(f, insaan - 6, insaan + 8)})`, opacity: 1 - 0.35 * ramp(f, insaan - 6, insaan + 8) }}>
+            <LogoTile w={390} />
+            <Pop at={logo + 6}>
+              <Verdict ok={false} text="BHAROSA NAHI" />
+            </Pop>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 20, transform: `translateY(${tilt * 6}px) scale(${1 + 0.06 * ramp(f, insaan - 6, insaan + 8)})` }}>
+            <Head look={ROHIT} seed="r184" w={390} track={[{ at: -100, pose: "idle", mood: "neutral" }, { at: insaan, pose: "idle", mood: "grin" }]} />
+            <Pop at={insaan}>
+              <Verdict ok text="BHAROSA" />
+            </Pop>
+          </div>
+        </div>
+      </Camera>
+      <Sfx at={logo + 2} name="error" vol={0.3} />
+      <Sfx at={insaan - 2} name="ding" vol={0.45} />
     </SceneShell>
   );
 };
 
-/* s5 · weekly founder video: 3 things to show */
-export const S5Fixes: React.FC<SP> = ({ dur }) => {
-  const f = useCurrentFrame();
-  const head = cue("s5", "founder");
-  return (
-    <SceneShell dur={dur}>
-      <FigLabel n={4} text="HAFTE MEIN 1 FOUNDER VIDEO" />
-      <div style={{ position: "absolute", left: 84, top: 380, opacity: ease(f, head - 8, head + 4) }}>
-        <Hl c={BP.green}>
-          <span style={big(56, C.navy)}>1 video / hafta · phone se</span>
-        </Hl>
-      </div>
-      <div style={{ position: "absolute", left: 84, top: 500, display: "flex", flexDirection: "column", gap: 30 }}>
-        <FixCard n={1} at={cue("s5", "kaise") - 12} title={<>Product <Hl>kaise banta</Hl> hai, dikhao</>} sub="factory, packing, ingredients" />
-        <FixCard n={2} at={cue("s5", "galti") - 10} title={<>Ek <Hl>galti</Hl> jo sudhari, batao</>} sub="sach bolo, bharosa badhta hai" />
-        <FixCard n={3} at={cue("s5", "comments") - 10} title={<>Comments ka jawab <Hl c={BP.green}>khud</Hl> do</>} sub="founder ka naam, founder ki awaaz" />
-      </div>
-      <Sfx at={cue("s5", "kaise") - 12} name="pop" vol={0.5} />
-      <Sfx at={cue("s5", "galti") - 10} name="pop" vol={0.5} />
-      <Sfx at={cue("s5", "comments") - 10} name="pop" vol={0.5} />
-    </SceneShell>
-  );
-};
+/* ===== S5: fixes ===== */
+export const S5Fixes: React.FC<{ dur: number }> = ({ dur }) => (
+  <FixBoard
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s5")}
+    marks={[cue("s5", "hafte"), cue("s5", "kaise"), cue("s5", "galti"), cue("s5", "comments")]}
+    sub="sab phone pe shoot karo"
+    fontSize={36}
+    fixes={["Hafte mein 1 founder video", "Product kaise banta hai", "Ek galti jo sudhari", "Comments ka jawab khud do"]}
+  />
+);
 
+/* ===== S6: CTA ===== */
 const CamIcon: React.FC = () => (
   <svg width={86} height={100} viewBox="0 0 86 100">
     <rect x={3} y={3} width={80} height={94} rx={12} fill={C.violet} stroke={C.navy} strokeWidth={5} />
     <rect x={14} y={30} width={44} height={36} rx={6} fill={C.white} />
     <path d="M58 40 L74 30 L74 66 L58 56 Z" fill={C.lavender} />
     <circle cx={30} cy={80} r={5} fill="#2BD46B" />
-    <text x={48} y={84} fontFamily="Inter" fontWeight={900} fontSize={13} fill={C.white}>15</text>
+    <text x={48} y={84} fontFamily="Inter" fontWeight={900} fontSize={13} fill={C.white}>
+      15
+    </text>
   </svg>
 );
 
-/* s6 · CTA */
-export const S6Cta: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur} noExit>
-    <HisaabCta
-      keyword="FACE"
-      typeAt={cue("s6", "face") - 8}
-      giftAt={cue("s6", "phone") - 6}
-      giftTitle="15 Founder Video Ideas"
-      giftSub="free · sab phone pe shoot ho jaayein"
-      giftIcon={<CamIcon />}
-      nextAt={cue("s6", "aaj")}
-      nextLabel="AAJ SHAAM 7 BAJE · AGLA CASE"
-      next={
-        <>
-          <div style={big(52, C.navy)}>Shaadi season mein</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={big(52, C.navy)}>aapka product</div>
-            <div style={{ ...big(58, C.white), background: C.violet, borderRadius: 16, padding: "8px 20px 0" }}>kahan fit?</div>
-          </div>
-        </>
-      }
-      followAt={cue("s6", "follow")}
-    />
-  </SceneShell>
+export const S6Cta: React.FC<{ dur: number }> = ({ dur }) => (
+  <CtaScene
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s6")}
+    keyword="FACE"
+    typeAt={cue("s6", "face") - 8}
+    giftAt={cue("s6", "phone") - 6}
+    giftTitle="15 Founder Video Ideas"
+    giftSub="free · sab phone pe shoot ho jaayein"
+    giftIcon={<CamIcon />}
+    nextAt={cue("s6", "aaj")}
+    nextNum="#19"
+    nextLabel="AAJ SHAAM 7 BAJE · AGLA CASE"
+    next={
+      <>
+        <div style={big(52)}>Shaadi season mein</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={big(52)}>aapka product</div>
+          <div style={{ ...big(56, C.white), background: C.violet, borderRadius: 16, padding: "8px 20px 0" }}>kahan fit?</div>
+        </div>
+      </>
+    }
+    followAt={cue("s6", "follow")}
+  />
 );

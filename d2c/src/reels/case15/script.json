@@ -1,6 +1,7 @@
 {
   "id": "case15-roas",
   "tag": "CASE #15",
+  "look": "cartoon",
   "format": "hisaab (by the numbers)",
   "voice": {
     "speaker": "aditya_hi_conversational",

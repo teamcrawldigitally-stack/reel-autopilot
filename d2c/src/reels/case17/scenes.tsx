@@ -1,171 +1,243 @@
+// CASE #17 PHOTO — cartoon look (remade 7 Nov 2026 from the dark-blue version; same script and voice).
 import React from "react";
-import { useCurrentFrame } from "remotion";
-import { CheckIcon, CrossIcon } from "../../components/icons";
-import { BP, FigLabel, FixCard, HisaabCta, Hl, big, ease, label, useCount } from "../../components/hisaab";
-import { Counter, PeopleGrid, PhoneShell, PhotoCard, Pill, Stamp } from "../../components/hisaabArt";
-import { SceneShell, Sfx } from "../../components/kit";
+import { interpolate, useCurrentFrame } from "remotion";
+import { Person, PRIYA, ROHIT } from "../../components/Cartoon";
+import { Camera } from "../../components/fx";
+import { HookTitle, LINE, Place, makeMouth } from "../../components/format";
+import { PhotoCard } from "../../components/hisaabArt";
+import { Chip, Enter, SceneShell, Sfx, clamp } from "../../components/kit";
+import { MoneyRoom } from "../../components/sets";
+import { CtaScene, FixBoard, Panel, Pop, ToonPhone, Verdict, big, body, ramp } from "../../components/toon";
+import { Stamp } from "../../components/widgets";
 import { C } from "../../theme";
-import { cue } from "./timeline";
+import { T, cue } from "./timeline";
 
-type SP = { dur: number };
+const sceneMouth = makeMouth(T);
+const TAG = "CASE #17";
 
-const Tag: React.FC<{ ok: boolean; text: string; p: number }> = ({ ok, text, p }) => (
-  <div style={{ display: "flex", alignItems: "center", gap: 12, opacity: p, transform: `scale(${0.7 + 0.3 * p})`, border: `3px solid ${ok ? BP.green : BP.red}`, background: ok ? "rgba(43,212,107,0.12)" : "rgba(255,90,95,0.12)", borderRadius: 999, padding: "8px 22px 6px 10px" }}>
-    {ok ? <CheckIcon size={40} /> : <CrossIcon size={40} />}
-    <div style={label(28, BP.text)}>{text}</div>
+/** Photo in a thick cartoon frame. */
+const Photo: React.FC<{ kind: "plain" | "hand"; w: number; title?: string; rot?: number }> = ({ kind, w, title, rot = 0 }) => (
+  <div style={{ border: `6px solid ${LINE}`, borderRadius: 30, boxShadow: `8px 8px 0 ${LINE}`, overflow: "hidden", transform: `rotate(${rot}deg)`, width: w + 8, background: C.white }}>
+    <PhotoCard kind={kind} w={w + 8} title={title} />
   </div>
 );
 
-/* s1 · hook: photo shows the product, not the benefit (on screen from frame 0) */
-export const S1Hook: React.FC<SP> = ({ dur }) => {
+/** Feed post inside the phone: header + photo. */
+const Post: React.FC<{ kind: "plain" | "hand"; w: number }> = ({ kind, w }) => (
+  <div style={{ width: w }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "14px 16px" }}>
+      <div style={{ width: 46, height: 46, borderRadius: "50%", background: "#F5B400", border: `3px solid ${LINE}`, display: "flex", alignItems: "center", justifyContent: "center", ...big(22), paddingTop: 2, boxSizing: "border-box" }}>R</div>
+      <div style={body(24)}>rohitskin</div>
+    </div>
+    <PhotoCard kind={kind} w={w} />
+  </div>
+);
+
+/* ===== S1: hook ===== */
+export const S1Hook: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const fayda = cue("s1", "fayda");
   return (
-    <SceneShell dur={dur}>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", transform: `scale(${1.03 - 0.03 * ease(f, 0, 12)})` }}>
-        <PhotoCard kind="plain" w={430} title="PRODUCT PHOTO" />
-      </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 860, display: "flex", justifyContent: "center", gap: 18 }}>
-        <Tag ok text="PRODUCT" p={1} />
-        <Tag ok={false} text="FAYDA" p={ease(f, fayda - 4, fayda + 6)} />
-      </div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 980, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
-        <div style={big(80)}>Photo mein product hai,</div>
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <Pill size={88}>FAYDA</Pill>
-          <div style={big(80)}>kahan?</div>
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[fayda]} push={0.03}>
+        <MoneyRoom />
+        <HookTitle
+          top={300}
+          lines={[
+            { text: "Photo mein product hai,", at: -8, kind: "plain", size: 76, rot: -1 },
+            { text: "fayda kahan?", at: -6, kind: "red", size: 104, rot: 2 },
+          ]}
+        />
+        <div style={{ position: "absolute", left: 110, top: 640, zIndex: 6 }}>
+          <Photo kind="plain" w={360} title="PRODUCT PHOTO" rot={-3} />
         </div>
-      </div>
-      <Sfx at={fayda - 3} name="error" vol={0.45} />
+        <div style={{ position: "absolute", left: 90, top: 1150, display: "flex", gap: 16, zIndex: 8 }}>
+          <Verdict ok text="PRODUCT" size={30} />
+          <div style={{ opacity: ramp(f, fayda - 6, fayda + 2), transform: `scale(${0.7 + 0.3 * ramp(f, fayda - 6, fayda + 4)})` }}>
+            <Verdict ok={false} text="FAYDA" size={30} />
+          </div>
+        </div>
+        <Place x={580} y={700} s={0.8} z={5}>
+          <Person
+            look={ROHIT}
+            seed="r171"
+            track={[
+              { at: -100, pose: "idle", mood: "happy" },
+              { at: fayda - 2, pose: "shrug", mood: "shock" },
+            ]}
+          />
+        </Place>
+      </Camera>
+      <Sfx at={1} name="whoosh" vol={0.4} />
+      <Sfx at={fayda - 3} name="error" vol={0.4} />
     </SceneShell>
   );
 };
 
-/* s2 · plain photo in the feed → Priya scrolls past */
-export const S2Plain: React.FC<SP> = ({ dur }) => {
+/* ===== S2: plain photo in the feed, Priya scrolls past ===== */
+export const S2Plain: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const wb = cue("s2", "white background");
   const scroll = cue("s2", "scroll");
-  const up = ease(f, scroll, scroll + 12, "in");
+  const up = ramp(f, scroll - 4, scroll + 14);
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={1} text="PLAIN PHOTO" />
-      <div style={{ position: "absolute", left: 84, top: 370 }}>
-        <PhoneShell w={430}>
-          <div style={{ position: "absolute", left: 0, right: 0, top: 70 - up * 760, display: "flex", flexDirection: "column", alignItems: "center", gap: 24, filter: up > 0 && up < 1 ? `blur(${6 * Math.sin(Math.PI * up)}px)` : undefined }}>
-            <PhotoCard kind="plain" w={360} />
-            <div style={{ width: 360, height: 300, borderRadius: 24, background: "rgba(223,200,253,0.08)" }} />
-            <div style={{ width: 360, height: 300, borderRadius: 24, background: "rgba(223,200,253,0.08)" }} />
-          </div>
-        </PhoneShell>
-      </div>
-      <div style={{ position: "absolute", left: 590, top: 470, display: "flex", flexDirection: "column", gap: 26 }}>
-        <div style={{ opacity: ease(f, wb - 4, wb + 8) }}>
-          <div style={label(24, BP.dim)}>BACKGROUND</div>
-          <div style={big(58)}>White</div>
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[scroll]} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 570, top: 410, zIndex: 6 }}>
+          <ToonPhone w={420} h={780}>
+            <div style={{ position: "absolute", left: 0, right: 0, top: 50 - up * 640 }}>
+              <Post kind="plain" w={391} />
+              <div style={{ padding: 16, display: "flex", flexDirection: "column", gap: 12 }}>
+                <div style={{ height: 300, borderRadius: 18, background: "#EDE8F7" }} />
+                <div style={{ height: 300, borderRadius: 18, background: "#EDE8F7" }} />
+              </div>
+            </div>
+          </ToonPhone>
         </div>
-        <div style={{ opacity: ease(f, wb + 20, wb + 32) }}>
-          <div style={label(24, BP.dim)}>SAAMAN</div>
-          <div style={big(58)}>1 bottle</div>
-        </div>
-        <div style={{ opacity: ease(f, scroll - 2, scroll + 8), marginTop: 30 }}>
-          <div style={label(24, BP.red)}>PRIYA</div>
-          <div style={big(70, BP.red)}>SCROLL ↑</div>
-        </div>
-      </div>
-      <Sfx at={scroll - 2} name="whoosh" vol={0.5} />
+        <Pop at={wb} style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={30} bg={C.white} color={LINE} border={LINE}>
+            WHITE BACKGROUND · EK BOTTLE
+          </Chip>
+        </Pop>
+        <Pop at={scroll} style={{ position: "absolute", left: 420, top: 600, zIndex: 9 }}>
+          <div style={{ ...big(56, C.white), background: C.red, border: `6px solid ${LINE}`, borderRadius: 999, padding: "10px 28px 2px", boxShadow: `6px 6px 0 ${LINE}`, transform: "rotate(-6deg)" }}>SCROLL ↑</div>
+        </Pop>
+        <Place x={40} y={700} s={0.82} z={5}>
+          <Person
+            look={PRIYA}
+            seed="p172"
+            track={[
+              { at: -100, pose: "hold", mood: "neutral" },
+              { at: scroll, pose: "hold", mood: "sad" },
+            ]}
+          />
+        </Place>
+      </Camera>
+      <Sfx at={wb - 4} name="pop" vol={0.35} />
+      <Sfx at={scroll - 2} name="swish" vol={0.45} />
     </SceneShell>
   );
 };
 
-/* s3 · same serum in hand with glowing skin → she stops */
-export const S3Hand: React.FC<SP> = ({ dur }) => {
+/* ===== S3: same serum in Priya's hand, glowing skin — she stops ===== */
+export const S3Hand: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const haath = cue("s3", "haath");
   const ruk = cue("s3", "ruk");
-  const inP = ease(f, 0, 14);
+  const inn = ramp(f, -10, 10);
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={2} text="HAATH MEIN PHOTO" />
-      <div style={{ position: "absolute", left: 84, top: 370 }}>
-        <PhoneShell w={430}>
-          <div style={{ position: "absolute", left: 0, right: 0, top: 70 + (1 - inP) * 500, display: "flex", justifyContent: "center" }}>
-            <PhotoCard kind="hand" w={360} />
-          </div>
-        </PhoneShell>
-      </div>
-      <div style={{ position: "absolute", left: 590, top: 470, display: "flex", flexDirection: "column", gap: 26 }}>
-        <div style={{ opacity: ease(f, haath - 4, haath + 8) }}>
-          <div style={label(24, BP.dim)}>KAHAN</div>
-          <div style={big(58)}>Priya ke haath</div>
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[ruk]} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 570, top: 410, zIndex: 6 }}>
+          <ToonPhone w={420} h={780}>
+            <div style={{ position: "absolute", left: 0, right: 0, top: 50 + (1 - inn) * 700 }}>
+              <Post kind="hand" w={391} />
+              <div style={{ display: "flex", gap: 14, padding: "14px 18px", alignItems: "center" }}>
+                <svg width={48} height={44} viewBox="0 0 48 44">
+                  <path d="M24 42 L4 22 Q-4 10 8 4 Q18 0 24 10 Q30 0 40 4 Q52 10 44 22 Z" fill={f >= ruk ? C.red : "none"} stroke={LINE} strokeWidth={4} />
+                </svg>
+                <div style={body(24, LINE)}>{f >= ruk ? "Priya ne like kiya" : ""}</div>
+              </div>
+            </div>
+          </ToonPhone>
         </div>
-        <div style={{ opacity: ease(f, haath + 26, haath + 38) }}>
-          <div style={label(24, BP.dim)}>DIKHTA HAI</div>
-          <div style={big(58, BP.green)}>Chamakti skin</div>
+        <Pop at={haath} style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={30} bg={C.green} border={LINE}>
+            HAATH MEIN · CHAMAKTI SKIN
+          </Chip>
+        </Pop>
+        <div style={{ position: "absolute", left: 300, top: 560, zIndex: 9 }}>
+          <Stamp at={ruk} text="RUK GAYI!" size={60} rotate={-8} color={C.green} />
         </div>
-      </div>
-      <div style={{ position: "absolute", left: 300, top: 1000 }}>
-        <Stamp text="RUKI ✓" at={ruk - 3} color={BP.green} size={100} rot={-6} />
-      </div>
-      <Sfx at={ruk - 4} name="stamp" vol={0.6} />
+        <Place x={40} y={700} s={0.82} z={5}>
+          <Person
+            look={PRIYA}
+            seed="p173"
+            track={[
+              { at: -100, pose: "hold", mood: "neutral" },
+              { at: haath, pose: "hold", mood: "happy" },
+              { at: ruk, pose: "cheer", mood: "grin" },
+            ]}
+          />
+        </Place>
+      </Camera>
+      <Sfx at={2} name="swish" vol={0.35} />
+      <Sfx at={ruk} name="stamp" vol={0.45} />
     </SceneShell>
   );
 };
 
-/* s4 · bottle ✗ result ✓ → 100 viewers: 2 clicks vs 5 clicks */
-export const S4Clicks: React.FC<SP> = ({ dur }) => {
+/* ===== S4: people buy the result; 100 viewers → 2 clicks vs 5 clicks ===== */
+export const S4Result: React.FC<{ dur: number }> = ({ dur }) => {
   const f = useCurrentFrame();
   const bottle = cue("s4", "bottle");
   const result = cue("s4", "result");
   const sau = cue("s4", "sau");
-  const plain = cue("s4", "plain");
-  const haath = cue("s4", "haath");
-  const left = useCount(2, plain + 4, cue("s4", "do") + 4);
-  const right = useCount(5, haath + 4, cue("s4", "paanch") + 2);
+  const doo = cue("s4", "do");
+  const paanch = cue("s4", "paanch");
+  const cards = [
+    { kind: "plain" as const, n: "2", at: doo, c: LINE, label: "Plain photo" },
+    { kind: "hand" as const, n: "5", at: paanch, c: C.green, label: "Haath wali" },
+  ];
   return (
-    <SceneShell dur={dur}>
-      <FigLabel n={3} text="100 LOG, KITNE CLICK?" />
-      <div style={{ position: "absolute", left: 0, right: 0, top: 360, display: "flex", justifyContent: "center", alignItems: "center", gap: 26 }}>
-        <div style={{ position: "relative", opacity: ease(f, bottle - 4, bottle + 6) }}>
-          <div style={big(64, BP.dim)}>BOTTLE</div>
-          <div style={{ position: "absolute", left: -8, right: -8, top: "48%", height: 6, background: BP.red, borderRadius: 3, transform: `scaleX(${ease(f, bottle + 8, bottle + 16)})`, transformOrigin: "left" }} />
+    <SceneShell dur={dur} noExit>
+      <Camera dur={dur} punches={[result, paanch]} push={0.02}>
+        <MoneyRoom />
+        <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", gap: 20, zIndex: 8 }}>
+          <Pop at={bottle}>
+            <Verdict ok={false} text="BOTTLE" />
+          </Pop>
+          <Pop at={result}>
+            <Verdict ok text="RESULT" />
+          </Pop>
         </div>
-        <div style={{ ...big(56, BP.dim), opacity: ease(f, result - 6, result) }}>→</div>
-        <div style={{ opacity: ease(f, result - 4, result + 6), transform: `scale(${0.8 + 0.2 * ease(f, result - 4, result + 6)})` }}>
-          <Hl c={BP.green}>
-            <span style={big(64, C.navy)}>RESULT</span>
-          </Hl>
+        <Enter delay={sau - 6} from="none" cfg="snappy" style={{ position: "absolute", left: 0, right: 0, top: 390, display: "flex", justifyContent: "center", zIndex: 8 }}>
+          <Chip size={28} bg={C.violet} color={C.white} border={LINE}>
+            MAAN LO · 100 LOG DEKHEIN
+          </Chip>
+        </Enter>
+        {cards.map((c, i) => (
+          <Pop key={c.label} at={i === 0 ? sau + 10 : sau + 18} style={{ position: "absolute", left: 90 + i * 470, top: 490, zIndex: 6 }}>
+            <Panel style={{ width: 430, padding: 20, display: "flex", flexDirection: "column", alignItems: "center", gap: 10, transform: `rotate(${i === 0 ? -2 : 2}deg)` }}>
+              <div style={{ borderRadius: 20, overflow: "hidden", border: `4px solid ${LINE}` }}>
+                <PhotoCard kind={c.kind} w={300} />
+              </div>
+              <div style={body(30, C.muted)}>{c.label.toUpperCase()}</div>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 12, opacity: ramp(f, c.at - 6, c.at + 2), transform: `scale(${0.6 + 0.4 * ramp(f, c.at - 6, c.at + 6)})` }}>
+                <div style={big(120, c.c)}>{c.n}</div>
+                <div style={big(52, c.c)}>click</div>
+              </div>
+            </Panel>
+          </Pop>
+        ))}
+        <div style={{ position: "absolute", left: 640, top: 1200, zIndex: 9 }}>
+          <Stamp at={paanch + 8} text="2.5x" size={70} rotate={-8} color={C.green} />
         </div>
-      </div>
-      {[0, 1].map((k) => (
-        <div key={k} style={{ position: "absolute", left: k === 0 ? 84 : 624, top: 520, display: "flex", flexDirection: "column", alignItems: "center", gap: 18, opacity: ease(f, sau - 6 + k * 4, sau + 6 + k * 4) }}>
-          <div style={label(26, k ? BP.green : BP.dim)}>{k ? "HAATH WALI PHOTO" : "PLAIN PHOTO"}</div>
-          <PeopleGrid s={30} gap={8} lit={k ? 5 : 2} litAt={k ? haath + 4 : plain + 4} inAt={sau - 6 + k * 4} />
-          <Counter name="CLICK" value={String(Math.round(k ? right : left))} color={k ? BP.green : BP.text} size={110} align="center" p={ease(f, (k ? haath : plain) - 2, (k ? haath : plain) + 8)} />
-        </div>
-      ))}
-      <Sfx at={plain + 4} name="tick" vol={0.35} />
-      <Sfx at={haath + 4} name="tick" vol={0.35} />
-      <Sfx at={haath + 24} name="ding" vol={0.4} />
+      </Camera>
+      <Sfx at={bottle - 4} name="error" vol={0.3} />
+      <Sfx at={result - 4} name="ding" vol={0.4} />
+      <Sfx at={doo - 4} name="tick" vol={0.35} />
+      <Sfx at={paanch - 4} name="ding" vol={0.45} />
+      <Sfx at={paanch + 8} name="stamp" vol={0.4} />
     </SceneShell>
   );
 };
 
-/* s5 · three photos to keep */
-export const S5Fixes: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur}>
-    <FigLabel n={4} text="YEH 3 PHOTO ZAROOR" />
-    <div style={{ position: "absolute", left: 84, top: 390, display: "flex", flexDirection: "column", gap: 30 }}>
-      <FixCard n={1} at={cue("s5", "use") - 8} title={<><Hl>Use</Hl> karte hue</>} sub="haath mein, chehre pe, routine mein" />
-      <FixCard n={2} at={cue("s5", "pehle") - 8} title={<><Hl>Pehle aur baad</Hl> ka fark</>} sub="same light, same angle" />
-      <FixCard n={3} at={cue("s5", "haath", 1) - 8} title={<>Haath mein, taaki <Hl c={BP.green}>size</Hl> dikhe</>} sub="bottle kitni badi hai, ek nazar mein" />
-    </div>
-    <Sfx at={cue("s5", "use") - 8} name="pop" vol={0.5} />
-    <Sfx at={cue("s5", "pehle") - 8} name="pop" vol={0.5} />
-    <Sfx at={cue("s5", "haath", 1) - 8} name="pop" vol={0.5} />
-  </SceneShell>
+/* ===== S5: three photos to keep ===== */
+export const S5Fixes: React.FC<{ dur: number }> = ({ dur }) => (
+  <FixBoard
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s5")}
+    marks={[cue("s5", "use"), cue("s5", "pehle"), cue("s5", "haath")]}
+    sub="teen photo zaroor rakho"
+    fixes={["Use karte hue", "Pehle aur baad ka fark", "Haath mein pakda hua, size dikhe"]}
+  />
 );
 
+/* ===== S6: CTA ===== */
 const ListIcon: React.FC = () => (
   <svg width={86} height={100} viewBox="0 0 86 100">
     <rect x={3} y={3} width={80} height={94} rx={12} fill={C.violet} stroke={C.navy} strokeWidth={5} />
@@ -178,28 +250,32 @@ const ListIcon: React.FC = () => (
   </svg>
 );
 
-/* s6 · CTA */
-export const S6Cta: React.FC<SP> = ({ dur }) => (
-  <SceneShell dur={dur} noExit>
-    <HisaabCta
-      keyword="PHOTO"
-      typeAt={cue("s6", "photo") - 8}
-      giftAt={cue("s6", "das") - 6}
-      giftTitle="10 Photo Ideas ki List"
-      giftSub="free · phone se shoot ho jaayein"
-      giftIcon={<ListIcon />}
-      nextAt={cue("s6", "kal")}
-      nextLabel="KAL DOPAHAR 1 BAJE · AGLA CASE"
-      next={
-        <>
-          <div style={big(52, C.navy)}>Log brand se nahi,</div>
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={{ ...big(60, C.white), background: C.violet, borderRadius: 16, padding: "8px 20px 0" }}>INSAAN</div>
-            <div style={big(52, C.navy)}>se kyun khareedte?</div>
-          </div>
-        </>
-      }
-      followAt={cue("s6", "follow")}
-    />
-  </SceneShell>
+export const S6Cta: React.FC<{ dur: number }> = ({ dur }) => (
+  <CtaScene
+    dur={dur}
+    tag={TAG}
+    mouth={sceneMouth("s6")}
+    keyword="PHOTO"
+    typeAt={cue("s6", "photo") - 8}
+    giftAt={cue("s6", "das") - 6}
+    giftTitle="10 Photo Ideas ki List"
+    giftSub="free · phone se shoot ho jaayein"
+    giftIcon={<ListIcon />}
+    nextAt={cue("s6", "kal")}
+    nextNum="#18"
+    nextLabel="KAL DOPAHAR 1 BAJE · AGLA CASE"
+    next={
+      <>
+        <div style={big(52)}>Log brand se nahi,</div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div style={{ ...big(58, C.white), background: C.violet, borderRadius: 16, padding: "8px 20px 0" }}>INSAAN</div>
+          <div style={big(52)}>se kyun khareedte?</div>
+        </div>
+      </>
+    }
+    followAt={cue("s6", "follow")}
+  />
 );
+
+void interpolate;
+void clamp;
