@@ -291,6 +291,144 @@
           "permalink": "https://www.instagram.com/reel/Dfe4HDIkb3v/"
         }
       ]
+    },
+    {
+      "date": "2026-11-10",
+      "at": "2026-11-09T18:41:02.252Z",
+      "followers": 7,
+      "mediaCount": 10,
+      "reels": [
+        {
+          "id": "01-news01-andromeda",
+          "kind": "normal",
+          "title": "NEWS #01 · Meta Andromeda 2.0",
+          "look": "infographic",
+          "type": "news",
+          "hook": "news-explainer",
+          "slot": "14:05",
+          "ageHours": 106,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfWnSeBj7rQ/"
+        },
+        {
+          "id": "02-case01-ads-band-sales-zero",
+          "kind": "normal",
+          "title": "CASE #01 · Ads band, sales zero?",
+          "look": "infographic",
+          "type": "case",
+          "hook": "₹-pain question",
+          "slot": "21:58",
+          "ageHours": 98,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfXdWaijY5I/"
+        },
+        {
+          "id": "03-case02-budget-double",
+          "kind": "normal",
+          "title": "CASE #02 · Ad budget double se pehle",
+          "look": "doctor-host",
+          "type": "case",
+          "hook": "stop (RUKO) + number",
+          "slot": "13:00",
+          "ageHours": 83,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfZEuP5DDJa/"
+        },
+        {
+          "id": "04-case03-bada-bill",
+          "kind": "normal",
+          "title": "CASE #03 · Naya customer nahi, bada bill",
+          "look": "cartoon",
+          "type": "case",
+          "hook": "contradiction (4× profit)",
+          "slot": "19:07",
+          "ageHours": 77,
+          "likes": 14,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfZuov0nOEA/"
+        },
+        {
+          "id": "05-case04-pehla-order-loss",
+          "kind": "normal",
+          "title": "CASE #04 · Pehle order pe loss, phir bhi profit?",
+          "look": "cartoon",
+          "type": "case",
+          "hook": "₹ loss + curiosity (hook title)",
+          "slot": "13:06",
+          "ageHours": 59,
+          "likes": 24,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfbqGC_ioKk/"
+        },
+        {
+          "id": "06-case05-review",
+          "kind": "normal",
+          "title": "CASE #05 · Perfect 5-star rating, phir bhi sale kam?",
+          "look": "cartoon",
+          "type": "case",
+          "hook": "5.0 rating + kam sale contradiction (hook title)",
+          "slot": "19:02",
+          "ageHours": 53,
+          "likes": 11,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfcS2puHOSa/"
+        },
+        {
+          "id": "07-case07-collab",
+          "kind": "normal",
+          "title": "CASE #07 · Influencer ko ₹50,000, aaye 3 order",
+          "look": "cartoon",
+          "type": "case",
+          "hook": "₹50,000 fee → 3 orders (hook title)",
+          "slot": "13:04",
+          "ageHours": 35,
+          "likes": 22,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfeOqhtjt7u/"
+        },
+        {
+          "id": "08-case09-price",
+          "kind": "normal",
+          "title": "CASE #09 · Double price, phir bhi loss",
+          "look": "cartoon",
+          "type": "case",
+          "hook": "₹300 → ₹599 double price + LOSS contradiction (hook title)",
+          "slot": "19:06",
+          "ageHours": 29,
+          "likes": 12,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/Dfe4HDIkb3v/"
+        },
+        {
+          "id": "09-case10-cart",
+          "kind": "normal",
+          "title": "CASE #10 · 10 mein se 7 cart chhod dete hain",
+          "look": "cartoon",
+          "type": "case",
+          "hook": "₹799 → ₹947 at checkout + '10 mein se 7' (hook title)",
+          "slot": "13:07",
+          "ageHours": 11,
+          "likes": 2,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/Dfgz2SOjux9/"
+        },
+        {
+          "id": "10-case12-channel",
+          "kind": "normal",
+          "title": "CASE #12 · Marketplace ya apni website?",
+          "look": "cartoon",
+          "type": "case",
+          "hook": "Same ₹1,000 sale: marketplace vs website, kahan zyada bachega (hook title)",
+          "slot": "19:10",
+          "ageHours": 5,
+          "likes": 10,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfhdX3CjS_X/"
+        }
+      ]
     }
   ],
   "insightsRefused": [
