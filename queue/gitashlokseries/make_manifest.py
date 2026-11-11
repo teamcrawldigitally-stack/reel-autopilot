@@ -114,7 +114,7 @@ manifest = {
     "page": "gitashlokseries",
     "note": "Posted 1 a day in this order by .github/workflows/post-queue-gita.yml (7:07 AM IST; trial copy 10:07 AM IST). Add new reels at the end. Set paused to true to stop posting. pinnedComment is not posted automatically.",
     "paused": False,
-    "igUserId": "",
+    "igUserId": "17841422677597279",
     "expectUsername": "gita.shlok.series",
     "shareToFeed": True,
     "perDay": 1,
