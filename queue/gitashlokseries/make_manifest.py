@@ -96,7 +96,8 @@ R = [
 items = []
 for n, slug, title, refs, hook, body, comment in R:
     cmt = comment if comment.startswith("कमेंट") else f"कमेंट में बताओ: {comment}"
-    caption = f"📖 गीता श्लोक सीरीज़ · कहानी {n:02d} | {refs}\n{hook}\n\n{body}\n\n💬 {cmt}\n\n{TAGS}"
+    # First line (user, 11 Nov): "Gita Shlok 01/700" — the reel's number in the series, out of the Gita's 700 shlokas.
+    caption = f"📖 Gita Shlok {n:02d}/700 | {refs}\n{hook}\n\n{body}\n\n💬 {cmt}\n\n{TAGS}"
     items.append({
         "id": f"{n:02d}-{slug}",
         "title": f"कहानी {n:02d} · {title}",
