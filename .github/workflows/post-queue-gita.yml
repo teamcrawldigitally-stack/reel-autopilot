@@ -1,0 +1,159 @@
+name: Post queued reels · Gita Shlok Series
+
+# Posts 1 ready-made reel a day from queue/gitashlokseries (perDay in the manifest) to @gita.shlok.series,
+# followed 3 hours later by a trial copy (shown to non-followers first; skipped by itself while
+# Instagram says the account is too small for trial reels).
+# Until the page is connected (GitHub secret IG_ACCESS_TOKEN_GITA + igUserId in the manifest),
+# every run just says so and posts nothing.
+# GitHub starts scheduled runs late or drops them, so every slot has backup start times, and a Claude
+# scheduled task also starts the morning slot on time with mode "slot".
+# A run only posts if that slot's post hasn't gone out yet today (--slot), so nothing posts twice.
+# Cron is in UTC:
+#   01:37 UTC =  7:07 AM IST  normal post   (backups 02:07, 03:07)
+#   04:37 UTC = 10:07 AM IST  trial copy    (backups 05:07, 06:07)
+#   18:07 UTC = 11:37 PM IST  engagement stats
+on:
+  schedule:
+    - cron: "37 1 * * *"
+    - cron: "7 2 * * *"
+    - cron: "7 3 * * *"
+    - cron: "37 4 * * *"
+    - cron: "7 5 * * *"
+    - cron: "7 6 * * *"
+    - cron: "7 18 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "test = upload and let Instagram process the next reel, publish nothing · post-now = post right away · slot = post only if that slot hasn't gone out today · stats = save engagement numbers"
+        type: choice
+        options: [test, post-now, slot, stats]
+        default: test
+      kind:
+        description: "normal = next reel to followers · trial = trial copy of the latest normally posted reel"
+        type: choice
+        options: [normal, trial]
+        default: normal
+      slot:
+        description: "slot mode only: which post of the day this is (always 1 for this page)"
+        type: choice
+        options: ["1"]
+        default: "1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: instagram-post-gitashlokseries
+  cancel-in-progress: false
+
+env:
+  PAGE: gitashlokseries
+  IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN_GITA }}
+  TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
+  IG_TOKEN_STATE_FILE: gitashlokseries-ig-token.enc.json
+
+jobs:
+  post:
+    if: github.event.schedule != '7 18 * * *' && inputs.mode != 'stats'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Is the page connected?
+        id: ready
+        run: |
+          if [ -z "$IG_ACCESS_TOKEN" ]; then
+            echo "::warning::@gita.shlok.series is not connected yet (GitHub secret IG_ACCESS_TOKEN_GITA is empty). Nothing posted."
+            echo "ok=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=yes" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.ready.outputs.ok == 'yes'
+        with:
+          node-version: 22
+
+      - name: Install cloudflared (temporary video link)
+        if: steps.ready.outputs.ok == 'yes'
+        run: |
+          # GitHub's download server sometimes answers 504; retry, then fall back to Cloudflare's own apt repo.
+          ok=
+          for i in 1 2 3; do sudo curl -fsSL --retry 2 -o /usr/local/bin/cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 && ok=1 && break; sleep $((i * 10)); done
+          if [ -n "$ok" ]; then
+            sudo chmod +x /usr/local/bin/cloudflared
+          else
+            curl -fsSL https://pkg.cloudflare.com/cloudflare-main.gpg | sudo tee /usr/share/keyrings/cloudflare-main.gpg >/dev/null
+            echo "deb [signed-by=/usr/share/keyrings/cloudflare-main.gpg] https://pkg.cloudflare.com/cloudflared any main" | sudo tee /etc/apt/sources.list.d/cloudflared.list
+            sudo apt-get update -qq && sudo apt-get install -y -qq cloudflared
+          fi
+          cloudflared --version
+
+      - name: Post the next reel
+        if: steps.ready.outputs.ok == 'yes'
+        env:
+          EVENT: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          MODE: ${{ inputs.mode }}
+          KIND: ${{ inputs.kind }}
+          SLOT: ${{ inputs.slot }}
+        run: |
+          if [ "$EVENT" = "schedule" ]; then
+            case "$SCHEDULE" in
+              "37 1 * * *"|"7 2 * * *"|"7 3 * * *") ARGS="--kind normal --slot 1" ;;
+              "37 4 * * *"|"7 5 * * *"|"7 6 * * *") ARGS="--kind trial --slot 1" ;;
+              *) echo "Unknown schedule '$SCHEDULE'"; exit 1 ;;
+            esac
+          else
+            ARGS="--kind $KIND"
+            [ "$MODE" = "test" ] && ARGS="$ARGS --dry-run"
+            [ "$MODE" = "post-now" ] && ARGS="$ARGS --force"
+            [ "$MODE" = "slot" ] && ARGS="$ARGS --slot $SLOT"
+          fi
+          echo "post-queue.mjs $ARGS"
+          node pipeline/post-queue.mjs --page $PAGE $ARGS
+
+      - name: Save what was posted
+        if: always() && steps.ready.outputs.ok == 'yes'
+        run: |
+          git config user.name "reel-autopilot"
+          git config user.email "reel-autopilot@users.noreply.github.com"
+          git add state/
+          git diff --cached --quiet && exit 0
+          git commit -m "Posting log (Gita Shlok Series): $(date -u +%F)"
+          for i in 1 2 3 4 5; do git pull --rebase && git push && exit 0; sleep $((i * 5)); done
+          exit 1
+
+  stats:
+    if: github.event.schedule == '7 18 * * *' || inputs.mode == 'stats'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Is the page connected?
+        id: ready
+        run: |
+          if [ -z "$IG_ACCESS_TOKEN" ]; then
+            echo "::warning::@gita.shlok.series is not connected yet (GitHub secret IG_ACCESS_TOKEN_GITA is empty). No stats."
+            echo "ok=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=yes" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-node@v4
+        if: steps.ready.outputs.ok == 'yes'
+        with:
+          node-version: 22
+      - name: Collect stats
+        if: steps.ready.outputs.ok == 'yes'
+        run: node pipeline/stats.mjs --page $PAGE
+      - name: Save
+        if: always() && steps.ready.outputs.ok == 'yes'
+        run: |
+          git config user.name "reel-autopilot"
+          git config user.email "reel-autopilot@users.noreply.github.com"
+          git add state/
+          git diff --cached --quiet && exit 0
+          git commit -m "Engagement stats (Gita Shlok Series): $(date -u +%F)"
+          for i in 1 2 3 4 5; do git pull --rebase && git push && exit 0; sleep $((i * 5)); done
+          exit 1
