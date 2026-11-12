@@ -6,6 +6,37 @@
       "followers": 0,
       "mediaCount": 0,
       "reels": []
+    },
+    {
+      "date": "2026-11-13",
+      "at": "2026-11-12T18:57:36.531Z",
+      "followers": 0,
+      "mediaCount": 1,
+      "reels": [
+        {
+          "id": "01-dropped-bow",
+          "kind": "normal",
+          "title": "कहानी 01 · He dropped his bow",
+          "look": "story",
+          "type": "shloka",
+          "hook": "दुनिया का सबसे बड़ा धनुर्धर, युद्ध से ठीक पहले, अपना धनुष छोड़ देता है। 🏹",
+          "slot": "07:14",
+          "ageHours": 17,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/Dfn51qilYCW/"
+        }
+      ]
     }
+  ],
+  "insightsRefused": [
+    "views: (#10) Application does not have permission for this action",
+    "reach: (#10) Application does not have permission for this action",
+    "saved: (#10) Application does not have permission for this action",
+    "shares: (#10) Application does not have permission for this action",
+    "total_interactions: (#10) Application does not have permission for this action",
+    "ig_reels_avg_watch_time: (#10) Application does not have permission for this action",
+    "follows: (#10) Application does not have permission for this action",
+    "profile_visits: (#10) Application does not have permission for this action"
   ]
 }
