@@ -108,6 +108,66 @@
           "permalink": "https://www.instagram.com/reel/DftDaNBkXEh/"
         }
       ]
+    },
+    {
+      "date": "2026-11-16",
+      "at": "2026-11-15T18:48:38.443Z",
+      "followers": 0,
+      "mediaCount": 4,
+      "reels": [
+        {
+          "id": "01-dropped-bow",
+          "kind": "normal",
+          "title": "कहानी 01 · He dropped his bow",
+          "look": "story",
+          "type": "shloka",
+          "hook": "दुनिया का सबसे बड़ा धनुर्धर, युद्ध से ठीक पहले, अपना धनुष छोड़ देता है। 🏹",
+          "slot": "07:14",
+          "ageHours": 89,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/Dfn51qilYCW/"
+        },
+        {
+          "id": "02-first-verse",
+          "kind": "normal",
+          "title": "कहानी 02 · The first verse",
+          "look": "story",
+          "type": "shloka",
+          "hook": "गीता के 700 श्लोक, पर पहला श्लोक कृष्ण ने नहीं बोला।",
+          "slot": "07:14",
+          "ageHours": 65,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/Dfqep6gGO_b/"
+        },
+        {
+          "id": "03-winter-summer",
+          "kind": "normal",
+          "title": "कहानी 03 · Like winter and summer",
+          "look": "story",
+          "type": "shloka",
+          "hook": "बुरा वक्त कब खत्म होगा? इसका जवाब कृष्ण ने युद्ध के मैदान में दिया था।",
+          "slot": "07:14",
+          "ageHours": 41,
+          "likes": 2,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DftDaNBkXEh/"
+        },
+        {
+          "id": "04-atom-bomb",
+          "kind": "normal",
+          "title": "कहानी 04 · The atom bomb and the Gita",
+          "look": "story",
+          "type": "shloka",
+          "hook": "एटम बम के पहले धमाके के बाद, उसे बनाने वाले साइंटिस्ट को गीता का एक श्लोक याद आया। 💥",
+          "slot": "07:15",
+          "ageHours": 17,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfvoSBBHOlS/"
+        }
+      ]
     }
   ],
   "insightsRefused": [
