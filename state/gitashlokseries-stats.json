@@ -327,6 +327,105 @@
           "permalink": "https://www.instagram.com/reel/Df0x7O8guWx/"
         }
       ]
+    },
+    {
+      "date": "2026-11-19",
+      "at": "2026-11-18T18:59:20.064Z",
+      "followers": 0,
+      "mediaCount": 7,
+      "reels": [
+        {
+          "id": "01-dropped-bow",
+          "kind": "normal",
+          "title": "कहानी 01 · He dropped his bow",
+          "look": "story",
+          "type": "shloka",
+          "hook": "दुनिया का सबसे बड़ा धनुर्धर, युद्ध से ठीक पहले, अपना धनुष छोड़ देता है। 🏹",
+          "slot": "07:14",
+          "ageHours": 161,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/Dfn51qilYCW/"
+        },
+        {
+          "id": "02-first-verse",
+          "kind": "normal",
+          "title": "कहानी 02 · The first verse",
+          "look": "story",
+          "type": "shloka",
+          "hook": "गीता के 700 श्लोक, पर पहला श्लोक कृष्ण ने नहीं बोला।",
+          "slot": "07:14",
+          "ageHours": 137,
+          "likes": 1,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/Dfqep6gGO_b/"
+        },
+        {
+          "id": "03-winter-summer",
+          "kind": "normal",
+          "title": "कहानी 03 · Like winter and summer",
+          "look": "story",
+          "type": "shloka",
+          "hook": "बुरा वक्त कब खत्म होगा? इसका जवाब कृष्ण ने युद्ध के मैदान में दिया था।",
+          "slot": "07:14",
+          "ageHours": 113,
+          "likes": 2,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DftDaNBkXEh/"
+        },
+        {
+          "id": "04-atom-bomb",
+          "kind": "normal",
+          "title": "कहानी 04 · The atom bomb and the Gita",
+          "look": "story",
+          "type": "shloka",
+          "hook": "एटम बम के पहले धमाके के बाद, उसे बनाने वाले साइंटिस्ट को गीता का एक श्लोक याद आया। 💥",
+          "slot": "07:15",
+          "ageHours": 89,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfvoSBBHOlS/"
+        },
+        {
+          "id": "05-doing-nothing",
+          "kind": "normal",
+          "title": "कहानी 05 · Doing nothing is a mistake too",
+          "look": "story",
+          "type": "shloka",
+          "hook": "\"कल से पक्का\", ये कितनी बार बोला है? कृष्ण के हिसाब से, कुछ न करना भी एक गलती है।",
+          "slot": "07:14",
+          "ageHours": 65,
+          "likes": 3,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/DfyM9KcDRlr/"
+        },
+        {
+          "id": "06-lic-motto",
+          "kind": "normal",
+          "title": "कहानी 06 · LIC's motto from the Gita",
+          "look": "story",
+          "type": "shloka",
+          "hook": "LIC के लोगो पर लिखा वाक्य, गीता से है।",
+          "slot": "07:15",
+          "ageHours": 41,
+          "likes": 0,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/Df0x7O8guWx/"
+        },
+        {
+          "id": "07-sleep-rule",
+          "kind": "normal",
+          "title": "कहानी 07 · The sleep rule",
+          "look": "story",
+          "type": "shloka",
+          "hook": "रात 3 बजे तक फ़ोन? गीता में नींद का भी नियम लिखा है। 🌙",
+          "slot": "07:17",
+          "ageHours": 17,
+          "likes": 3,
+          "comments": 0,
+          "permalink": "https://www.instagram.com/reel/Df3W9vkCGTR/"
+        }
+      ]
     }
   ],
   "insightsRefused": [
