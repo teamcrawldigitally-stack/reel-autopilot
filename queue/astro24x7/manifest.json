@@ -464,7 +464,8 @@
       "look": "devo",
       "type": "festival",
       "hook": "festival",
-      "notBefore": "2026-11-20"
+      "notBefore": "2026-11-20",
+      "notAfter": "2026-11-20"
     },
     {
       "id": "32-budh",
